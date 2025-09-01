@@ -1,5 +1,8 @@
+"use client";
+
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import { Download, FileText, Presentation, BarChart } from "lucide-react";
 
 const resources = [
@@ -30,6 +33,15 @@ const resources = [
 ];
 
 export default function ResourcesPage() {
+  const { toast } = useToast();
+
+  const handleDownload = (resourceTitle: string) => {
+    toast({
+      title: "Download Started",
+      description: `Downloading "${resourceTitle}"... (This is a demo)`,
+    });
+  };
+
   return (
     <div className="container py-12">
       <div className="space-y-4 mb-12 text-center">
@@ -48,7 +60,7 @@ export default function ResourcesPage() {
             </CardHeader>
             <CardContent className="flex-grow" />
             <CardFooter>
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" className="w-full" onClick={() => handleDownload(resource.title)}>
                 <Download className="mr-2 h-4 w-4" />
                 Download {resource.type}
               </Button>

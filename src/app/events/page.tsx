@@ -1,7 +1,10 @@
+"use client";
+
 import { Calendar as CalendarIcon, Clock, MapPin, Ticket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
 
 const events = [
   {
@@ -28,6 +31,15 @@ const events = [
 ];
 
 export default function EventsPage() {
+  const { toast } = useToast();
+
+  const handleRegister = (eventName: string) => {
+    toast({
+      title: "Registration Submitted",
+      description: `Thank you for registering for ${eventName}! (This is a demo)`,
+    });
+  };
+  
   return (
     <div className="container py-12">
       <div className="space-y-4 mb-12 text-center">
@@ -60,7 +72,7 @@ export default function EventsPage() {
                 </div>
               </CardContent>
               <CardFooter>
-                <Button>
+                <Button onClick={() => handleRegister(event.title)}>
                   <Ticket className="mr-2 h-4 w-4" />
                   Register Now
                 </Button>

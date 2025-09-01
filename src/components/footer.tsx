@@ -13,8 +13,8 @@ export function AppFooter() {
         </div>
         <div className="flex items-center gap-4 text-sm text-muted-foreground">
           <Link href="/contact" className="hover:text-primary transition-colors">Contact</Link>
-          <Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link>
-          <Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link>
+          <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+          <Link href="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link>
         </div>
       </div>
     </footer>

@@ -46,7 +46,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Button asChild size="lg">
-                  <Link href="/members">
+                  <Link href="/register">
                     Join Our Community <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
@@ -84,15 +84,17 @@ export default function Home() {
           </div>
           <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-4 mt-12">
             {features.map((feature) => (
-              <Card key={feature.title} className="h-full transform transition-transform duration-300 hover:-translate-y-2">
-                <CardHeader>
-                  {feature.icon}
-                  <CardTitle className="font-headline mt-4">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
+               <Link href={feature.href} key={feature.title}>
+                <Card className="h-full transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
+                  <CardHeader>
+                    {feature.icon}
+                    <CardTitle className="font-headline mt-4">{feature.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{feature.description}</p>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
