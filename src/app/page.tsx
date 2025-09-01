@@ -64,7 +64,7 @@ export default function Home() {
                 width={600}
                 height={400}
                 className="rounded-xl shadow-2xl"
-                data-ai-hint="business meeting"
+                data-ai-hint="mount fuji"
               />
             </div>
           </div>
