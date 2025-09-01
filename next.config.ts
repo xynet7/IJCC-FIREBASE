@@ -34,6 +34,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.asiancommunitynews.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'imgcp.aacdn.jp',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

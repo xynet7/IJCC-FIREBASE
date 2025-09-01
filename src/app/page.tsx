@@ -60,7 +60,7 @@ export default function Home() {
             </div>
             <div className="flex items-center justify-center">
               <Image
-                src="https://picsum.photos/id/1015/600/400"
+                src="https://imgcp.aacdn.jp/img-a/1440/auto/global-aaj-front/article/2015/12/565f05f621364_565f018e5feb3_1467636135.jpg"
                 alt="Indo-Japan collaboration"
                 width={600}
                 height={400}
