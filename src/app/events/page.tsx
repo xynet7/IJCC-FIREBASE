@@ -9,22 +9,22 @@ import { useState, useEffect } from "react";
 
 const events = [
   {
-    title: "Indo-Japan Business Forum 2024",
-    date: "2024-10-26",
-    time: "09:00 AM - 05:00 PM",
-    location: "Tokyo International Forum, Tokyo",
-    description: "A premier event for business leaders to explore collaboration opportunities between India and Japan.",
+    title: "Business Seminar",
+    date: "2025-11-07",
+    time: "05:00 pM - 06:00 PM",
+    location: "Aju Hindone",
+    description: "Presentation from four states representation(Haryana + other 3 states.",
   },
   {
     title: "Cultural Exchange Evening",
-    date: "2024-11-15",
+    date: "2025-11-15",
     time: "06:00 PM - 09:00 PM",
     location: "The Taj Mahal Palace, Mumbai",
     description: "An evening of cultural performances, traditional cuisine, and networking.",
   },
   {
     title: "Tech Innovation Summit",
-    date: "2024-12-05",
+    date: "2025-12-05",
     time: "10:00 AM - 04:00 PM",
     location: "Online / Virtual",
     description: "Discover the latest technological advancements and partnership prospects in the IT sectors of both nations.",

@@ -13,8 +13,8 @@ const resources = [
     icon: <FileText className="h-8 w-8 text-primary" />,
   },
   {
-    title: "2024 Market Trends: India-Japan Trade",
-    description: "An in-depth analysis of the latest trade statistics and market trends.",
+    title: "Previous year JLPT Question Papers",
+    description: "All level JLPT Question Papers of last 10 years.",
     type: "Report",
     icon: <BarChart className="h-8 w-8 text-primary" />,
   },
