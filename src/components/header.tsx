@@ -1,6 +1,8 @@
+
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Landmark, Menu, LogOut, UserCircle, Shield } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -24,7 +26,7 @@ export function AppHeader() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         <Link href="/" className="mr-6 flex items-center gap-2">
-          <Landmark className="h-6 w-6 text-primary" />
+          <Image src="https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png" alt="Indo-Japan Chamber of Commerce Logo" width={40} height={40} className="h-10 w-auto" />
           <span className="font-bold font-headline hidden sm:inline-block">Indo-Japan Chamber of Commerce</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm">
@@ -81,7 +83,7 @@ export function AppHeader() {
             </SheetTrigger>
             <SheetContent side="right">
               <Link href="/" className="mr-6 flex items-center gap-2 mb-6">
-                <Landmark className="h-6 w-6 text-primary" />
+                <Image src="https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png" alt="Indo-Japan Chamber of Commerce Logo" width={40} height={40} className="h-10 w-auto" />
                 <span className="font-bold font-headline">Indo-Japan Chamber of Commerce</span>
               </Link>
               <div className="flex flex-col gap-4">
