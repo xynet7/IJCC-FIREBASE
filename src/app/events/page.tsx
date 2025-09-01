@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { useState, useEffect } from "react";
 
 const events = [
   {
@@ -32,6 +33,12 @@ const events = [
 
 export default function EventsPage() {
   const { toast } = useToast();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
 
   const handleRegister = (eventName: string) => {
     toast({
@@ -87,11 +94,15 @@ export default function EventsPage() {
               <CardTitle className="font-headline text-2xl">Event Calendar</CardTitle>
             </CardHeader>
             <CardContent>
-              <Calendar
-                mode="single"
-                disabled={(date) => date < new Date(new Date().setDate(new Date().getDate() - 1))}
-                className="rounded-md border p-0"
-              />
+              {isClient ? (
+                <Calendar
+                  mode="single"
+                  disabled={(date) => date < new Date(new Date().setDate(new Date().getDate() - 1))}
+                  className="rounded-md border p-0"
+                />
+              ) : (
+                <div className="rounded-md border p-0 h-[300px] w-[320px] animate-pulse bg-muted" />
+              )}
             </CardContent>
           </Card>
         </div>

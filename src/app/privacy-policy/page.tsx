@@ -1,10 +1,20 @@
+"use client";
+
+import { useState, useEffect } from 'react';
+
 export default function PrivacyPolicyPage() {
+  const [lastUpdated, setLastUpdated] = useState('');
+
+  useEffect(() => {
+    setLastUpdated(new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
+  }, []);
+
   return (
     <div className="container py-12">
       <div className="prose mx-auto">
         <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl text-center mb-8">Privacy Policy</h1>
         
-        <p><em>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</em></p>
+        {lastUpdated && <p><em>Last updated: {lastUpdated}</em></p>}
         
         <p>This is a placeholder Privacy Policy page. In a real application, this page would contain detailed information about how user data is collected, used, and protected.</p>
         
