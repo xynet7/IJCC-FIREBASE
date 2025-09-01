@@ -8,7 +8,7 @@ import { ArrowRight, Calendar } from "lucide-react";
 const newsArticles = [
   {
     title: "Japan Invites Indian Researchers for Scientific Research & Innovation",
-    date: "2024-09-20",
+    date: "2025-08-15",
     description: "The Japanese government has launched a new initiative to attract Indian researchers and scientists to collaborate on cutting-edge scientific and technological projects, strengthening bilateral ties in innovation.",
     imageUrl: "https://picsum.photos/400/250",
     hint: "science laboratory",
