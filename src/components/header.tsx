@@ -25,7 +25,7 @@ export function AppHeader() {
       <div className="container flex h-16 items-center">
         <Link href="/" className="mr-6 flex items-center gap-2">
           <Landmark className="h-6 w-6 text-primary" />
-          <span className="font-bold font-headline hidden sm:inline-block">Indo-Japan Chamber Hub</span>
+          <span className="font-bold font-headline hidden sm:inline-block">Indo-Japan Chamber of Commerce</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm">
           {navLinks.map((link) => (
@@ -82,7 +82,7 @@ export function AppHeader() {
             <SheetContent side="right">
               <Link href="/" className="mr-6 flex items-center gap-2 mb-6">
                 <Landmark className="h-6 w-6 text-primary" />
-                <span className="font-bold font-headline">Indo-Japan Chamber Hub</span>
+                <span className="font-bold font-headline">Indo-Japan Chamber of Commerce</span>
               </Link>
               <div className="flex flex-col gap-4">
                 {navLinks.map((link) => (

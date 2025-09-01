@@ -42,7 +42,7 @@ export default function Home() {
                 Connecting <span className="text-primary">India</span> & <span className="text-primary">Japan</span> for Mutual Prosperity
               </h1>
               <p className="max-w-[700px] text-muted-foreground md:text-xl">
-                The Indo-Japan Chamber Hub is the premier platform for fostering business, cultural, and economic ties between two of Asia's leading nations.
+              Indo-Japan Chamber of Commerce (IJCC) was formed with a view to promoting closer economic relations between India and Japan. The Chamber has facilitated several business interactions, forged partnerships, and promoted bilateral trade over the years. We work to enhance trade relations, attract investment, and create platforms for business success in both countries.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Button asChild size="lg">

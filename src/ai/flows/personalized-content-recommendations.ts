@@ -46,7 +46,7 @@ const prompt = ai.definePrompt({
   name: 'recommendContentPrompt',
   input: {schema: RecommendContentInputSchema},
   output: {schema: RecommendContentOutputSchema},
-  prompt: `You are an AI assistant that provides personalized content recommendations for members of the Indo-Japan Chamber Hub.
+  prompt: `You are an AI assistant that provides personalized content recommendations for members of the Indo-Japan Chamber of Commerce.
 
   Based on the member's interests, industry, and recent activity, recommend relevant events, articles, and resources. Provide a detailed explanation on why each recommendation is made.
 

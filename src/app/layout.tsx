@@ -6,7 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { AuthProvider } from '@/components/auth-provider';
 
 export const metadata: Metadata = {
-  title: 'Indo-Japan Chamber Hub',
+  title: 'Indo-Japan Chamber of Commerce',
   description: 'Fostering business and cultural ties between India and Japan.',
 };
 
