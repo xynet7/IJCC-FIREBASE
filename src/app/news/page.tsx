@@ -10,8 +10,8 @@ const newsArticles = [
     title: "Japan Invites Indian Researchers for Scientific Research & Innovation",
     date: "2025-08-15",
     description: "The Japanese government has launched a new initiative to attract Indian researchers and scientists to collaborate on cutting-edge scientific and technological projects, strengthening bilateral ties in innovation.",
-    imageUrl: "https://picsum.photos/400/250",
-    hint: "science laboratory",
+    imageUrl: "https://www.asiancommunitynews.com/wp-content/uploads/2025/08/FromLtoRDrBalvinderShuklaMr.YujiNishikawaMr.TakashiKonishiandDrGurinderSinghatAmity2-750x430.jpg",
+    hint: "researchers meeting",
     href: "https://www.asiancommunitynews.com/japan-invites-indian-researchers-to-conduct-scientific-research-innovation/",
   },
 ];
@@ -34,7 +34,8 @@ export default function NewsPage() {
                 <Image
                   src={article.imageUrl}
                   alt={article.title}
-                  fill
+                  width={750}
+                  height={430}
                   className="rounded-t-lg object-cover"
                   data-ai-hint={article.hint}
                 />

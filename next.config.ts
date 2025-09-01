@@ -28,6 +28,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.ijcc.in',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.asiancommunitynews.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
