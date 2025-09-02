@@ -2,8 +2,8 @@
 import Image from 'next/image';
 
 const galleryImages = [
-    { src: "https://picsum.photos/seed/gallery1/800/600", alt: "Gallery image 1", hint: "event business" },
-    { src: "https://picsum.photos/seed/gallery2/600/800", alt: "Gallery image 2", hint: "people meeting" },
+    { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.14.jpeg", alt: "Gallery image 1", hint: "event business" },
+    { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.15%20(1).jpeg", alt: "Gallery image 2", hint: "people meeting" },
     { src: "https://picsum.photos/seed/gallery3/800/600", alt: "Gallery image 3", hint: "conference presentation" },
     { src: "https://picsum.photos/seed/gallery4/800/600", alt: "Gallery image 4", hint: "networking event" },
     { src: "https://picsum.photos/seed/gallery5/600/800", alt: "Gallery image 5", hint: "podium speaker" },
