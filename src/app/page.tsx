@@ -70,7 +70,7 @@ export default function Home() {
           className="absolute inset-0 w-full h-full"
           plugins={[
             Autoplay({
-              delay: 2000,
+              delay: 4000,
             }),
           ]}
           opts={{
