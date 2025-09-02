@@ -40,6 +40,12 @@ const nextConfig: NextConfig = {
         hostname: 'imgcp.aacdn.jp',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'static.investindia.gov.in',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

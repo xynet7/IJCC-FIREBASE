@@ -3,7 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ArrowRight, Calendar, Users, BookOpen, Bot, Mail } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay";
+
 
 const features = [
   {
@@ -43,20 +46,53 @@ const members = [
     { name: "Ahuja Residences", href: "https://ahujaresidences.com", logoUrl: "https://picsum.photos/seed/ahuja/200/100", hint: "company logo" },
 ];
 
+const heroImages = [
+  {
+    src: "https://imgcp.aacdn.jp/img-a/1440/auto/global-aaj-front/article/2015/12/565f05f621364_565f018e5feb3_1467636135.jpg",
+    alt: "Indo-Japan collaboration with Mount Fuji",
+    hint: "mount fuji"
+  },
+  {
+    src: "https://static.investindia.gov.in/s3fs-public/2021-06/shutterstock_1057997963.jpg",
+    alt: "India and Japan flags",
+    hint: "flags india japan"
+  }
+]
+
 
 export default function Home() {
   return (
     <>
       <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center text-white">
-        <Image
-          src="https://imgcp.aacdn.jp/img-a/1440/auto/global-aaj-front/article/2015/12/565f05f621364_565f018e5feb3_1467636135.jpg"
-          alt="Indo-Japan collaboration"
-          fill
-          className="object-cover -z-10"
-          data-ai-hint="mount fuji"
-        />
+        <Carousel 
+          className="w-full h-full"
+          plugins={[
+            Autoplay({
+              delay: 2000,
+            }),
+          ]}
+          opts={{
+            loop: true,
+          }}
+        >
+          <CarouselContent>
+            {heroImages.map((image, index) => (
+              <CarouselItem key={index}>
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover -z-10"
+                  data-ai-hint={image.hint}
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+           <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white bg-black/30 hover:bg-black/50 border-none" />
+           <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white bg-black/30 hover:bg-black/50 border-none" />
+        </Carousel>
         <div className="absolute inset-0 bg-black/50 -z-10" />
-        <div className="container px-4 md:px-6 text-center">
+        <div className="container px-4 md:px-6 text-center z-10">
           <div className="space-y-6">
             <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
               Connecting <span className="text-accent">India</span> & <span className="text-accent">Japan</span> for Mutual Prosperity
