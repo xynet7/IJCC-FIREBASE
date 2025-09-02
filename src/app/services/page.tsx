@@ -1,7 +1,8 @@
 
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Handshake, School, Plane, Library, Lightbulb, Briefcase, Users, Building, Target, Zap, Scale, FileSignature, Landmark, Building2, Wallet, Users2, ConciergeBell, Globe, Megaphone, Palette, Sparkles } from "lucide-react";
+import { Handshake, School, Plane, Library, Lightbulb, Briefcase, Users, Building, Target, Zap, Scale, FileSignature, Landmark, Building2, Wallet, Users2, ConciergeBell, Globe, Megaphone, Palette, Sparkles, Award } from "lucide-react";
 
 const indianServices = {
   title: "For Indian SMEs, MSMEs, Startups & Entrepreneurs",
@@ -216,6 +217,77 @@ const digitalServices = {
   ],
 };
 
+const indianCompaniesInJapanServices = {
+  title: "IJCC Services for Indian Companies Registering in Japan",
+  categories: [
+    {
+      title: "Advisory & Consultation",
+      icon: <Scale className="h-8 w-8 text-primary" />,
+      points: [
+        {
+          main: "Guidance on the right entry structure in Japan:",
+          sub: [
+            "Kabushiki Kaisha (KK) – equivalent to Private Limited Company.",
+            "Godo Kaisha (GK) – similar to LLP in India.",
+            "Branch Office of Indian company.",
+            "Representative Office (for market research, no commercial activity).",
+          ],
+        },
+        { main: "Sector-wise advisory (manufacturing, IT, food processing, services, trading, etc.)." },
+        { main: "Compliance overview: tax, labor laws, visa, and Japanese Commercial Code." },
+      ],
+    },
+    {
+      title: "Company Incorporation Support",
+      icon: <FileSignature className="h-8 w-8 text-primary" />,
+      points: [
+        { main: "Drafting and filing documents (Articles of Incorporation, company seal, notarization)." },
+        { main: "Assistance with office address (registered office, virtual office, co-working space)." },
+        { main: "Support in opening Japanese bank accounts." },
+        { main: "Registration with Legal Affairs Bureau in Japan." },
+        { main: "Tax registration: National Tax Agency (NTA) for corporate tax, consumption tax, etc." },
+      ],
+    },
+    {
+      title: "Regulatory & Compliance Assistance",
+      icon: <Landmark className="h-8 w-8 text-primary" />,
+      points: [
+        { main: "Help with immigration/visa procedures for Indian founders or key employees." },
+        { main: "Social insurance, payroll, and HR compliance setup." },
+        { main: "Intellectual Property Rights (IPR) advisory – patents, trademarks in Japan." },
+        { main: "Guidance on Japanese packaging, product quality, and safety standards." },
+      ],
+    },
+    {
+      title: "Business Development Support",
+      icon: <Handshake className="h-8 w-8 text-primary" />,
+      points: [
+        { main: "Connecting with Japanese distributors, investors, and partners." },
+        { main: "Access to Japanese startup ecosystems, accelerators, and VCs." },
+        { main: "Facilitating participation in trade fairs, expos, and B2B meetings in Japan." },
+      ],
+    },
+    {
+      title: "Post-Incorporation Services",
+      icon: <ConciergeBell className="h-8 w-8 text-primary" />,
+      points: [
+        { main: "Accounting, taxation, and annual filings in Japan." },
+        { main: "Virtual CFO/Compliance support." },
+        { main: "Translation, interpretation, and cultural orientation for smooth business operations." },
+      ],
+    },
+    {
+      title: "Additional IJCC Value-Add",
+      icon: <Award className="h-8 w-8 text-primary" />,
+      points: [
+        { main: "Education & training for Indian founders on Japanese corporate culture and business etiquette." },
+        { main: "Recruitment support for hiring Japanese/Indian bilingual staff." },
+        { main: "Assistance with government incentives (JETRO programs, startup subsidies, SME grants)." },
+      ],
+    },
+  ],
+};
+
 
 export default function ServicesPage() {
   return (
@@ -337,6 +409,42 @@ export default function ServicesPage() {
                        {/* @ts-ignore */}
                       {category.points.map((point, index) => (
                         <li key={index}>{point}</li>
+                      ))}
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </CardContent>
+        </Card>
+
+        <Card className="p-6">
+          <CardHeader className="text-center">
+            <CardTitle className="text-3xl font-headline">{indianCompaniesInJapanServices.title}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Accordion type="single" collapsible className="w-full" defaultValue={indianCompaniesInJapanServices.categories[0].title}>
+              {indianCompaniesInJapanServices.categories.map((category) => (
+                <AccordionItem value={category.title} key={category.title}>
+                  <AccordionTrigger className="text-xl font-headline hover:no-underline">
+                    <div className="flex items-center gap-4">
+                      {category.icon}
+                      {category.title}
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="pt-2 pl-12">
+                    <ul className="list-disc space-y-2 text-muted-foreground">
+                      {category.points.map((point, index) => (
+                        <li key={index}>
+                          {point.main}
+                          {point.sub && (
+                            <ul className="list-disc pl-6 mt-1 space-y-1">
+                              {point.sub.map((subPoint, subIndex) => (
+                                <li key={subIndex}>{subPoint}</li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
                       ))}
                     </ul>
                   </AccordionContent>
