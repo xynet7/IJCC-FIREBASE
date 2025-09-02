@@ -47,38 +47,34 @@ const members = [
 export default function Home() {
   return (
     <>
-      <section className="py-20 md:py-32">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-            <div className="space-y-6">
-              <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-                Connecting <span className="text-primary">India</span> & <span className="text-primary">Japan</span> for Mutual Prosperity
-              </h1>
-              <p className="max-w-[700px] text-muted-foreground md:text-xl">
+      <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center text-white">
+        <Image
+          src="https://imgcp.aacdn.jp/img-a/1440/auto/global-aaj-front/article/2015/12/565f05f621364_565f018e5feb3_1467636135.jpg"
+          alt="Indo-Japan collaboration"
+          fill
+          className="object-cover -z-10"
+          data-ai-hint="mount fuji"
+        />
+        <div className="absolute inset-0 bg-black/50 -z-10" />
+        <div className="container px-4 md:px-6 text-center">
+          <div className="space-y-6">
+            <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+              Connecting <span className="text-accent">India</span> & <span className="text-accent">Japan</span> for Mutual Prosperity
+            </h1>
+            <p className="max-w-[800px] mx-auto text-lg md:text-xl text-white/90">
               Indo-Japan Chamber of Commerce (IJCC) was formed with a view to promoting closer economic relations between India and Japan. The Chamber has facilitated several business interactions, forged partnerships, and promoted bilateral trade over the years. We work to enhance trade relations, attract investment, and create platforms for business success in both countries.
-              </p>
-              <div className="flex flex-col gap-4 sm:flex-row">
-                <Button asChild size="lg">
-                  <Link href="/register">
-                    JOIN US <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button asChild size="lg" variant="outline">
-                  <Link href="/events">
-                    Upcoming Events
-                  </Link>
-                </Button>
-              </div>
-            </div>
-            <div className="flex items-center justify-center">
-              <Image
-                src="https://imgcp.aacdn.jp/img-a/1440/auto/global-aaj-front/article/2015/12/565f05f621364_565f018e5feb3_1467636135.jpg"
-                alt="Indo-Japan collaboration"
-                width={600}
-                height={400}
-                className="rounded-xl shadow-2xl"
-                data-ai-hint="mount fuji"
-              />
+            </p>
+            <div className="flex flex-col gap-4 sm:flex-row justify-center">
+              <Button asChild size="lg">
+                <Link href="/register">
+                  JOIN US <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="secondary">
+                <Link href="/events">
+                  Upcoming Events
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
