@@ -65,57 +65,59 @@ const heroImages = [
 export default function Home() {
   return (
     <>
-      <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center text-white">
-        <Carousel 
-          className="w-full h-full"
-          plugins={[
-            Autoplay({
-              delay: 2000,
-            }),
-          ]}
-          opts={{
-            loop: true,
-          }}
-        >
-          <CarouselContent>
-            {heroImages.map((image, index) => (
-              <CarouselItem key={index}>
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover -z-10"
-                  data-ai-hint={image.hint}
-                />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-           <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white bg-black/30 hover:bg-black/50 border-none" />
-           <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white bg-black/30 hover:bg-black/50 border-none" />
-        </Carousel>
-        <div className="absolute inset-0 bg-black/50 -z-10" />
-        <div className="container px-4 md:px-6 text-center z-10">
-          <div className="space-y-6">
-            <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-              Connecting <span className="text-accent">India</span> & <span className="text-accent">Japan</span> for Mutual Prosperity
-            </h1>
-            <p className="max-w-[800px] mx-auto text-lg md:text-white/90">
-              Indo-Japan Chamber of Commerce (IJCC) was formed with a view to promoting closer economic relations between India and Japan. The Chamber has facilitated several business interactions, forged partnerships, and promoted bilateral trade over the years. We work to enhance trade relations, attract investment, and create platforms for business success in both countries.
-            </p>
-            <div className="flex flex-col gap-4 sm:flex-row justify-center">
-              <Button asChild size="lg">
-                <Link href="/register">
-                  JOIN US <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="secondary">
-                <Link href="/events">
-                  Upcoming Events
-                </Link>
-              </Button>
+      <section className="py-20 md:py-32">
+          <div className="container grid items-center justify-center gap-10 px-4 text-center md:px-6 lg:grid-cols-2 lg:gap-16 lg:text-left">
+            <div className="space-y-6">
+              <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+                Connecting <span className="text-accent">India</span> & <span className="text-accent">Japan</span> for Mutual Prosperity
+              </h1>
+              <p className="max-w-[700px] text-muted-foreground md:text-xl">
+                Indo-Japan Chamber of Commerce (IJCC) was formed with a view to promoting closer economic relations between India and Japan. The Chamber has facilitated several business interactions, forged partnerships, and promoted bilateral trade over the years. We work to enhance trade relations, attract investment, and create platforms for business success in both countries.
+              </p>
+              <div className="flex flex-col gap-4 sm:flex-row justify-center lg:justify-start">
+                <Button asChild size="lg">
+                  <Link href="/register">
+                    JOIN US <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button asChild size="lg" variant="secondary">
+                  <Link href="/events">
+                    Upcoming Events
+                  </Link>
+                </Button>
+              </div>
             </div>
+             <div className="flex items-center justify-center">
+                <Carousel 
+                  className="w-full max-w-2xl"
+                  plugins={[
+                    Autoplay({
+                      delay: 2000,
+                    }),
+                  ]}
+                  opts={{
+                    loop: true,
+                  }}
+                >
+                  <CarouselContent>
+                    {heroImages.map((image, index) => (
+                      <CarouselItem key={index}>
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          width={1440}
+                          height={960}
+                          className="rounded-xl shadow-2xl object-cover"
+                          data-ai-hint={image.hint}
+                        />
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                   <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white bg-black/30 hover:bg-black/50 border-none" />
+                   <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white bg-black/30 hover:bg-black/50 border-none" />
+                </Carousel>
+             </div>
           </div>
-        </div>
       </section>
 
       <section className="py-20 md:py-32 bg-secondary">
