@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Handshake, School, Plane, Library, Lightbulb, Briefcase, Users, Building, Target, Zap } from "lucide-react";
+import { Handshake, School, Plane, Library, Lightbulb, Briefcase, Users, Building, Target, Zap, Scale, FileSignature, Landmark, Building2, Wallet, Users2, ConciergeBell } from "lucide-react";
 
 const indianServices = {
   title: "For Indian SMEs, MSMEs, Startups & Entrepreneurs",
@@ -96,6 +96,80 @@ const japaneseServices = {
   ],
 };
 
+const companyRegistrationServices = {
+  title: "Company Registration: Japanese Companies",
+  categories: [
+    {
+      title: "Advisory on Entry Strategy",
+      icon: <Scale className="h-8 w-8 text-primary" />,
+      points: [
+        { main: "Guidance on the best structure:", sub: [
+            "Wholly Owned Subsidiary (Private Limited Company)",
+            "Joint Venture with Indian Partner",
+            "Liaison / Branch / Project Office (RBI approval route)",
+        ]},
+        { main: "Sector-specific compliance (FEMA, FDI policy, restricted sectors)." },
+      ],
+    },
+    {
+      title: "Company Incorporation Support",
+      icon: <FileSignature className="h-8 w-8 text-primary" />,
+      points: [
+        { main: "Preparation & filing with MCA (Ministry of Corporate Affairs)." },
+        { main: "Assistance with MoA & AoA drafting (aligned with Japanese parent company’s goals)." },
+        { main: "Digital signatures & Director Identification Number (DIN) processing." },
+        { main: "Obtaining Certificate of Incorporation." },
+      ],
+    },
+    {
+      title: "Regulatory & Legal Compliance",
+      icon: <Landmark className="h-8 w-8 text-primary" />,
+      points: [
+        { main: "RBI approvals (for Liaison/Branch/Project office)." },
+        { main: "PAN, TAN & GST registration." },
+        { main: "Import Export Code (IEC) for trading companies." },
+        { main: "Compliance with FEMA, Companies Act, and local state laws." },
+      ],
+    },
+    {
+      title: "Office & Infrastructure Solutions",
+      icon: <Building2 className="h-8 w-8 text-primary" />,
+      points: [
+        { main: "Assistance in finding registered office address (temporary/virtual/long-term)." },
+        { main: "Support for setting up physical offices, warehouses, or industrial space." },
+      ],
+    },
+    {
+        title: "Banking & Financial Setup",
+        icon: <Wallet className="h-8 w-8 text-primary" />,
+        points: [
+            { main: "Facilitation of bank account opening for Japanese entities in India." },
+            { main: "Guidance on foreign remittance and repatriation of profits." },
+            { main: "Connections with Indian and Japanese banks operating in India." },
+        ]
+    },
+    {
+        title: "HR & Talent Support",
+        icon: <Users2 className="h-8 w-8 text-primary" />,
+        points: [
+            { main: "Recruitment of skilled Indian workforce." },
+            { main: "Access to SSW/TITP programs for blue-collar needs." },
+            { main: "Cross-cultural training for Japanese managers working in India." },
+        ]
+    },
+    {
+        title: "Post-Incorporation Support",
+        icon: <ConciergeBell className="h-8 w-8 text-primary" />,
+        points: [
+            { main: "Ongoing legal, tax, and compliance advisory." },
+            { main: "Secretarial services (ROC filings, board meetings, annual reports)." },
+            { main: "Advisory on expansion, mergers, acquisitions, or JV structuring." },
+        ]
+    }
+  ],
+};
+
+
 export default function ServicesPage() {
   return (
     <div className="container py-12">
@@ -160,6 +234,43 @@ export default function ServicesPage() {
             </Accordion>
           </CardContent>
         </Card>
+
+        <Card className="p-6">
+          <CardHeader className="text-center">
+            <CardTitle className="text-3xl font-headline">{companyRegistrationServices.title}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Accordion type="single" collapsible className="w-full" defaultValue={companyRegistrationServices.categories[0].title}>
+              {companyRegistrationServices.categories.map((category) => (
+                <AccordionItem value={category.title} key={category.title}>
+                  <AccordionTrigger className="text-xl font-headline hover:no-underline">
+                    <div className="flex items-center gap-4">
+                      {category.icon}
+                      {category.title}
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="pt-2 pl-12">
+                    <ul className="list-disc space-y-2 text-muted-foreground">
+                      {category.points.map((point, index) => (
+                        <li key={index}>
+                          {point.main}
+                          {point.sub && (
+                            <ul className="list-disc pl-6 mt-1 space-y-1">
+                              {point.sub.map((subPoint, subIndex) => (
+                                <li key={subIndex}>{subPoint}</li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </CardContent>
+        </Card>
+
       </div>
     </div>
   );
