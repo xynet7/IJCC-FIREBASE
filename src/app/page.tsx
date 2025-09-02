@@ -1,4 +1,6 @@
 
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -97,7 +99,7 @@ export default function Home() {
             <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
               Connecting <span className="text-accent">India</span> & <span className="text-accent">Japan</span> for Mutual Prosperity
             </h1>
-            <p className="max-w-[800px] mx-auto text-lg md:text-xl text-white/90">
+            <p className="max-w-[800px] mx-auto text-lg md:text-white/90">
               Indo-Japan Chamber of Commerce (IJCC) was formed with a view to promoting closer economic relations between India and Japan. The Chamber has facilitated several business interactions, forged partnerships, and promoted bilateral trade over the years. We work to enhance trade relations, attract investment, and create platforms for business success in both countries.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
