@@ -32,6 +32,18 @@ const features = [
   },
 ];
 
+const partners = [
+    { name: "All India Management Association", href: "https://www.aima.in", logoUrl: "https://picsum.photos/seed/aima/200/100", hint: "company logo" },
+    { name: "Aranca", href: "https://www.aranca.com", logoUrl: "https://picsum.photos/seed/aranca/200/100", hint: "company logo" },
+    { name: "AJU Hotels", href: "https://www.ajujapanesehotels.com/english/", logoUrl: "https://picsum.photos/seed/aju/200/100", hint: "company logo" },
+];
+
+const members = [
+    { name: "Veena Solar", href: "https://veenapower.com", logoUrl: "https://picsum.photos/seed/veena/200/100", hint: "company logo" },
+    { name: "Ahuja Residences", href: "https://ahujaresidences.com", logoUrl: "https://picsum.photos/seed/ahuja/200/100", hint: "company logo" },
+];
+
+
 export default function Home() {
   return (
     <>
@@ -100,6 +112,44 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section className="py-20 md:py-32">
+        <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                <div className="space-y-2">
+                    <h2 className="text-3xl font-headline sm:text-5xl">Our Partners & Members</h2>
+                    <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                        We are proud to collaborate with a diverse network of partners and members.
+                    </p>
+                </div>
+            </div>
+
+            <div className="space-y-12">
+                <div>
+                    <h3 className="text-2xl font-headline text-center mb-8">Associate Partners</h3>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-center">
+                        {partners.map((partner) => (
+                            <Link href={partner.href} key={partner.name} target="_blank" rel="noopener noreferrer" className="flex justify-center grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                                <Image src={partner.logoUrl} alt={partner.name} width={200} height={100} className="object-contain" data-ai-hint={partner.hint} />
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+
+                <div>
+                    <h3 className="text-2xl font-headline text-center mb-8">IJCC Members</h3>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-center">
+                         {members.map((member) => (
+                            <Link href={member.href} key={member.name} target="_blank" rel="noopener noreferrer" className="flex justify-center grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                                <Image src={member.logoUrl} alt={member.name} width={200} height={100} className="object-contain" data-ai-hint={member.hint} />
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
 
       <section className="py-20 md:py-32">
         <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
