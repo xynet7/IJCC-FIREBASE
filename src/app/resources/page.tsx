@@ -15,7 +15,7 @@ const resources = [
   {
     title: "Previous year JLPT Question Papers",
     description: "All level JLPT Question Papers of last 10 years.",
-    type: "Report",
+    type: "Document",
     icon: <BarChart className="h-8 w-8 text-primary" />,
   },
   {
