@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Handshake, School, Plane, Library, Lightbulb, Briefcase, Users, Building, Target, Zap, Scale, FileSignature, Landmark, Building2, Wallet, Users2, ConciergeBell } from "lucide-react";
+import { Handshake, School, Plane, Library, Lightbulb, Briefcase, Users, Building, Target, Zap, Scale, FileSignature, Landmark, Building2, Wallet, Users2, ConciergeBell, Globe, Megaphone, Palette, Sparkles } from "lucide-react";
 
 const indianServices = {
   title: "For Indian SMEs, MSMEs, Startups & Entrepreneurs",
@@ -169,6 +169,53 @@ const companyRegistrationServices = {
   ],
 };
 
+const digitalServices = {
+  title: "IJCC Website Development & Digital Marketing Services",
+  categories: [
+    {
+      title: "Website Development",
+      icon: <Globe className="h-8 w-8 text-primary" />,
+      points: [
+        "Corporate & Business Websites (bilingual support: English & Japanese).",
+        "E-commerce Websites with secure payment gateways.",
+        "Landing Pages for product launches, events, and exhibitions.",
+        "Customization for Japanese companies entering India (localized design & compliance).",
+        "Maintenance & Support for website security, updates, and hosting.",
+      ],
+    },
+    {
+      title: "Digital Marketing",
+      icon: <Megaphone className="h-8 w-8 text-primary" />,
+      points: [
+        "Search Engine Optimization (SEO) – Improve visibility on Google Japan, Google India, Yahoo Japan, etc.",
+        "Social Media Marketing (SMM) – Manage campaigns on LinkedIn, Instagram, Facebook, Twitter/X, LINE (popular in Japan).",
+        "Content Marketing – Blog writing, press releases, and bilingual content creation (English–Japanese).",
+        "Email Marketing – Automated campaigns for B2B and B2C reach.",
+        "Pay-Per-Click (PPC) Advertising – Google Ads, Facebook Ads, and Japan-specific ad platforms.",
+      ],
+    },
+    {
+      title: "Branding & Communication",
+      icon: <Palette className="h-8 w-8 text-primary" />,
+      points: [
+        "Logo & Brand Identity Design (India–Japan friendly branding).",
+        "Corporate Presentations & Brochures (English/Japanese).",
+        "Video Marketing & Corporate Films.",
+        "Reputation Management (online reviews, LinkedIn positioning).",
+      ],
+    },
+    {
+      title: "Special Services for Japanese Companies",
+      icon: <Sparkles className="h-8 w-8 text-primary" />,
+      points: [
+        "Website localization: Japanese → English & Indian context.",
+        "Digital campaigns targeting Indian customers.",
+        "Social media presence in India to build brand recognition.",
+      ],
+    },
+  ],
+};
+
 
 export default function ServicesPage() {
   return (
@@ -262,6 +309,34 @@ export default function ServicesPage() {
                             </ul>
                           )}
                         </li>
+                      ))}
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </CardContent>
+        </Card>
+        
+        <Card className="p-6">
+          <CardHeader className="text-center">
+            <CardTitle className="text-3xl font-headline">{digitalServices.title}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Accordion type="single" collapsible className="w-full" defaultValue={digitalServices.categories[0].title}>
+              {digitalServices.categories.map((category) => (
+                <AccordionItem value={category.title} key={category.title}>
+                  <AccordionTrigger className="text-xl font-headline hover:no-underline">
+                    <div className="flex items-center gap-4">
+                      {category.icon}
+                      {category.title}
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="pt-2 pl-12">
+                    <ul className="list-disc space-y-2 text-muted-foreground">
+                       {/* @ts-ignore */}
+                      {category.points.map((point, index) => (
+                        <li key={index}>{point}</li>
                       ))}
                     </ul>
                   </AccordionContent>
