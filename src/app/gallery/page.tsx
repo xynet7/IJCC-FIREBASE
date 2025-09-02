@@ -10,7 +10,7 @@ const galleryImages = [
     { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.17%20(1).jpeg", alt: "Gallery image 6", hint: "group photo" },
     { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.17%20(2).jpeg", alt: "Gallery image 7", hint: "business award" },
     { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.17.jpeg", alt: "Gallery image 8", hint: "cultural exchange" },
-    { src: "https://picsum.photos/seed/gallery9/800/600", alt: "Gallery image 9", hint: "formal dinner" },
+    { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.19%20(1).jpeg", alt: "Gallery image 9", hint: "audience event" },
 ];
 
 export default function GalleryPage() {
