@@ -3,15 +3,15 @@
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import { Download, ExternalLink } from "lucide-react";
 import Link from "next/link";
 
 const jlptLevels = [
-  { level: "N1", description: "The most advanced level, requiring a deep understanding of Japanese used in a broad range of circumstances.", file: "/papers/jlpt/N1-sample.pdf" },
-  { level: "N2", description: "The ability to understand Japanese used in everyday situations and in a variety of circumstances to a certain degree.", file: "/papers/jlpt/N2-sample.pdf" },
-  { level: "N3", description: "The ability to understand Japanese used in everyday situations to a certain degree.", file: "/papers/jlpt/N3-sample.pdf" },
-  { level: "N4", description: "The ability to understand basic Japanese.", file: "/papers/jlpt/N4-sample.pdf" },
-  { level: "N5", description: "The ability to understand some basic Japanese.", file: "/papers/jlpt/N5-sample.pdf" },
+  { level: "N1", description: "The most advanced level, requiring a deep understanding of Japanese used in a broad range of circumstances.", file: "https://drive.google.com/drive/folders/1VAAso-cz684IFl3a2K6OdoCT1ynYqpzg?usp=drive_link", isExternal: true },
+  { level: "N2", description: "The ability to understand Japanese used in everyday situations and in a variety of circumstances to a certain degree.", file: "/papers/jlpt/N2-sample.pdf", isExternal: false },
+  { level: "N3", description: "The ability to understand Japanese used in everyday situations to a certain degree.", file: "/papers/jlpt/N3-sample.pdf", isExternal: false },
+  { level: "N4", description: "The ability to understand basic Japanese.", file: "/papers/jlpt/N4-sample.pdf", isExternal: false },
+  { level: "N5", description: "The ability to understand some basic Japanese.", file: "/papers/jlpt/N5-sample.pdf", isExternal: false },
 ];
 
 export default function JlptPage() {
@@ -36,12 +36,21 @@ export default function JlptPage() {
               <p className="text-muted-foreground">This section contains sample question papers from previous years. Please note these are for practice purposes only.</p>
             </CardContent>
             <CardFooter>
-              <Button asChild>
-                <Link href={item.file} download>
-                  <Download className="mr-2 h-4 w-4" />
-                  Download {item.level} Papers
-                </Link>
-              </Button>
+                {item.isExternal ? (
+                  <Button asChild>
+                    <Link href={item.file} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      Access {item.level} Papers
+                    </Link>
+                  </Button>
+                ) : (
+                  <Button asChild>
+                    <Link href={item.file} download>
+                      <Download className="mr-2 h-4 w-4" />
+                      Download {item.level} Papers
+                    </Link>
+                  </Button>
+                )}
             </CardFooter>
           </Card>
         ))}
