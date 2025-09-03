@@ -118,9 +118,6 @@ export default function Home() {
               <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
                 Connecting <span className="text-accent">India</span> & <span className="text-accent">Japan</span> for Mutual Prosperity
               </h1>
-              <p className="max-w-[700px] text-gray-200 md:text-xl mx-auto">
-                Indo-Japan Chamber of Commerce (IJCC) was formed with a view to promoting closer economic relations between India and Japan. The Chamber has facilitated several business interactions, forged partnerships, and promoted bilateral trade over the years. We work to enhance trade relations, attract investment, and create platforms for business success in both countries.
-              </p>
               <div className="flex flex-col gap-4 sm:flex-row justify-center">
                 <Button asChild size="lg">
                   <Link href="/contact">
@@ -141,6 +138,34 @@ export default function Home() {
                 </span>
               </div>
             </div>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-32 bg-background">
+        <div className="container grid md:grid-cols-2 gap-12 items-center">
+          <div className="relative w-full h-80 rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
+            <Image
+              src="https://picsum.photos/800/600"
+              alt="About IJCC"
+              layout="fill"
+              objectFit="cover"
+              data-ai-hint="business meeting"
+            />
+          </div>
+          <div className="space-y-6">
+            <div className="space-y-2">
+              <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">About Us</div>
+              <h2 className="text-3xl font-headline sm:text-4xl">Fostering Bilateral Trade for Decades</h2>
+            </div>
+            <p className="text-muted-foreground md:text-lg">
+              The Indo-Japan Chamber of Commerce (IJCC) was formed with a view to promoting closer economic relations between India and Japan. The Chamber has facilitated several business interactions, forged partnerships, and promoted bilateral trade over the years. We work to enhance trade relations, attract investment, and create platforms for business success in both countries.
+            </p>
+            <Button asChild>
+              <Link href="/about">
+                Learn More <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
