@@ -16,7 +16,7 @@ const events = [
     time: "05:00 pM - 06:00 PM",
     location: "Aju Hindone",
     description: "Presentation from four states representation(Haryana + other 3 states.",
-    imageUrl: "https://picsum.photos/seed/business-seminar/800/400",
+    imageUrl: "https://images.unsplash.com/photo-1519185939676-2605343f3d4d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGluZGlhJTIwamFwYW58ZW58MHx8MHx8fDA%3D",
     hint: "business seminar",
   },
   {
