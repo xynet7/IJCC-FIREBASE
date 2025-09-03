@@ -3,7 +3,8 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Download, FileText, Presentation, BarChart } from "lucide-react";
+import { Download, FileText, Presentation, BarChart, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const resources = [
   {
@@ -11,24 +12,29 @@ const resources = [
     description: "A comprehensive guide covering legal, cultural, and business etiquette for entering the Japanese market.",
     type: "Document",
     icon: <FileText className="h-8 w-8 text-primary" />,
+    isLink: false,
   },
   {
     title: "Previous year JLPT Question Papers",
     description: "All level JLPT Question Papers of last 10 years.",
     type: "Document",
     icon: <BarChart className="h-8 w-8 text-primary" />,
+    isLink: true,
+    href: "/resources/jlpt",
   },
   {
     title: "Cross-Cultural Communication Workshop",
     description: "Presentation slides from our recent workshop on effective cross-cultural communication.",
     type: "Presentation",
     icon: <Presentation className="h-8 w-8 text-primary" />,
+    isLink: false,
   },
   {
     title: "Import/Export Checklist",
     description: "A practical checklist for members involved in trade between India and Japan.",
     type: "Document",
     icon: <FileText className="h-8 w-8 text-primary" />,
+    isLink: false,
   },
 ];
 
@@ -60,10 +66,18 @@ export default function ResourcesPage() {
             </CardHeader>
             <CardContent className="flex-grow" />
             <CardFooter>
-              <Button variant="outline" className="w-full" onClick={() => handleDownload(resource.title)}>
-                <Download className="mr-2 h-4 w-4" />
-                Download {resource.type}
-              </Button>
+              {resource.isLink ? (
+                <Button asChild variant="outline" className="w-full">
+                  <Link href={resource.href!}>
+                    Access Papers <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              ) : (
+                <Button variant="outline" className="w-full" onClick={() => handleDownload(resource.title)}>
+                  <Download className="mr-2 h-4 w-4" />
+                  Download {resource.type}
+                </Button>
+              )}
             </CardFooter>
           </Card>
         ))}
