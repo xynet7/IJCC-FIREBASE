@@ -1,5 +1,17 @@
 
 import Image from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+const teamMembers = [
+  { name: "John Doe", title: "President", imageUrl: "https://picsum.photos/seed/president/200/200", hint: "man face" },
+  { name: "Jane Smith", title: "Vice President", imageUrl: "https://picsum.photos/seed/vp/200/200", hint: "woman face" },
+  { name: "Kenji Tanaka", title: "Secretary General", imageUrl: "https://picsum.photos/seed/secretary/200/200", hint: "man face" },
+  { name: "Priya Singh", title: "Director", imageUrl: "https://picsum.photos/seed/director1/200/200", hint: "woman face" },
+  { name: "Hiroshi Sato", title: "Director", imageUrl: "https://picsum.photos/seed/director2/200/200", hint: "man face" },
+  { name: "Anjali Gupta", title: "Advisor", imageUrl: "https://picsum.photos/seed/advisor/200/200", hint: "woman face" },
+];
+
 
 export default function AboutPage() {
   return (
@@ -39,9 +51,34 @@ export default function AboutPage() {
                 <li>To act as a representative body for the business community in matters of policy and trade.</li>
                 <li>To foster cultural understanding and strengthen the bonds of friendship between the people of India and Japan.</li>
             </ul>
-
         </div>
       </div>
+      
+      <div className="max-w-6xl mx-auto mt-20">
+        <div className="space-y-4 mb-12 text-center">
+            <h2 className="text-3xl font-headline sm:text-4xl">Meet Our Team</h2>
+            <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
+                The dedicated professionals leading the Indo-Japan Chamber of Commerce.
+            </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {teamMembers.map((member) => (
+              <Card key={member.name} className="text-center transform transition-transform duration-300 hover:-translate-y-2">
+                <CardHeader className="items-center">
+                  <Avatar className="w-32 h-32 mb-4 border-4 border-primary/20">
+                    <AvatarImage src={member.imageUrl} alt={member.name} data-ai-hint={member.hint} />
+                    <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                  <CardTitle className="font-headline text-2xl">{member.name}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-primary font-semibold">{member.title}</p>
+                </CardContent>
+              </Card>
+            ))}
+        </div>
+      </div>
+
     </div>
   );
 }
