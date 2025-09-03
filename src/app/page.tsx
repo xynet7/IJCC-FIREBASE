@@ -145,11 +145,11 @@ export default function Home() {
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative w-full h-80 rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
             <Image
-              src="https://picsum.photos/800/600"
+              src="https://images.unsplash.com/photo-1519185939676-2605343f3d4d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGluZGlhJTIwamFwYW58ZW58MHx8MHx8fDA%3D"
               alt="About IJCC"
               layout="fill"
               objectFit="cover"
-              data-ai-hint="business meeting"
+              data-ai-hint="india japan"
             />
           </div>
           <div className="space-y-6">

@@ -46,6 +46,12 @@ const nextConfig: NextConfig = {
         hostname: 'static.investindia.gov.in',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
