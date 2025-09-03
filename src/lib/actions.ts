@@ -36,31 +36,3 @@ export async function submitContactForm(
     errors: {},
   };
 }
-
-export async function getRecommendations(interests: string, industry: string) {
-    try {
-        const recommendations = await recommendContent({
-            memberInterests: interests,
-            memberIndustry: industry,
-            recentActivity: 'Attended Tech Innovation Summit, read article on Indo-Japan trade relations.'
-        });
-        return recommendations;
-    } catch(error) {
-        console.error("Error getting recommendations:", error);
-        return null;
-    }
-}
-
-
-export async function getMeetingSummary(transcript: string) {
-    if (!transcript.trim()) {
-        return { summary: "Please provide a transcript to summarize." };
-    }
-    try {
-        const result = await summarizeMeeting({ transcript });
-        return result;
-    } catch(error) {
-        console.error("Error getting summary:", error);
-        return { summary: "An error occurred while generating the summary." };
-    }
-}

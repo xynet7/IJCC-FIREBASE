@@ -3,7 +3,6 @@ import './globals.css';
 import { AppHeader } from '@/components/header';
 import { AppFooter } from '@/components/footer';
 import { Toaster } from '@/components/ui/toaster';
-import { AuthProvider } from '@/components/auth-provider';
 
 export const metadata: Metadata = {
   title: 'Indo-Japan Chamber of Commerce',
@@ -24,14 +23,12 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        <AuthProvider>
           <div className="flex min-h-screen flex-col">
             <AppHeader />
             <main className="flex-grow animate-fade-in">{children}</main>
             <AppFooter />
           </div>
           <Toaster />
-        </AuthProvider>
       </body>
     </html>
   );

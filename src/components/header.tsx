@@ -1,14 +1,12 @@
-
 "use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Landmark, Menu, LogOut, UserCircle, Shield } from "lucide-react";
+import { Landmark, Menu, Instagram, Linkedin } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useAuth } from "@/hooks/use-auth";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -24,7 +22,6 @@ const navLinks = [
 
 export function AppHeader() {
   const pathname = usePathname();
-  const { user, logout } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -46,38 +43,22 @@ export function AppHeader() {
               {link.label}
             </Link>
           ))}
-           {user && (
-             <Link
-              href="/dashboard"
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
-                pathname === '/dashboard' ? "text-primary" : "text-muted-foreground"
-              )}
-            >
-              Dashboard
-            </Link>
-          )}
         </nav>
         <div className="flex flex-1 items-center justify-end gap-2">
-           {user ? (
-             <>
-              <Button asChild variant="ghost">
-                <Link href="/dashboard"><UserCircle className="mr-2"/>{user.name}</Link>
+           <div className="hidden md:flex items-center gap-2">
+              <Button asChild variant="ghost" size="icon">
+                <Link href="https://www.instagram.com/ijccindia?igsh=YW41MzJzNDY2M25y" target="_blank" rel="noopener noreferrer">
+                  <Instagram className="h-5 w-5" />
+                   <span className="sr-only">Instagram</span>
+                </Link>
               </Button>
-              <Button onClick={logout} variant="outline">
-                <LogOut className="mr-2 h-4 w-4" /> Logout
-              </Button>
-            </>
-          ) : (
-            <div className="hidden md:flex items-center gap-2">
-              <Button asChild variant="ghost">
-                <Link href="/login">Login</Link>
-              </Button>
-              <Button asChild>
-                <Link href="/register">Register</Link>
+              <Button asChild variant="ghost" size="icon">
+                <Link href="https://www.linkedin.com/company/indo-japan-chamber-of-commerce/" target="_blank" rel="noopener noreferrer">
+                  <Linkedin className="h-5 w-5" />
+                  <span className="sr-only">LinkedIn</span>
+                </Link>
               </Button>
             </div>
-          )}
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
@@ -103,35 +84,19 @@ export function AppHeader() {
                     {link.label}
                   </Link>
                 ))}
-                 {user && (
-                    <Link
-                      href="/dashboard"
-                      className={cn(
-                        "transition-colors hover:text-primary",
-                        pathname === "/dashboard" ? "text-primary font-semibold" : "text-muted-foreground"
-                      )}
-                    >
-                      Dashboard
-                    </Link>
-                  )}
                   <hr className="my-2"/>
-                  {user ? (
-                     <>
-                      <p className="text-muted-foreground px-1">{user.email}</p>
-                      <Button onClick={logout} variant="outline" className="justify-start">
-                        <LogOut className="mr-2 h-4 w-4" /> Logout
-                      </Button>
-                    </>
-                  ) : (
-                    <>
-                      <Button asChild variant="default">
-                        <Link href="/login"><UserCircle className="mr-2"/>Login</Link>
-                      </Button>
-                      <Button asChild variant="secondary">
-                        <Link href="/register"><Shield className="mr-2"/>Register</Link>
-                      </Button>
-                    </>
-                  )}
+                  <div className="flex items-center gap-2">
+                    <Button asChild variant="ghost">
+                      <Link href="https://www.instagram.com/ijccindia?igsh=YW41MzJzNDY2M25y" target="_blank" rel="noopener noreferrer">
+                        <Instagram className="mr-2"/> Instagram
+                      </Link>
+                    </Button>
+                    <Button asChild variant="ghost">
+                      <Link href="https://www.linkedin.com/company/indo-japan-chamber-of-commerce/" target="_blank" rel="noopener noreferrer">
+                        <Linkedin className="mr-2"/> LinkedIn
+                      </Link>
+                    </Button>
+                  </div>
               </div>
             </SheetContent>
           </Sheet>

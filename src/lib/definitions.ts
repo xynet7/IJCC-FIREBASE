@@ -20,18 +20,3 @@ export type ContactFormState = {
   };
   success: boolean;
 };
-
-// --- User Authentication ---
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-}
-
-export type AuthContextType = {
-  user: User | null;
-  loading: boolean;
-  login: (email: string, pass: string) => Promise<boolean>;
-  logout: () => void;
-  register: (name: string, email: string, pass: string) => Promise<boolean>;
-};

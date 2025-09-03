@@ -4,6 +4,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { Button } from "./ui/button";
+import { Instagram, Linkedin } from "lucide-react";
 
 export function AppFooter() {
   const [isClient, setIsClient] = useState(false);
@@ -21,10 +23,23 @@ export function AppFooter() {
             &copy; {isClient ? new Date().getFullYear() : ''} Indo-Japan Chamber of Commerce. All rights reserved.
           </p>
         </div>
-        <div className="flex items-center gap-4 text-sm text-muted-foreground">
-          <Link href="/contact" className="hover:text-primary transition-colors">Contact</Link>
-          <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
-          <Link href="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link>
+        <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <Button asChild variant="ghost" size="icon">
+                <Link href="https://www.instagram.com/ijccindia?igsh=YW41MzJzNDY2M25y" target="_blank" rel="noopener noreferrer">
+                  <Instagram className="h-5 w-5" />
+                   <span className="sr-only">Instagram</span>
+                </Link>
+              </Button>
+              <Button asChild variant="ghost" size="icon">
+                <Link href="https://www.linkedin.com/company/indo-japan-chamber-of-commerce/" target="_blank" rel="noopener noreferrer">
+                  <Linkedin className="h-5 w-5" />
+                  <span className="sr-only">LinkedIn</span>
+                </Link>
+              </Button>
+            </div>
+          <Link href="/privacy-policy" className="hover:text-primary transition-colors text-sm text-muted-foreground">Privacy Policy</Link>
+          <Link href="/terms-of-service" className="hover:text-primary transition-colors text-sm text-muted-foreground">Terms of Service</Link>
         </div>
       </div>
     </footer>

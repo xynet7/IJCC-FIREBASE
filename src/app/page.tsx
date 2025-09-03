@@ -24,16 +24,16 @@ const features = [
     href: "/members",
   },
   {
-    icon: <Bot className="h-8 w-8 text-primary" />,
-    title: "AI Recommendations",
-    description: "Get personalized content suggestions for events and resources based on your interests.",
-    href: "/dashboard",
-  },
-  {
     icon: <BookOpen className="h-8 w-8 text-primary" />,
     title: "Resource Library",
     description: "Access a rich repository of documents, reports, and presentations.",
     href: "/resources",
+  },
+  {
+    icon: <Mail className="h-8 w-8 text-primary" />,
+    title: "Contact Us",
+    description: "Get in touch with us for any inquiries or support.",
+    href: "/contact",
   },
 ];
 
@@ -104,8 +104,8 @@ export default function Home() {
               </p>
               <div className="flex flex-col gap-4 sm:flex-row justify-center">
                 <Button asChild size="lg">
-                  <Link href="/register">
-                    JOIN US <ArrowRight className="ml-2 h-5 w-5" />
+                  <Link href="/contact">
+                    CONTACT US <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="secondary">
