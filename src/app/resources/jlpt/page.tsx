@@ -11,7 +11,7 @@ const jlptLevels = [
   { level: "N2", description: "The ability to understand Japanese used in everyday situations and in a variety of circumstances to a certain degree.", file: "https://drive.google.com/drive/folders/19vTGl0UKuJgigDnf_k7Ico2N36KHLdLp?usp=drive_link", isExternal: true },
   { level: "N3", description: "The ability to understand Japanese used in everyday situations to a certain degree.", file: "https://drive.google.com/drive/folders/1jjk-VNMKQOIuJG0av7qdMvN_vENTGluB?usp=drive_link", isExternal: true },
   { level: "N4", description: "The ability to understand basic Japanese.", file: "https://drive.google.com/drive/folders/10hhOLQM1ifhXqF3ub60_pUgdpCZNwY5s?usp=drive_link", isExternal: true },
-  { level: "N5", description: "The ability to understand some basic Japanese.", file: "/papers/jlpt/N5-sample.pdf", isExternal: false },
+  { level: "N5", description: "The ability to understand some basic Japanese.", file: "https://drive.google.com/drive/folders/1_rOKudGAr5sRUhy2cCn3SfIJktJDlT97?usp=drive_link", isExternal: true },
 ];
 
 export default function JlptPage() {
