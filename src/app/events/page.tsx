@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Calendar as CalendarIcon, Clock, MapPin, Ticket } from "lucide-react";
@@ -6,6 +7,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const events = [
   {
@@ -14,6 +16,8 @@ const events = [
     time: "05:00 pM - 06:00 PM",
     location: "Aju Hindone",
     description: "Presentation from four states representation(Haryana + other 3 states.",
+    imageUrl: "https://picsum.photos/seed/business-seminar/800/400",
+    hint: "business seminar",
   },
   {
     title: "Cultural Exchange Evening",
@@ -21,6 +25,8 @@ const events = [
     time: "06:00 PM - 09:00 PM",
     location: "The Taj Mahal Palace, Mumbai",
     description: "An evening of cultural performances, traditional cuisine, and networking.",
+    imageUrl: "https://picsum.photos/seed/cultural-exchange/800/400",
+    hint: "cultural event",
   },
   {
     title: "Tech Innovation Summit",
@@ -28,6 +34,8 @@ const events = [
     time: "10:00 AM - 04:00 PM",
     location: "Online / Virtual",
     description: "Discover the latest technological advancements and partnership prospects in the IT sectors of both nations.",
+    imageUrl: "https://picsum.photos/seed/tech-summit/800/400",
+    hint: "tech conference",
   },
 ];
 
@@ -60,6 +68,17 @@ export default function EventsPage() {
         <div className="lg:col-span-2 space-y-8">
           {events.map((event, index) => (
             <Card key={index}>
+              {event.imageUrl && (
+                <div className="relative w-full h-[250px] rounded-t-lg overflow-hidden">
+                  <Image 
+                      src={event.imageUrl} 
+                      alt={event.title} 
+                      layout="fill" 
+                      objectFit="cover"
+                      data-ai-hint={event.hint}
+                  />
+                </div>
+              )}
               <CardHeader>
                 <CardTitle className="font-headline">{event.title}</CardTitle>
                 <CardDescription>{event.description}</CardDescription>
