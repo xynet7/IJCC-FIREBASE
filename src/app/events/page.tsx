@@ -1,11 +1,9 @@
 
 "use client";
 
-import { Calendar as CalendarIcon, Clock, MapPin, Ticket } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Calendar as CalendarIcon, Clock, MapPin } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
@@ -40,20 +38,11 @@ const events = [
 ];
 
 export default function EventsPage() {
-  const { toast } = useToast();
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
-
-
-  const handleRegister = (eventName: string) => {
-    toast({
-      title: "Registration Submitted",
-      description: `Thank you for registering for ${eventName}! (This is a demo)`,
-    });
-  };
   
   return (
     <div className="container py-12">
@@ -97,12 +86,6 @@ export default function EventsPage() {
                   <span>{event.location}</span>
                 </div>
               </CardContent>
-              <CardFooter>
-                <Button onClick={() => handleRegister(event.title)}>
-                  <Ticket className="mr-2 h-4 w-4" />
-                  Register Now
-                </Button>
-              </CardFooter>
             </Card>
           ))}
         </div>
