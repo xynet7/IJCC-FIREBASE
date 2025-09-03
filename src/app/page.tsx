@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ArrowRight, Calendar, Users, BookOpen, Bot, Mail } from "lucide-react";
+import { ArrowRight, Calendar, Users, BookOpen, Mail } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 
 
@@ -48,16 +48,23 @@ const members = [
     { name: "Ahuja Residences", href: "https://ahujaresidences.com", logoUrl: "https://picsum.photos/seed/ahuja/200/100", hint: "company logo" },
 ];
 
-const heroImages = [
+const heroItems = [
   {
+    type: 'image',
     src: "https://imgcp.aacdn.jp/img-a/1440/auto/global-aaj-front/article/2015/12/565f05f621364_565f018e5feb3_1467636135.jpg",
     alt: "Indo-Japan collaboration with Mount Fuji",
     hint: "mount fuji"
   },
   {
+    type: 'image',
     src: "https://static.investindia.gov.in/s3fs-public/2021-06/shutterstock_1057997963.jpg",
     alt: "India and Japan flags",
     hint: "flags india japan"
+  },
+  {
+    type: 'video',
+    src: "https://www.youtube.com/embed/WLIv7HnZ_fE?autoplay=1&mute=1&controls=0&loop=1&playlist=WLIv7HnZ_fE",
+    alt: "Indo-Japan collaboration video",
   }
 ]
 
@@ -78,15 +85,27 @@ export default function Home() {
           }}
         >
           <CarouselContent className="h-full">
-            {heroImages.map((image, index) => (
+            {heroItems.map((item, index) => (
               <CarouselItem key={index} className="h-full">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover brightness-[0.4]"
-                  data-ai-hint={image.hint}
-                />
+                {item.type === 'image' ? (
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      className="object-cover brightness-[0.4]"
+                      data-ai-hint={item.hint}
+                    />
+                ) : (
+                   <div className="absolute inset-0 w-full h-full overflow-hidden brightness-[0.4]">
+                    <iframe
+                        src={item.src}
+                        title={item.alt}
+                        className="pointer-events-none absolute top-1/2 left-1/2 w-[300%] h-[300%] -translate-x-1/2 -translate-y-1/2"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    ></iframe>
+                  </div>
+                )}
               </CarouselItem>
             ))}
           </CarouselContent>
