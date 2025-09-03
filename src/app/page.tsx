@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ArrowRight, Calendar, Users, BookOpen, Mail } from "lucide-react";
+import { ArrowRight, Calendar, Users, BookOpen, Mail, GalleryHorizontal } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 
 
@@ -127,11 +127,18 @@ export default function Home() {
                     JOIN US <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="secondary">
-                  <Link href="/events">
-                    Upcoming Events
-                  </Link>
-                </Button>
+                <span className="flex flex-col sm:flex-row gap-4">
+                  <Button asChild size="lg" variant="secondary">
+                    <Link href="/events">
+                      Upcoming Events
+                    </Link>
+                  </Button>
+                  <Button asChild size="lg" variant="secondary">
+                    <Link href="/gallery">
+                      Gallery
+                    </Link>
+                  </Button>
+                </span>
               </div>
             </div>
         </div>
