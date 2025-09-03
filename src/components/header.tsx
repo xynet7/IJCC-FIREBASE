@@ -17,7 +17,7 @@ const navLinks = [
   { href: "/services", label: "Services" },
   { href: "/resources", label: "Resources" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/contact", label: "Contact" },
+  { href: "/contact", label: "Join Us" },
 ];
 
 export function AppHeader() {

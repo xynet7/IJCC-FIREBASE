@@ -31,7 +31,7 @@ const features = [
   },
   {
     icon: <Mail className="h-8 w-8 text-primary" />,
-    title: "Contact Us",
+    title: "Join Us",
     description: "Get in touch with us for any inquiries or support.",
     href: "/contact",
   },
@@ -124,7 +124,7 @@ export default function Home() {
               <div className="flex flex-col gap-4 sm:flex-row justify-center">
                 <Button asChild size="lg">
                   <Link href="/contact">
-                    CONTACT US <ArrowRight className="ml-2 h-5 w-5" />
+                    JOIN US <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="secondary">
@@ -217,7 +217,7 @@ export default function Home() {
           <div className="mx-auto w-full max-w-sm space-y-2">
             <Button asChild size="lg" className="w-full">
               <Link href="/contact">
-                <Mail className="mr-2 h-5 w-5" /> Contact Us
+                <Mail className="mr-2 h-5 w-5" /> Join Us
               </Link>
             </Button>
           </div>
