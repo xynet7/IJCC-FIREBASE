@@ -119,18 +119,18 @@ export default function Home() {
                 Connecting <span className="text-accent">India</span> & <span className="text-accent">Japan</span> for Mutual Prosperity
               </h1>
               <div className="flex flex-col gap-4 sm:flex-row justify-center">
-                <Button asChild size="lg">
+                <Button asChild size="lg" className="rounded-full">
                   <Link href="/contact">
                     JOIN US <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
                 <span className="flex flex-col sm:flex-row gap-4">
-                  <Button asChild size="lg" variant="secondary">
+                  <Button asChild size="lg" variant="secondary" className="rounded-full">
                     <Link href="/events">
                       Upcoming Events
                     </Link>
                   </Button>
-                  <Button asChild size="lg" variant="secondary">
+                  <Button asChild size="lg" variant="secondary" className="rounded-full">
                     <Link href="/gallery">
                       Gallery
                     </Link>
@@ -150,6 +150,7 @@ export default function Home() {
               layout="fill"
               objectFit="cover"
               data-ai-hint="india japan"
+              className="rounded-xl"
             />
           </div>
           <div className="space-y-6">
@@ -160,7 +161,7 @@ export default function Home() {
             <p className="text-muted-foreground md:text-lg">
               The Indo-Japan Chamber of Commerce (IJCC) was formed with a view to promoting closer economic relations between India and Japan. The Chamber has facilitated several business interactions, forged partnerships, and promoted bilateral trade over the years. We work to enhance trade relations, attract investment, and create platforms for business success in both countries.
             </p>
-            <Button asChild>
+            <Button asChild size="lg" className="rounded-full">
               <Link href="/about">
                 Learn More <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
@@ -247,7 +248,7 @@ export default function Home() {
             </p>
           </div>
           <div className="mx-auto w-full max-w-sm space-y-2">
-            <Button asChild size="lg" className="w-full">
+            <Button asChild size="lg" className="w-full rounded-full">
               <Link href="/contact">
                 <Mail className="mr-2 h-5 w-5" /> Join Us
               </Link>
