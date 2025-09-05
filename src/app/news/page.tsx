@@ -15,7 +15,7 @@ const newsArticles = [
     href: "https://www.asiancommunitynews.com/japan-invites-indian-researchers-to-conduct-scientific-research-innovation/",
   },
 ];
-
+//Nayan was here
 export default function NewsPage() {
   return (
     <div className="container py-12">
