@@ -143,7 +143,7 @@ export default function Home() {
 
       <section className="py-20 md:py-32 bg-background">
         <div className="container grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative w-full h-80 rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
+          <div className="relative w-full h-[500px] rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
             <Image
               src="https://www.shutterstock.com/shutterstock/videos/1072946135/thumb/1.jpg?ip=x480"
               alt="About IJCC"
@@ -259,5 +259,6 @@ export default function Home() {
   );
 }
 
+    
     
     
