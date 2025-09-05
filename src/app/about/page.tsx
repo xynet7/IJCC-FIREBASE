@@ -12,7 +12,7 @@ const teamMembers = [
   { name: "Mr.Markus", title: "MD Asahi Travels Japan", imageUrl: "https://picsum.photos/seed/markus/200/200", hint: "man face" },
   { name: "Ms. Yoko Torii", title: "IJCC Travel Partner, Japan", imageUrl: "https://picsum.photos/seed/yoko/200/200", hint: "woman face" },
   { name: "Mr. Kenichiro Iwahori", title: "Advisor, Sasakawa Foundation, Japan", imageUrl: "https://picsum.photos/seed/kenichiro/200/200", hint: "man face" },
-  { name: "Mr. Tomoyuki Iwama", title: "Director Yakult India", imageUrl: "https://picsum.photos/seed/tomoyuki/200/200", hint: "man face" },
+  { name: "Mr. Tomoyuki Iwama", title: "Director Yakult India", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-08-23%20at%2003.34.36.jpeg", hint: "man face" },
   { name: "Dr. Randeep Rakwal", title: "Professor, Tsukuba University, Japan", imageUrl: "https://picsum.photos/seed/randeep/200/200", hint: "man face" },
   { name: "Mr. Naveen Verma", title: "Chairman, RERA Bihar", imageUrl: "https://picsum.photos/seed/naveen/200/200", hint: "man face" },
   { name: "Mr. Anil Kumar Khandelwal", title: "Ex. General Manager, East Central Railway", imageUrl: "https://picsum.photos/seed/anil/200/200", hint: "man face" },
