@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Calendar as CalendarIcon, Clock, MapPin } from "lucide-react";
@@ -39,6 +38,20 @@ const events = [
     hint: "tech conference",
   },
 ];
+
+const eventDates = events.map(event => new Date(event.date + 'T00:00:00'));
+
+const modifiers = {
+  event: eventDates,
+};
+
+const modifiersStyles = {
+  event: {
+    backgroundColor: 'hsl(var(--sakura-pink))',
+    color: 'hsl(var(--primary))',
+  },
+};
+
 
 export default function EventsPage() {
   const [isClient, setIsClient] = useState(false);
@@ -104,6 +117,8 @@ export default function EventsPage() {
                   mode="single"
                   disabled={(date) => date < new Date(new Date().setDate(new Date().getDate() - 1))}
                   className="rounded-md border p-0"
+                  modifiers={modifiers}
+                  modifiersStyles={modifiersStyles}
                 />
               ) : (
                 <div className="rounded-md border p-0 h-[300px] w-[320px] animate-pulse bg-muted" />
