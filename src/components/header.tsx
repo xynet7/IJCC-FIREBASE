@@ -1,12 +1,19 @@
+
 "use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Landmark, Menu, Instagram, Linkedin, Facebook } from "lucide-react";
+import { Landmark, Menu, Instagram, Linkedin, Facebook, ChevronDown } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -14,7 +21,17 @@ const navLinks = [
   { href: "/events", label: "Events" },
   { href: "/members", label: "Members" },
   { href: "/news", label: "News" },
-  { href: "/services", label: "Services" },
+  { 
+    href: "/services", 
+    label: "Services",
+    submenu: [
+        { href: "/services#indian-smes", label: "For Indian Companies" },
+        { href: "/services#japanese-companies", label: "For Japanese Companies" },
+        { href: "/services#company-registration-jp", label: "Company Registration (JP in IN)" },
+        { href: "/services#indian-companies-jp", label: "Company Registration (IN in JP)" },
+        { href: "/services#digital-services", label: "Digital Marketing" },
+    ]
+  },
   { href: "/resources", label: "Resources" },
   { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Join Us" },
@@ -32,16 +49,40 @@ export function AppHeader() {
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-primary whitespace-nowrap",
-                pathname === link.href ? "text-primary" : "text-muted-foreground"
-              )}
-            >
-              {link.label}
-            </Link>
+            link.submenu ? (
+              <DropdownMenu key={link.href}>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className={cn(
+                      "text-sm font-medium transition-colors hover:text-primary whitespace-nowrap px-0 hover:bg-transparent",
+                      pathname.startsWith(link.href) ? "text-primary" : "text-muted-foreground"
+                    )}>
+                    {link.label}
+                    <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem asChild>
+                     <Link href="/services">All Services</Link>
+                  </DropdownMenuItem>
+                  {link.submenu.map((sublink) => (
+                    <DropdownMenuItem key={sublink.href} asChild>
+                      <Link href={sublink.href}>{sublink.label}</Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-primary whitespace-nowrap",
+                  pathname === link.href ? "text-primary" : "text-muted-foreground"
+                )}
+              >
+                {link.label}
+              </Link>
+            )
           ))}
         </nav>
         <div className="flex items-center justify-end gap-2">

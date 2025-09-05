@@ -6,6 +6,7 @@ import { Handshake, School, Plane, Library, Lightbulb, Briefcase, Users, Buildin
 
 const indianServices = {
   title: "For Indian SMEs, MSMEs, Startups & Entrepreneurs",
+  id: "indian-smes",
   categories: [
     {
       title: "Business Matchmaking & Market Access",
@@ -53,6 +54,7 @@ const indianServices = {
 
 const japaneseServices = {
   title: "For Japanese Companies",
+  id: "japanese-companies",
   categories: [
     {
       title: "India Market Entry Support",
@@ -99,6 +101,7 @@ const japaneseServices = {
 
 const companyRegistrationServices = {
   title: "Company Registration: Japanese Companies",
+  id: "company-registration-jp",
   categories: [
     {
       title: "Advisory on Entry Strategy",
@@ -172,6 +175,7 @@ const companyRegistrationServices = {
 
 const digitalServices = {
   title: "IJCC Website Development & Digital Marketing Services",
+  id: "digital-services",
   categories: [
     {
       title: "Website Development",
@@ -219,6 +223,7 @@ const digitalServices = {
 
 const indianCompaniesInJapanServices = {
   title: "IJCC Services for Indian Companies Registering in Japan",
+  id: "indian-companies-jp",
   categories: [
     {
       title: "Advisory & Consultation",
@@ -300,7 +305,7 @@ export default function ServicesPage() {
       </div>
 
       <div className="space-y-12">
-        <Card className="p-6">
+        <Card className="p-6" id={indianServices.id}>
           <CardHeader className="text-center">
             <CardTitle className="text-3xl font-headline">{indianServices.title}</CardTitle>
           </CardHeader>
@@ -327,7 +332,7 @@ export default function ServicesPage() {
           </CardContent>
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-6" id={japaneseServices.id}>
           <CardHeader className="text-center">
             <CardTitle className="text-3xl font-headline">{japaneseServices.title}</CardTitle>
           </CardHeader>
@@ -354,7 +359,7 @@ export default function ServicesPage() {
           </CardContent>
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-6" id={companyRegistrationServices.id}>
           <CardHeader className="text-center">
             <CardTitle className="text-3xl font-headline">{companyRegistrationServices.title}</CardTitle>
           </CardHeader>
@@ -390,7 +395,7 @@ export default function ServicesPage() {
           </CardContent>
         </Card>
         
-        <Card className="p-6">
+        <Card className="p-6" id={digitalServices.id}>
           <CardHeader className="text-center">
             <CardTitle className="text-3xl font-headline">{digitalServices.title}</CardTitle>
           </CardHeader>
@@ -418,7 +423,7 @@ export default function ServicesPage() {
           </CardContent>
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-6" id={indianCompaniesInJapanServices.id}>
           <CardHeader className="text-center">
             <CardTitle className="text-3xl font-headline">{indianCompaniesInJapanServices.title}</CardTitle>
           </CardHeader>
