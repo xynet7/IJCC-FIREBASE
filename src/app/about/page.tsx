@@ -17,7 +17,7 @@ const teamMembers = [
   { name: "Mr. Naveen Verma", title: "Chairman, RERA Bihar", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-25%20at%2012.28.47%20(2).jpeg", hint: "man face" },
   { name: "Mr. Anil Kumar Khandelwal", title: "Ex. General Manager, East Central Railway", imageUrl: "https://picsum.photos/seed/anil/200/200", hint: "man face" },
   { name: "Dr. Supratic Gupta", title: "Professor, IIT Delhi", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-21%20at%2011.34.59.jpeg", hint: "man face" },
-  { name: "Dr. Maushumi Barooah", title: "Ex. Director, Assam Technical Education Board", imageUrl: "https://picsum.photos/seed/maushumi/200/200", hint: "woman face" },
+  { name: "Dr. Maushumi Barooah", title: "Ex. Director, Assam Technical Education Board", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-25%20at%2012.28.46.jpeg", hint: "woman face" },
   { name: "Mr.Rajesh Mehta", title: "Editor Sunday Guardian", imageUrl: "https://picsum.photos/seed/rajesh/200/200", hint: "man face" },
   { name: "Dr. Jatinder Khanna", title: "Policy Maker, Education & Culture", imageUrl: "https://picsum.photos/seed/jatinder/200/200", hint: "man face" },
   { name: "Mrs. Anjali Mishra", title: "Advocate, Supreme Court of India", imageUrl: "https://picsum.photos/seed/anjali-m/200/200", hint: "woman face" },
