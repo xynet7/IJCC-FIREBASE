@@ -11,6 +11,7 @@ const events = [
   {
     title: "INDIA - JAPAN: SHAPING THE FUTURE IN RAPIDLY EVOLVING BUSINESS ECOSYSTEM",
     date: "2025-11-07",
+    displayDate: "November 7, 2025",
     time: "5:00 PM - 8:00 PM",
     location: "AJU Hinode",
     description: "A business seminar featuring presentations from 4 states, a Q&A session, and discussions on BIS, Solar Power, IPR & Data Privacy.",
@@ -19,7 +20,8 @@ const events = [
   },
   {
     title: "INDIA MEETS JAPAN",
-    date: "2025-12-13 AND 2025-12-14",
+    date: "2025-12-13",
+    displayDate: "December 13 & 14, 2025",
     time: "11:00 AM - 09:00 PM",
     location: "Saket District Centre, Sector 6, Pushp Vihar, New Delhi - 110017",
     description: "A Day of Culture, Business and Friendship",
@@ -28,7 +30,8 @@ const events = [
   },
   {
     title: "Tech Innovation Summit",
-    date: "-",
+    date: "2026-01-20",
+    displayDate: "Coming Soon",
     time: "00:00 AM - 00:00 PM",
     location: "Online / Virtual",
     description: "Coming Soon",
@@ -75,7 +78,7 @@ export default function EventsPage() {
               <CardContent className="grid sm:grid-cols-3 gap-4 text-sm">
                 <div className="flex items-center gap-2">
                   <CalendarIcon className="w-4 h-4 text-muted-foreground" />
-                  <span>{new Date(event.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                  <span>{event.displayDate}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-muted-foreground" />
