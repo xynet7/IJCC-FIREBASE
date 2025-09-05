@@ -11,7 +11,7 @@ const teamMembers = [
   { name: "Dr. Neelam Ramaiah", title: "Vice-Chairman (Education), Ex. Director, University of Tokyo", imageUrl: "https://picsum.photos/seed/neelam/200/200", hint: "man face" },
   { name: "Mr.Markus", title: "MD Asahi Travels Japan", imageUrl: "https://picsum.photos/seed/markus/200/200", hint: "man face" },
   { name: "Ms. Yoko Torii", title: "IJCC Travel Partner, Japan", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-05-09%20at%2017.40.09.jpeg", hint: "woman face" },
-  { name: "Mr. Kenichiro Iwahori", title: "Advisor, Sasakawa Foundation, Japan", imageUrl: "https://picsum.photos/seed/kenichiro/200/200", hint: "man face" },
+  { name: "Mr. Kenichiro Iwahori", title: "Advisor, Sasakawa Foundation, Japan", imageUrl: "https://www.ijcc.in/images/WhatsApp_Image_2025-04-26_at_12.32.28-removebg-preview.png", hint: "man face" },
   { name: "Mr. Tomoyuki Iwama", title: "Director Yakult India", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-08-23%20at%2003.34.36.jpeg", hint: "man face" },
   { name: "Dr. Randeep Rakwal", title: "Professor, Tsukuba University, Japan", imageUrl: "https://picsum.photos/seed/randeep/200/200", hint: "man face" },
   { name: "Mr. Naveen Verma", title: "Chairman, RERA Bihar", imageUrl: "https://picsum.photos/seed/naveen/200/200", hint: "man face" },
