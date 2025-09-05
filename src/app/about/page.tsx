@@ -14,7 +14,7 @@ const teamMembers = [
   { name: "Mr. Kenichiro Iwahori", title: "Advisor, Sasakawa Foundation, Japan", imageUrl: "https://www.ijcc.in/images/WhatsApp_Image_2025-04-26_at_12.32.28-removebg-preview.png", hint: "man face" },
   { name: "Mr. Tomoyuki Iwama", title: "Director Yakult India", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-08-23%20at%2003.34.36.jpeg", hint: "man face" },
   { name: "Dr. Randeep Rakwal", title: "Professor, Tsukuba University, Japan", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-25%20at%2012.28.47.jpeg", hint: "man face" },
-  { name: "Mr. Naveen Verma", title: "Chairman, RERA Bihar", imageUrl: "https://picsum.photos/seed/naveen/200/200", hint: "man face" },
+  { name: "Mr. Naveen Verma", title: "Chairman, RERA Bihar", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-25%20at%2012.28.47%20(2).jpeg", hint: "man face" },
   { name: "Mr. Anil Kumar Khandelwal", title: "Ex. General Manager, East Central Railway", imageUrl: "https://picsum.photos/seed/anil/200/200", hint: "man face" },
   { name: "Dr. Supratic Gupta", title: "Professor, IIT Delhi", imageUrl: "https://picsum.photos/seed/supratic/200/200", hint: "man face" },
   { name: "Dr. Maushumi Barooah", title: "Ex. Director, Assam Technical Education Board", imageUrl: "https://picsum.photos/seed/maushumi/200/200", hint: "woman face" },
