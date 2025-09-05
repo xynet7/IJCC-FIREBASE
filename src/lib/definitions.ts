@@ -4,6 +4,7 @@ import { z } from 'zod';
 export const ContactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email." }),
+  phone: z.string().optional(),
   inquiryType: z.enum(["general", "membership", "events"], {
     errorMap: () => ({ message: "Please select an inquiry type." }),
   }),
@@ -15,6 +16,7 @@ export type ContactFormState = {
   errors?: {
     name?: string[];
     email?: string[];
+    phone?: string[];
     inquiryType?: string[];
     message?: string[];
   };

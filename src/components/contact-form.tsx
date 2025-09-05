@@ -64,9 +64,14 @@ export function ContactForm() {
               {state.errors?.email && <p className="text-sm font-medium text-destructive">{state.errors.email[0]}</p>}
             </div>
           </div>
+           <div className="space-y-2">
+              <Label htmlFor="phone">Phone Number</Label>
+              <Input id="phone" name="phone" type="tel" placeholder="+91 12345 67890" />
+              {state.errors?.phone && <p className="text-sm font-medium text-destructive">{state.errors.phone[0]}</p>}
+            </div>
           <div className="space-y-2">
             <Label htmlFor="inquiryType">Inquiry Regarding</Label>
-            <Select name="inquiryType" defaultValue="general">
+            <Select name="inquiryType" defaultValue="membership">
               <SelectTrigger id="inquiryType">
                 <SelectValue placeholder="Select a department" />
               </SelectTrigger>

@@ -1,6 +1,9 @@
 
 import { MembersList } from "@/components/members-list";
 import { MembershipDetails } from "@/components/membership-details";
+import { Button } from "@/components/ui/button";
+import { Mail } from "lucide-react";
+import Link from "next/link";
 
 const members = [
   { name: "Sakura Tanaka", company: "Tech Innovate Japan", description: "Pioneering AI solutions for manufacturing.", imageUrl: "https://picsum.photos/id/1/200/200", hint: "woman face" },
@@ -23,6 +26,14 @@ export default function MembersPage() {
       </div>
 
       <MembershipDetails />
+
+       <div className="text-center mt-16">
+          <Button asChild size="lg">
+            <Link href="/contact">
+              <Mail className="mr-2 h-5 w-5" /> Become a Member
+            </Link>
+          </Button>
+      </div>
 
       <div className="space-y-4 my-12 text-center pt-12 border-t">
         <h2 className="text-3xl font-headline tracking-tighter sm:text-4xl">Membership Directory</h2>
