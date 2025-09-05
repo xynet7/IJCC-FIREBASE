@@ -29,11 +29,40 @@ const magazines = [
   },
 ];
 
+const featuredMagazine = magazines[0];
+
 export default function MagazinesPage() {
   return (
+    <>
+    <section className="bg-secondary/50 py-20">
+        <div className="container grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-4">
+                <div className="inline-block rounded-lg bg-primary text-primary-foreground px-3 py-1 text-sm font-semibold">Featured Issue</div>
+                <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">{featuredMagazine.title}</h1>
+                <p className="text-muted-foreground text-lg">{featuredMagazine.description}</p>
+                <Button asChild size="lg" className="rounded-full">
+                    <Link href={featuredMagazine.file} download>
+                      <Download className="mr-2 h-5 w-5" />
+                      Download Now
+                    </Link>
+                </Button>
+            </div>
+             <div className="relative w-full h-[500px] shadow-2xl rounded-lg transform transition-transform duration-500 hover:scale-105">
+                <Image
+                    src={featuredMagazine.imageUrl}
+                    alt={featuredMagazine.title}
+                    layout="fill"
+                    objectFit="cover"
+                    data-ai-hint={featuredMagazine.hint}
+                    className="rounded-lg"
+                />
+            </div>
+        </div>
+    </section>
+
     <div className="container py-12">
       <div className="space-y-4 mb-12 text-center">
-        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">Monthly Magazines</h1>
+        <h2 className="text-3xl font-headline tracking-tighter sm:text-4xl">Past Issues</h2>
         <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
           Explore our collection of monthly magazines, packed with insights on Indo-Japan relations.
         </p>
@@ -69,5 +98,6 @@ export default function MagazinesPage() {
         ))}
       </div>
     </div>
+    </>
   );
 }
