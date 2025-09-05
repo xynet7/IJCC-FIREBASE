@@ -27,7 +27,7 @@ export function AppHeader() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="mr-6 flex items-center gap-2">
-          <Image src="https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png" alt="Indo-Japan Chamber of Commerce Logo" width={50} height={50} className="h-14 w-auto" />
+          <Image src="https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png" alt="Indo-Japan Chamber of Commerce Logo" width={60} height={60} className="h-16 w-auto" />
           <span className="font-bold font-headline hidden sm:inline-block">Indo-Japan Chamber of Commerce</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm absolute left-1/2 -translate-x-1/2">
@@ -68,7 +68,7 @@ export function AppHeader() {
             </SheetTrigger>
             <SheetContent side="right">
               <Link href="/" className="mr-6 flex items-center gap-2 mb-6">
-                <Image src="https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png" alt="Indo-Japan Chamber of Commerce Logo" width={50} height={50} className="h-14 w-auto" />
+                <Image src="https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png" alt="Indo-Japan Chamber of Commerce Logo" width={60} height={60} className="h-16 w-auto" />
                 <span className="font-bold font-headline">Indo-Japan Chamber of Commerce</span>
               </Link>
               <div className="flex flex-col gap-4">
