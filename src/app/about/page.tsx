@@ -4,12 +4,25 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const teamMembers = [
-  { name: "John Doe", title: "President", imageUrl: "https://picsum.photos/seed/president/200/200", hint: "man face" },
-  { name: "Jane Smith", title: "Vice President", imageUrl: "https://picsum.photos/seed/vp/200/200", hint: "woman face" },
-  { name: "Kenji Tanaka", title: "Secretary General", imageUrl: "https://picsum.photos/seed/secretary/200/200", hint: "man face" },
-  { name: "Priya Singh", title: "Director", imageUrl: "https://picsum.photos/seed/director1/200/200", hint: "woman face" },
-  { name: "Hiroshi Sato", title: "Director", imageUrl: "https://picsum.photos/seed/director2/200/200", hint: "man face" },
-  { name: "Anjali Gupta", title: "Advisor", imageUrl: "https://picsum.photos/seed/advisor/200/200", hint: "woman face" },
+  { name: "Mr. Rahul Mishra", title: "Chairman, IJCC", imageUrl: "https://picsum.photos/seed/rahul/200/200", hint: "man face" },
+  { name: "Mr. Gajendra Badgujar", title: "Vice-Chairman (Strategy), Ex. Director FICCI", imageUrl: "https://picsum.photos/seed/gajendra/200/200", hint: "man face" },
+  { name: "Mr. Prakash Yadav", title: "Vice-Chairman (Corporate Affairs), MD, AJU Hotels", imageUrl: "https://picsum.photos/seed/prakash/200/200", hint: "man face" },
+  { name: "Mr. Surajit Kalita", title: "Vice-Chairman(Operation & Planning), IJCC", imageUrl: "https://picsum.photos/seed/surajit/200/200", hint: "man face" },
+  { name: "Dr. Neelam Ramaiah", title: "Vice-Chairman (Education), Ex. Director, University of Tokyo", imageUrl: "https://picsum.photos/seed/neelam/200/200", hint: "man face" },
+  { name: "Mr.Markus", title: "MD Asahi Travels Japan", imageUrl: "https://picsum.photos/seed/markus/200/200", hint: "man face" },
+  { name: "Ms. Yoko Torii", title: "IJCC Travel Partner, Japan", imageUrl: "https://picsum.photos/seed/yoko/200/200", hint: "woman face" },
+  { name: "Mr. Kenichiro Iwahori", title: "Advisor, Sasakawa Foundation, Japan", imageUrl: "https://picsum.photos/seed/kenichiro/200/200", hint: "man face" },
+  { name: "Mr. Tomoyuki Iwama", title: "Director Yakult India", imageUrl: "https://picsum.photos/seed/tomoyuki/200/200", hint: "man face" },
+  { name: "Dr. Randeep Rakwal", title: "Professor, Tsukuba University, Japan", imageUrl: "https://picsum.photos/seed/randeep/200/200", hint: "man face" },
+  { name: "Mr. Naveen Verma", title: "Chairman, RERA Bihar", imageUrl: "https://picsum.photos/seed/naveen/200/200", hint: "man face" },
+  { name: "Mr. Anil Kumar Khandelwal", title: "Ex. General Manager, East Central Railway", imageUrl: "https://picsum.photos/seed/anil/200/200", hint: "man face" },
+  { name: "Dr. Supratic Gupta", title: "Professor, IIT Delhi", imageUrl: "https://picsum.photos/seed/supratic/200/200", hint: "man face" },
+  { name: "Dr. Maushumi Barooah", title: "Ex. Director, Assam Technical Education Board", imageUrl: "https://picsum.photos/seed/maushumi/200/200", hint: "woman face" },
+  { name: "Mr.Rajesh Mehta", title: "Editor Sunday Guardian", imageUrl: "https://picsum.photos/seed/rajesh/200/200", hint: "man face" },
+  { name: "Dr. Jatinder Khanna", title: "Policy Maker, Education & Culture", imageUrl: "https://picsum.photos/seed/jatinder/200/200", hint: "man face" },
+  { name: "Mrs. Anjali Mishra", title: "Advocate, Supreme Court of India", imageUrl: "https://picsum.photos/seed/anjali-m/200/200", hint: "woman face" },
+  { name: "Mr. Raj Singh", title: "Founding Member, Director Sunlite Consulting", imageUrl: "https://picsum.photos/seed/raj/200/200", hint: "man face" },
+  { name: "Mr. M Nazir", title: "Founding Member, Director ICAE India", imageUrl: "https://picsum.photos/seed/nazir/200/200", hint: "man face" },
 ];
 
 
