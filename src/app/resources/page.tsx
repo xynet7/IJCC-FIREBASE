@@ -67,13 +67,13 @@ export default function ResourcesPage() {
             <CardContent className="flex-grow" />
             <CardFooter>
               {resource.isLink ? (
-                <Button asChild variant="outline" className="w-full">
+                <Button asChild variant="outline" className="w-full rounded-full">
                   <Link href={resource.href!}>
                     Access Papers <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               ) : (
-                <Button variant="outline" className="w-full" onClick={() => handleDownload(resource.title)}>
+                <Button variant="outline" className="w-full rounded-full" onClick={() => handleDownload(resource.title)}>
                   <Download className="mr-2 h-4 w-4" />
                   Download {resource.type}
                 </Button>
