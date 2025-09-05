@@ -3,7 +3,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Download, FileText, Presentation, BarChart, ArrowRight } from "lucide-react";
+import { Download, FileText, Presentation, BarChart, ArrowRight, BookOpen } from "lucide-react";
 import Link from "next/link";
 
 const resources = [
@@ -21,6 +21,14 @@ const resources = [
     icon: <BarChart className="h-8 w-8 text-primary" />,
     isLink: true,
     href: "/resources/jlpt",
+  },
+  {
+    title: "Monthly Magazines",
+    description: "Read our monthly magazines for the latest insights.",
+    type: "Magazine",
+    icon: <BookOpen className="h-8 w-8 text-primary" />,
+    isLink: true,
+    href: "/resources/magazines",
   },
   {
     title: "Cross-Cultural Communication Workshop",
@@ -69,7 +77,7 @@ export default function ResourcesPage() {
               {resource.isLink ? (
                 <Button asChild variant="outline" className="w-full rounded-full">
                   <Link href={resource.href!}>
-                    Access Papers <ArrowRight className="ml-2 h-4 w-4" />
+                    Access {resource.type === 'Magazine' ? 'Magazines' : 'Papers'} <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               ) : (
