@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Landmark, Menu, Instagram, Linkedin } from "lucide-react";
+import { Landmark, Menu, Instagram, Linkedin, Facebook } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -27,7 +27,7 @@ export function AppHeader() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="mr-6 flex items-center gap-2">
-          <Image src="https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png" alt="Indo-Japan Chamber of Commerce Logo" width={60} height={60} className="h-16 w-auto" />
+          <Image src="https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png" alt="Indo-Japan Chamber of Commerce Logo" width={80} height={80} className="h-20 w-auto" />
           <span className="font-bold font-headline hidden sm:inline-block">Indo-Japan Chamber of Commerce</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm absolute left-1/2 -translate-x-1/2">
@@ -58,6 +58,12 @@ export function AppHeader() {
                   <span className="sr-only">LinkedIn</span>
                 </Link>
               </Button>
+              <Button asChild variant="ghost" size="icon">
+                <Link href="https://www.facebook.com/people/Indo-Japan-Chamber-of-Commerce/100069527786438/" target="_blank" rel="noopener noreferrer">
+                  <Facebook className="h-5 w-5" />
+                  <span className="sr-only">Facebook</span>
+                </Link>
+              </Button>
             </div>
           <Sheet>
             <SheetTrigger asChild>
@@ -68,7 +74,7 @@ export function AppHeader() {
             </SheetTrigger>
             <SheetContent side="right">
               <Link href="/" className="mr-6 flex items-center gap-2 mb-6">
-                <Image src="https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png" alt="Indo-Japan Chamber of Commerce Logo" width={60} height={60} className="h-16 w-auto" />
+                <Image src="https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png" alt="Indo-Japan Chamber of Commerce Logo" width={80} height={80} className="h-20 w-auto" />
                 <span className="font-bold font-headline">Indo-Japan Chamber of Commerce</span>
               </Link>
               <div className="flex flex-col gap-4">
@@ -94,6 +100,11 @@ export function AppHeader() {
                     <Button asChild variant="ghost">
                       <Link href="https://www.linkedin.com/company/indo-japan-chamber-of-commerce/" target="_blank" rel="noopener noreferrer">
                         <Linkedin className="mr-2"/> LinkedIn
+                      </Link>
+                    </Button>
+                     <Button asChild variant="ghost">
+                      <Link href="https://www.facebook.com/people/Indo-Japan-Chamber-of-Commerce/100069527786438/" target="_blank" rel="noopener noreferrer">
+                        <Facebook className="mr-2"/> Facebook
                       </Link>
                     </Button>
                   </div>

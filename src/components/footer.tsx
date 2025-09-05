@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
-import { Instagram, Linkedin } from "lucide-react";
+import { Instagram, Linkedin, Facebook } from "lucide-react";
 
 export function AppFooter() {
   const [isClient, setIsClient] = useState(false);
@@ -35,6 +35,12 @@ export function AppFooter() {
                 <Link href="https://www.linkedin.com/company/indo-japan-chamber-of-commerce/" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-5 w-5" />
                   <span className="sr-only">LinkedIn</span>
+                </Link>
+              </Button>
+              <Button asChild variant="ghost" size="icon">
+                <Link href="https://www.facebook.com/people/Indo-Japan-Chamber-of-Commerce/100069527786438/" target="_blank" rel="noopener noreferrer">
+                  <Facebook className="h-5 w-5" />
+                  <span className="sr-only">Facebook</span>
                 </Link>
               </Button>
             </div>
