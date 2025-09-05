@@ -1,4 +1,6 @@
+
 import { MembersList } from "@/components/members-list";
+import { MembershipDetails } from "@/components/membership-details";
 
 const members = [
   { name: "Sakura Tanaka", company: "Tech Innovate Japan", description: "Pioneering AI solutions for manufacturing.", imageUrl: "https://picsum.photos/id/1/200/200", hint: "woman face" },
@@ -14,7 +16,16 @@ export default function MembersPage() {
   return (
     <div className="container py-12">
       <div className="space-y-4 mb-12 text-center">
-        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">Membership Directory</h1>
+        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">Membership</h1>
+        <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
+          Join us to foster Indo-Japan collaboration across trade, education, technology, and cultural exchanges.
+        </p>
+      </div>
+
+      <MembershipDetails />
+
+      <div className="space-y-4 my-12 text-center pt-12 border-t">
+        <h2 className="text-3xl font-headline tracking-tighter sm:text-4xl">Membership Directory</h2>
         <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
           Explore our network of esteemed members and businesses.
         </p>
