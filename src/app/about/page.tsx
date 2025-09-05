@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const teamMembers = [
-  { name: "Mr. Rahul Mishra", title: "Chairman, IJCC", imageUrl: "https://picsum.photos/seed/rahul/200/200", hint: "man face" },
+  { name: "Mr. Rahul Mishra", title: "Chairman, IJCC", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-08-08%20at%2012.04.51.jpeg", hint: "man face" },
   { name: "Mr. Gajendra Badgujar", title: "Vice-Chairman (Strategy), Ex. Director FICCI", imageUrl: "https://picsum.photos/seed/gajendra/200/200", hint: "man face" },
   { name: "Mr. Prakash Yadav", title: "Vice-Chairman (Corporate Affairs), MD, AJU Hotels", imageUrl: "https://picsum.photos/seed/prakash/200/200", hint: "man face" },
   { name: "Mr. Surajit Kalita", title: "Vice-Chairman(Operation & Planning), IJCC", imageUrl: "https://picsum.photos/seed/surajit/200/200", hint: "man face" },
