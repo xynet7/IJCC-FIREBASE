@@ -92,11 +92,11 @@ export default function Home() {
                       src={item.src}
                       alt={item.alt}
                       fill
-                      className="object-cover brightness-[0.4]"
+                      className="object-cover brightness-[0.6]"
                       data-ai-hint={item.hint}
                     />
                 ) : (
-                   <div className="absolute inset-0 w-full h-full overflow-hidden brightness-[0.4]">
+                   <div className="absolute inset-0 w-full h-full overflow-hidden brightness-[0.6]">
                     <iframe
                         src={item.src}
                         title={item.alt}
@@ -259,4 +259,5 @@ export default function Home() {
   );
 }
 
+    
     
