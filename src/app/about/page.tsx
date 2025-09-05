@@ -22,7 +22,7 @@ const teamMembers = [
   { name: "Dr. Jatinder Khanna", title: "Policy Maker, Education & Culture", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-21%20at%2011.37.21.jpeg", hint: "man face" },
   { name: "Mrs. Anjali Mishra", title: "Advocate, Supreme Court of India", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-21%20at%2011.39.40.jpeg", hint: "woman face" },
   { name: "Mr. Raj Singh", title: "Founding Member, Director Sunlite Consulting", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-21%20at%2011.38.58.jpeg", hint: "man face" },
-  { name: "Mr. M Nazir", title: "Founding Member, Director ICAE India", imageUrl: "https://picsum.photos/seed/nazir/200/200", hint: "man face" },
+  { name: "Mr. M Nazir", title: "Founding Member, Director ICAE India", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-21%20at%2012.03.34.jpeg", hint: "man face" },
 ];
 
 
