@@ -42,15 +42,15 @@ export function AppHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-20 items-center">
-        <div className="flex-1 flex justify-start">
+      <div className="container flex h-20 items-center justify-between">
+        <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2">
               <Image src="https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png" alt="Indo-Japan Chamber of Commerce Logo" width={80} height={80} className="h-20 w-auto" />
               <span className="font-bold font-headline hidden sm:inline-block">Indo-Japan Chamber of Commerce</span>
             </Link>
         </div>
 
-        <nav className="hidden md:flex flex-grow justify-center items-center gap-6 text-sm">
+        <nav className="hidden md:flex items-center gap-6 text-sm">
           {navLinks.map((link) => (
             link.submenu ? (
               <DropdownMenu key={link.href}>
@@ -89,7 +89,7 @@ export function AppHeader() {
           ))}
         </nav>
         
-        <div className="flex-1 flex items-center justify-end gap-2">
+        <div className="flex items-center justify-end gap-2">
            <div className="hidden md:flex items-center gap-2">
               <Button asChild variant="ghost" size="icon">
                 <Link href="https://www.instagram.com/ijccindia?igsh=YW41MzJzNDY2M25y" target="_blank" rel="noopener noreferrer">
@@ -185,3 +185,4 @@ export function AppHeader() {
     </header>
   );
 }
+
