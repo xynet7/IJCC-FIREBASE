@@ -1,12 +1,11 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, User, Rocket, Building, Landmark, Banknote, Mail, Phone, Globe } from "lucide-react";
+import { Check, User, Rocket, Building, Landmark, Mail, Phone, Globe } from "lucide-react";
 
 const membershipTiers = [
   {
     icon: <User className="h-10 w-10 text-primary" />,
     title: "Individual Professionals / Freelancers",
-    price: "₹5,000/year",
     eligibility: "Freelancers, consultants, independent professionals across domains interested in Indo-Japan collaboration.",
     benefits: [
       "Invites to Indo-Japan networking events & webinars",
@@ -19,7 +18,6 @@ const membershipTiers = [
   {
     icon: <Rocket className="h-10 w-10 text-primary" />,
     title: "Startups / SMEs",
-    price: "₹10,000/year",
     eligibility: "Early-stage startups, growing SMEs, bootstrapped or VC-backed Indian ventures.",
     benefits: [
       "Business exposure via Indo-Japan platforms",
@@ -32,7 +30,6 @@ const membershipTiers = [
   {
     icon: <Building className="h-10 w-10 text-primary" />,
     title: "Corporates / MSMEs",
-    price: "₹25,000/year",
     eligibility: "Registered MSMEs, joint ventures, established private limited companies with a Japan interest.",
     benefits: [
       "Listing on IJCC website & business directories",
@@ -45,7 +42,6 @@ const membershipTiers = [
   {
     icon: <Landmark className="h-10 w-10 text-primary" />,
     title: "Large Corporates / Institutions",
-    price: "₹50,000/year",
     eligibility: "MNCs, large Indian corporates, institutions, and think tanks engaged in Indo-Japan programs.",
     benefits: [
       "Co-hosting opportunities for major events & summits",
@@ -68,7 +64,6 @@ export function MembershipDetails() {
                 {tier.icon}
                 <CardTitle className="font-headline text-2xl">{tier.title}</CardTitle>
               </div>
-              <p className="text-2xl font-bold text-primary">{tier.price}</p>
               <CardDescription>{tier.eligibility}</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
