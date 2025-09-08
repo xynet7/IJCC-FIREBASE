@@ -76,6 +76,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.ajujapanesehotels.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'veenapower.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
