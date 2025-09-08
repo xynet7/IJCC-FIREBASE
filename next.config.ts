@@ -64,6 +64,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.aima.in',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.aranca.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

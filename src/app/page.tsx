@@ -39,7 +39,7 @@ const features = [
 
 const partners = [
     { name: "All India Management Association", href: "https://www.aima.in", logoUrl: "https://www.aima.in/img/logo.png", hint: "company logo" },
-    { name: "Aranca", href: "https://www.aranca.com", logoUrl: "https://picsum.photos/seed/aranca/200/100", hint: "company logo" },
+    { name: "Aranca", href: "https://www.aranca.com", logoUrl: "https://www.aranca.com/assets/images/icons/aranca-logo-0203.png", hint: "company logo" },
     { name: "AJU Hotels", href: "https://www.ajujapanesehotels.com/english/", logoUrl: "https://picsum.photos/seed/aju/200/100", hint: "company logo" },
 ];
 
@@ -259,5 +259,3 @@ export default function Home() {
     </>
   );
 }
-
-    
