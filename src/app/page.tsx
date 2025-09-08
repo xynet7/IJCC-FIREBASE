@@ -26,7 +26,7 @@ const features = [
   {
     icon: <BookOpen className="h-8 w-8 text-primary" />,
     title: "Resource Library",
-    description: "Access a rich repository of documents, reports, and presentations.",
+    description: "Access a rich repository of documents, previous year JLPT and presentations.",
     href: "/resources",
   },
   {
