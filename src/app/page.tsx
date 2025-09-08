@@ -213,7 +213,7 @@ export default function Home() {
             <div className="space-y-12">
                 <div>
                     <h3 className="text-2xl font-headline text-center mb-8">Associate Partners</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-center">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-8 items-center">
                         {partners.map((partner) => (
                             <Link href={partner.href} key={partner.name} target="_blank" rel="noopener noreferrer" className="flex justify-center grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
                                 <Image src={partner.logoUrl} alt={partner.name} width={200} height={100} className="object-contain" data-ai-hint={partner.hint} />
@@ -224,7 +224,7 @@ export default function Home() {
 
                 <div>
                     <h3 className="text-2xl font-headline text-center mb-8">IJCC Members</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-center">
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
                          {members.map((member) => (
                             <Link href={member.href} key={member.name} target="_blank" rel="noopener noreferrer" className="flex justify-center grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
                                 <Image src={member.logoUrl} alt={member.name} width={200} height={100} className="object-contain" data-ai-hint={member.hint} />
