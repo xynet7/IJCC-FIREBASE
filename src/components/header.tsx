@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -36,6 +37,8 @@ const navLinks = [
   { href: "/contact", label: "Join Us" },
 ];
 
+const logoUrl = "https://media.licdn.com/dms/image/v2/D560BAQFkTSGkq7dPjA/company-logo_200_200/B56ZhfeYLOG4AU-/0/1753948456785/indo_japan_chamber_of_commerce_logo?e=1759968000&v=beta&t=X5yFoGbl1G4_ved4w0axUirMSl5unkk162Zh0toYgrk";
+
 export function AppHeader() {
   const pathname = usePathname();
 
@@ -44,7 +47,7 @@ export function AppHeader() {
       <div className="container flex h-20 items-center justify-between">
         <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2">
-              <Image src="/IJCC-logo.png" alt="Indo-Japan Chamber of Commerce Logo" width={80} height={80} className="h-20 w-auto" />
+              <Image src={logoUrl} alt="Indo-Japan Chamber of Commerce Logo" width={80} height={80} className="h-20 w-auto" />
             </Link>
         </div>
 
@@ -117,7 +120,7 @@ export function AppHeader() {
             </SheetTrigger>
             <SheetContent side="right">
               <Link href="/" className="mr-6 flex items-center gap-2 mb-6">
-                <Image src="/IJCC-logo.png" alt="Indo-Japan Chamber of Commerce Logo" width={80} height={80} className="h-20 w-auto" />
+                <Image src={logoUrl} alt="Indo-Japan Chamber of Commerce Logo" width={80} height={80} className="h-20 w-auto" />
               </Link>
               <div className="flex flex-col gap-4">
                 {navLinks.map((link) => (

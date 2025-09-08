@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Instagram, Linkedin, Facebook } from "lucide-react";
 
+const logoUrl = "https://media.licdn.com/dms/image/v2/D560BAQFkTSGkq7dPjA/company-logo_200_200/B56ZhfeYLOG4AU-/0/1753948456785/indo_japan_chamber_of_commerce_logo?e=1759968000&v=beta&t=X5yFoGbl1G4_ved4w0axUirMSl5unkk162Zh0toYgrk";
+
 export function AppFooter() {
   const [isClient, setIsClient] = useState(false);
 
@@ -18,7 +20,7 @@ export function AppFooter() {
     <footer className="border-t bg-secondary/50">
       <div className="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0">
         <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
-          <Image src="/IJCC-logo.png" alt="Indo-Japan Chamber of Commerce Logo" width={24} height={24} className="h-6 w-auto" />
+          <Image src={logoUrl} alt="Indo-Japan Chamber of Commerce Logo" width={24} height={24} className="h-6 w-auto" />
           <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
             &copy; {isClient ? new Date().getFullYear() : ''} Indo-Japan Chamber of Commerce. All rights reserved.
           </p>
