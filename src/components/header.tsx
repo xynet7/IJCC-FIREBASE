@@ -45,7 +45,7 @@ export function AppHeader() {
       <div className="container flex h-20 items-center justify-between">
         <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2">
-              <Image src="https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png" alt="Indo-Japan Chamber of Commerce Logo" width={80} height={80} className="h-20 w-auto" />
+              <Image src="https://www.ijcc.in/images/logo-new.jpg" alt="Indo-Japan Chamber of Commerce Logo" width={80} height={80} className="h-20 w-auto" />
               <span className="font-bold font-headline hidden sm:inline-block">Indo-Japan Chamber of Commerce</span>
             </Link>
         </div>
@@ -119,7 +119,7 @@ export function AppHeader() {
             </SheetTrigger>
             <SheetContent side="right">
               <Link href="/" className="mr-6 flex items-center gap-2 mb-6">
-                <Image src="https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png" alt="Indo-Japan Chamber of Commerce Logo" width={80} height={80} className="h-20 w-auto" />
+                <Image src="https://www.ijcc.in/images/logo-new.jpg" alt="Indo-Japan Chamber of Commerce Logo" width={80} height={80} className="h-20 w-auto" />
                 <span className="font-bold font-headline">Indo-Japan Chamber of Commerce</span>
               </Link>
               <div className="flex flex-col gap-4">
@@ -185,4 +185,5 @@ export function AppHeader() {
     </header>
   );
 }
+
 
