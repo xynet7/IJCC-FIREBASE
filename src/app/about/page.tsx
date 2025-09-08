@@ -6,8 +6,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 const teamMembers = [
   { name: "Mr. Rahul Mishra", title: "Chairman, IJCC", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-08-08%20at%2012.04.51.jpeg", hint: "man face" },
   { name: "Mr. Kenichiro Iwahori", title: "Advisor, Sasakawa Foundation, Japan", imageUrl: "https://www.ijcc.in/images/WhatsApp_Image_2025-04-26_at_12.32.28-removebg-preview.png", hint: "man face" },
-  { name: "Mr.Markus", title: "MD Asahi Travels Japan", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-08-23%20at%2003.34.36%20(1).jpeg", hint: "man face" },
   { name: "Mr. Tomoyuki Iwama", title: "Director Yakult India", imageUrl: "https://media.licdn.com/dms/image/v2/D5603AQHmF3AjT9Ismw/profile-displayphoto-scale_400_400/B56Zj1rFjhG0Ak-/0/1756468372006?e=1759968000&v=beta&t=T9tJEcm6a-fBgvXN6IZFuWLK55PEzjOjKHyQKe6gF80", hint: "man face" },
+  { name: "Mr.Markus", title: "MD Asahi Travels Japan", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-08-23%20at%2003.34.36%20(1).jpeg", hint: "man face" },
   { name: "Ms. Yoko Torii", title: "IJCC Travel Partner, Japan", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-05-09%20at%2017.40.09.jpeg", hint: "woman face" },
   { name: "Dr. Randeep Rakwal", title: "Professor, Tsukuba University, Japan", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-25%20at%2012.28.47.jpeg", hint: "man face" },
   { name: "Mr. Gajendra Badgujar", title: "Vice-Chairman (Strategy), Ex. Director FICCI", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-21%20at%2011.35.42.jpeg", hint: "man face" },
@@ -18,7 +18,7 @@ const teamMembers = [
   { name: "Mr. Anil Kumar Khandelwal", title: "Ex. General Manager, East Central Railway", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-05-30%20at%2012.46.46.jpeg", hint: "man face" },
   { name: "Dr. Supratic Gupta", title: "Professor, IIT Delhi", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-21%20at%2011.34.59.jpeg", hint: "man face" },
   { name: "Dr. Maushumi Barooah", title: "Ex. Director, Assam Technical Education Board", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-25%20at%2012.28.46.jpeg", hint: "woman face" },
-  { name: "Mr.Rajesh Mehta", title: "Editor Sunday Guardian", imageUrl: "https://www.ijcc.in/images/WhatsApp%2DImage%2D2025-08-08%20at%2012.00.26.jpeg", hint: "man face" },
+  { name: "Mr.Rajesh Mehta", title: "Editor Sunday Guardian", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-08-08%20at%2012.00.26.jpeg", hint: "man face" },
   { name: "Dr. Jatinder Khanna", title: "Policy Maker, Education & Culture", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-21%20at%2011.37.21.jpeg", hint: "man face" },
   { name: "Mrs. Anjali Mishra", title: "Advocate, Supreme Court of India", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-21%20at%2011.39.40.jpeg", hint: "woman face" },
   { name: "Mr. Raj Singh", title: "Founding Member, Director Sunlite Consulting", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-21%20at%2011.38.58.jpeg", hint: "man face" },
