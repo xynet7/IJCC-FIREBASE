@@ -82,6 +82,12 @@ const nextConfig: NextConfig = {
         hostname: 'veenapower.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ahujaresidences.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

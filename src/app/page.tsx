@@ -45,7 +45,7 @@ const partners = [
 
 const members = [
     { name: "Veena Solar", href: "https://veenapower.com", logoUrl: "https://veenapower.com/wp-content/uploads/2021/04/log-top2.jpg", hint: "company logo" },
-    { name: "Ahuja Residences", href: "https://ahujaresidences.com", logoUrl: "https://picsum.photos/seed/ahuja/200/100", hint: "company logo" },
+    { name: "Ahuja Residences", href: "https://ahujaresidences.com", logoUrl: "https://ahujaresidences.com/wp-content/uploads/2024/08/Ahuja-Logo_cropped.webp", hint: "company logo" },
 ];
 
 const heroItems = [
