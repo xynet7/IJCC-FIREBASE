@@ -46,7 +46,7 @@ export function AppHeader() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center justify-between">
         <div className="flex items-center">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-4">
               <Image src={logoUrl} alt="Indo-Japan Chamber of Commerce Logo" width={80} height={80} className="h-20 w-auto" />
               <div className="hidden sm:flex flex-col">
                 <span className="font-headline font-bold text-lg leading-tight">Indo-Japan Chamber</span>
@@ -123,7 +123,7 @@ export function AppHeader() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
-              <Link href="/" className="mr-6 flex items-center gap-2 mb-6">
+              <Link href="/" className="mr-6 flex items-center gap-4 mb-6">
                 <Image src={logoUrl} alt="Indo-Japan Chamber of Commerce Logo" width={80} height={80} className="h-20 w-auto" />
                 <div className="flex flex-col">
                     <span className="font-headline font-bold text-base leading-tight">Indo-Japan Chamber</span>
