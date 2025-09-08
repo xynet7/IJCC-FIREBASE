@@ -26,7 +26,7 @@ const features = [
   {
     icon: <BookOpen className="h-8 w-8 text-primary" />,
     title: "Resource Library",
-    description: "Access a rich repository of documents, previous year JLPT and presentations.",
+    description: "Acess a rich repository of documents, previous year JLPT and presntations.",
     href: "/resources",
   },
   {
@@ -40,7 +40,7 @@ const features = [
 const partners = [
     { name: "All India Management Association", href: "https://www.aima.in", logoUrl: "https://www.aima.in/img/logo.png", hint: "company logo" },
     { name: "Aranca", href: "https://www.aranca.com", logoUrl: "https://www.aranca.com/assets/images/icons/aranca-logo-0203.png", hint: "company logo" },
-    { name: "AJU Hotels", href: "https://www.ajujapanesehotels.com/english/", logoUrl: "https://picsum.photos/seed/aju/200/100", hint: "company logo" },
+    { name: "AJU Hotels", href: "https://www.ajujapanesehotels.com/english/", logoUrl: "https://www.ajujapanesehotels.com/images/logo.png", hint: "company logo" },
 ];
 
 const members = [

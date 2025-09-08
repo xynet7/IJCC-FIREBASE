@@ -70,6 +70,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.aranca.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.ajujapanesehotels.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
