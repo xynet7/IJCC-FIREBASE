@@ -13,7 +13,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -95,17 +94,6 @@ export function AppHeader() {
         </nav>
         
         <div className="flex items-center justify-end gap-2">
-            <SignedOut>
-              <Button asChild variant="ghost">
-                  <Link href="/sign-in">Sign In</Link>
-              </Button>
-              <Button asChild>
-                  <Link href="/sign-up">Sign Up</Link>
-              </Button>
-            </SignedOut>
-            <SignedIn>
-                <UserButton afterSignOutUrl="/"/>
-            </SignedIn>
             
           <Sheet>
             <SheetTrigger asChild>
