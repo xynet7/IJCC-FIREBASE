@@ -1,6 +1,6 @@
 import { auth } from "@/lib/auth";
-import { handleAuth } from "better-auth";
+import { betterAuth } from "better-auth";
 
-const { GET, POST } = handleAuth(auth);
+const { GET, POST } = betterAuth(auth);
 
 export { GET, POST };
