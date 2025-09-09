@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Landmark, Menu, Instagram, Linkedin, Facebook, ChevronDown, User } from "lucide-react";
+import { Landmark, Menu, Instagram, Linkedin, Facebook, ChevronDown, Mail } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -13,7 +13,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -115,15 +114,12 @@ export function AppHeader() {
                 </Link>
               </Button>
             </div>
-
-            <SignedIn>
-                <UserButton afterSignOutUrl="/" />
-            </SignedIn>
-            <SignedOut>
-                 <Button asChild size="sm">
-                    <Link href="/sign-in">Sign In</Link>
-                </Button>
-            </SignedOut>
+            
+            <Button asChild size="sm">
+                <Link href="/contact">
+                    <Mail className="mr-2 h-4 w-4" /> Join Us
+                </Link>
+            </Button>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
