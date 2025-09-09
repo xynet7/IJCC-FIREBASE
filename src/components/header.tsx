@@ -13,6 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -33,7 +34,7 @@ const navLinks = [
   },
   { href: "/resources", label: "Resources" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/contact", label: "Join Us" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const logoUrl = "https://media.licdn.com/dms/image/v2/D560BAQFkTSGkq7dPjA/company-logo_200_200/B56ZhfeYLOG4AU-/0/1753948456785/indo_japan_chamber_of_commerce_logo?e=1759968000&v=beta&t=X5yFoGbl1G4_ved4w0axUirMSl5unkk162Zh0toYgrk";
@@ -94,26 +95,17 @@ export function AppHeader() {
         </nav>
         
         <div className="flex items-center justify-end gap-2">
-           <div className="hidden md:flex items-center gap-2">
-              <Button asChild variant="ghost" size="icon">
-                <Link href="https://www.instagram.com/ijccindia?igsh=YW41MzJzNDY2M25y" target="_blank" rel="noopener noreferrer">
-                  <Instagram className="h-5 w-5" />
-                   <span className="sr-only">Instagram</span>
-                </Link>
+            <SignedOut>
+              <Button asChild variant="ghost">
+                  <Link href="/sign-in">Sign In</Link>
               </Button>
-              <Button asChild variant="ghost" size="icon">
-                <Link href="https://www.linkedin.com/company/indo-japan-chamber-of-commerce/" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="h-5 w-5" />
-                  <span className="sr-only">LinkedIn</span>
-                </Link>
+              <Button asChild>
+                  <Link href="/sign-up">Sign Up</Link>
               </Button>
-              <Button asChild variant="ghost" size="icon">
-                <Link href="https://www.facebook.com/people/Indo-Japan-Chamber-of-Commerce/100069527786438/" target="_blank" rel="noopener noreferrer">
-                  <Facebook className="h-5 w-5" />
-                  <span className="sr-only">Facebook</span>
-                </Link>
-              </Button>
-            </div>
+            </SignedOut>
+            <SignedIn>
+                <UserButton afterSignOutUrl="/"/>
+            </SignedIn>
             
           <Sheet>
             <SheetTrigger asChild>

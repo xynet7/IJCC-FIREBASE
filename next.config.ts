@@ -94,11 +94,13 @@ const nextConfig: NextConfig = {
         hostname: 'media.licdn.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.clerk.com',
       }
     ],
   },
 };
 
 export default nextConfig;
-
-    
