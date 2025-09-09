@@ -165,7 +165,7 @@ export function AppHeader() {
                   >
                     {link.label}
                   </Link>
-                  )
+                  ) 
                 ))}
                   <hr className="my-2"/>
                   <div className="flex items-center gap-2">
