@@ -115,11 +115,6 @@ export function AppHeader() {
               </Button>
             </div>
             
-            <Button asChild size="sm">
-                <Link href="/contact">
-                    <Mail className="mr-2 h-4 w-4" /> Join Us
-                </Link>
-            </Button>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
