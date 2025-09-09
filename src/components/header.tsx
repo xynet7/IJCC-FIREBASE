@@ -13,6 +13,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { createAuthClient } from "better-auth/client";
+
+const authClient = createAuthClient();
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -40,6 +43,12 @@ const logoUrl = "https://media.licdn.com/dms/image/v2/D560BAQFkTSGkq7dPjA/compan
 
 export function AppHeader() {
   const pathname = usePathname();
+
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -94,7 +103,7 @@ export function AppHeader() {
         </nav>
         
         <div className="flex items-center justify-end gap-2">
-            
+            <Button onClick={handleGoogleSignIn}>Sign In</Button>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
