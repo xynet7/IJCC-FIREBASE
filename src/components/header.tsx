@@ -94,6 +94,26 @@ export function AppHeader() {
         </nav>
         
         <div className="flex items-center justify-end gap-2">
+            <div className="hidden md:flex items-center gap-1">
+              <Button asChild variant="ghost" size="icon">
+                <Link href="https://www.instagram.com/ijccindia?igsh=YW41MzJzNDY2M25y" target="_blank" rel="noopener noreferrer">
+                  <Instagram className="h-5 w-5" />
+                   <span className="sr-only">Instagram</span>
+                </Link>
+              </Button>
+              <Button asChild variant="ghost" size="icon">
+                <Link href="https://www.linkedin.com/company/indo-japan-chamber-of-commerce/" target="_blank" rel="noopener noreferrer">
+                  <Linkedin className="h-5 w-5" />
+                  <span className="sr-only">LinkedIn</span>
+                </Link>
+              </Button>
+              <Button asChild variant="ghost" size="icon">
+                <Link href="https://www.facebook.com/people/Indo-Japan-Chamber-of-Commerce/100069527786438/" target="_blank" rel="noopener noreferrer">
+                  <Facebook className="h-5 w-5" />
+                  <span className="sr-only">Facebook</span>
+                </Link>
+              </Button>
+            </div>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
