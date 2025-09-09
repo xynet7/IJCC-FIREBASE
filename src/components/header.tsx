@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -46,7 +45,7 @@ export function AppHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center justify-between">
-        <div className="flex items-center">
+        <div className="flex items-center gap-4">
             <Link href="/" className="flex items-center gap-4">
               <Image src={logoUrl} alt="Indo-Japan Chamber of Commerce Logo" width={80} height={80} className="h-20 w-auto" />
               <div className="hidden sm:flex flex-col">
@@ -118,10 +117,10 @@ export function AppHeader() {
             </div>
 
             <SignedIn>
-                <UserButton />
+                <UserButton afterSignOutUrl="/" />
             </SignedIn>
             <SignedOut>
-                <Button asChild variant="ghost" size="sm">
+                 <Button asChild size="sm">
                     <Link href="/sign-in">Sign In</Link>
                 </Button>
             </SignedOut>
