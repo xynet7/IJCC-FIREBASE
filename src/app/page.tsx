@@ -52,7 +52,7 @@ const partners = [
     { name: "Consulate General of India, Osaka-Kobe", href: "https://www.indconosaka.gov.in/", logoUrl: "https://www.indconosaka.gov.in/adminpart/logo_image/large/74404LogoHC.jpg", hint: "embassy logo" },
     { name: "Government of Haryana", href: "https://www.haryana.gov.in/", logoUrl: "https://www.shutterstock.com/shutterstock/videos/1101185263/thumb/1.jpg", hint: "government logo" },
     { name: "Government of Uttar Pradesh", href: "https://up.gov.in/en", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Seal_of_Uttar_Pradesh.svg/1024px-Seal_of_Uttar_Pradesh.svg.png", hint: "government logo" },
-    { name: "Japan Chamber of Commerce and Industry in India", href: "https://jccii.in/english", logoUrl: "https://jccii.in/images/jccii_logo.jpg", hint: "organization logo" },
+    { name: "Japan Chamber of Commerce and Industry in India", href: "https://jccii.in/english", logoUrl: "https://jccii.in/wp-content/uploads/2020/02/logo.png", hint: "organization logo" },
 ];
 
 const heroItems = [
