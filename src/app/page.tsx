@@ -44,6 +44,7 @@ const partners = [
     { name: "Veena Solar", href: "https://veenapower.com", logoUrl: "https://veenapower.com/wp-content/uploads/2021/04/log-top2.jpg", hint: "company logo" },
     { name: "Ahuja Residences", href: "https://ahujaresidences.com", logoUrl: "https://ahujaresidences.com/wp-content/uploads/2024/08/Ahuja-Logo_cropped.webp", hint: "company logo" },
     { name: "The Japan Foundation", href: "https://nd.jpf.go.jp/", logoUrl: "https://nd.jpf.go.jp/wp-content/uploads/2022/07/JFND_logo_bgtransparent-1.png", hint: "organization logo" },
+    { name: "JETRO", href: "https://www.jetro.go.jp/en/", logoUrl: "https://www.jetro.go.jp/ext_images/jetro/common/images/logo_jetro_01.png", hint: "organization logo" },
 ];
 
 const heroItems = [
@@ -208,7 +209,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 items-center">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center">
                 {partners.map((partner) => (
                     <Link href={partner.href} key={partner.name} target="_blank" rel="noopener noreferrer" className="flex justify-center">
                         <Image src={partner.logoUrl} alt={partner.name} width={200} height={100} className="object-contain" data-ai-hint={partner.hint} />

@@ -78,8 +78,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https'
-        ,
+        protocol: 'https',
         hostname: 'veenapower.com',
         port: '',
         pathname: '/**',
@@ -105,6 +104,12 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'nd.jpf.go.jp',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.jetro.go.jp',
         port: '',
         pathname: '/**',
       },
