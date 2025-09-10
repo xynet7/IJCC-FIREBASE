@@ -166,6 +166,12 @@ const nextConfig: NextConfig = {
         hostname: 'cdnbbsr.s3waas.gov.in',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.seeklogo.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
@@ -182,4 +188,3 @@ export default nextConfig;
     
 
     
-
