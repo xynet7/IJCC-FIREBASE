@@ -46,16 +46,22 @@ const partners = [
 
 const heroItems = [
   {
+    type: 'video',
+    src: "https://www.youtube.com/embed/WLIv7HnZ_fE?autoplay=1&mute=1&controls=0&loop=1&playlist=WLIv7HnZ_fE",
+    alt: "Indo-Japan collaboration video",
+  },
+  {
     type: 'image',
     src: "https://static.investindia.gov.in/s3fs-public/2021-06/shutterstock_1057997963.jpg",
     alt: "India and Japan flags",
     hint: "flags india japan"
   },
   {
-    type: 'video',
-    src: "https://www.youtube.com/embed/WLIv7HnZ_fE?autoplay=1&mute=1&controls=0&loop=1&playlist=WLIv7HnZ_fE",
-    alt: "Indo-Japan collaboration video",
-  }
+    type: 'image',
+    src: "https://imgcp.aacdn.jp/img-a/1200/900/global-aaj-front/article/2015/12/565f05f621364_565f018e5feb3_1467636135.jpg",
+    alt: "Japanese cherry blossoms",
+    hint: "cherry blossom"
+  },
 ]
 
 
