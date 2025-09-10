@@ -209,6 +209,12 @@ const nextConfig: NextConfig = {
         hostname: 'icea.org.in',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.seaj.or.jp',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

@@ -25,6 +25,7 @@ const members = [
     { name: "North Eastern Council", href: "https://necouncil.gov.in/", logoUrl: "https://abhimanuias.com/userfiles/image/North-Eastern-Council.jpg", hint: "organization logo" },
     { name: "The Japan Foundation", href: "https://nd.jpf.go.jp/", logoUrl: "https://nd.jpf.go.jp/wp-content/uploads/2022/07/JFND_logo_bgtransparent-1.png", hint: "organization logo" },
     { name: "India Cellular & Electronics Association", href: "https://icea.org.in/", logoUrl: "https://icea.org.in/wp-content/uploads/2024/09/cropped-ICEA-logo.png", hint: "organization logo" },
+    { name: "The Shipbuilders' Association of Japan", href: "https://www.seaj.or.jp/", logoUrl: "https://www.seaj.or.jp/images/logo.png", hint: "organization logo" },
 ];
 
 
