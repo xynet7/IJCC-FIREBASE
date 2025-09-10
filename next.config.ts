@@ -148,12 +148,20 @@ const nextConfig: NextConfig = {
         hostname: 'www.indembassy-tokyo.gov.in',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.indconosaka.gov.in',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
 };
 
 export default nextConfig;
+
+    
 
     
 
