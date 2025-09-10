@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Instagram, Linkedin, Facebook } from "lucide-react";
 
-const logoUrl = "https://media.licdn.com/dms/image/v2/D560BAQFkTSGkq7dPjA/company-logo_200_200/B56ZhfeYLOG4AU-/0/1753948456785/indo_japan_chamber_of_commerce_logo?e=1759968000&v=beta&t=X5yFoGbl1G4_ved4w0axUirMSl5unkk162Zh0toYgrk";
+const logoUrl = "https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png";
 
 export function AppFooter() {
   const [isClient, setIsClient] = useState(false);
