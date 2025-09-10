@@ -154,6 +154,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.indconosaka.gov.in',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'haryana.gov.in',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
