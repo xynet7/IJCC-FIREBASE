@@ -113,8 +113,16 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.jica.go.jp',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
 
 export default nextConfig;
+
+    
