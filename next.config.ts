@@ -203,6 +203,12 @@ const nextConfig: NextConfig = {
         hostname: 'abhimanuias.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'icea.org.in',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
