@@ -51,6 +51,7 @@ const partners = [
     { name: "Embassy of India, Tokyo", href: "https://www.indembassy-tokyo.gov.in/", logoUrl: "https://www.indembassy-tokyo.gov.in/public_files/assets/images/common_images/logo_english_2021.png", hint: "embassy logo" },
     { name: "Consulate General of India, Osaka-Kobe", href: "https://www.indconosaka.gov.in/", logoUrl: "https://www.indconosaka.gov.in/adminpart/logo_image/large/74404LogoHC.jpg", hint: "embassy logo" },
     { name: "Government of Haryana", href: "https://www.haryana.gov.in/", logoUrl: "https://www.shutterstock.com/shutterstock/videos/1101185263/thumb/1.jpg", hint: "government logo" },
+    { name: "Government of Uttar Pradesh", href: "https://up.gov.in/en", logoUrl: "https://up.gov.in/site/writereaddata/siteContent/202206011311516952logo.png", hint: "government logo" },
 ];
 
 const heroItems = [

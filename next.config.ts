@@ -172,6 +172,12 @@ const nextConfig: NextConfig = {
         hostname: 'images.seeklogo.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'up.gov.in',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
