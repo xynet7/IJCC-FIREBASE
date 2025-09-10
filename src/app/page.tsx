@@ -45,7 +45,7 @@ const partners = [
     { name: "Ahuja Residences", href: "https://ahujaresidences.com", logoUrl: "https://ahujaresidences.com/wp-content/uploads/2024/08/Ahuja-Logo_cropped.webp", hint: "company logo" },
     { name: "The Japan Foundation", href: "https://nd.jpf.go.jp/", logoUrl: "https://nd.jpf.go.jp/wp-content/uploads/2022/07/JFND_logo_bgtransparent-1.png", hint: "organization logo" },
     { name: "JETRO", href: "https://www.jetro.go.jp/en/", logoUrl: "https://www.jetro.go.jp/ext_images/jetro/common/images/logo_jetro_01.png", hint: "organization logo" },
-    { name: "JICA", href: "https://www.jica.go.jp/english/overseas/india/index.html", logoUrl: "https://www.jica.go.jp/images/img-logo01.gif", hint: "organization logo" },
+    { name: "JICA", href: "https://www.jica.go.jp/english/overseas/india/index.html", logoUrl: "https://www.jica.go.jp/english/assets/img/logo-en.png", hint: "organization logo" },
 ];
 
 const heroItems = [
