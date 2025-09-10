@@ -23,7 +23,7 @@ const members = [
     { name: "Government of Uttar Pradesh", href: "https://up.gov.in/en", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Seal_of_Uttar_Pradesh.svg/1024px-Seal_of_Uttar_Pradesh.svg.png", hint: "government logo" },
     { name: "Japan Chamber of Commerce and Industry in India", href: "https://jccii.in/english", logoUrl: "https://jccii.in/wp-content/uploads/2020/02/logo.png", hint: "organization logo" },
     { name: "Osaka Chamber of Commerce and Industry", href: "https://www.osaka.cci.or.jp/e/", logoUrl: "https://www.osaka.cci.or.jp/e/common/img/logo_sitename.png", hint: "organization logo" },
-    { name: "North Eastern Council", href: "https://necouncil.gov.in/", logoUrl: "https://necouncil.gov.in/sites/default/files/inline-images/NEC-logo.png", hint: "organization logo" },
+    { name: "North Eastern Council", href: "https://necouncil.gov.in/", logoUrl: "https://abhimanuias.com/userfiles/image/North-Eastern-Council.jpg", hint: "organization logo" },
 ];
 
 

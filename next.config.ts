@@ -186,7 +186,8 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https',
+        protocol: 'https'
+        ,
         hostname: 'www.osaka.cci.or.jp',
         port: '',
         pathname: '/**',
@@ -196,21 +197,15 @@ const nextConfig: NextConfig = {
         hostname: 'necouncil.gov.in',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'abhimanuias.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
 };
 
 export default nextConfig;
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
