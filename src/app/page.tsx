@@ -145,11 +145,11 @@ export default function Home() {
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative w-full h-[500px] overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 rounded-xl">
             <Image
-              src="https://www.shutterstock.com/shutterstock/videos/1072946135/thumb/1.jpg?ip=x480"
+              src="https://storage.googleapis.com/studiostack-asset-poc-2/1722602796440_clwl4g8r7000g3b6k9o6c7rxb.jpeg"
               alt="About IJCC"
               layout="fill"
               objectFit="cover"
-              data-ai-hint="india japan"
+              data-ai-hint="india japan handshake"
               className="rounded-xl"
             />
           </div>
