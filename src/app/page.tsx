@@ -50,7 +50,7 @@ const partners = [
     { name: "Indian Council for Cultural Relations", href: "https://iccr.gov.in/home", logoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEYuDws_3GHEcMoqAZ6w9ufbUWnwZcoKyTKg&s", hint: "organization logo" },
     { name: "Embassy of India, Tokyo", href: "https://www.indembassy-tokyo.gov.in/", logoUrl: "https://www.indembassy-tokyo.gov.in/public_files/assets/images/common_images/logo_english_2021.png", hint: "embassy logo" },
     { name: "Consulate General of India, Osaka-Kobe", href: "https://www.indconosaka.gov.in/", logoUrl: "https://www.indconosaka.gov.in/adminpart/logo_image/large/74404LogoHC.jpg", hint: "embassy logo" },
-    { name: "Government of Haryana", href: "https://www.haryana.gov.in/", logoUrl: "https://cdnbbsr.s3waas.gov.in/s37b7a53e239400a13bd6be6c91c4f6c4e/uploads/2020/05/2020050867.jpg", hint: "government logo" },
+    { name: "Government of Haryana", href: "https://haryana.gov.in/", logoUrl: "https://cdnbbsr.s3waas.gov.in/s37b7a53e239400a13bd6be6c91c4f6c4e/uploads/2020/05/2020050867.jpg", hint: "government logo" },
 ];
 
 const heroItems = [
