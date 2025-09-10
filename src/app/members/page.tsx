@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
 
 const members = [
     { name: "All India Management Association", href: "https://www.aima.in", logoUrl: "https://www.aima.in/img/logo.png", hint: "company logo" },
@@ -53,9 +54,13 @@ export default function MembersPage() {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
           {members.map((member) => (
-              <Link href={member.href} key={member.name} target="_blank" rel="noopener noreferrer" className="flex justify-center transition-transform transform hover:scale-110">
-                  <Image src={member.logoUrl} alt={member.name} width={200} height={100} className="object-contain" data-ai-hint={member.hint} />
-              </Link>
+            <Link href={member.href} key={member.name} target="_blank" rel="noopener noreferrer" className="block h-full">
+              <Card className="flex items-center justify-center p-6 h-full transition-transform transform hover:scale-105 hover:shadow-lg">
+                <CardContent className="p-0">
+                    <Image src={member.logoUrl} alt={member.name} width={200} height={100} className="object-contain" data-ai-hint={member.hint} />
+                </CardContent>
+              </Card>
+            </Link>
           ))}
       </div>
     </div>
