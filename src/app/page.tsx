@@ -47,7 +47,7 @@ const partners = [
     { name: "JETRO", href: "https://www.jetro.go.jp/en/", logoUrl: "https://pbs.twimg.com/profile_images/1138406890595971073/o01XWG4J_400x400.png", hint: "organization logo" },
     { name: "JICA", href: "https://www.jica.go.jp/english/overseas/india/index.html", logoUrl: "https://www.jica.go.jp/english/assets/img/logo-en.png", hint: "organization logo" },
     { name: "All Nippon Airways", href: "https://www.ana.co.jp/en/in/", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/All_Nippon_Airways_Logo.svg/2560px-All_Nippon_Airways_Logo.svg.png", hint: "airline logo" },
-    { name: "Indian Council for Cultural Relations", href: "https://iccr.gov.in/home", logoUrl: "https://iccr.gov.in/sites/default/files/logo_0.png", hint: "organization logo" },
+    { name: "Indian Council for Cultural Relations", href: "https://iccr.gov.in/home", logoUrl: "https://iccr.gov.in/sites/default/files/2024-02/iccr_background.png", hint: "organization logo" },
 ];
 
 const heroItems = [
@@ -252,3 +252,4 @@ export default function Home() {
     
 
     
+
