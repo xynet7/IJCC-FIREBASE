@@ -47,12 +47,6 @@ const partners = [
 const heroItems = [
   {
     type: 'image',
-    src: "https://imgcp.aacdn.jp/img-a/1440/auto/global-aaj-front/article/2015/12/565f05f621364_565f018e5feb3_1467636135.jpg",
-    alt: "Indo-Japan collaboration with Mount Fuji",
-    hint: "mount fuji"
-  },
-  {
-    type: 'image',
     src: "https://static.investindia.gov.in/s3fs-public/2021-06/shutterstock_1057997963.jpg",
     alt: "India and Japan flags",
     hint: "flags india japan"
