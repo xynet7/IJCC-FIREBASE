@@ -160,6 +160,12 @@ const nextConfig: NextConfig = {
         hostname: 'haryana.gov.in',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdnbbsr.s3waas.gov.in',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
@@ -176,3 +182,4 @@ export default nextConfig;
     
 
     
+
