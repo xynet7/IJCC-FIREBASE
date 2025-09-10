@@ -184,12 +184,20 @@ const nextConfig: NextConfig = {
         hostname: 'jccii.in',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.osaka.cci.or.jp',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
 };
 
 export default nextConfig;
+
+    
 
     
 

@@ -53,6 +53,7 @@ const partners = [
     { name: "Government of Haryana", href: "https://www.haryana.gov.in/", logoUrl: "https://www.shutterstock.com/shutterstock/videos/1101185263/thumb/1.jpg", hint: "government logo" },
     { name: "Government of Uttar Pradesh", href: "https://up.gov.in/en", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Seal_of_Uttar_Pradesh.svg/1024px-Seal_of_Uttar_Pradesh.svg.png", hint: "government logo" },
     { name: "Japan Chamber of Commerce and Industry in India", href: "https://jccii.in/english", logoUrl: "https://jccii.in/wp-content/uploads/2020/02/logo.png", hint: "organization logo" },
+    { name: "Osaka Chamber of Commerce and Industry", href: "https://www.osaka.cci.or.jp/e/", logoUrl: "https://www.osaka.cci.or.jp/resources/themes/occi/images/occi_logo_en.svg", hint: "organization logo" },
 ];
 
 const heroItems = [
@@ -250,6 +251,8 @@ export default function Home() {
     </>
   );
 }
+    
+
     
 
     
