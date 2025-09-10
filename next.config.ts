@@ -131,6 +131,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'iccr.gov.in',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
