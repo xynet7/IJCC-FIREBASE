@@ -178,6 +178,12 @@ const nextConfig: NextConfig = {
         hostname: 'up.gov.in',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'jccii.in',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
