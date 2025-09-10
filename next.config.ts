@@ -78,7 +78,8 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https',
+        protocol: 'https'
+        ,
         hostname: 'veenapower.com',
         port: '',
         pathname: '/**',
@@ -97,13 +98,13 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'storage.googleapis.com',
+        hostname: 'i.postimg.cc',
         port: '',
         pathname: '/**',
       },
       {
         protocol: 'https',
-        hostname: 'i.postimg.cc',
+        hostname: 'nd.jpf.go.jp',
         port: '',
         pathname: '/**',
       },
