@@ -227,6 +227,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.obda.or.jp',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'timestech.in',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

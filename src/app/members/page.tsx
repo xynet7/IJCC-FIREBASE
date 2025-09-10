@@ -24,7 +24,7 @@ const members = [
     { name: "Osaka Chamber of Commerce and Industry", href: "https://www.osaka.cci.or.jp/e/", logoUrl: "https://www.osaka.cci.or.jp/e/common/img/logo_sitename.png", hint: "organization logo" },
     { name: "North Eastern Council", href: "https://necouncil.gov.in/", logoUrl: "https://abhimanuias.com/userfiles/image/North-Eastern-Council.jpg", hint: "organization logo" },
     { name: "The Japan Foundation", href: "https://nd.jpf.go.jp/", logoUrl: "https://nd.jpf.go.jp/wp-content/uploads/2022/07/JFND_logo_bgtransparent-1.png", hint: "organization logo" },
-    { name: "India Cellular & Electronics Association", href: "https://icea.org.in/", logoUrl: "https://icea.org.in/wp-content/uploads/2024/09/cropped-ICEA-logo.png", hint: "organization logo" },
+    { name: "India Cellular & Electronics Association", href: "https://icea.org.in/", logoUrl: "https://timestech.in/wp-content/uploads/2025/08/Untitled-design-2025-08-04T153554.381.jpg", hint: "organization logo" },
     { name: "The Shipbuilders' Association of Japan", href: "https://www.seaj.or.jp/", logoUrl: "https://www.seaj.or.jp/images/logo.png", hint: "organization logo" },
     { name: "Osaka Business Development Agency", href: "https://www.obda.or.jp/", logoUrl: "https://www.obda.or.jp//wp-content/uploads/2019/12/obda_yoko_01.png", hint: "organization logo" },
 ];
