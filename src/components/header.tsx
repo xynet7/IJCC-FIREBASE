@@ -48,10 +48,6 @@ export function AppHeader() {
         <div className="flex items-center gap-4">
             <Link href="/" className="flex items-center gap-4">
               <Image src={logoUrl} alt="Indo-Japan Chamber of Commerce Logo" width={80} height={80} className="h-20 w-auto" />
-              <div className="hidden sm:flex flex-col">
-                <span className="font-headline font-bold text-lg leading-tight">Indo-Japan Chamber</span>
-                <span className="font-headline font-bold text-lg leading-tight">of Commerce</span>
-              </div>
             </Link>
         </div>
 
@@ -125,10 +121,6 @@ export function AppHeader() {
             <SheetContent side="right">
               <Link href="/" className="mr-6 flex items-center gap-4 mb-6">
                 <Image src={logoUrl} alt="Indo-Japan Chamber of Commerce Logo" width={80} height={80} className="h-20 w-auto" />
-                <div className="flex flex-col">
-                    <span className="font-headline font-bold text-base leading-tight">Indo-Japan Chamber</span>
-                    <span className="font-headline font-bold text-base leading-tight">of Commerce</span>
-                </div>
               </Link>
               <div className="flex flex-col gap-4">
                 {navLinks.map((link) => (
