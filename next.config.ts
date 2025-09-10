@@ -215,6 +215,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.seaj.or.jp',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.pngguru.in',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

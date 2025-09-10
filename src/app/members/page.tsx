@@ -18,7 +18,7 @@ const members = [
     { name: "Indian Council for Cultural Relations", href: "https://iccr.gov.in/home", logoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEYuDws_3GHEcMoqAZ6w9ufbUWnwZcoKyTKg&s", hint: "organization logo" },
     { name: "Embassy of India, Tokyo", href: "https://www.indembassy-tokyo.gov.in/", logoUrl: "https://www.indembassy-tokyo.gov.in/public_files/assets/images/common_images/logo_english_2021.png", hint: "embassy logo" },
     { name: "Consulate General of India, Osaka-Kobe", href: "https://www.indconosaka.gov.in/", logoUrl: "https://www.indconosaka.gov.in/adminpart/logo_image/large/74404LogoHC.jpg", hint: "embassy logo" },
-    { name: "Government of Haryana", href: "https://www.haryana.gov.in/", logoUrl: "https://images.seeklogo.com/logo-png/44/1/haryana-sarkar-logo-png_seeklogo-447946.png", hint: "government logo" },
+    { name: "Government of Haryana", href: "https://www.haryana.gov.in/", logoUrl: "https://www.pngguru.in/storage/uploads/images/Haryana%20Govt%20Logo%20free%20png,%20Govt%20of%20haryana%20png%20logo_1665496340_108954805.webp", hint: "government logo" },
     { name: "Government of Uttar Pradesh", href: "https://up.gov.in/en", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Seal_of_Uttar_Pradesh.svg/1024px-Seal_of_Uttar_Pradesh.svg.png", hint: "government logo" },
     { name: "Japan Chamber of Commerce and Industry in India", href: "https://jccii.in/english", logoUrl: "https://jccii.in/wp-content/uploads/2020/02/logo.png", hint: "organization logo" },
     { name: "Osaka Chamber of Commerce and Industry", href: "https://www.osaka.cci.or.jp/e/", logoUrl: "https://www.osaka.cci.or.jp/e/common/img/logo_sitename.png", hint: "organization logo" },
