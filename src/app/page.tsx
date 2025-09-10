@@ -145,7 +145,7 @@ export default function Home() {
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative w-full h-[500px] overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 rounded-xl">
             <Image
-              src="https://storage.googleapis.com/studiostack-asset-poc-2/1722602796440_clwl4g8r7000g3b6k9o6c7rxb.jpeg"
+              src="https://i.postimg.cc/BQBDNXjS/IMG-20250910-WA0124-1.jpg"
               alt="About IJCC"
               layout="fill"
               objectFit="cover"
