@@ -221,6 +221,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.pngguru.in',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.obda.or.jp',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
