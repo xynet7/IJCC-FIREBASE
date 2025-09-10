@@ -41,9 +41,6 @@ const partners = [
     { name: "All India Management Association", href: "https://www.aima.in", logoUrl: "https://www.aima.in/img/logo.png", hint: "company logo" },
     { name: "Aranca", href: "https://www.aranca.com", logoUrl: "https://www.aranca.com/assets/images/icons/aranca-logo-0203.png", hint: "company logo" },
     { name: "AJU Hotels", href: "https://www.ajujapanesehotels.com/english/", logoUrl: "https://www.ajujapanesehotels.com/images/logo.png", hint: "company logo" },
-];
-
-const members = [
     { name: "Veena Solar", href: "https://veenapower.com", logoUrl: "https://veenapower.com/wp-content/uploads/2021/04/log-top2.jpg", hint: "company logo" },
     { name: "Ahuja Residences", href: "https://ahujaresidences.com", logoUrl: "https://ahujaresidences.com/wp-content/uploads/2024/08/Ahuja-Logo_cropped.webp", hint: "company logo" },
 ];
@@ -203,35 +200,19 @@ export default function Home() {
         <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                 <div className="space-y-2">
-                    <h2 className="text-3xl font-headline sm:text-5xl">Our Partners & Members</h2>
+                    <h2 className="text-3xl font-headline sm:text-5xl">Associate Partners</h2>
                     <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                         We are proud to collaborate with a diverse network of partners and members.
                     </p>
                 </div>
             </div>
 
-            <div className="space-y-12">
-                <div>
-                    <h3 className="text-2xl font-headline text-center mb-8">Associate Partners</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-8 items-center">
-                        {partners.map((partner) => (
-                            <Link href={partner.href} key={partner.name} target="_blank" rel="noopener noreferrer" className="flex justify-center">
-                                <Image src={partner.logoUrl} alt={partner.name} width={200} height={100} className="object-contain" data-ai-hint={partner.hint} />
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-
-                <div>
-                    <h3 className="text-2xl font-headline text-center mb-8">IJCC Members</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
-                         {members.map((member) => (
-                            <Link href={member.href} key={member.name} target="_blank" rel="noopener noreferrer" className="flex justify-center">
-                                <Image src={member.logoUrl} alt={member.name} width={200} height={100} className="object-contain" data-ai-hint={member.hint} />
-                            </Link>
-                        ))}
-                    </div>
-                </div>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
+                {partners.map((partner) => (
+                    <Link href={partner.href} key={partner.name} target="_blank" rel="noopener noreferrer" className="flex justify-center">
+                        <Image src={partner.logoUrl} alt={partner.name} width={200} height={100} className="object-contain" data-ai-hint={partner.hint} />
+                    </Link>
+                ))}
             </div>
         </div>
       </section>
@@ -259,3 +240,5 @@ export default function Home() {
     </>
   );
 }
+
+    
