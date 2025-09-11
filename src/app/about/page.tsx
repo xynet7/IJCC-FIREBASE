@@ -46,15 +46,13 @@ const TeamMemberCard = ({ member }: { member: typeof leadership[0] }) => (
   <Dialog>
     <DialogTrigger asChild>
       <Card className="text-center transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
-        <CardHeader className="items-center">
-          <Avatar className="w-32 h-32 mb-4 border-4 border-primary/20">
+        <CardContent className="pt-6">
+          <Avatar className="w-32 h-32 mb-4 border-4 border-primary/20 mx-auto">
             <AvatarImage src={member.imageUrl} alt={member.name} data-ai-hint={member.hint} />
             <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
           </Avatar>
-          <CardTitle className="font-headline text-2xl">{member.name}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-primary font-semibold">{member.title}</p>
+          <h3 className="font-headline text-2xl">{member.name}</h3>
+          <p className="text-primary font-semibold mt-1">{member.title}</p>
         </CardContent>
       </Card>
     </DialogTrigger>
