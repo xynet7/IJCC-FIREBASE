@@ -18,7 +18,7 @@ const members = [
     { name: "Indian Council for Cultural Relations", href: "https://iccr.gov.in/home", logoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEYuDws_3GHEcMoqAZ6w9ufbUWnwZcoKyTKg&s", hint: "organization logo" },
     { name: "Embassy of India, Tokyo", href: "https://www.indembassy-tokyo.gov.in/", logoUrl: "https://www.indembassy-tokyo.gov.in/public_files/assets/images/common_images/logo_english_2021.png", hint: "embassy logo" },
     { name: "Consulate General of India, Osaka-Kobe", href: "https://www.indconosaka.gov.in/", logoUrl: "https://www.indconosaka.gov.in/adminpart/logo_image/large/74404LogoHC.jpg", hint: "embassy logo" },
-    { name: "Government of Haryana", href: "https://haryana.gov.in/", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Emblem_of_Haryana.svg/382px-Emblem_of_Haryana.svg.png", hint: "government logo", className: "p-2 bg-white rounded-md" },
+    { name: "Government of Haryana", href: "https://haryana.gov.in/", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Emblem_of_Haryana.svg/382px-Emblem_of_Haryana.svg.png", hint: "government logo", className: "p-2 bg-white rounded-md", isSpecial: true },
     { name: "Government of Uttar Pradesh", href: "https://up.gov.in/en", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Seal_of_Uttar_Pradesh.svg/1024px-Seal_of_Uttar_Pradesh.svg.png", hint: "government logo" },
     { name: "Japan Chamber of Commerce and Industry in India", href: "https://jccii.in/english", logoUrl: "https://jccii.in/wp-content/uploads/2020/02/logo.png", hint: "organization logo" },
     { name: "Osaka Chamber of Commerce and Industry", href: "https://www.osaka.cci.or.jp/e/", logoUrl: "https://www.osaka.cci.or.jp/e/common/img/logo_sitename.png", hint: "organization logo" },
@@ -59,8 +59,8 @@ export default function MembersPage() {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
           {members.map((member) => (
             <Link href={member.href} key={member.name} target="_blank" rel="noopener noreferrer" className="block">
-              <Card className="flex items-center justify-center p-6 h-full transition-transform transform hover:scale-105 hover:shadow-lg">
-                <CardContent className="p-0 flex items-center justify-center h-24">
+              <Card className={`flex items-center justify-center p-6 h-full transition-transform transform hover:scale-105 hover:shadow-lg ${member.isSpecial ? '' : 'h-40'}`}>
+                <CardContent className="p-0 flex items-center justify-center h-full">
                     <Image 
                         src={member.logoUrl} 
                         alt={member.name} 
