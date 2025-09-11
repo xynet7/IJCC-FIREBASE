@@ -24,7 +24,7 @@ const events = [
     time: "11:00 AM - 09:00 PM",
     location: "Saket District Centre, Sector 6, Pushp Vihar, New Delhi - 110017",
     description: "A Day of Culture, Business and Friendship",
-    imageUrl: "https://picsum.photos/seed/cultural-exchange/800/400",
+    imageUrl: "https://i.postimg.cc/L4JmBGgX/india-meets-japan.jpg",
     hint: "cultural event",
   },
   {
