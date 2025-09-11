@@ -58,7 +58,7 @@ const TeamMemberCard = ({ member }: { member: typeof leadership[0] }) => (
         </CardContent>
       </Card>
     </DialogTrigger>
-    <DialogContent className="sm:max-w-[425px]">
+    <DialogContent className="sm:max-w-[425px] rounded-lg">
       <DialogHeader>
         <div className="flex items-center gap-4 mb-4">
           <Avatar className="w-24 h-24 border-4 border-primary/20">
