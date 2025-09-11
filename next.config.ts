@@ -239,11 +239,15 @@ const nextConfig: NextConfig = {
         hostname: 'enpointeadwisers.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'aamidainfotech.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
 };
 
 export default nextConfig;
-
-    

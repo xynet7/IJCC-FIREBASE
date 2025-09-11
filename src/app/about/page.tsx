@@ -40,6 +40,7 @@ const legalTeam = [
 const foundingMembers = [
   { name: "Mr. Raj Singh", title: "Founding Member, Director Sunlite Consulting", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-21%20at%2011.38.58.jpeg", hint: "man face", bio: "A founding member of the IJCC, Mr. Raj Singh has been a guiding force since its inception. Through Sunlite Consulting, he continues to provide strategic business advice to companies looking to enter the Indo-Japan corridor." },
   { name: "Mr. M Nazir", title: "Founding Member, Director ICAE India", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-21%20at%2012.03.34.jpeg", hint: "man face", bio: "Mr. M Nazir, another founding member, has been a pillar of the IJCC. As Director of ICAE India, he has championed numerous initiatives focused on adult education and vocational training, aligning Indian talent with Japanese industry needs." },
+  { name: "Mr. Lokendra Rana", title: "Founding Member, Executive Director", imageUrl: "https://aamidainfotech.com/wp-content/uploads/2021/01/lokendra-rana.jpg", hint: "man face", bio: "Lokendra Rana the Executive Director (International Sales and Marketing) of the company, graduated and post-graduated, Bachelor of Arts in English, Economics, and Sociology and completed his masters in English Literature.\n\nAdditional to the academic degrees, he has done Japanese Language and obtained the JLPT certification Level-3 in the year 2005 from the Japan Foundation and Japan Educational Exchanges and Services. He did his Post Graduate Diploma in International Business and did his MBA in Marketing, He also did a certificate course in C, C++, Linux, Unix, and also a part of the core team to get implement SAP S4/HANA implementation in his company at Ethiopia Plant.\n\nHe also served in Bangladesh as Head Operations (CEO) and the last assignment was in Ethiopia, Africa in the capacity of General Manager. He has won the Best Team Performance award from Raymond’s in 2013 and has vast work experience Internationally & Nationally in various companies.\n\nHe also specialized skill of traditional North Indian farming and has over two decades of experience. He has a good knowledge of the Indian share market and cryptocurrency trade. He did inceptions of two plants in his career from the Greenfield project to commissioning. Mr. Rana has joined ACS as Executive Director of Aamida Infotech." },
 ];
 
 const TeamMemberCard = ({ member }: { member: typeof leadership[0] }) => (
@@ -161,6 +162,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-    
-    
