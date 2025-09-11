@@ -19,9 +19,6 @@ import React from "react";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
-  { href: "/events", label: "Events" },
-  { href: "/members", label: "Members" },
-  { href: "/news", label: "News" },
   { 
     href: "/services", 
     label: "Services",
@@ -33,8 +30,10 @@ const navLinks = [
         { href: "/services#digital-services", label: "Digital Marketing" },
     ]
   },
+  { href: "/members", label: "Members" },
+  { href: "/news", label: "News" },
+  { href: "/events", label: "Events" },
   { href: "/resources", label: "Resources" },
-  { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
 ];
 
