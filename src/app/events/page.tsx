@@ -19,6 +19,7 @@ const events = [
     imageUrl: "https://i.postimg.cc/VvZSTtBC/7-NOV-EVENT.jpg",
     hint: "business seminar",
     isVertical: true,
+    href: "https://www.instagram.com/p/DOc9zoOkUkh/?igsh=OGpzMDRhbXA2anBt",
   },
   {
     title: "INDIA MEETS JAPAN",
