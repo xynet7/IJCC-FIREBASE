@@ -58,7 +58,7 @@ const TeamMemberCard = ({ member }: { member: typeof leadership[0] }) => (
         </CardContent>
       </Card>
     </DialogTrigger>
-    <DialogContent className="sm:max-w-[425px] rounded-xl">
+    <DialogContent className="sm:max-w-[425px] rounded-2xl">
       <DialogHeader>
         <div className="flex items-center gap-4 mb-4">
           <Avatar className="w-24 h-24 border-4 border-primary/20">
@@ -107,11 +107,11 @@ export default function AboutPage() {
       
       <div className="relative w-full h-[400px] rounded-lg overflow-hidden mb-12 shadow-xl">
         <Image 
-            src="https://www.ijcc.in/images/slider/DSC_0029.JPG" 
-            alt="IJCC Event" 
+            src="https://i.postimg.cc/pThL0dX0/about-us-page-image.jpg" 
+            alt="About IJCC" 
             layout="fill" 
             objectFit="cover"
-            data-ai-hint="people event"
+            data-ai-hint="people meeting"
         />
       </div>
 
