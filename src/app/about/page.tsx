@@ -112,7 +112,7 @@ export default function AboutPage() {
                         <p className="text-primary font-semibold">{member.title}</p>
                       </div>
                     </div>
-                    <DialogDescription className="text-left text-foreground whitespace-pre-wrap">
+                    <DialogDescription className="text-left text-foreground whitespace-pre-wrap max-h-[60vh] overflow-y-auto">
                       {member.bio}
                     </DialogDescription>
                   </DialogHeader>
@@ -125,3 +125,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+    
