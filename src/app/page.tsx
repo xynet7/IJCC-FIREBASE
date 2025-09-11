@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ArrowRight, Calendar, Users, BookOpen, Mail, GalleryHorizontal } from "lucide-react";
+import { ArrowRight, Calendar, Users, BookOpen, Mail } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 
 
@@ -46,15 +46,15 @@ const partners = [
 
 const heroItems = [
   {
+    type: 'video',
+    src: "https://www.youtube.com/embed/WLIv7HnZ_fE?autoplay=1&mute=1&controls=0&loop=1&playlist=WLIv7HnZ_fE",
+    alt: "Indo-Japan collaboration video",
+  },
+  {
     type: 'image',
     src: "https://static.investindia.gov.in/s3fs-public/2021-06/shutterstock_1057997963.jpg",
     alt: "India and Japan flags",
     hint: "flags india japan"
-  },
-  {
-    type: 'video',
-    src: "https://www.youtube.com/embed/WLIv7HnZ_fE?autoplay=1&mute=1&controls=0&loop=1&playlist=WLIv7HnZ_fE",
-    alt: "Indo-Japan collaboration video",
   },
   {
     type: 'image',
@@ -124,11 +124,6 @@ export default function Home() {
                   <Button asChild size="lg" variant="secondary" className="rounded-full">
                     <Link href="/events">
                       Upcoming Events
-                    </Link>
-                  </Button>
-                  <Button asChild size="lg" variant="secondary" className="rounded-full">
-                    <Link href="/gallery">
-                      Gallery
                     </Link>
                   </Button>
                 </span>
@@ -208,8 +203,12 @@ export default function Home() {
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
                 {partners.map((partner) => (
-                    <Link href={partner.href} key={partner.name} target="_blank" rel="noopener noreferrer" className="flex justify-center">
-                        <Image src={partner.logoUrl} alt={partner.name} width={200} height={100} className="object-contain" data-ai-hint={partner.hint} />
+                    <Link href={partner.href} key={partner.name} target="_blank" rel="noopener noreferrer" className="block">
+                       <Card className="flex items-center justify-center p-6 h-40 transition-transform transform hover:scale-105 hover:shadow-lg">
+                          <CardContent className="p-0 flex items-center justify-center">
+                            <Image src={partner.logoUrl} alt={partner.name} width={150} height={80} className="object-contain" data-ai-hint={partner.hint} />
+                          </CardContent>
+                       </Card>
                     </Link>
                 ))}
             </div>
