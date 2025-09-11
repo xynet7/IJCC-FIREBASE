@@ -59,7 +59,7 @@ export function AppHeader() {
               <DropdownMenu key={link.href} open={open} onOpenChange={setOpen}>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className={cn(
-                      "text-sm font-medium transition-colors hover:text-primary whitespace-nowrap px-2 py-1 hover:bg-transparent",
+                      "text-sm font-medium transition-colors hover:text-primary whitespace-nowrap px-2 py-1 hover:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0",
                       pathname.startsWith(link.href) ? "text-primary" : "text-muted-foreground"
                     )}
                     onMouseEnter={() => setOpen(true)}
