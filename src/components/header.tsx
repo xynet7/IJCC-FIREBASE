@@ -14,6 +14,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import React from "react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -41,6 +42,7 @@ const logoUrl = "https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png";
 
 export function AppHeader() {
   const pathname = usePathname();
+  const [open, setOpen] = React.useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -54,17 +56,19 @@ export function AppHeader() {
         <nav className="hidden md:flex items-center gap-6 text-sm">
           {navLinks.map((link) => (
             link.submenu ? (
-              <DropdownMenu key={link.href}>
+              <DropdownMenu key={link.href} open={open} onOpenChange={setOpen}>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className={cn(
                       "text-sm font-medium transition-colors hover:text-primary whitespace-nowrap px-2 py-1 hover:bg-transparent",
                       pathname.startsWith(link.href) ? "text-primary" : "text-muted-foreground"
-                    )}>
+                    )}
+                    onMouseEnter={() => setOpen(true)}
+                  >
                     {link.label}
                     <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuContent onMouseLeave={() => setOpen(false)}>
                   <DropdownMenuItem asChild>
                      <Link href="/services">All Services</Link>
                   </DropdownMenuItem>
