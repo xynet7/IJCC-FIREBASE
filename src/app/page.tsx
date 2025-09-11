@@ -47,15 +47,15 @@ const partners = [
 
 const heroItems = [
   {
+    type: 'video',
+    src: "https://www.youtube.com/embed/WLIv7HnZ_fE?autoplay=1&mute=1&controls=0&loop=1&playlist=WLIv7HnZ_fE",
+    alt: "Indo-Japan collaboration video",
+  },
+  {
     type: 'image',
     src: "https://static.investindia.gov.in/s3fs-public/2021-06/shutterstock_1057997963.jpg",
     alt: "India and Japan flags",
     hint: "flags india japan"
-  },
-  {
-    type: 'video',
-    src: "https://www.youtube.com/embed/WLIv7HnZ_fE?autoplay=1&mute=1&controls=0&loop=1&playlist=WLIv7HnZ_fE",
-    alt: "Indo-Japan collaboration video",
   },
   {
     type: 'image',
@@ -125,6 +125,11 @@ export default function Home() {
                   <Button asChild size="lg" variant="secondary" className="rounded-full">
                     <Link href="/events">
                       Upcoming Events
+                    </Link>
+                  </Button>
+                  <Button asChild size="lg" variant="secondary" className="rounded-full">
+                    <Link href="/gallery">
+                      Gallery
                     </Link>
                   </Button>
                 </span>

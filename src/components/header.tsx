@@ -33,7 +33,6 @@ const navLinks = [
   { href: "/members", label: "Members" },
   { href: "/news", label: "News" },
   { href: "/events", label: "Events" },
-  { href: "/gallery", label: "Gallery" },
   { href: "/resources", label: "Resources" },
   { href: "/contact", label: "Contact" },
 ];
