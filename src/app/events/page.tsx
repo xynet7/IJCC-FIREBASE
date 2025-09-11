@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Calendar as CalendarIcon, Clock, MapPin } from "lucide-react";
@@ -5,6 +6,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const events = [
   {
@@ -26,6 +28,7 @@ const events = [
     description: "A Day of Culture, Business and Friendship",
     imageUrl: "https://i.postimg.cc/L4JmBGgX/india-meets-japan.jpg",
     hint: "cultural event",
+    href: "https://www.instagram.com/p/DOc7xSuEfHe/?utm_source=ig_web_copy_link",
   },
   {
     title: "Tech Innovation Summit",
@@ -74,14 +77,27 @@ export default function EventsPage() {
           {events.map((event, index) => (
             <Card key={index}>
               {event.imageUrl && (
-                <div className="relative w-full h-[250px] rounded-t-lg overflow-hidden">
-                  <Image 
-                      src={event.imageUrl} 
-                      alt={event.title} 
-                      layout="fill" 
-                      objectFit="cover"
-                      data-ai-hint={event.hint}
-                  />
+                 <div className="relative w-full h-[250px] rounded-t-lg overflow-hidden">
+                  {event.href ? (
+                    <Link href={event.href} target="_blank" rel="noopener noreferrer">
+                      <Image 
+                          src={event.imageUrl} 
+                          alt={event.title} 
+                          layout="fill" 
+                          objectFit="cover"
+                          data-ai-hint={event.hint}
+                          className="transition-transform duration-300 hover:scale-105"
+                      />
+                    </Link>
+                  ) : (
+                    <Image 
+                        src={event.imageUrl} 
+                        alt={event.title} 
+                        layout="fill" 
+                        objectFit="cover"
+                        data-ai-hint={event.hint}
+                    />
+                  )}
                 </div>
               )}
               <CardHeader>
