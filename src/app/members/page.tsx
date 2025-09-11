@@ -56,12 +56,14 @@ export default function MembersPage() {
           Explore our network of esteemed members and businesses.
         </p>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-stretch">
           {members.map((member) => (
-            <Link href={member.href} key={member.name} target="_blank" rel="noopener noreferrer" className="block h-full">
+            <Link href={member.href} key={member.name} target="_blank" rel="noopener noreferrer" className="block">
               <Card className="flex items-center justify-center p-6 h-full transition-transform transform hover:scale-105 hover:shadow-lg">
                 <CardContent className="p-0">
-                    <Image src={member.logoUrl} alt={member.name} width={200} height={100} className="object-contain" data-ai-hint={member.hint} />
+                    <div className="relative h-24">
+                        <Image src={member.logoUrl} alt={member.name} layout="fill" className="object-contain" data-ai-hint={member.hint} />
+                    </div>
                 </CardContent>
               </Card>
             </Link>
