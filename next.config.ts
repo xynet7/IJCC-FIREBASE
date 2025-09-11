@@ -233,6 +233,12 @@ const nextConfig: NextConfig = {
         hostname: 'timestech.in',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'enpointeadwisers.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
