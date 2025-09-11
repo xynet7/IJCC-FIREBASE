@@ -25,7 +25,7 @@ const features = [
   {
     icon: <BookOpen className="h-8 w-8 text-primary" />,
     title: "Resource Library",
-    description: "Acess a rich repository of documents, previous year JLPT and presntations.",
+    description: "Access a rich repository of documents, JLPT papers, and presentations.",
     href: "/resources",
   },
   {
@@ -172,18 +172,18 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-4 mt-12">
+          <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 mt-12">
             {features.map((feature) => (
-               <Link href={feature.href} key={feature.title}>
-                <Card className="h-full transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
-                  <CardHeader>
+              <Link href={feature.href} key={feature.title} className="group block">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     {feature.icon}
-                    <CardTitle className="font-headline mt-4">{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{feature.description}</p>
-                  </CardContent>
-                </Card>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold font-headline">{feature.title}</h3>
+                    <p className="mt-1 text-muted-foreground">{feature.description}</p>
+                  </div>
+                </div>
               </Link>
             ))}
           </div>
