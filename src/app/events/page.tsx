@@ -16,8 +16,9 @@ const events = [
     time: "5:00 PM - 8:00 PM",
     location: "AJU Hinode",
     description: "A business seminar featuring presentations from 4 states, a Q&A session, and discussions on BIS, Solar Power, IPR & Data Privacy.",
-    imageUrl: "https://www.asiancommunitynews.com/wp-content/uploads/2024/05/Business-Seminar-India-Japan-shaping-the-future-in-rapidly-evolving-business-ecosystem.jpg",
+    imageUrl: "https://i.postimg.cc/VvZSTtBC/7-NOV-EVENT.jpg",
     hint: "business seminar",
+    isVertical: true,
   },
   {
     title: "INDIA MEETS JAPAN",
@@ -75,9 +76,9 @@ export default function EventsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
           {events.map((event, index) => (
-            <Card key={index}>
+            <Card key={index} className="flex flex-col md:flex-row overflow-hidden">
               {event.imageUrl && (
-                 <div className="relative w-full h-[250px] rounded-t-lg overflow-hidden">
+                 <div className={`relative ${event.isVertical ? 'w-full md:w-1/3' : 'w-full h-64 md:h-auto md:w-1/2'} flex-shrink-0`}>
                   {event.href ? (
                     <Link href={event.href} target="_blank" rel="noopener noreferrer">
                       <Image 
@@ -100,24 +101,28 @@ export default function EventsPage() {
                   )}
                 </div>
               )}
-              <CardHeader>
-                <CardTitle className="font-headline">{event.title}</CardTitle>
-                <CardDescription>{event.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="grid sm:grid-cols-3 gap-4 text-sm">
-                <div className="flex items-center gap-2">
-                  <CalendarIcon className="w-4 h-4 text-muted-foreground" />
-                  <span>{event.displayDate}</span>
+              <div className="flex flex-col justify-between p-6">
+                <div>
+                  <CardHeader className="p-0">
+                    <CardTitle className="font-headline text-xl">{event.title}</CardTitle>
+                    <CardDescription className="pt-2">{event.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="grid sm:grid-cols-2 gap-4 text-sm p-0 pt-4">
+                    <div className="flex items-center gap-2">
+                      <CalendarIcon className="w-4 h-4 text-muted-foreground" />
+                      <span>{event.displayDate}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-muted-foreground" />
+                      <span>{event.time}</span>
+                    </div>
+                    <div className="flex items-center col-span-2 gap-2">
+                      <MapPin className="w-4 h-4 text-muted-foreground" />
+                      <span>{event.location}</span>
+                    </div>
+                  </CardContent>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-muted-foreground" />
-                  <span>{event.time}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-muted-foreground" />
-                  <span>{event.location}</span>
-                </div>
-              </CardContent>
+              </div>
             </Card>
           ))}
         </div>
