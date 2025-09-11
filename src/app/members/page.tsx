@@ -60,10 +60,15 @@ export default function MembersPage() {
           {members.map((member) => (
             <Link href={member.href} key={member.name} target="_blank" rel="noopener noreferrer" className="block">
               <Card className="flex items-center justify-center p-6 h-full transition-transform transform hover:scale-105 hover:shadow-lg">
-                <CardContent className="p-0">
-                    <div className="relative h-24">
-                        <Image src={member.logoUrl} alt={member.name} layout="fill" className="object-contain" data-ai-hint={member.hint} />
-                    </div>
+                <CardContent className="p-0 flex items-center justify-center h-24">
+                    <Image 
+                        src={member.logoUrl} 
+                        alt={member.name} 
+                        width={150} 
+                        height={80} 
+                        className="object-contain" 
+                        data-ai-hint={member.hint} 
+                    />
                 </CardContent>
               </Card>
             </Link>
