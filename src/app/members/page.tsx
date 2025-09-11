@@ -56,7 +56,7 @@ export default function MembersPage() {
           Explore our network of esteemed members and businesses.
         </p>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-stretch">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
           {members.map((member) => (
             <Link href={member.href} key={member.name} target="_blank" rel="noopener noreferrer" className="block">
               <Card className="flex items-center justify-center p-6 h-full transition-transform transform hover:scale-105 hover:shadow-lg">
