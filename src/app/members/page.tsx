@@ -27,7 +27,7 @@ const members = [
     { name: "India Cellular & Electronics Association", href: "https://icea.org.in/", logoUrl: "https://timestech.in/wp-content/uploads/2025/08/Untitled-design-2025-08-04T153554.381.jpg", hint: "organization logo" },
     { name: "The Shipbuilders' Association of Japan", href: "https://www.seaj.or.jp/", logoUrl: "https://www.seaj.or.jp/images/logo.png", hint: "organization logo" },
     { name: "Osaka Business Development Agency", href: "https://www.obda.or.jp/", logoUrl: "https://www.obda.or.jp//wp-content/uploads/2019/12/obda_yoko_01.png", hint: "organization logo" },
-    { name: "Enpointe Adwisers", href: "https://enpointeadwisers.com/", logoUrl: "https://enpointeadwisers.com/images/logo.svg", hint: "company logo" },
+    { name: "Enpointe Adwisers", href: "https://enpointeadwisers.com/", logoUrl: "https://enpointeadwisers.com/wp-content/uploads/2024/02/EPA-Logo-Black.png", hint: "company logo" },
 ];
 
 
