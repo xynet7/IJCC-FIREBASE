@@ -245,6 +245,12 @@ const nextConfig: NextConfig = {
         hostname: 'aamidainfotech.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.ibb.co',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
