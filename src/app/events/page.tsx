@@ -22,6 +22,17 @@ const events = [
     href: "https://www.instagram.com/p/C9_u1dZSE2y/",
   },
   {
+    title: "One Day Trip to Rajasthan",
+    date: "2025-10-11",
+    displayDate: "October 11, 2025",
+    time: "11:00 AM - 6:00 PM",
+    location: "Star Mall Outer Plaza & AJU Nagomi Family Dining. Contact: 98711 59420 (WhatsApp)",
+    description: "Organized by AJU Japanese Hotel, enjoy a day trip to experience the culture of Rajasthan.",
+    imageUrl: "https://i.postimg.cc/3xCPnydB/Matsuri-Bigposter.png",
+    hint: "rajasthan trip",
+    isVertical: true,
+  },
+  {
     title: "INDIA - JAPAN: SHAPING THE FUTURE IN RAPIDLY EVOLVING BUSINESS ECOSYSTEM",
     date: "2025-11-07",
     displayDate: "November 7, 2025",
