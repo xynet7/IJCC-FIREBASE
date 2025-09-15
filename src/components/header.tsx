@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -47,7 +46,7 @@ const logoUrl = "https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png";
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a"> & { title: string, icon: React.ReactNode }
+  React.ComponentPropsWithoutRef<"a"> & { title: string, icon?: React.ReactNode }
 >(({ className, title, children, icon, ...props }, ref) => {
   return (
     <li>
@@ -60,11 +59,8 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="flex items-center gap-x-2">
-             <div className="text-primary">{icon}</div>
-            <div className="text-sm font-medium leading-none">{title}</div>
-          </div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          <div className="text-sm font-medium leading-none">{title}</div>
+           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
         </a>
@@ -98,13 +94,12 @@ export function AppHeader() {
                                     {link.label}
                                 </NavigationMenuTrigger>
                                 <NavigationMenuContent>
-                                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] lg:w-[600px] ">
                                         {link.submenu.map((component) => (
                                         <ListItem
                                             key={component.title}
                                             title={component.title}
                                             href={component.href}
-                                            icon={component.icon}
                                         >
                                             {component.description}
                                         </ListItem>
@@ -198,5 +193,3 @@ export function AppHeader() {
     </header>
   );
 }
-
-    
