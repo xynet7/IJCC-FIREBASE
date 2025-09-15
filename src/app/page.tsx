@@ -178,11 +178,11 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid max-w-3xl items-start gap-8 mt-12">
+          <div className="mx-auto grid max-w-sm sm:max-w-none sm:grid-cols-2 lg:grid-cols-4 items-start gap-8 mt-12">
             {features.map((feature) => (
-              <Card key={feature.title} className="flex flex-col transform transition-transform duration-300 hover:-translate-y-2">
+              <Card key={feature.title} className="flex flex-col transform transition-transform duration-300 hover:-translate-y-2 h-full">
                 <CardHeader className="flex-row items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
                     {feature.icon}
                   </div>
                   <CardTitle className="font-headline text-xl">{feature.title}</CardTitle>
