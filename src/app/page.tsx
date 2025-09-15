@@ -204,7 +204,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 md:py-32">
+      <section className="py-12 md:py-16">
         <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                 <div className="space-y-2">
@@ -230,7 +230,7 @@ export default function Home() {
       </section>
 
 
-      <section className="py-20 md:py-32">
+      <section className="py-12 md:py-16">
         <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
           <div className="space-y-3">
             <h2 className="text-3xl font-headline tracking-tighter md:text-4xl/tight">
@@ -252,5 +252,3 @@ export default function Home() {
     </>
   );
 }
-
-    
