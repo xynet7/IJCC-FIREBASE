@@ -42,14 +42,14 @@ export default function GalleryPage() {
                 />
               </div>
             </DialogTrigger>
-            <DialogContent className="max-w-4xl h-[80vh] p-0 bg-transparent border-none">
-              <Image
-                src={image.src}
-                alt={image.alt}
-                layout="fill"
-                objectFit="contain"
-                className="rounded-lg"
-              />
+            <DialogContent className="max-w-7xl w-full h-[90vh] p-0 bg-transparent border-none">
+                <Image
+                    src={image.src}
+                    alt={image.alt}
+                    layout="fill"
+                    objectFit="contain"
+                    className="rounded-lg"
+                />
             </DialogContent>
           </Dialog>
         ))}
@@ -57,3 +57,5 @@ export default function GalleryPage() {
     </div>
   );
 }
+
+    

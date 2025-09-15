@@ -15,25 +15,25 @@ const features = [
   {
     icon: <Calendar className="h-8 w-8 text-primary" />,
     title: "Dynamic Event Calendar",
-    description: "Stay updated with our interactive calendar of upcoming events, seminars, and workshops. Plan your participation and network with industry leaders.",
+    description: "Stay updated with our interactive calendar of upcoming events, seminars, and workshops. Plan your participation and network with industry leaders from both India and Japan. Never miss an opportunity to connect.",
     href: "/events",
   },
   {
     icon: <Users className="h-8 w-8 text-primary" />,
     title: "Membership Directory",
-    description: "Connect with fellow members through our comprehensive and searchable directory. Find partners, clients, and collaborators to grow your business.",
+    description: "Connect with a diverse network of professionals, businesses, and organizations. Our comprehensive directory helps you find partners, clients, and collaborators to foster growth and innovation.",
     href: "/members",
   },
   {
     icon: <BookOpen className="h-8 w-8 text-primary" />,
     title: "Resource Library",
-    description: "Access a rich repository of documents, JLPT papers, market reports, and presentations. Enhance your knowledge and stay ahead of the curve.",
+    description: "Access a rich repository of documents, JLPT papers, market reports, and presentations. Enhance your knowledge and stay ahead of the curve with our curated collection of valuable resources.",
     href: "/resources",
   },
   {
     icon: <Mail className="h-8 w-8 text-primary" />,
     title: "Join Us",
-    description: "Become a part of our thriving community. Get in touch with us for any inquiries, support, or to start your membership application today.",
+    description: "Become a part of our thriving community. Get in touch with us for any inquiries, support, or to start your membership application today and unlock a world of opportunities.",
     href: "/contact",
   },
 ];
@@ -47,6 +47,11 @@ const partners = [
 ];
 
 const heroItems = [
+   {
+    type: 'video',
+    src: "https://www.youtube.com/embed/WLIv7HnZ_fE?autoplay=1&mute=1&controls=0&loop=1&playlist=WLIv7HnZ_fE",
+    alt: "Indo-Japan collaboration video",
+  },
   {
     type: 'image',
     src: "https://static.investindia.gov.in/s3fs-public/2021-06/shutterstock_1057997963.jpg",
@@ -54,17 +59,12 @@ const heroItems = [
     hint: "flags india japan"
   },
   {
-    type: 'video',
-    src: "https://www.youtube.com/embed/WLIv7HnZ_fE?autoplay=1&mute=1&controls=0&loop=1&playlist=WLIv7HnZ_fE",
-    alt: "Indo-Japan collaboration video",
-  },
-  {
     type: 'image',
     src: "https://imgcp.aacdn.jp/img-a/1200/900/global-aaj-front/article/2015/12/565f05f621364_565f018e5feb3_1467636135.jpg",
     alt: "Japanese cherry blossoms",
     hint: "cherry blossom"
   },
-]
+];
 
 
 export default function Home() {
@@ -252,28 +252,5 @@ export default function Home() {
     </>
   );
 }
-    
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-
