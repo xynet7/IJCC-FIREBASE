@@ -108,7 +108,7 @@ export function AppHeader() {
                 </Link>
               </Button>
               <Button asChild variant="ghost" size="icon">
-                <Link href="https://www.facebook.com/people/Indo-Japan-Chamber-of-Commerce/100069527786438/" target="_blank" rel="noopener noreferrer">
+                <Link href="https://www.facebook.com/people/Indo-Japan-Chamber-of-Commerce/61573931145126/" target="_blank" rel="noopener noreferrer">
                   <Facebook className="h-5 w-5" />
                   <span className="sr-only">Facebook</span>
                 </Link>
@@ -175,7 +175,7 @@ export function AppHeader() {
                       </Link>
                     </Button>
                      <Button asChild variant="ghost">
-                      <Link href="https://www.facebook.com/people/Indo-Japan-Chamber-of-Commerce/100069527786438/" target="_blank" rel="noopener noreferrer">
+                      <Link href="https://www.facebook.com/people/Indo-Japan-Chamber-of-Commerce/61573931145126/" target="_blank" rel="noopener noreferrer">
                         <Facebook className="mr-2"/> Facebook
                       </Link>
                     </Button>
