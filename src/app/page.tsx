@@ -168,8 +168,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 md:py-32 bg-secondary">
-        <div className="container px-4 md:px-6">
+      <section 
+        className="py-20 md:py-32 bg-secondary relative bg-cover bg-center"
+        style={{ backgroundImage: "url('https://i.postimg.cc/26Pq3zBL/background1.png')" }}
+      >
+        <div className="absolute inset-0 bg-secondary/80 backdrop-blur-sm"></div>
+        <div className="container px-4 md:px-6 relative">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Key Features</div>
