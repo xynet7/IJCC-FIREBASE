@@ -230,7 +230,7 @@ export default function Home() {
       </section>
 
 
-      <section className="py-12 md:py-16">
+      <section className="py-8 md:py-12">
         <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
           <div className="space-y-3">
             <h2 className="text-3xl font-headline tracking-tighter md:text-4xl/tight">
