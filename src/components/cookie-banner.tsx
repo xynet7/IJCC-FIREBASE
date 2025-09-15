@@ -30,6 +30,8 @@ export function CookieBanner() {
         showBanner ? "translate-y-0" : "translate-y-full"
       )}
     >
+
+      //Nayan was here
         {showBanner && (
              <div className="bg-secondary/95 backdrop-blur-sm border-t p-4 md:p-6">
                 <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
