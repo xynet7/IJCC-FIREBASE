@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const events = [
   {
@@ -18,7 +19,7 @@ const events = [
     description: "Experience the vibrant culture of Japan in India! Organized by AJU Japanese Hotel.",
     imageUrl: "https://i.postimg.cc/3xCPnydB/Matsuri-Bigposter.png",
     hint: "japan festival",
-    isVertical: true,
+    isFeatured: true,
   },
   {
     title: "INDIA - JAPAN: SHAPING THE FUTURE IN RAPIDLY EVOLVING BUSINESS ECOSYSTEM",
@@ -88,18 +89,21 @@ export default function EventsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
           {events.map((event, index) => (
-            <Card key={index} className="flex flex-col md:flex-row overflow-hidden">
+            <Card key={index} className={cn("flex flex-col overflow-hidden", !event.isFeatured && "md:flex-row")}>
               {event.imageUrl && (
-                 <div className={`relative ${event.isVertical ? 'w-full md:w-1/3' : 'w-full h-64 md:h-auto md:w-1/2'} flex-shrink-0`}>
+                 <div className={cn("relative flex-shrink-0", 
+                    event.isFeatured ? "w-full aspect-[1/1.4]" :
+                    event.isVertical ? 'w-full md:w-1/3' : 'w-full h-64 md:h-auto md:w-1/2'
+                 )}>
                   {event.href ? (
                     <Link href={event.href} target="_blank" rel="noopener noreferrer">
                       <Image 
                           src={event.imageUrl} 
                           alt={event.title} 
                           layout="fill" 
-                          objectFit="cover"
+                          objectFit={event.isFeatured ? "contain" : "cover"}
                           data-ai-hint={event.hint}
-                          className="transition-transform duration-300 hover:scale-105"
+                          className={cn(!event.isFeatured && "transition-transform duration-300 hover:scale-105")}
                       />
                     </Link>
                   ) : (
@@ -107,7 +111,7 @@ export default function EventsPage() {
                         src={event.imageUrl} 
                         alt={event.title} 
                         layout="fill" 
-                        objectFit="cover"
+                        objectFit={event.isFeatured ? "contain" : "cover"}
                         data-ai-hint={event.hint}
                     />
                   )}
