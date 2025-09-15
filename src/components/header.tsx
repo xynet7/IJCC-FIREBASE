@@ -19,11 +19,11 @@ import {
 import React from "react";
 
 const servicesSubmenu = [
-    { title: "For Indian Companies", href: "/services#indian-smes", description: "Market access, capacity building, and advisory for Indian businesses looking to engage with Japan.", icon: <Handshake/> },
-    { title: "For Japanese Companies", href: "/services#japanese-companies", description: "Market entry, business development, and talent support for Japanese firms entering India.", icon: <Building/> },
-    { title: "Company Registration (JP in IN)", href: "/services#company-registration-jp", description: "Comprehensive support for Japanese companies to establish their legal presence in India.", icon: <FileSignature/> },
-    { title: "Company Registration (IN in JP)", href: "/services#indian-companies-jp", description: "End-to-end assistance for Indian companies looking to register and operate in Japan.", icon: <FileSignature/> },
-    { title: "Digital Marketing", href: "/services#digital-services", description: "Bilingual website development, SEO, and social media marketing for cross-border success.", icon: <Globe/> },
+    { title: "For Indian Companies", href: "/services#indian-smes", description: "Market access, capacity building, and advisory for Indian businesses looking to engage with Japan." },
+    { title: "For Japanese Companies", href: "/services#japanese-companies", description: "Market entry, business development, and talent support for Japanese firms entering India." },
+    { title: "Company Registration (JP in IN)", href: "/services#company-registration-jp", description: "Comprehensive support for Japanese companies to establish their legal presence in India." },
+    { title: "Company Registration (IN in JP)", href: "/services#indian-companies-jp", description: "End-to-end assistance for Indian companies looking to register and operate in Japan." },
+    { title: "Digital Marketing", href: "/services#digital-services", description: "Bilingual website development, SEO, and social media marketing for cross-border success." },
 ];
 
 const navLinks = [
@@ -46,8 +46,8 @@ const logoUrl = "https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png";
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a"> & { title: string, icon?: React.ReactNode }
->(({ className, title, children, icon, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
@@ -94,7 +94,7 @@ export function AppHeader() {
                                     {link.label}
                                 </NavigationMenuTrigger>
                                 <NavigationMenuContent>
-                                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] lg:w-[600px] ">
+                                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                                         {link.submenu.map((component) => (
                                         <ListItem
                                             key={component.title}
