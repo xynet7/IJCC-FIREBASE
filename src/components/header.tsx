@@ -94,16 +94,16 @@ export function AppHeader() {
                                     {link.label}
                                 </NavigationMenuTrigger>
                                 <NavigationMenuContent>
-                                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                                        {link.submenu.map((component) => (
-                                        <ListItem
-                                            key={component.title}
-                                            title={component.title}
-                                            href={component.href}
-                                        >
-                                            {component.description}
-                                        </ListItem>
-                                        ))}
+                                    <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px]">
+                                      {link.submenu.map((item) => (
+                                        <li key={item.title}>
+                                          <Link href={item.href} legacyBehavior passHref>
+                                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                              {item.title}
+                                            </NavigationMenuLink>
+                                          </Link>
+                                        </li>
+                                      ))}
                                     </ul>
                                 </NavigationMenuContent>
                             </>
