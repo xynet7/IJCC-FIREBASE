@@ -8,31 +8,32 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ArrowRight, Calendar, Users, BookOpen, Mail } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
+import React from "react";
 
 
 const features = [
   {
     icon: <Calendar className="h-8 w-8 text-primary" />,
     title: "Dynamic Event Calendar",
-    description: "Stay updated with our interactive calendar of upcoming events, seminars, and workshops.",
+    description: "Stay updated with our interactive calendar of upcoming events, seminars, and workshops. Plan your participation and network with industry leaders.",
     href: "/events",
   },
   {
     icon: <Users className="h-8 w-8 text-primary" />,
     title: "Membership Directory",
-    description: "Connect with fellow members through our comprehensive and searchable directory.",
+    description: "Connect with fellow members through our comprehensive and searchable directory. Find partners, clients, and collaborators to grow your business.",
     href: "/members",
   },
   {
     icon: <BookOpen className="h-8 w-8 text-primary" />,
     title: "Resource Library",
-    description: "Access a rich repository of documents, JLPT papers, and presentations.",
+    description: "Access a rich repository of documents, JLPT papers, market reports, and presentations. Enhance your knowledge and stay ahead of the curve.",
     href: "/resources",
   },
   {
     icon: <Mail className="h-8 w-8 text-primary" />,
     title: "Join Us",
-    description: "Get in touch with us for any inquiries or support.",
+    description: "Become a part of our thriving community. Get in touch with us for any inquiries, support, or to start your membership application today.",
     href: "/contact",
   },
 ];
@@ -181,13 +182,13 @@ export default function Home() {
           <div className="mx-auto grid max-w-sm sm:max-w-none sm:grid-cols-2 lg:grid-cols-4 items-start gap-8 mt-12">
             {features.map((feature) => (
               <Card key={feature.title} className="flex flex-col transform transition-transform duration-300 hover:-translate-y-2 h-full">
-                <CardHeader className="flex-row items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
-                    {feature.icon}
+                <CardHeader className="items-center text-center">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+                    {React.cloneElement(feature.icon, { className: "h-10 w-10 text-primary" })}
                   </div>
                   <CardTitle className="font-headline text-xl">{feature.title}</CardTitle>
                 </CardHeader>
-                <CardContent className="flex-grow">
+                <CardContent className="flex-grow text-center">
                   <CardDescription>{feature.description}</CardDescription>
                 </CardContent>
                 <CardFooter>
@@ -274,3 +275,5 @@ export default function Home() {
     
 
     
+
+
