@@ -3,6 +3,7 @@ import './globals.css';
 import { AppHeader } from '@/components/header';
 import { AppFooter } from '@/components/footer';
 import { Toaster } from '@/components/ui/toaster';
+import { CookieBanner } from '@/components/cookie-banner';
 
 export const metadata: Metadata = {
   title: 'Indo-Japan Chamber of Commerce',
@@ -29,6 +30,7 @@ export default function RootLayout({
             <AppFooter />
           </div>
           <Toaster />
+          <CookieBanner />
       </body>
     </html>
   );
