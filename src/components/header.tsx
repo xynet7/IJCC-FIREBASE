@@ -20,11 +20,11 @@ import {
 import React from "react";
 
 const servicesSubmenu = [
-    { title: "For Indian Companies", href: "/services#indian-smes", icon: <Handshake />, description: "Market access, capacity building, and advisory for Indian businesses looking to engage with Japan." },
-    { title: "For Japanese Companies", href: "/services#japanese-companies", icon: <Briefcase />, description: "Market entry, business development, and talent support for Japanese firms entering India." },
-    { title: "Company Registration (JP in IN)", href: "/services#company-registration-jp", icon: <Building />, description: "Comprehensive support for Japanese companies to establish their legal presence in India." },
-    { title: "Company Registration (IN in JP)", href: "/services#indian-companies-jp", icon: <Landmark />, description: "End-to-end assistance for Indian companies looking to register and operate in Japan." },
-    { title: "Digital Marketing", href: "/services#digital-services", icon: <Globe />, description: "Bilingual website development, SEO, and social media marketing for cross-border success." },
+    { title: "For Indian Companies", href: "/services#indian-smes", icon: <Handshake className="text-primary" />, description: "Market access, capacity building, and advisory for Indian businesses looking to engage with Japan." },
+    { title: "For Japanese Companies", href: "/services#japanese-companies", icon: <Briefcase className="text-primary" />, description: "Market entry, business development, and talent support for Japanese firms entering India." },
+    { title: "Company Registration (JP in IN)", href: "/services#company-registration-jp", icon: <Building className="text-primary" />, description: "Comprehensive support for Japanese companies to establish their legal presence in India." },
+    { title: "Company Registration (IN in JP)", href: "/services#indian-companies-jp", icon: <Landmark className="text-primary" />, description: "End-to-end assistance for Indian companies looking to register and operate in Japan." },
+    { title: "Digital Marketing", href: "/services#digital-services", icon: <Globe className="text-primary" />, description: "Bilingual website development, SEO, and social media marketing for cross-border success." },
 ];
 
 const navLinks = [
@@ -46,8 +46,8 @@ const logoUrl = "https://i.postimg.cc/mkDLyKfN/JPG-LOGO-removebg-preview.png";
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<"a"> & { icon?: React.ReactNode }
+>(({ className, title, children, icon, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
@@ -59,10 +59,15 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
-           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
+          <div className="flex items-center gap-x-2">
+            {icon && <div className="mt-1">{icon}</div>}
+            <div className="flex-1">
+              <div className="text-sm font-medium leading-none">{title}</div>
+              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                {children}
+              </p>
+            </div>
+          </div>
         </a>
       </NavigationMenuLink>
     </li>
@@ -102,13 +107,9 @@ export function AppHeader() {
                                           key={item.title}
                                           title={item.title}
                                           href={item.href}
+                                          icon={item.icon}
                                         >
-                                          <div className="flex items-start gap-x-2">
-                                            <div className="mt-1">{item.icon}</div>
-                                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                                              {item.description}
-                                            </p>
-                                          </div>
+                                          {item.description}
                                         </ListItem>
                                       ))}
                                     </ul>
