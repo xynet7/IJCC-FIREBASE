@@ -135,7 +135,7 @@ const indianUniversitiesServices = {
 };
 
 const indianSMEsServices = {
-  title: "For Indian SMEs, MSMEs, Startups & Entrepreneurs",
+  title: "For Indian Businesses",
   id: "indian-smes",
   description: "The Indo-Japan Chamber of Commerce (IJCC) offers targeted support for Indian SMEs, MSMEs, startups, and entrepreneurs looking to engage with the Japanese market, fostering growth and global competitiveness.",
   categories: [
@@ -184,7 +184,7 @@ const indianSMEsServices = {
 };
 
 const japaneseSMEsServices = {
-  title: "For Japanese SMEs, MSMEs, Startups & Entrepreneurs",
+  title: "For Japanese Businesses",
   id: "japanese-smes",
   description: "The Indo-Japan Chamber of Commerce (IJCC) provides comprehensive support for Japanese SMEs, MSMEs, and startups aiming to enter and thrive in the Indian market, offering services from market research to talent acquisition.",
   categories: [
@@ -252,55 +252,55 @@ const companyRegistrationJPinINServices = {
       title: "Company Incorporation Support",
       icon: <FileSignature className="h-8 w-8 text-primary" />,
       points: [
-        { main: "Preparation & filing with MCA (Ministry of Corporate Affairs)." },
-        { main: "Assistance with MoA & AoA drafting (aligned with Japanese parent company’s goals)." },
-        { main: "Digital signatures & Director Identification Number (DIN) processing." },
-        { main: "Obtaining Certificate of Incorporation." },
+        "Preparation & filing with MCA (Ministry of Corporate Affairs).",
+        "Assistance with MoA & AoA drafting (aligned with Japanese parent company’s goals).",
+        "Digital signatures & Director Identification Number (DIN) processing.",
+        "Obtaining Certificate of Incorporation.",
       ],
     },
     {
       title: "Regulatory & Legal Compliance",
       icon: <Landmark className="h-8 w-8 text-primary" />,
       points: [
-        { main: "RBI approvals (for Liaison/Branch/Project office)." },
-        { main: "PAN, TAN & GST registration." },
-        { main: "Import Export Code (IEC) for trading companies." },
-        { main: "Compliance with FEMA, Companies Act, and local state laws." },
+        "RBI approvals (for Liaison/Branch/Project office).",
+        "PAN, TAN & GST registration.",
+        "Import Export Code (IEC) for trading companies.",
+        "Compliance with FEMA, Companies Act, and local state laws.",
       ],
     },
     {
       title: "Office & Infrastructure Solutions",
       icon: <Building2 className="h-8 w-8 text-primary" />,
       points: [
-        { main: "Assistance in finding registered office address (temporary/virtual/long-term)." },
-        { main: "Support for setting up physical offices, warehouses, or industrial space." },
+        "Assistance in finding registered office address (temporary/virtual/long-term).",
+        "Support for setting up physical offices, warehouses, or industrial space.",
       ],
     },
     {
         title: "Banking & Financial Setup",
         icon: <Wallet className="h-8 w-8 text-primary" />,
         points: [
-            { main: "Facilitation of bank account opening for Japanese entities in India." },
-            { main: "Guidance on foreign remittance and repatriation of profits." },
-            { main: "Connections with Indian and Japanese banks operating in India." },
+            "Facilitation of bank account opening for Japanese entities in India.",
+            "Guidance on foreign remittance and repatriation of profits.",
+            "Connections with Indian and Japanese banks operating in India.",
         ]
     },
     {
         title: "HR & Talent Support",
         icon: <Users2 className="h-8 w-8 text-primary" />,
         points: [
-            { main: "Recruitment of skilled Indian workforce." },
-            { main: "Access to SSW/TITP programs for blue-collar needs." },
-            { main: "Cross-cultural training for Japanese managers working in India." },
+            "Recruitment of skilled Indian workforce.",
+            "Access to SSW/TITP programs for blue-collar needs.",
+            "Cross-cultural training for Japanese managers working in India.",
         ]
     },
     {
         title: "Post-Incorporation Support",
         icon: <ConciergeBell className="h-8 w-8 text-primary" />,
         points: [
-            { main: "Ongoing legal, tax, and compliance advisory." },
-            { main: "Secretarial services (ROC filings, board meetings, annual reports)." },
-            { main: "Advisory on expansion, mergers, acquisitions, or JV structuring." },
+            "Ongoing legal, tax, and compliance advisory.",
+            "Secretarial services (ROC filings, board meetings, annual reports).",
+            "Advisory on expansion, mergers, acquisitions, or JV structuring.",
         ]
     }
   ],
@@ -332,55 +332,55 @@ const companyRegistrationINinJPServices = {
       title: "Company Incorporation Support",
       icon: <FileSignature className="h-8 w-8 text-primary" />,
       points: [
-        { main: "Drafting and filing documents (Articles of Incorporation, company seal, notarization)." },
-        { main: "Assistance with office address (registered office, virtual office, co-working space)." },
-        { main: "Support in opening Japanese bank accounts." },
-        { main: "Registration with Legal Affairs Bureau in Japan." },
-        { main: "Tax registration: National Tax Agency (NTA) for corporate tax, consumption tax, etc." },
+        "Drafting and filing documents (Articles of Incorporation, company seal, notarization).",
+        "Assistance with office address (registered office, virtual office, co-working space).",
+        "Support in opening Japanese bank accounts.",
+        "Registration with Legal Affairs Bureau in Japan.",
+        "Tax registration: National Tax Agency (NTA) for corporate tax, consumption tax, etc.",
       ],
     },
     {
       title: "Regulatory & Compliance Assistance",
       icon: <Landmark className="h-8 w-8 text-primary" />,
       points: [
-        { main: "Help with immigration/visa procedures for Indian founders or key employees." },
-        { main: "Social insurance, payroll, and HR compliance setup." },
-        { main: "Intellectual Property Rights (IPR) advisory – patents, trademarks in Japan." },
-        { main: "Guidance on Japanese packaging, product quality, and safety standards." },
+        "Help with immigration/visa procedures for Indian founders or key employees.",
+        "Social insurance, payroll, and HR compliance setup.",
+        "Intellectual Property Rights (IPR) advisory – patents, trademarks in Japan.",
+        "Guidance on Japanese packaging, product quality, and safety standards.",
       ],
     },
     {
       title: "Business Development Support",
       icon: <Handshake className="h-8 w-8 text-primary" />,
       points: [
-        { main: "Connecting with Japanese distributors, investors, and partners." },
-        { main: "Access to Japanese startup ecosystems, accelerators, and VCs." },
-        { main: "Facilitating participation in trade fairs, expos, and B2B meetings in Japan." },
+        "Connecting with Japanese distributors, investors, and partners.",
+        "Access to Japanese startup ecosystems, accelerators, and VCs.",
+        "Facilitating participation in trade fairs, expos, and B2B meetings in Japan.",
       ],
     },
     {
       title: "Post-Incorporation Services",
       icon: <ConciergeBell className="h-8 w-8 text-primary" />,
       points: [
-        { main: "Accounting, taxation, and annual filings in Japan." },
-        { main: "Virtual CFO/Compliance support." },
-        { main: "Translation, interpretation, and cultural orientation for smooth business operations." },
+        "Accounting, taxation, and annual filings in Japan.",
+        "Virtual CFO/Compliance support.",
+        "Translation, interpretation, and cultural orientation for smooth business operations.",
       ],
     },
     {
       title: "Additional IJCC Value-Add",
       icon: <Award className="h-8 w-8 text-primary" />,
       points: [
-        { main: "Education & training for Indian founders on Japanese corporate culture and business etiquette." },
-        { main: "Recruitment support for hiring Japanese/Indian bilingual staff." },
-        { main: "Assistance with government incentives (JETRO programs, startup subsidies, SME grants)." },
+        "Education & training for Indian founders on Japanese corporate culture and business etiquette.",
+        "Recruitment support for hiring Japanese/Indian bilingual staff.",
+        "Assistance with government incentives (JETRO programs, startup subsidies, SME grants).",
       ],
     },
   ],
 };
 
 const digitalServices = {
-  title: "Website Development & Digital Marketing Services",
+  title: "Website Development & Digital Marketing",
   id: "digital-services",
   description: "IJCC provides bilingual website development, branding, and digital marketing services to help businesses succeed across Indian and Japanese markets.",
   categories: [
@@ -491,7 +491,7 @@ const startupSupportServices = {
 };
 
 const managementTrainingServices = {
-    title: "Japanese Management Training Programs",
+    title: "Japanese Management Training",
     id: "management-training",
     description: "The Indo-Japan Chamber of Commerce (IJCC) offers specialized training programs designed to equip Indian SMEs, MSMEs, and entrepreneurs with the proven principles of Japanese management. These programs blend global best practices with local business needs, enabling enterprises to enhance productivity, quality, and competitiveness.",
     categories: [
@@ -571,7 +571,7 @@ const ServiceSection = ({ service }: { service: any }) => (
                                 {category.points.map((point: any, index: number) => (
                                     <li key={index}>
                                         {typeof point === 'string' ? point : point.main}
-                                        {point.sub && (
+                                        {point.sub && Array.isArray(point.sub) && (
                                             <ul className="list-disc pl-6 mt-1 space-y-1">
                                                 {point.sub.map((subPoint: string, subIndex: number) => (
                                                     <li key={subIndex}>{subPoint}</li>

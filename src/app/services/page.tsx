@@ -1,8 +1,7 @@
 
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Handshake, School, Plane, Library, Lightbulb, Briefcase, Users, Building, Target, Zap, Scale, FileSignature, Landmark, Building2, Wallet, Users2, ConciergeBell, Globe, Megaphone, Palette, Sparkles, Award, University, GraduationCap } from "lucide-react";
+import { Handshake, School, Lightbulb, Briefcase, Building, Landmark, Globe, Zap, University } from "lucide-react";
 import Link from "next/link";
 
 const servicesList = [
@@ -55,7 +54,7 @@ const servicesList = [
       description: "Fostering innovation and entrepreneurship by connecting startups with investors and markets."
     },
     {
-      title: "Japanese Management Training Programs",
+      title: "Japanese Management Training",
       id: "management-training",
       icon: <Zap className="h-10 w-10 text-primary" />,
       description: "Equipping Indian businesses with the proven principles of Japanese management."
