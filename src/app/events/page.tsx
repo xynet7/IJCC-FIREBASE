@@ -10,18 +10,6 @@ import Link from "next/link";
 
 const events = [
   {
-    title: "Matsuri - The Japan Fest",
-    date: "2025-10-26",
-    displayDate: "October 26 & 27, 2025",
-    time: "11:00 AM - 9:00 PM",
-    location: "DLF Cyberpark, Gurugram",
-    description: "Experience the vibrant culture of Japan with food, music, and art at the biggest Japan festival in North India.",
-    imageUrl: "https://i.postimg.cc/3xCPnydB/Matsuri-Bigposter.png",
-    hint: "japan festival",
-    isVertical: true,
-    href: "https://www.instagram.com/p/C9_u1dZSE2y/",
-  },
-  {
     title: "One Day Trip to Rajasthan",
     date: "2025-10-11",
     displayDate: "October 11, 2025",
