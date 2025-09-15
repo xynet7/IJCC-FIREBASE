@@ -19,7 +19,7 @@ const events = [
     description: "Experience the vibrant culture of Japan in India! Organized by AJU Japanese Hotel.",
     imageUrl: "https://i.postimg.cc/3xCPnydB/Matsuri-Bigposter.png",
     hint: "japan festival",
-    isFeatured: true,
+    isVertical: true,
   },
   {
     title: "INDIA - JAPAN: SHAPING THE FUTURE IN RAPIDLY EVOLVING BUSINESS ECOSYSTEM",
@@ -101,7 +101,7 @@ export default function EventsPage() {
                           src={event.imageUrl} 
                           alt={event.title} 
                           layout="fill" 
-                          objectFit={event.isFeatured ? "contain" : "cover"}
+                          objectFit={event.isFeatured ? "contain" : (event.isVertical ? "contain" : "cover")}
                           data-ai-hint={event.hint}
                           className={cn(!event.isFeatured && "transition-transform duration-300 hover:scale-105")}
                       />
@@ -111,7 +111,7 @@ export default function EventsPage() {
                         src={event.imageUrl} 
                         alt={event.title} 
                         layout="fill" 
-                        objectFit={event.isFeatured ? "contain" : "cover"}
+                        objectFit={event.isFeatured ? "contain" : (event.isVertical ? "contain" : "cover")}
                         data-ai-hint={event.hint}
                     />
                   )}
