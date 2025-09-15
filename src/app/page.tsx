@@ -47,15 +47,15 @@ const partners = [
 
 const heroItems = [
   {
-    type: 'video',
-    src: "https://www.youtube.com/embed/WLIv7HnZ_fE?autoplay=1&mute=1&controls=0&loop=1&playlist=WLIv7HnZ_fE",
-    alt: "Indo-Japan collaboration video",
-  },
-  {
     type: 'image',
     src: "https://static.investindia.gov.in/s3fs-public/2021-06/shutterstock_1057997963.jpg",
     alt: "India and Japan flags",
     hint: "flags india japan"
+  },
+  {
+    type: 'video',
+    src: "https://www.youtube.com/embed/WLIv7HnZ_fE?autoplay=1&mute=1&controls=0&loop=1&playlist=WLIv7HnZ_fE",
+    alt: "Indo-Japan collaboration video",
   },
   {
     type: 'image',
@@ -178,7 +178,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 mt-12">
+          <div className="mx-auto grid max-w-3xl items-start gap-8 mt-12">
             {features.map((feature) => (
               <Card key={feature.title} className="flex flex-col transform transition-transform duration-300 hover:-translate-y-2">
                 <CardHeader className="flex-row items-center gap-4">
