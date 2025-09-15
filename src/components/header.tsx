@@ -20,11 +20,11 @@ import {
 import React from "react";
 
 const servicesSubmenu = [
-    { title: "For Indian Companies", href: "/services#indian-smes", description: "Market access, capacity building, and advisory for Indian businesses looking to engage with Japan." },
-    { title: "For Japanese Companies", href: "/services#japanese-companies", description: "Market entry, business development, and talent support for Japanese firms entering India." },
-    { title: "Company Registration (JP in IN)", href: "/services#company-registration-jp", description: "Comprehensive support for Japanese companies to establish their legal presence in India." },
-    { title: "Company Registration (IN in JP)", href: "/services#indian-companies-jp", description: "End-to-end assistance for Indian companies looking to register and operate in Japan." },
-    { title: "Digital Marketing", href: "/services#digital-services", description: "Bilingual website development, SEO, and social media marketing for cross-border success." },
+    { title: "For Indian Companies", href: "/services#indian-smes", icon: <Handshake />, description: "Market access, capacity building, and advisory for Indian businesses looking to engage with Japan." },
+    { title: "For Japanese Companies", href: "/services#japanese-companies", icon: <Briefcase />, description: "Market entry, business development, and talent support for Japanese firms entering India." },
+    { title: "Company Registration (JP in IN)", href: "/services#company-registration-jp", icon: <Building />, description: "Comprehensive support for Japanese companies to establish their legal presence in India." },
+    { title: "Company Registration (IN in JP)", href: "/services#indian-companies-jp", icon: <Landmark />, description: "End-to-end assistance for Indian companies looking to register and operate in Japan." },
+    { title: "Digital Marketing", href: "/services#digital-services", icon: <Globe />, description: "Bilingual website development, SEO, and social media marketing for cross-border success." },
 ];
 
 const navLinks = [
@@ -78,7 +78,7 @@ export function AppHeader() {
       <div className="container flex h-24 items-center justify-between">
         <div className="flex items-center gap-4">
             <Link href="/" className="flex items-center gap-4">
-              <Image src={logoUrl} alt="Indo-Japan Chamber of Commerce Logo" width={100} height={100} className="h-20 w-auto" />
+              <Image src={logoUrl} alt="Indo-Japan Chamber of Commerce Logo" width={140} height={140} className="h-20 w-auto" />
             </Link>
         </div>
 
@@ -98,13 +98,18 @@ export function AppHeader() {
                                 <NavigationMenuContent>
                                     <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px]">
                                       {link.submenu.map((item) => (
-                                        <li key={item.title}>
-                                          <Link href={item.href} legacyBehavior passHref>
-                                            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent w-full justify-start")}>
-                                              {item.title}
-                                            </NavigationMenuLink>
-                                          </Link>
-                                        </li>
+                                        <ListItem
+                                          key={item.title}
+                                          title={item.title}
+                                          href={item.href}
+                                        >
+                                          <div className="flex items-start gap-x-2">
+                                            <div className="mt-1">{item.icon}</div>
+                                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                              {item.description}
+                                            </p>
+                                          </div>
+                                        </ListItem>
                                       ))}
                                     </ul>
                                 </NavigationMenuContent>
@@ -196,5 +201,3 @@ export function AppHeader() {
     </header>
   );
 }
-
-    
