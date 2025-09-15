@@ -39,7 +39,6 @@ const navLinks = [
   { href: "/events", label: "Events" },
   { href: "/resources", label: "Resources" },
   { href: "/contact", label: "Contact" },
-  { href: "/gallery", label: "Gallery" }
 ];
 
 const logoUrl = "https://www.ijcc.in/images/JPG_LOGO-removebg-preview.png";
@@ -89,6 +88,8 @@ export function AppHeader() {
                         {link.submenu ? (
                             <>
                                 <NavigationMenuTrigger className={cn(
+                                  navigationMenuTriggerStyle(),
+                                  "bg-transparent",
                                   pathname.startsWith(link.href) && "text-primary"
                                 )}>
                                     {link.label}
@@ -111,6 +112,7 @@ export function AppHeader() {
                             <Link href={link.href} legacyBehavior passHref>
                                 <NavigationMenuLink className={cn(
                                     navigationMenuTriggerStyle(),
+                                    "bg-transparent",
                                     pathname === link.href && "text-primary"
                                 )}>
                                     {link.label}
