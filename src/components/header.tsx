@@ -1,10 +1,11 @@
 
+
 "use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Landmark, Menu, Instagram, Linkedin, Facebook, ChevronDown, Mail, Handshake, Briefcase, FileSignature, Globe, Building } from "lucide-react";
+import { Landmark, Menu, Instagram, Linkedin, Facebook, ChevronDown, Mail, Handshake, Briefcase, FileSignature, Globe, Building, School, University, Lightbulb, Zap } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -20,11 +21,15 @@ import {
 import React from "react";
 
 const servicesSubmenu = [
-    { title: "For Indian Companies", href: "/services#indian-smes", icon: <Handshake className="text-primary" />, description: "Market access, capacity building, and advisory for Indian businesses looking to engage with Japan." },
-    { title: "For Japanese Companies", href: "/services#japanese-companies", icon: <Briefcase className="text-primary" />, description: "Market entry, business development, and talent support for Japanese firms entering India." },
-    { title: "Company Registration (JP in IN)", href: "/services#company-registration-jp", icon: <Building className="text-primary" />, description: "Comprehensive support for Japanese companies to establish their legal presence in India." },
-    { title: "Company Registration (IN in JP)", href: "/services#indian-companies-jp", icon: <Landmark className="text-primary" />, description: "End-to-end assistance for Indian companies looking to register and operate in Japan." },
-    { title: "Digital Marketing", href: "/services#digital-services", icon: <Globe className="text-primary" />, description: "Bilingual website development, SEO, and social media marketing for cross-border success." },
+    { title: "For Indian Schools", href: "/services#indian-schools", icon: <School className="text-primary" />, description: "Cultural exchange, language programs, and partnerships for K-12 institutions." },
+    { title: "For Indian Universities", href: "/services#indian-universities", icon: <University className="text-primary" />, description: "Academic collaboration, internships, and career guidance for higher education." },
+    { title: "For Indian Businesses", href: "/services#indian-smes", icon: <Handshake className="text-primary" />, description: "Market access, capacity building, and advisory for Indian SMEs & startups." },
+    { title: "For Japanese Businesses", href: "/services#japanese-smes", icon: <Briefcase className="text-primary" />, description: "Market entry, B2B matchmaking, and talent support for Japanese firms in India." },
+    { title: "Company Registration (JP in IN)", href: "/services#company-registration-jp-in", icon: <Building className="text-primary" />, description: "End-to-end legal and compliance support for Japanese companies establishing in India." },
+    { title: "Company Registration (IN in JP)", href: "/services#company-registration-in-jp", icon: <Landmark className="text-primary" />, description: "Comprehensive assistance for Indian companies registering their business in Japan." },
+    { title: "Digital & Marketing", href: "/services#digital-services", icon: <Globe className="text-primary" />, description: "Bilingual web development, SEO, and SMM for cross-border success." },
+    { title: "Startup Support", href: "/services#startup-support", icon: <Lightbulb className="text-primary" />, description: "Incubation, mentorship, and investor connections for Indo-Japan startups." },
+    { title: "Management Training", href: "/services#management-training", icon: <Zap className="text-primary" />, description: "Specialized training in Kaizen, Lean, TQM, and other Japanese management practices." },
 ];
 
 const navLinks = [
@@ -101,7 +106,7 @@ export function AppHeader() {
                                     {link.label}
                                 </NavigationMenuTrigger>
                                 <NavigationMenuContent>
-                                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] lg:grid-cols-3 lg:w-[750px]">
                                       {link.submenu.map((item) => (
                                         <ListItem
                                           key={item.title}
