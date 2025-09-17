@@ -21,10 +21,10 @@ import {
 import React from "react";
 
 const servicesSubmenu = [
-    { title: "For Indian Schools", href: "/services/indian-schools", icon: <School className="text-primary" />, description: "Cultural exchange, language programs, and partnerships for K-12 institutions." },
-    { title: "For Indian Universities", href: "/services/indian-universities", icon: <University className="text-primary" />, description: "Academic collaboration, internships, and career guidance for higher education." },
-    { title: "For Indian Businesses", href: "/services/indian-smes", icon: <Handshake className="text-primary" />, description: "Market access, capacity building, and advisory for Indian SMEs & startups." },
-    { title: "For Japanese Businesses", href: "/services/japanese-smes", icon: <Briefcase className="text-primary" />, description: "Market entry, B2B matchmaking, and talent support for Japanese firms in India." },
+    { title: "Indian Schools", href: "/services/indian-schools", icon: <School className="text-primary" />, description: "Cultural exchange, language programs, and partnerships for K-12 institutions." },
+    { title: "Indian Universities", href: "/services/indian-universities", icon: <University className="text-primary" />, description: "Academic collaboration, internships, and career guidance for higher education." },
+    { title: "Indian Businesses", href: "/services/indian-smes", icon: <Handshake className="text-primary" />, description: "Market access, capacity building, and advisory for Indian SMEs & startups." },
+    { title: "Japanese Businesses", href: "/services/japanese-smes", icon: <Briefcase className="text-primary" />, description: "Market entry, B2B matchmaking, and talent support for Japanese firms in India." },
     { title: "Company Registration (JP in IN)", href: "/services/company-registration-jp-in", icon: <Building className="text-primary" />, description: "End-to-end legal and compliance support for Japanese companies establishing in India." },
     { title: "Company Registration (IN in JP)", href: "/services/company-registration-in-jp", icon: <Landmark className="text-primary" />, description: "Comprehensive assistance for Indian companies registering their business in Japan." },
     { title: "Digital & Marketing", href: "/services/digital-services", icon: <Globe className="text-primary" />, description: "Bilingual web development, SEO, and SMM for cross-border success." },

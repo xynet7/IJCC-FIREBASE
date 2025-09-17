@@ -5,7 +5,7 @@ import { Handshake, School, Plane, Library, Lightbulb, Briefcase, Users, Buildin
 import { notFound } from "next/navigation";
 
 const indianSchoolsServices = {
-  title: "For Indian Schools",
+  title: "Indian Schools",
   id: "indian-schools",
   description: "The Indo-Japan Chamber of Commerce (IJCC) works to strengthen educational and cultural ties between India and Japan. For Indian schools, IJCC offers a wide range of programs and services designed to provide students and educators with international exposure, cultural understanding, and future career pathways.",
   categories: [
@@ -65,7 +65,7 @@ const indianSchoolsServices = {
 };
 
 const indianUniversitiesServices = {
-    title: "For Indian Universities & College Students",
+    title: "Indian Universities",
     id: "indian-universities",
     description: "The Indo-Japan Chamber of Commerce (IJCC) is committed to building strong academic, cultural, and professional bridges between India and Japan. For universities and colleges in India, IJCC offers a range of services designed to enhance student exposure, global competencies, and career pathways.",
     categories: [
@@ -135,7 +135,7 @@ const indianUniversitiesServices = {
 };
 
 const indianSMEsServices = {
-  title: "For Indian Businesses",
+  title: "Indian Businesses",
   id: "indian-smes",
   description: "The Indo-Japan Chamber of Commerce (IJCC) offers targeted support for Indian SMEs, MSMEs, startups, and entrepreneurs looking to engage with the Japanese market, fostering growth and global competitiveness.",
   categories: [
@@ -184,7 +184,7 @@ const indianSMEsServices = {
 };
 
 const japaneseSMEsServices = {
-  title: "For Japanese Businesses",
+  title: "Japanese Businesses",
   id: "japanese-smes",
   description: "The Indo-Japan Chamber of Commerce (IJCC) provides comprehensive support for Japanese SMEs, MSMEs, and startups aiming to enter and thrive in the Indian market, offering services from market research to talent acquisition.",
   categories: [
@@ -579,6 +579,7 @@ const ServiceSection = ({ service }: { service: any }) => (
                                             </ul>
                                         )}
                                     </li>
+
                                 ))}
                             </ul>
                         </AccordionContent>
