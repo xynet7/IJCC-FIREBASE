@@ -36,7 +36,7 @@ const advisors = [
 ];
 
 const legalTeam = [
-  { name: "Mrs. Anjali Mishra", title: "Advocate, Supreme Court of India", imageUrl: "https://www.ijcc.in/images/WhatsApp%20Image%202025-03-21%20at%2011.39.40.jpeg", hint: "woman face", bio: "As an advocate in the Supreme Court of India, Mrs. Anjali Mishra provides critical legal counsel to the chamber. Her expertise in international law is essential for members navigating cross-border business transactions." },
+  { name: "Mrs. Anjali Mishra", title: "Advocate, Supreme Court of India", imageUrl: "https://i.postimg.cc/j2KmhYvS/anjali.jpg", hint: "woman face", bio: "As an advocate in the Supreme Court of India, Mrs. Anjali Mishra provides critical legal counsel to the chamber. Her expertise in international law is essential for members navigating cross-border business transactions." },
   { name: "father in law", title: "Legal Advisor", imageUrl: "https://i.postimg.cc/G3znGcZB/Whats-App-Image-2025-09-15-at-16-03-08-1d052ac1.jpg", hint: "man face", bio: "Biography will be updated soon." },
 ];
 
@@ -167,4 +167,6 @@ export default function AboutPage() {
 }
 
     
+    
+
     
