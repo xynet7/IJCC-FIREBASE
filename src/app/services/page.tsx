@@ -6,25 +6,25 @@ import Link from "next/link";
 
 const servicesList = [
     {
-      title: "For Indian Schools",
+      title: "Indian Schools",
       id: "indian-schools",
       icon: <School className="h-10 w-10 text-primary" />,
       description: "Strengthening educational and cultural ties between India and Japan for K-12 students and educators."
     },
     {
-      title: "For Indian Universities & College Students",
+      title: "Indian Universities & College Students",
       id: "indian-universities",
       icon: <University className="h-10 w-10 text-primary" />,
       description: "Building academic, cultural, and professional bridges for higher education students in India."
     },
     {
-      title: "For Indian Businesses",
+      title: "Indian Businesses",
       id: "indian-smes",
       icon: <Handshake className="h-10 w-10 text-primary" />,
       description: "Support for Indian SMEs, MSMEs, startups, and entrepreneurs to engage with the Japanese market."
     },
     {
-      title: "For Japanese Businesses",
+      title: "Japanese Businesses",
       id: "japanese-smes",
       icon: <Briefcase className="h-10 w-10 text-primary" />,
       description: "Support for Japanese SMEs, MSMEs, and startups to enter and grow in the Indian market."
