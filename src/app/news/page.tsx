@@ -10,7 +10,7 @@ const newsArticles = [
     title: "Mela Mela Anime Japan returns with double the Japanese content in Delhi",
     date: "2025-09-02",
     description: "The popular Anime and Japanese cultural festival, 'Mela Mela Anime Japan,' is set to return to New Delhi, promising an even bigger and more immersive experience for fans.",
-    imageUrl: "https://www.asiancommunitynews.com/wp-content/uploads/2024/08/Mela-Mela-Anime-Japan-ACN-1-750x430.jpg",
+    imageUrl: "https://www.asiancommunitynews.com/wp-content/uploads/2024/05/1-Copy-1-716x430.jpg",
     hint: "anime festival",
     href: "https://www.asiancommunitynews.com/mela-mela-anime-japan-returns-with-double-the-japanese-content-in-delhi/",
   },
