@@ -18,7 +18,7 @@ const newsArticles = [
     title: "Japanese autumn ‘Matsuri’ Utsav brings authentic Japanese experience in Gurugram on Oct 11",
     date: "2025-09-16",
     description: "Gurugram witnessed a slice of Japan as the AJU Japanese hotel, in association with the Indo-Japan Chamber of Commerce (IJCC) and other Japanese organizations, hosted the ‘Matsuri’ Utsav.",
-    imageUrl: "https://www.asiancommunitynews.com/wp-content/uploads/2024/10/Matsuri-Utsav-Gurugram-750x430.jpg",
+    imageUrl: "https://www.asiancommunitynews.com/wp-content/uploads/2025/09/AJUMATSURI-Copy-750x430.jpg",
     hint: "japan festival",
     href: "https://www.asiancommunitynews.com/japanese-autumn-matsuri-utsav-brings-authentic-japanese-experience-in-gurugram-on-oct-11/",
   },
