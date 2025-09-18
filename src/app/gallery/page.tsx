@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -6,6 +5,7 @@ import { useState } from 'react';
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const galleryImages = [
+    { src: "https://i.postimg.cc/kX64VzGb/gallery1.jpg", alt: "Gallery image 10", hint: "event" },
     { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.14.jpeg", alt: "Gallery image 1", hint: "event business" },
     { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.15%20(1).jpeg", alt: "Gallery image 2", hint: "people meeting" },
     { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.15%20(2).jpeg", alt: "Gallery image 3", hint: "conference presentation" },
@@ -57,5 +57,3 @@ export default function GalleryPage() {
     </div>
   );
 }
-
-    
