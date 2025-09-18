@@ -7,6 +7,14 @@ import { ArrowRight, Calendar } from "lucide-react";
 
 const newsArticles = [
   {
+    title: "Japanese autumn ‘Matsuri’ Utsav brings authentic Japanese experience in Gurugram on Oct 11",
+    date: "2025-10-11",
+    description: "Gurugram witnessed a slice of Japan as the AJU Japanese hotel, in association with the Indo-Japan Chamber of Commerce (IJCC) and other Japanese organizations, hosted the ‘Matsuri’ Utsav.",
+    imageUrl: "https://www.asiancommunitynews.com/wp-content/uploads/2024/10/Matsuri-Utsav-Gurugram-750x430.jpg",
+    hint: "japan festival",
+    href: "https://www.asiancommunitynews.com/japanese-autumn-matsuri-utsav-brings-authentic-japanese-experience-in-gurugram-on-oct-11/",
+  },
+  {
     title: "IJCCI, AIMA Forge Strategic Partnership to Boost Indo-Japanese SME, Edn, and Biz Collaboration",
     date: "2025-06-12",
     description: "The Indo-Japan Chamber of Commerce and Industry (IJCCI) and the All India Management Association (AIMA) have signed an MoU to foster collaboration between Indian and Japanese SMEs, educational institutions, and businesses.",
