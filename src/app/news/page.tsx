@@ -22,16 +22,8 @@ const newsArticles = [
     hint: "business meeting",
     href: "https://www.asiancommunitynews.com/ijcci-aima-forge-strategic-partnership-to-boost-indo-japanese-sme-edn-and-biz-collaboration/",
   },
-  {
-    title: "Japan Invites Indian Researchers for Scientific Research & Innovation",
-    date: "2025-08-15",
-    description: "The Japanese government has launched a new initiative to attract Indian researchers and scientists to collaborate on cutting-edge scientific and technological projects, strengthening bilateral ties in innovation.",
-    imageUrl: "https://www.asiancommunitynews.com/wp-content/uploads/2025/08/FromLtoRDrBalvinderShuklaMr.YujiNishikawaMr.TakashiKonishiandDrGurinderSinghatAmity2-750x430.jpg",
-    hint: "researchers meeting",
-    href: "https://www.asiancommunitynews.com/japan-invites-indian-researchers-to-conduct-scientific-research-innovation/",
-  },
 ];
-//Nayan was here
+
 export default function NewsPage() {
   return (
     <div className="container py-12">
