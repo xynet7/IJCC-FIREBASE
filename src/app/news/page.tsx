@@ -8,7 +8,7 @@ import { ArrowRight, Calendar } from "lucide-react";
 const newsArticles = [
   {
     title: "IJCCI, AIMA Forge Strategic Partnership to Boost Indo-Japanese SME, Edn, and Biz Collaboration",
-    date: "2024-08-13",
+    date: "2025-06-12",
     description: "The Indo-Japan Chamber of Commerce and Industry (IJCCI) and the All India Management Association (AIMA) have signed an MoU to foster collaboration between Indian and Japanese SMEs, educational institutions, and businesses.",
     imageUrl: "https://www.asiancommunitynews.com/wp-content/uploads/2024/08/Indo-Japan-Chamber-of-Commerce-and-Industry-IJCCI-and-All-India-Management-Association-AIMA-signing-MoU-on-Tuesday-in-New-Delhi-750x430.jpg",
     hint: "business meeting",
