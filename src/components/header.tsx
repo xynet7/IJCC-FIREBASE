@@ -184,6 +184,23 @@ export function AppHeader() {
                 </Link>
               </Button>
             </div>
+            
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Globe className="h-5 w-5" />
+                  <span className="sr-only">Toggle language</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem>
+                  English
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  日本語
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             {!loading && (
               <div className="hidden md:flex items-center gap-2">
@@ -298,3 +315,5 @@ export function AppHeader() {
     </header>
   );
 }
+
+    
