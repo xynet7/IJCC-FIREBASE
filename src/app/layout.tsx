@@ -8,6 +8,9 @@ import { CookieBanner } from '@/components/cookie-banner';
 export const metadata: Metadata = {
   title: 'Indo-Japan Chamber of Commerce',
   description: 'Fostering business and cultural ties between India and Japan.',
+  icons: {
+    icon: 'https://i.postimg.cc/mkDLyKfN/JPG-LOGO-removebg-preview.png',
+  },
 };
 
 export default function RootLayout({
