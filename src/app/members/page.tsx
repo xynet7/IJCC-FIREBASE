@@ -52,9 +52,9 @@ export default function MembersPage() {
       </div>
 
       <div className="space-y-4 my-20 text-center pt-12 border-t">
-        <h2 className="text-3xl font-headline tracking-tighter sm:text-4xl">Membership Directory</h2>
-        <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
-          Explore our network of esteemed members and businesses.
+        <h2 className="text-3xl font-headline tracking-tighter sm:text-4xl">Members, Associates & Support Organisations</h2>
+        <p className="max-w-[900px] mx-auto text-muted-foreground md:text-xl">
+          IJCC is powered by a strong network of members, associates, and support organisations who share our vision of strengthening Indo-Japan relations. Our members include businesses, educational institutions, and professionals; our associates collaborate with us on programs and initiatives; and our support organisations comprise industry bodies, government agencies, and cultural institutions that enable IJCC to deliver impactful projects. Together, they form the backbone of IJCC’s mission to connect India and Japan through business, education, culture, and innovation.
         </p>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
@@ -78,5 +78,3 @@ export default function MembersPage() {
     </div>
   );
 }
-
-    
