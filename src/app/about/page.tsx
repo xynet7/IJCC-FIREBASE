@@ -37,7 +37,7 @@ const advisors = [
 
 const legalTeam = [
   { name: "P.D Sharma", title: "Senior Advocate", imageUrl: "https://i.postimg.cc/RVBWhvf3/pd-sharma.jpg", hint: "man face", bio: "Biography will be updated soon." },
-  { name: "Mrs. Anjali Mishra", title: "Advocate, Supreme Court of India", imageUrl: "https://i.postimg.cc/kX4zvbb0/anjali1.jpg", hint: "woman face", bio: "As an advocate in the Supreme Court of India, Mrs. Anjali Mishra provides critical legal counsel to the chamber. Her expertise in international law is essential for members navigating cross-border business transactions." },
+  { name: "Mrs. Anjali Sharma", title: "Advocate, Supreme Court of India", imageUrl: "https://i.postimg.cc/kX4zvbb0/anjali1.jpg", hint: "woman face", bio: "As an advocate in the Supreme Court of India, Mrs. Anjali Sharma provides critical legal counsel to the chamber. Her expertise in international law is essential for members navigating cross-border business transactions." },
 ];
 
 const foundingMembers = [
@@ -166,6 +166,8 @@ export default function AboutPage() {
   );
 }
     
+    
+
     
 
     
