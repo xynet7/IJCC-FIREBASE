@@ -36,8 +36,8 @@ const advisors = [
 ];
 
 const legalTeam = [
-  { name: "Mr. P.D. Sharma", title: "Sr. Advocate (AOR), Supreme Court of India", imageUrl: "https://i.postimg.cc/RVBWhvf3/pd-sharma.jpg", hint: "man face", bio: "Biography will be updated soon." },
-  { name: "Mrs. Anjali Sharma", title: "Advocate, Supreme Court of India", imageUrl: "https://i.postimg.cc/kX4zvbb0/anjali1.jpg", hint: "woman face", bio: "As an advocate in the Supreme Court of India, Mrs. Anjali Sharma provides critical legal counsel to the chamber. Her expertise in international law is essential for members navigating cross-border business transactions." },
+  { name: "Mr.P.D. Sharma", title: "Sr.Advocate (AOR) Supreme Court of India", imageUrl: "https://i.postimg.cc/RVBWhvf3/pd-sharma.jpg", hint: "man face", bio: "Biography will be updated soon." },
+  { name: "Ms. Anjali Sharma", title: "Advocate, Supreme Court of India", imageUrl: "https://i.postimg.cc/kX4zvbb0/anjali1.jpg", hint: "woman face", bio: "As an advocate in the Supreme Court of India, Ms. Anjali Sharma provides critical legal counsel to the chamber. Her expertise in international law is essential for members navigating cross-border business transactions." },
 ];
 
 const foundingMembers = [
@@ -177,4 +177,5 @@ export default function AboutPage() {
     
 
     
+
 
