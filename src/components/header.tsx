@@ -99,9 +99,17 @@ export function AppHeader() {
   const { user, loading } = useAuth();
   const [currentLang, setCurrentLang] = React.useState('en');
 
+  const getCookie = (name: string) => {
+    if (typeof document === 'undefined') return null;
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop()?.split(';').shift();
+    return null;
+  }
+
   React.useEffect(() => {
     // A bit of a hack to get the current language from the Google Translate cookie
-    const langCookie = document.cookie.split('; ').find(row => row.startsWith('googtrans='));
+    const langCookie = getCookie('googtrans');
     if (langCookie) {
       const lang = langCookie.split('/')[2];
       if (['en', 'ja'].includes(lang)) {
@@ -124,7 +132,9 @@ export function AppHeader() {
     return email.charAt(0).toUpperCase();
   };
   
-  const changeLanguage = (lang: 'en' | 'ja') => {
+  const changeLanguage = (lang: string) => {
+    if (currentLang === lang) return;
+
     const googleTranslateElement = document.getElementById('google_translate_element');
     if (googleTranslateElement) {
       const select = googleTranslateElement.querySelector('select');
@@ -134,6 +144,10 @@ export function AppHeader() {
         setCurrentLang(lang);
       }
     }
+  };
+
+  const handleMobileLangChange = (lang: 'en' | 'ja') => {
+    changeLanguage(lang);
   };
 
 
@@ -222,11 +236,11 @@ export function AppHeader() {
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>Select Language</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuRadioGroup value={currentLang}>
-                  <DropdownMenuRadioItem value="en" onClick={() => changeLanguage('en')}>
+                <DropdownMenuRadioGroup value={currentLang} onValueChange={changeLanguage}>
+                  <DropdownMenuRadioItem value="en">
                     English
                   </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="ja" onClick={() => changeLanguage('ja')}>
+                  <DropdownMenuRadioItem value="ja">
                     日本語
                   </DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
@@ -305,8 +319,8 @@ export function AppHeader() {
                   </Link>
                 ))}
                   <hr className="my-2"/>
-                  <button onClick={() => changeLanguage('en')} className="text-left text-muted-foreground hover:text-primary">English</button>
-                  <button onClick={() => changeLanguage('ja')} className="text-left text-muted-foreground hover:text-primary">日本語</button>
+                  <button onClick={() => handleMobileLangChange('en')} className="text-left text-muted-foreground hover:text-primary">English</button>
+                  <button onClick={() => handleMobileLangChange('ja')} className="text-left text-muted-foreground hover:text-primary">日本語</button>
                   <hr className="my-2"/>
                    {!loading && (
                     <div className="flex flex-col gap-2">
