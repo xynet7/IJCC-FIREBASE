@@ -28,18 +28,24 @@ export function GoogleTranslate() {
       // Clean up script and element on component unmount
       const scripts = document.getElementsByTagName('script');
       for (let i = scripts.length - 1; i >= 0; i--) {
-        if (scripts[i].src.includes('translate.google.com')) {
-          scripts[i].remove();
+        const script = scripts[i];
+        if (script.src.includes('translate.google.com')) {
+          script.remove();
         }
       }
       const gtElement = document.getElementById('google_translate_element');
       if (gtElement) {
         gtElement.innerHTML = '';
       }
+      
       const googTopFrame = document.querySelector('.goog-te-gadget-simple');
       if (googTopFrame) {
         googTopFrame.remove();
       }
+      const googWrapper = document.querySelector('.skiptranslate');
+        if(googWrapper){
+            googWrapper.remove();
+        }
     };
   }, []);
 
