@@ -28,6 +28,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
@@ -95,6 +97,16 @@ ListItem.displayName = "ListItem";
 export function AppHeader() {
   const pathname = usePathname();
   const { user, loading } = useAuth();
+  const [currentLang, setCurrentLang] = React.useState('en');
+
+  React.useEffect(() => {
+    // A bit of a hack to get the current language from the Google Translate cookie
+    const langCookie = document.cookie.split('; ').find(row => row.startsWith('googtrans='));
+    if (langCookie) {
+      const lang = langCookie.split('/')[2];
+      setCurrentLang(lang);
+    }
+  }, []);
 
   const handleLogout = async () => {
     try {
@@ -108,6 +120,14 @@ export function AppHeader() {
   const getInitials = (email: string | null | undefined) => {
     if (!email) return 'U';
     return email.charAt(0).toUpperCase();
+  };
+
+  const changeLanguage = (lang: 'en' | 'ja') => {
+    // Set the cookie for Google Translate
+    document.cookie = `googtrans=/en/${lang}; path=/`;
+    setCurrentLang(lang);
+    // Reload the page to apply the translation
+    window.location.reload();
   };
 
   return (
@@ -185,12 +205,26 @@ export function AppHeader() {
               </Button>
             </div>
             
-            <Button asChild variant="ghost" size="icon">
-              <Link href="/translate">
-                <Globe className="h-5 w-5" />
-                <span className="sr-only">Translate</span>
-              </Link>
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Globe className="h-5 w-5" />
+                  <span className="sr-only">Translate</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>Select Language</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioGroup value={currentLang}>
+                  <DropdownMenuRadioItem value="en" onClick={() => changeLanguage('en')}>
+                    English
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="ja" onClick={() => changeLanguage('ja')}>
+                    日本語
+                  </DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             {!loading && (
               <div className="hidden md:flex items-center gap-2">
@@ -263,7 +297,9 @@ export function AppHeader() {
                     {link.label}
                   </Link>
                 ))}
-                <Link href="/translate" className="text-muted-foreground hover:text-primary">Translate</Link>
+                  <hr className="my-2"/>
+                  <button onClick={() => changeLanguage('en')} className="text-left text-muted-foreground hover:text-primary">English</button>
+                  <button onClick={() => changeLanguage('ja')} className="text-left text-muted-foreground hover:text-primary">日本語</button>
                   <hr className="my-2"/>
                    {!loading && (
                     <div className="flex flex-col gap-2">
@@ -306,3 +342,5 @@ export function AppHeader() {
     </header>
   );
 }
+
+    

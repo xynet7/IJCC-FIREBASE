@@ -5,6 +5,7 @@ import { AppFooter } from '@/components/footer';
 import { Toaster } from '@/components/ui/toaster';
 import { CookieBanner } from '@/components/cookie-banner';
 import { AuthProvider } from '@/context/auth-context';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Indo-Japan Chamber of Commerce',
@@ -13,6 +14,29 @@ export const metadata: Metadata = {
     icon: 'https://i.postimg.cc/mkDLyKfN/JPG-LOGO-removebg-preview.png',
   },
 };
+
+function GoogleTranslateScript() {
+  return (
+    <>
+      <div id="google_translate_element" style={{ display: 'none' }}></div>
+      <Script
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+        strategy="afterInteractive"
+      />
+      <Script id="google-translate-init" strategy="afterInteractive">
+        {`
+          function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+              pageLanguage: 'en',
+              includedLanguages: 'en,ja',
+              autoDisplay: false
+            }, 'google_translate_element');
+          }
+        `}
+      </Script>
+    </>
+  );
+}
 
 export default function RootLayout({
   children,
@@ -36,8 +60,11 @@ export default function RootLayout({
           </div>
           <Toaster />
           <CookieBanner />
+          <GoogleTranslateScript />
         </AuthProvider>
       </body>
     </html>
   );
 }
+
+    
