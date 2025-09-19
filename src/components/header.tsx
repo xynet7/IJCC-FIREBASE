@@ -133,18 +133,45 @@ export function AppHeader() {
   };
   
   const changeLanguage = (lang: string) => {
-    if (currentLang === lang) return;
-
+    setCurrentLang(lang);
     const googleTranslateElement = document.getElementById('google_translate_element');
     if (googleTranslateElement) {
-      const select = googleTranslateElement.querySelector('select');
-      if (select) {
-        select.value = lang;
-        select.dispatchEvent(new Event('change'));
-        setCurrentLang(lang);
-      }
+        const select = googleTranslateElement.querySelector('select');
+        if (select) {
+            select.value = lang;
+
+            const triggerChange = () => {
+                const event = new Event('change', { bubbles: true });
+                select.dispatchEvent(event);
+            };
+
+            // Check if the translation has already been applied
+            if (document.body.classList.contains('translated-ltr') || document.body.classList.contains('translated-rtl')) {
+                triggerChange();
+            } else {
+                // If not, wait for the widget to initialize by observing the body class
+                const observer = new MutationObserver((mutations) => {
+                    for (const mutation of mutations) {
+                        if (mutation.attributeName === 'class' && (document.body.classList.contains('translated-ltr') || document.body.classList.contains('translated-rtl'))) {
+                            triggerChange();
+                            observer.disconnect();
+                            break;
+                        }
+                    }
+                });
+
+                observer.observe(document.body, { attributes: true });
+
+                // Failsafe: if the widget is slow, trigger after a timeout
+                setTimeout(() => {
+                    triggerChange();
+                    observer.disconnect();
+                }, 1000);
+            }
+        }
     }
   };
+
 
   const handleMobileLangChange = (lang: 'en' | 'ja') => {
     changeLanguage(lang);
@@ -363,3 +390,5 @@ export function AppHeader() {
     </header>
   );
 }
+
+    
