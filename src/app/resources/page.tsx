@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,7 +13,8 @@ const resources = [
     description: "A comprehensive guide covering legal, cultural, and business etiquette for entering the Japanese market.",
     type: "Document",
     icon: <FileText className="h-8 w-8 text-primary" />,
-    isLink: false,
+    isLink: true,
+    href: "https://guide-to-japanese-business.tiiny.site",
   },
   {
     title: "Previous year JLPT Question Papers",
@@ -44,6 +46,7 @@ const resources = [
     type: "Presentation",
     icon: <Presentation className="h-8 w-8 text-primary" />,
     isLink: false,
+    href: "#"
   },
   {
     title: "Import/Export Checklist",
@@ -51,6 +54,7 @@ const resources = [
     type: "Document",
     icon: <FileText className="h-8 w-8 text-primary" />,
     isLink: false,
+    href: "#"
   },
 ];
 
@@ -83,9 +87,10 @@ export default function ResourcesPage() {
             <CardContent className="flex-grow" />
             <CardFooter>
               {resource.isLink ? (
-                <Button asChild variant="outline" className="w-full rounded-full">
-                  <Link href={resource.href!}>
-                    Access {resource.type === 'Magazine' ? 'Magazines' : resource.type === 'Self Study' ? 'Materials' : 'Papers'} <ArrowRight className="ml-2 h-4 w-4" />
+                 <Button asChild variant="outline" className="w-full rounded-full">
+                  <Link href={resource.href!} target={resource.href?.startsWith('http') ? "_blank" : "_self"} rel="noopener noreferrer">
+                    {resource.href?.startsWith('http') ? <Download className="mr-2 h-4 w-4" /> : <ArrowRight className="mr-2 h-4 w-4" />}
+                    {resource.href?.startsWith('http') ? `Download ${resource.type}` : `Access ${resource.type === 'Magazine' ? 'Magazines' : resource.type === 'Self Study' ? 'Materials' : 'Papers'}`}
                   </Link>
                 </Button>
               ) : (
