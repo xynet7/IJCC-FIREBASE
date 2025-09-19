@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Indo-Japan Chamber of Commerce',
   description: 'Fostering business and cultural ties between India and Japan.',
   icons: {
-    icon: 'https://i.postimg.cc/mkDLyKfN/JPG-LOGO-removebg-preview.png',
+    icon: 'https://media.licdn.com/dms/image/v2/D560BAQFkTSGkq7dPjA/company-logo_200_200/B56ZhfeYLOG4AU-/0/1753948456785/indo_japan_chamber_of_commerce_logo?e=1761177600&v=beta&t=HWmNGXMXfbLubZauHJpt0WVYA8CBYoCb8yItW0GewZI',
   },
 };
 
