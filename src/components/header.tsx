@@ -29,6 +29,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { GoogleTranslateWidget } from "./google-translate-widget";
 
 
 const servicesSubmenu = [
@@ -109,14 +110,6 @@ export function AppHeader() {
     return email.charAt(0).toUpperCase();
   };
 
-  const handleLanguageChange = (lang: string) => {
-    const googleTranslateElement = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-    if (googleTranslateElement) {
-      googleTranslateElement.value = lang;
-      googleTranslateElement.dispatchEvent(new Event('change'));
-    }
-  };
-
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-transparent backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-24 items-center justify-between">
@@ -192,22 +185,7 @@ export function AppHeader() {
               </Button>
             </div>
             
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Globe className="h-5 w-5" />
-                  <span className="sr-only">Toggle language</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onSelect={() => handleLanguageChange('en')}>
-                  English
-                </DropdownMenuItem>
-                <DropdownMenuItem onSelect={() => handleLanguageChange('ja')}>
-                  日本語
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <GoogleTranslateWidget />
 
             {!loading && (
               <div className="hidden md:flex items-center gap-2">

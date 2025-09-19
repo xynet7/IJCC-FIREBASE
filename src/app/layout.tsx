@@ -5,7 +5,6 @@ import { AppFooter } from '@/components/footer';
 import { Toaster } from '@/components/ui/toaster';
 import { CookieBanner } from '@/components/cookie-banner';
 import { AuthProvider } from '@/context/auth-context';
-import { GoogleTranslate } from '@/components/google-translate';
 
 export const metadata: Metadata = {
   title: 'Indo-Japan Chamber of Commerce',
@@ -29,8 +28,6 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
       </head>
       <body>
-        <div id="google_translate_element" style={{display: 'none'}}></div>
-        <GoogleTranslate />
         <AuthProvider>
           <div className="flex min-h-screen flex-col">
             <AppHeader />
