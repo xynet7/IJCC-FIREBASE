@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -29,7 +30,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { GoogleTranslateWidget } from "./google-translate-widget";
 
 
 const servicesSubmenu = [
@@ -185,7 +185,12 @@ export function AppHeader() {
               </Button>
             </div>
             
-            <GoogleTranslateWidget />
+            <Button asChild variant="ghost" size="icon">
+              <Link href="/translate">
+                <Globe className="h-5 w-5" />
+                <span className="sr-only">Translate</span>
+              </Link>
+            </Button>
 
             {!loading && (
               <div className="hidden md:flex items-center gap-2">
@@ -258,6 +263,7 @@ export function AppHeader() {
                     {link.label}
                   </Link>
                 ))}
+                <Link href="/translate" className="text-muted-foreground hover:text-primary">Translate</Link>
                   <hr className="my-2"/>
                    {!loading && (
                     <div className="flex flex-col gap-2">
