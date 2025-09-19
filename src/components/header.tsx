@@ -104,7 +104,9 @@ export function AppHeader() {
     const langCookie = document.cookie.split('; ').find(row => row.startsWith('googtrans='));
     if (langCookie) {
       const lang = langCookie.split('/')[2];
-      setCurrentLang(lang);
+      if (['en', 'ja'].includes(lang)) {
+        setCurrentLang(lang);
+      }
     }
   }, []);
 
@@ -121,14 +123,19 @@ export function AppHeader() {
     if (!email) return 'U';
     return email.charAt(0).toUpperCase();
   };
-
+  
   const changeLanguage = (lang: 'en' | 'ja') => {
-    // Set the cookie for Google Translate
-    document.cookie = `googtrans=/en/${lang}; path=/`;
-    setCurrentLang(lang);
-    // Reload the page to apply the translation
-    window.location.reload();
+    const googleTranslateElement = document.getElementById('google_translate_element');
+    if (googleTranslateElement) {
+      const select = googleTranslateElement.querySelector('select');
+      if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event('change'));
+        setCurrentLang(lang);
+      }
+    }
   };
+
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-transparent backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -342,5 +349,3 @@ export function AppHeader() {
     </header>
   );
 }
-
-    
