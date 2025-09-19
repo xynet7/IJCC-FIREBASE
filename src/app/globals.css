@@ -58,11 +58,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-body {
-  top: 0px !important;
-}
-
-.goog-te-banner-frame {
-  display: none !important;
-}
