@@ -130,10 +130,7 @@ export default function PricingPage() {
                     <Card 
                         key={tier.id} 
                         id={tier.id} 
-                        className={cn('flex flex-col h-full transition-shadow', 
-                            tier.featured && !updatingTier && 'border-primary border-2 shadow-lg',
-                            updatingTier === tier.id && 'animate-glow border-destructive border-2 shadow-lg'
-                        )}
+                        className={cn('flex flex-col h-full transition-shadow', tier.featured && 'border-primary border-2 shadow-lg')}
                     >
                         <CardHeader>
                             <CardTitle className="font-headline text-2xl">{tier.title}</CardTitle>
