@@ -35,7 +35,7 @@ const events = [
     href: "https://www.instagram.com/p/DOc9zoOkUkh/?igsh=OGpzMDRhbXA2anBt",
   },
   {
-    title: "INDIA MEETS JAPAN",
+    title: "Konnichiwa Japan",
     date: "2025-12-13",
     displayDate: "December 13 & 14, 2025",
     time: "11:00 AM - 09:00 PM",
