@@ -71,7 +71,7 @@ export function ContactForm() {
             </div>
           <div className="space-y-2">
             <Label htmlFor="inquiryType">Inquiry Regarding</Label>
-            <Select name="inquiryType" defaultValue="membership">
+            <Select name="inquiryType" defaultValue="general">
               <SelectTrigger id="inquiryType">
                 <SelectValue placeholder="Select a department" />
               </SelectTrigger>
@@ -79,6 +79,15 @@ export function ContactForm() {
                 <SelectItem value="general">General Inquiry</SelectItem>
                 <SelectItem value="membership">Membership</SelectItem>
                 <SelectItem value="events">Events</SelectItem>
+                <SelectItem value="indian-schools">Services: Indian Schools</SelectItem>
+                <SelectItem value="indian-universities">Services: Indian Universities</SelectItem>
+                <SelectItem value="indian-smes">Services: Indian Businesses</SelectItem>
+                <SelectItem value="japanese-smes">Services: Japanese Businesses</SelectItem>
+                <SelectItem value="company-registration-jp-in">Services: Company Registration (JP in IN)</SelectItem>
+                <SelectItem value="company-registration-in-jp">Services: Company Registration (IN in JP)</SelectItem>
+                <SelectItem value="digital-services">Services: Digital & Marketing</SelectItem>
+                <SelectItem value="startup-support">Services: Startup Support</SelectItem>
+                <SelectItem value="management-training">Services: Management Training</SelectItem>
               </SelectContent>
             </Select>
             {state.errors?.inquiryType && <p className="text-sm font-medium text-destructive">{state.errors.inquiryType[0]}</p>}

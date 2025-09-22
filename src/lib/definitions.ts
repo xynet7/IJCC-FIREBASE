@@ -5,7 +5,20 @@ export const ContactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email." }),
   phone: z.string().optional(),
-  inquiryType: z.enum(["general", "membership", "events"], {
+  inquiryType: z.enum([
+    "general", 
+    "membership", 
+    "events",
+    "indian-schools",
+    "indian-universities",
+    "indian-smes",
+    "japanese-smes",
+    "company-registration-jp-in",
+    "company-registration-in-jp",
+    "digital-services",
+    "startup-support",
+    "management-training"
+  ], {
     errorMap: () => ({ message: "Please select an inquiry type." }),
   }),
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
