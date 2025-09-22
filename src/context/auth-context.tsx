@@ -1,9 +1,9 @@
+
 "use client";
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
-import { Loader2 } from 'lucide-react';
 
 interface AuthContextType {
   user: User | null;
@@ -28,17 +28,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return () => unsubscribe();
   }, []);
 
-  if (loading) {
-    return (
-        <div className="flex min-h-screen items-center justify-center">
-            <Loader2 className="h-16 w-16 animate-spin text-primary" />
-        </div>
-    );
-  }
-
   return (
     <AuthContext.Provider value={{ user, loading }}>
-      {children}
+      {loading ? (
+         <div className="flex min-h-screen items-center justify-center">
+            <div className="h-16 w-16 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent" />
+        </div>
+      ) : children}
     </AuthContext.Provider>
   );
 };

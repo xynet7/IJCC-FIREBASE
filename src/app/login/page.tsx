@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
@@ -22,13 +22,20 @@ export default function LoginPage() {
   const { toast } = useToast();
   const { user, loading: authLoading } = useAuth();
 
+  useEffect(() => {
+    // Redirect if the user is already logged in and the auth state is no longer loading
+    if (!authLoading && user) {
+      router.push('/profile');
+    }
+  }, [user, authLoading, router]);
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast({ title: 'Success', description: 'Logged in successfully!' });
-      // The redirect is now handled by the effect below
+      // The redirect is now handled by the useEffect hook above
     } catch (error: any) {
       toast({
         variant: 'destructive',
@@ -39,12 +46,16 @@ export default function LoginPage() {
       setLoading(false);
     }
   };
-
-  // This effect will run when the user state changes to logged in
-  if (!authLoading && user) {
-    router.push('/profile');
+  
+  // If auth is loading, or a user is found, don't render the form to prevent flashes of content.
+  // The useEffect will handle the redirect.
+  if (authLoading || user) {
+    return (
+        <div className="flex min-h-screen items-center justify-center">
+            <Loader2 className="h-16 w-16 animate-spin text-primary" />
+        </div>
+    );
   }
-
 
   return (
     <div className="container flex min-h-[calc(100vh-200px)] items-center justify-center py-12">
