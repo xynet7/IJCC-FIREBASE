@@ -3,9 +3,14 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Link from "next/link";
+import { useAuth } from "@/context/auth-context";
+import { useRouter } from "next/navigation";
+import { db } from "@/lib/firebase";
+import { doc, updateDoc } from "firebase/firestore";
+import { useState } from "react";
 
 const pricingTiers = [
     {
@@ -68,12 +73,45 @@ const pricingTiers = [
 
 export default function PricingPage() {
     const { toast } = useToast();
+    const { user } = useAuth();
+    const router = useRouter();
+    const [updatingTier, setUpdatingTier] = useState<string | null>(null);
 
-    const handlePayment = (tierTitle: string) => {
-        toast({
-            title: "Payment Gateway",
-            description: `Redirecting to payment for ${tierTitle}. (This is a demo)`,
-        });
+    const handlePayment = async (tier: typeof pricingTiers[0]) => {
+        if (!user) {
+            toast({
+                variant: "destructive",
+                title: "Not Logged In",
+                description: "Please log in or create an account to choose a membership plan.",
+            });
+            router.push('/login');
+            return;
+        }
+
+        setUpdatingTier(tier.id);
+        
+        try {
+            const userDocRef = doc(db, 'users', user.uid);
+            await updateDoc(userDocRef, {
+                membershipTier: tier.id,
+            });
+            
+            toast({
+                title: "Membership Updated!",
+                description: `Your plan has been updated to ${tier.title}.`,
+            });
+            router.push('/profile');
+
+        } catch (error: any) {
+            console.error("Failed to update membership:", error);
+            toast({
+                variant: "destructive",
+                title: "Update Failed",
+                description: "Could not update your membership plan. Please try again.",
+            });
+        } finally {
+            setUpdatingTier(null);
+        }
     };
     
     return (
@@ -107,19 +145,18 @@ export default function PricingPage() {
                             </ul>
                         </CardContent>
                         <CardFooter>
-                            {tier.price === "Contact Us" ? (
-                                <Button asChild className="w-full" variant={tier.featured ? "default" : "outline"}>
-                                    <Link href="/contact">Contact Us</Link>
-                                </Button>
-                            ) : (
-                               <Button 
-                                 onClick={() => handlePayment(tier.title)} 
-                                 className="w-full"
-                                 variant={tier.featured ? "default" : "outline"}
-                                >
-                                 Choose Plan
-                               </Button>
-                            )}
+                           <Button 
+                             onClick={() => handlePayment(tier)} 
+                             className="w-full"
+                             variant={tier.featured ? "default" : "outline"}
+                             disabled={updatingTier === tier.id}
+                            >
+                             {updatingTier === tier.id ? (
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                             ) : (
+                                "Choose Plan"
+                             )}
+                           </Button>
                         </CardFooter>
                     </Card>
                 ))}
