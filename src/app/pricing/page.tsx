@@ -41,7 +41,6 @@ const pricingTiers = [
             "Invitations to pitch events",
             "Networking with Japanese VCs",
         ],
-        featured: true,
     },
     {
         id: "corporate",
