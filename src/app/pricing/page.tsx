@@ -52,8 +52,8 @@ const pricingTiers = [
     {
         id: "large-corporate",
         title: "Large Corporates / Institutions",
-        price: "Contact Us",
-        period: "",
+        price: "₹1,00,000",
+        period: "/ year",
         description: "For MNCs and large institutions.",
         features: [
             "All Corporate benefits, plus:",
