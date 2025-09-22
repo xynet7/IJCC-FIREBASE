@@ -35,7 +35,7 @@ export default function LoginPage() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast({ title: 'Success', description: 'Logged in successfully!' });
-      // The redirect is now handled by the useEffect hook above
+       // The redirect is now handled by the useEffect hook above
     } catch (error: any) {
       toast({
         variant: 'destructive',
@@ -87,7 +87,7 @@ export default function LoginPage() {
                 required
               />
             </div>
-            <Button type="submit" className="w-full" disabled={loading}>
+            <Button type="submit" className="w-full rounded-full" disabled={loading}>
               {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               Login
             </Button>
