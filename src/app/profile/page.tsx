@@ -13,7 +13,7 @@ import { signOut } from 'firebase/auth';
 import { auth, db, storage } from '@/lib/firebase';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Edit2 } from 'lucide-react';
-import { doc, getDoc, updateDoc, DocumentData } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, DocumentData } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { updateProfile } from "firebase/auth";
 
@@ -48,7 +48,10 @@ export default function ProfilePage() {
           setName(data.displayName || user.displayName || '');
           setPhotoPreview(data.photoURL || user.photoURL || null);
         } else {
-          console.log("No such document!");
+          // If no document, use auth data as a fallback
+          setName(user.displayName || user.email?.split('@')[0] || '');
+          setPhotoPreview(user.photoURL || null);
+          console.log("No profile document yet, will be created on first update.");
         }
         setLoading(false);
       };
@@ -70,6 +73,8 @@ export default function ProfilePage() {
 
     try {
         const userDocRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(userDocRef);
+
         let photoURL = profileData?.photoURL || user.photoURL;
 
         if (photo) {
@@ -78,20 +83,36 @@ export default function ProfilePage() {
             photoURL = await getDownloadURL(snapshot.ref);
         }
 
-        const updatedData: { displayName: string; photoURL?: string } = {
+        const updatedData = {
             displayName: name,
+            photoURL: photoURL || null,
         };
-        if(photoURL) {
-            updatedData.photoURL = photoURL;
-        }
 
-        await updateDoc(userDocRef, updatedData);
-        await updateProfile(user, updatedData);
+        if (docSnap.exists()) {
+            // Document exists, update it
+            await updateDoc(userDocRef, updatedData);
+        } else {
+            // Document doesn't exist, create it
+            const initialData = {
+                uid: user.uid,
+                email: user.email,
+                createdAt: new Date(),
+                membershipTier: "none",
+                ...updatedData,
+            };
+            await setDoc(userDocRef, initialData);
+        }
+        
+        // Also update the Firebase Auth profile
+        await updateProfile(user, {
+            displayName: name,
+            photoURL: photoURL,
+        });
         
         // Refetch data to show updated info
-        const docSnap = await getDoc(userDocRef);
-        if (docSnap.exists()) {
-          const data = docSnap.data();
+        const newDocSnap = await getDoc(userDocRef);
+        if (newDocSnap.exists()) {
+          const data = newDocSnap.data();
           setProfileData(data);
           setPhotoPreview(data.photoURL || user.photoURL || null);
         }
@@ -135,7 +156,7 @@ export default function ProfilePage() {
   const getInitials = (name: string | null | undefined) => {
     if (!name) return user?.email?.charAt(0).toUpperCase() || 'U';
     const nameParts = name.split(' ');
-    if (nameParts.length > 1) {
+    if (nameParts.length > 1 && nameParts[1]) {
         return nameParts[0].charAt(0) + nameParts[1].charAt(0);
     }
     return name.charAt(0).toUpperCase();
@@ -185,17 +206,19 @@ export default function ProfilePage() {
                     <p className="text-sm font-medium text-muted-foreground">Email</p>
                     <p className="font-semibold">{user.email}</p>
                 </div>
-                {profileData && (
+                {profileData && profileData.createdAt && (
                   <>
                     <div className="space-y-1">
                         <p className="text-sm font-medium text-muted-foreground">Joined On</p>
                         <p className="font-semibold text-sm">{profileData.createdAt.toDate().toLocaleDateString()}</p>
                     </div>
+                  </>
+                )}
+                {profileData && profileData.membershipTier && (
                     <div className="space-y-1">
                         <p className="text-sm font-medium text-muted-foreground">Membership Status</p>
                         <p className="font-semibold text-sm capitalize">{profileData.membershipTier}</p>
                     </div>
-                  </>
                 )}
                  <Button onClick={handleUpdateProfile} className="w-full" disabled={updating}>
                     {updating && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
