@@ -11,6 +11,8 @@ import { useRouter } from "next/navigation";
 import { db } from "@/lib/firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
+
 
 const pricingTiers = [
     {
@@ -125,7 +127,14 @@ export default function PricingPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
                 {pricingTiers.map((tier) => (
-                    <Card key={tier.id} id={tier.id} className={`flex flex-col h-full ${tier.featured ? 'border-primary border-2 shadow-lg' : ''}`}>
+                    <Card 
+                        key={tier.id} 
+                        id={tier.id} 
+                        className={cn('flex flex-col h-full transition-shadow', 
+                            tier.featured && !updatingTier && 'border-primary border-2 shadow-lg',
+                            updatingTier === tier.id && 'animate-glow border-primary border-2 shadow-lg'
+                        )}
+                    >
                         <CardHeader>
                             <CardTitle className="font-headline text-2xl">{tier.title}</CardTitle>
                             <CardDescription>{tier.description}</CardDescription>
@@ -149,10 +158,13 @@ export default function PricingPage() {
                              onClick={() => handlePayment(tier)} 
                              className="w-full"
                              variant={tier.featured ? "default" : "outline"}
-                             disabled={updatingTier === tier.id}
+                             disabled={!!updatingTier}
                             >
                              {updatingTier === tier.id ? (
-                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    <span>Processing...</span>
+                                </>
                              ) : (
                                 "Choose Plan"
                              )}
