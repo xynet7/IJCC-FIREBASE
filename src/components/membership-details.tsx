@@ -1,6 +1,8 @@
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, User, Rocket, Building, Landmark, Mail, Phone, Globe } from "lucide-react";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Check, User, Rocket, Building, Landmark, Mail, Phone, Globe, ArrowRight } from "lucide-react";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 const membershipTiers = [
   {
@@ -14,6 +16,7 @@ const membershipTiers = [
       "Discounts on training, tours & workshops",
       "Eligibility for mentorship and project collaboration",
     ],
+    priceId: "individual"
   },
   {
     icon: <Rocket className="h-10 w-10 text-primary" />,
@@ -26,6 +29,7 @@ const membershipTiers = [
       "Networking with Japanese incubators & VCs",
       "Visibility on IJCC's startup showcases & newsletters",
     ],
+    priceId: "startup"
   },
   {
     icon: <Building className="h-10 w-10 text-primary" />,
@@ -38,6 +42,7 @@ const membershipTiers = [
       "Access to advisory panels on trade & legal matters",
       "Leads for Indo-Japan collaboration & procurement",
     ],
+    priceId: "corporate"
   },
   {
     icon: <Landmark className="h-10 w-10 text-primary" />,
@@ -50,6 +55,7 @@ const membershipTiers = [
       "Brand visibility across IJCC platforms & delegations",
       "Joint whitepapers, reports, and knowledge partnerships",
     ],
+    priceId: "large-corporate"
   },
 ];
 
@@ -77,6 +83,13 @@ export function MembershipDetails() {
                 ))}
               </ul>
             </CardContent>
+            <CardFooter>
+                 <Button asChild className="w-full">
+                    <Link href={`/pricing#${tier.priceId}`}>
+                        Get Started <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                </Button>
+            </CardFooter>
           </Card>
         ))}
       </div>
