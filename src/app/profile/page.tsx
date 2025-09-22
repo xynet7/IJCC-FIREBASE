@@ -89,10 +89,8 @@ export default function ProfilePage() {
         };
 
         if (docSnap.exists()) {
-            // Document exists, update it
             await updateDoc(userDocRef, updatedData);
         } else {
-            // Document doesn't exist, create it
             const initialData = {
                 uid: user.uid,
                 email: user.email,
@@ -103,26 +101,30 @@ export default function ProfilePage() {
             await setDoc(userDocRef, initialData);
         }
         
-        // Also update the Firebase Auth profile
-        await updateProfile(user, {
-            displayName: name,
-            photoURL: photoURL,
-        });
+        if (auth.currentUser) {
+            await updateProfile(auth.currentUser, {
+                displayName: name,
+                photoURL: photoURL,
+            });
+        }
         
-        // Refetch data to show updated info
         const newDocSnap = await getDoc(userDocRef);
         if (newDocSnap.exists()) {
           const data = newDocSnap.data();
           setProfileData(data);
-          setPhotoPreview(data.photoURL || user.photoURL || null);
+          setName(data.displayName || '');
+          setPhotoPreview(data.photoURL || null);
         }
 
         toast({ title: 'Success', description: 'Profile updated successfully!' });
     } catch (error: any) {
+        console.error("Profile update failed:", error);
          toast({
             variant: "destructive",
             title: "Update Failed",
-            description: error.message,
+            description: error.code === 'storage/unauthorized' 
+                ? "Permission denied. Please check storage security rules." 
+                : error.message,
         });
     } finally {
         setUpdating(false);
