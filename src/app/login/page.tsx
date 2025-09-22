@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -11,6 +12,7 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { Loader2 } from 'lucide-react';
+import { useAuth } from '@/context/auth-context';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -18,6 +20,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
+  const { user, loading: authLoading } = useAuth();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,7 +28,7 @@ export default function LoginPage() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast({ title: 'Success', description: 'Logged in successfully!' });
-      router.push('/profile');
+      // The redirect is now handled by the effect below
     } catch (error: any) {
       toast({
         variant: 'destructive',
@@ -36,6 +39,12 @@ export default function LoginPage() {
       setLoading(false);
     }
   };
+
+  // This effect will run when the user state changes to logged in
+  if (!authLoading && user) {
+    router.push('/profile');
+  }
+
 
   return (
     <div className="container flex min-h-[calc(100vh-200px)] items-center justify-center py-12">
