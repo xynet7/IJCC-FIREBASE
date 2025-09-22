@@ -132,7 +132,7 @@ export default function PricingPage() {
                         id={tier.id} 
                         className={cn('flex flex-col h-full transition-shadow', 
                             tier.featured && !updatingTier && 'border-primary border-2 shadow-lg',
-                            updatingTier === tier.id && 'animate-glow border-primary border-2 shadow-lg'
+                            updatingTier === tier.id && 'animate-glow border-destructive border-2 shadow-lg'
                         )}
                     >
                         <CardHeader>
