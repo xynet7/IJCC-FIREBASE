@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import Link from "next/link";
 
 const pricingTiers = [
     {
@@ -106,14 +107,19 @@ export default function PricingPage() {
                             </ul>
                         </CardContent>
                         <CardFooter>
-                           <Button 
-                             onClick={() => handlePayment(tier.title)} 
-                             className="w-full"
-                             variant={tier.featured ? "default" : "outline"}
-                             disabled={tier.price === "Contact Us"}
-                            >
-                             {tier.price === "Contact Us" ? "Contact Us" : "Choose Plan"}
-                           </Button>
+                            {tier.price === "Contact Us" ? (
+                                <Button asChild className="w-full" variant={tier.featured ? "default" : "outline"}>
+                                    <Link href="/contact">Contact Us</Link>
+                                </Button>
+                            ) : (
+                               <Button 
+                                 onClick={() => handlePayment(tier.title)} 
+                                 className="w-full"
+                                 variant={tier.featured ? "default" : "outline"}
+                                >
+                                 Choose Plan
+                               </Button>
+                            )}
                         </CardFooter>
                     </Card>
                 ))}
