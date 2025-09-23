@@ -31,7 +31,7 @@ const pricingTiers = [
     {
         id: "startup",
         title: "Startups / SMEs",
-        price: "₹15,000",
+        price: "₹10,000",
         period: "/ year",
         description: "For growing SMEs and startups.",
         features: [
@@ -45,7 +45,7 @@ const pricingTiers = [
     {
         id: "corporate",
         title: "Corporates / MSMEs",
-        price: "₹50,000",
+        price: "₹25,000",
         period: "/ year",
         description: "For established private companies.",
         features: [
@@ -58,7 +58,7 @@ const pricingTiers = [
     {
         id: "large-corporate",
         title: "Large Corporates / Institutions",
-        price: "₹1,00,000",
+        price: "₹50,000",
         period: "/ year",
         description: "For MNCs and large institutions.",
         features: [
@@ -129,7 +129,7 @@ export default function PricingPage() {
                     <Card 
                         key={tier.id} 
                         id={tier.id} 
-                        className={cn('flex flex-col h-full transition-shadow', tier.featured && 'border-primary border-2 shadow-lg')}
+                        className={cn('flex flex-col h-full transition-shadow')}
                     >
                         <CardHeader>
                             <CardTitle className="font-headline text-2xl">{tier.title}</CardTitle>
@@ -153,7 +153,7 @@ export default function PricingPage() {
                            <Button 
                              onClick={() => handlePayment(tier)} 
                              className="w-full"
-                             variant={tier.featured ? "default" : "outline"}
+                             variant={"outline"}
                              disabled={!!updatingTier}
                             >
                              {updatingTier === tier.id ? (
