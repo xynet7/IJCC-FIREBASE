@@ -132,8 +132,8 @@ export default function PricingPage() {
                         className={cn('flex flex-col h-full transition-shadow')}
                     >
                         <CardHeader>
-                            <CardTitle className="font-headline text-2xl">{tier.title}</CardTitle>
-                            <CardDescription>{tier.description}</CardDescription>
+                            <CardTitle className="font-headline text-2xl min-h-[64px]">{tier.title}</CardTitle>
+                            <CardDescription className="min-h-[40px]">{tier.description}</CardDescription>
                              <div className="flex items-baseline gap-2 pt-4">
                                 <span className="text-4xl font-bold">{tier.price}</span>
                                 {tier.period && <span className="text-muted-foreground">{tier.period}</span>}
