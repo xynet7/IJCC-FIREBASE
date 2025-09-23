@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { AppHeader } from '@/components/header';
@@ -6,6 +7,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { CookieBanner } from '@/components/cookie-banner';
 import { AuthProvider } from '@/context/auth-context';
 import Script from 'next/script';
+import { FloatingSocials } from '@/components/floating-socials';
 
 export const metadata: Metadata = {
   title: 'Indo-Japan Chamber of Commerce',
@@ -55,6 +57,7 @@ export default function RootLayout({
         <AuthProvider>
           <div className="flex min-h-screen flex-col">
             <AppHeader />
+            <FloatingSocials />
             <main className="flex-grow animate-fade-in">{children}</main>
             <AppFooter />
           </div>
@@ -66,3 +69,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+    

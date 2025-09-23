@@ -206,26 +206,6 @@ export function AppHeader() {
         </NavigationMenu>
         
         <div className="flex items-center justify-end gap-2">
-            <div className="hidden md:flex items-center gap-1">
-              <Button asChild variant="ghost" size="icon">
-                <Link href="https://www.instagram.com/ijccindia?igsh=YW41MzJzNDY2M25y" target="_blank" rel="noopener noreferrer">
-                  <Instagram className="h-5 w-5" />
-                   <span className="sr-only">Instagram</span>
-                </Link>
-              </Button>
-              <Button asChild variant="ghost" size="icon">
-                <Link href="https://www.linkedin.com/company/indo-japan-chamber-of-commerce/" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="h-5 w-5" />
-                  <span className="sr-only">LinkedIn</span>
-                </Link>
-              </Button>
-              <Button asChild variant="ghost" size="icon">
-                <Link href="https://www.facebook.com/people/Indo-Japan-Chamber-of-Commerce/61573931145126/?mibextid=wwXIfr&rdid=2a8GpUrXi4bfPr4H&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BqB9qNGPw%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener noreferrer">
-                  <Facebook className="h-5 w-5" />
-                  <span className="sr-only">Facebook</span>
-                </Link>
-              </Button>
-            </div>
             
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -364,3 +344,5 @@ export function AppHeader() {
     </header>
   );
 }
+
+    
