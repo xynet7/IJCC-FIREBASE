@@ -23,7 +23,7 @@ export default function ProfilePage() {
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
   const [name, setName] = useState('');
-  const [photo, setPhoto] = useState<File | null>(null);
+  const [photo, setPhoto] = useState<File | Blob | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   const router = useRouter();
   const { toast } = useToast();
@@ -59,11 +59,73 @@ export default function ProfilePage() {
     }
   }, [user]);
 
-  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const resizeImage = (file: File): Promise<Blob> => {
+    const MAX_WIDTH = 400;
+    const MAX_HEIGHT = 400;
+
+    return new Promise((resolve, reject) => {
+        const image = new Image();
+        image.src = URL.createObjectURL(file);
+        image.onload = () => {
+            let width = image.width;
+            let height = image.height;
+
+            if (width > height) {
+                if (width > MAX_WIDTH) {
+                    height *= MAX_WIDTH / width;
+                    width = MAX_WIDTH;
+                }
+            } else {
+                if (height > MAX_HEIGHT) {
+                    width *= MAX_HEIGHT / height;
+                    height = MAX_HEIGHT;
+                }
+            }
+
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            
+            if (!ctx) {
+              return reject(new Error('Could not get canvas context'));
+            }
+
+            ctx.drawImage(image, 0, 0, width, height);
+
+            canvas.toBlob(
+                (blob) => {
+                    if (blob) {
+                        resolve(blob);
+                    } else {
+                        reject(new Error('Canvas to Blob conversion failed'));
+                    }
+                },
+                file.type,
+                0.9 // 90% quality
+            );
+        };
+        image.onerror = (error) => {
+            reject(error);
+        };
+    });
+  };
+
+  const handlePhotoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
-      setPhoto(file);
-      setPhotoPreview(URL.createObjectURL(file));
+      try {
+        const resizedBlob = await resizeImage(file);
+        setPhoto(resizedBlob);
+        setPhotoPreview(URL.createObjectURL(resizedBlob));
+      } catch (error) {
+        console.error("Image resize failed:", error);
+        toast({
+          variant: "destructive",
+          title: "Image Error",
+          description: "Could not process the selected image."
+        });
+      }
     }
   };
 
@@ -228,7 +290,7 @@ export default function ProfilePage() {
                 </Button>
             </CardContent>
             <CardFooter>
-                 <Button onClick={handleLogout} className="w-full" variant="outline">
+                 <Button onClick={handleLogout} className="w-null" variant="outline">
                     Logout
                 </Button>
             </CardFooter>
@@ -237,3 +299,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
