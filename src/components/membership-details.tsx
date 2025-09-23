@@ -1,8 +1,10 @@
+"use client";
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, User, Rocket, Building, Landmark, Mail, Phone, Globe, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { useAuth } from "@/context/auth-context";
 
 const membershipTiers = [
   {
@@ -60,6 +62,8 @@ const membershipTiers = [
 ];
 
 export function MembershipDetails() {
+  const { user } = useAuth();
+
   return (
     <div className="space-y-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -83,13 +87,15 @@ export function MembershipDetails() {
                 ))}
               </ul>
             </CardContent>
-            <CardFooter>
-                 <Button asChild className="w-full">
-                    <Link href={`/pricing#${tier.priceId}`}>
-                        Get Started <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                </Button>
-            </CardFooter>
+            {user && (
+              <CardFooter>
+                   <Button asChild className="w-full">
+                      <Link href={`/pricing#${tier.priceId}`}>
+                          Get Started <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                  </Button>
+              </CardFooter>
+            )}
           </Card>
         ))}
       </div>
