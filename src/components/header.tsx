@@ -206,6 +206,13 @@ export function AppHeader() {
         </NavigationMenu>
         
         <div className="flex items-center justify-end gap-2">
+
+            <Button asChild variant="ghost" size="icon">
+              <Link href="https://webmail.cpanel.net/" target="_blank" rel="noopener noreferrer">
+                <Mail className="h-5 w-5" />
+                <span className="sr-only">Webmail</span>
+              </Link>
+            </Button>
             
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
