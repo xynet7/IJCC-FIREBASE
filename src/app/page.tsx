@@ -9,6 +9,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { ArrowRight, Calendar, Users, BookOpen, Mail } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import React from "react";
+import { FloatingSocials } from "@/components/floating-socials";
 
 
 const features = [
@@ -70,6 +71,7 @@ const heroItems = [
 export default function Home() {
   return (
     <>
+      <FloatingSocials />
       <section className="relative w-full h-[600px] flex items-center justify-center text-center text-white overflow-hidden">
         <Carousel
           className="absolute inset-0 w-full h-full"
