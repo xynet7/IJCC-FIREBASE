@@ -15,7 +15,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, Edit2 } from 'lucide-react';
 import { doc, getDoc, setDoc, updateDoc, DocumentData } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { updateProfile, User } from "firebase/auth";
+import { updateProfile, User, FirebaseError } from "firebase/auth";
 
 export default function ProfilePage() {
   const { user, loading: authLoading } = useAuth();
@@ -171,7 +171,7 @@ export default function ProfilePage() {
     setUpdating(true);
 
     try {
-        let photoURL = photoPreview;
+        let photoURL = profileData?.photoURL || null;
 
         if (photo) {
             photoURL = await uploadPhoto(user.uid, photo);
@@ -179,7 +179,7 @@ export default function ProfilePage() {
 
         const updatedData = {
             displayName: name,
-            photoURL: photoURL || null,
+            photoURL: photoURL,
         };
 
         await updateUserProfile(user.uid, updatedData);
@@ -196,7 +196,7 @@ export default function ProfilePage() {
             variant: "destructive",
             title: "Update Failed",
             description: error.code === 'storage/unauthorized' 
-                ? "Permission denied. Please check storage security rules." 
+                ? "Permission denied. Please check your Firebase Storage security rules to allow writes." 
                 : "An unexpected error occurred while updating your profile.",
         });
     } finally {
@@ -310,7 +310,5 @@ export default function ProfilePage() {
     </div>
   );
 }
-
-    
 
     
