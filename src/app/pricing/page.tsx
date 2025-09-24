@@ -131,7 +131,7 @@ export default function PricingPage() {
                         id={tier.id} 
                         className={cn(
                             'flex flex-col h-full transition-all duration-300',
-                            updatingTier === tier.id && 'ring-2 ring-destructive ring-offset-2 ring-offset-background animate-pulse'
+                            updatingTier === tier.id && 'ring-2 ring-primary ring-offset-2 ring-offset-background animate-pulse'
                         )}
                     >
                         <CardHeader>
