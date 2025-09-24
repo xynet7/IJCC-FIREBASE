@@ -3,19 +3,18 @@
 
 import { useAuth } from '@/context/auth-context';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { signOut } from 'firebase/auth';
-import { auth, db, storage } from '@/lib/firebase';
+import { auth, db } from '@/lib/firebase';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, Edit2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { doc, getDoc, setDoc, updateDoc, DocumentData } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { updateProfile, User, FirebaseError } from "firebase/auth";
+import { updateProfile, User } from "firebase/auth";
 
 export default function ProfilePage() {
   const { user, loading: authLoading } = useAuth();
@@ -23,12 +22,8 @@ export default function ProfilePage() {
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
   const [name, setName] = useState('');
-  const [photo, setPhoto] = useState<File | Blob | null>(null);
-  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   const router = useRouter();
   const { toast } = useToast();
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
 
   const fetchProfileData = useCallback(async (currentUser: User) => {
     setLoading(true);
@@ -40,19 +35,27 @@ export default function ProfilePage() {
             const data = docSnap.data();
             setProfileData(data);
             setName(data.displayName || currentUser.displayName || '');
-            setPhotoPreview(data.photoURL || currentUser.photoURL || null);
         } else {
-            // This indicates a problem if a user is logged in but has no Firestore document.
-            // The document should have been created on signup.
-            throw new Error("User profile data not found in the database.");
+            // If doc doesn't exist (e.g., user signed up but doc creation failed), create it.
+            const initialData = {
+                uid: currentUser.uid,
+                email: currentUser.email,
+                displayName: currentUser.displayName || '',
+                photoURL: currentUser.photoURL || null,
+                createdAt: new Date(),
+                membershipTier: "none",
+            };
+            await setDoc(userDocRef, initialData);
+            setProfileData(initialData);
+            setName(initialData.displayName);
+            console.log("Created user document for the first time.");
         }
     } catch (error) {
-        console.error("Failed to fetch profile data:", error);
+        console.error("Failed to fetch or create profile data:", error);
         toast({ variant: 'destructive', title: 'Error', description: 'Could not load profile data.' });
-        // Set profile data to a minimal state to avoid crashing the UI
+        // Fallback to auth data to prevent crashing UI
         setProfileData({ email: currentUser.email });
         setName(currentUser.displayName || '');
-        setPhotoPreview(currentUser.photoURL || null);
     } finally {
         setLoading(false);
     }
@@ -71,94 +74,15 @@ export default function ProfilePage() {
     }
   }, [user, fetchProfileData]);
 
-  const resizeImage = (file: File): Promise<Blob> => {
-    const MAX_WIDTH = 400;
-    const MAX_HEIGHT = 400;
-
-    return new Promise((resolve, reject) => {
-        const image = new Image();
-        image.src = URL.createObjectURL(file);
-        image.onload = () => {
-            let width = image.width;
-            let height = image.height;
-
-            if (width > height) {
-                if (width > MAX_WIDTH) {
-                    height *= MAX_WIDTH / width;
-                    width = MAX_WIDTH;
-                }
-            } else {
-                if (height > MAX_HEIGHT) {
-                    width *= MAX_HEIGHT / height;
-                    height = MAX_HEIGHT;
-                }
-            }
-
-            const canvas = document.createElement('canvas');
-            canvas.width = width;
-            canvas.height = height;
-            const ctx = canvas.getContext('2d');
-            
-            if (!ctx) {
-              return reject(new Error('Could not get canvas context'));
-            }
-
-            ctx.drawImage(image, 0, 0, width, height);
-
-            canvas.toBlob(
-                (blob) => {
-                    if (blob) {
-                        resolve(blob);
-                    } else {
-                        reject(new Error('Canvas to Blob conversion failed'));
-                    }
-                },
-                file.type,
-                0.9 // 90% quality
-            );
-        };
-        image.onerror = (error) => {
-            reject(error);
-        };
-    });
-  };
-
-  const handlePhotoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      try {
-        const resizedBlob = await resizeImage(file);
-        setPhoto(resizedBlob);
-        setPhotoPreview(URL.createObjectURL(resizedBlob));
-      } catch (error) {
-        console.error("Image resize failed:", error);
-        toast({
-          variant: "destructive",
-          title: "Image Error",
-          description: "Could not process the selected image."
-        });
-      }
-    }
-  };
-
-  const uploadPhoto = async (userId: string, photoFile: Blob): Promise<string> => {
-      const storageRef = ref(storage, `profile_pictures/${userId}`);
-      const snapshot = await uploadBytes(storageRef, photoFile);
-      const downloadURL = await getDownloadURL(snapshot.ref);
-      return downloadURL;
-  };
   
   const updateUserProfile = async (userId: string, dataToUpdate: Partial<DocumentData>) => {
       const userDocRef = doc(db, "users", userId);
       await updateDoc(userDocRef, dataToUpdate);
   
       if (auth.currentUser) {
-          const authUpdateData: { displayName?: string, photoURL?: string } = {};
+          const authUpdateData: { displayName?: string } = {};
           if (dataToUpdate.displayName) {
             authUpdateData.displayName = dataToUpdate.displayName;
-          }
-          if (dataToUpdate.photoURL) {
-            authUpdateData.photoURL = dataToUpdate.photoURL;
           }
           if (Object.keys(authUpdateData).length > 0) {
             await updateProfile(auth.currentUser, authUpdateData);
@@ -172,22 +96,14 @@ export default function ProfilePage() {
     setUpdating(true);
 
     try {
-        let photoURL = profileData?.photoURL || null;
-
-        if (photo) {
-            photoURL = await uploadPhoto(user.uid, photo);
-        }
-
-        const updatedData: {displayName: string; photoURL: string | null;} = {
+        const updatedData: {displayName: string;} = {
             displayName: name,
-            photoURL: photoURL,
         };
 
         await updateUserProfile(user.uid, updatedData);
         
         // Optimistically update local state to reflect changes immediately
         setProfileData(prev => ({...prev, ...updatedData}));
-        setPhotoPreview(photoURL);
         
         toast({ title: 'Success', description: 'Profile updated successfully!' });
 
@@ -196,13 +112,10 @@ export default function ProfilePage() {
          toast({
             variant: "destructive",
             title: "Update Failed",
-            description: error.code === 'storage/unauthorized' 
-                ? "Permission denied. Please check your Firebase Storage security rules to allow writes." 
-                : "An unexpected error occurred while updating your profile.",
+            description: "An unexpected error occurred while updating your profile.",
         });
     } finally {
         setUpdating(false);
-        setPhoto(null); // Clear the staged photo file
     }
   };
 
@@ -245,25 +158,9 @@ export default function ProfilePage() {
             <CardHeader className="items-center text-center">
                 <div className="relative">
                     <Avatar className="h-24 w-24 mb-4 text-3xl">
-                        <AvatarImage src={photoPreview || undefined} alt={name || 'User'} />
+                        <AvatarImage src={profileData?.photoURL || undefined} alt={name || 'User'} />
                         <AvatarFallback>{getInitials(name)}</AvatarFallback>
                     </Avatar>
-                    <Button 
-                        variant="outline" 
-                        size="icon"
-                        className="absolute bottom-4 right-0 rounded-full h-8 w-8 bg-background"
-                        onClick={() => fileInputRef.current?.click()}
-                    >
-                        <Edit2 className="h-4 w-4" />
-                        <span className="sr-only">Change photo</span>
-                    </Button>
-                    <Input 
-                        type="file" 
-                        ref={fileInputRef}
-                        onChange={handlePhotoChange}
-                        className="hidden"
-                        accept="image/png, image/jpeg"
-                    />
                 </div>
                 <CardTitle className="font-headline text-3xl">Profile</CardTitle>
                 <CardDescription>Your personal account details.</CardDescription>
@@ -311,5 +208,3 @@ export default function ProfilePage() {
     </div>
   );
 }
-
-    
