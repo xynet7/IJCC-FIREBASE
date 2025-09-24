@@ -41,8 +41,9 @@ const events = [
     time: "11:00 AM - 09:00 PM",
     location: "Saket District Centre, Sector 6, Pushp Vihar, New Delhi - 110017",
     description: "A Day of Culture, Business and Friendship",
-    imageUrl: "https://i.postimg.cc/L4JmBGgX/india-meets-japan.jpg",
+    imageUrl: "https://i.postimg.cc/CL3BP6v9/konnichiwa-japan.png",
     hint: "cultural event",
+    isVertical: true,
     href: "https://www.instagram.com/p/DOc7xSuEfHe/?utm_source=ig_web_copy_link",
   },
   {
