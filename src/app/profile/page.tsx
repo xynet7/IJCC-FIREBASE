@@ -3,7 +3,7 @@
 
 import { useAuth } from '@/context/auth-context';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -15,7 +15,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, Edit2 } from 'lucide-react';
 import { doc, getDoc, setDoc, updateDoc, DocumentData } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { updateProfile } from "firebase/auth";
+import { updateProfile, User } from "firebase/auth";
 
 export default function ProfilePage() {
   const { user, loading: authLoading } = useAuth();
@@ -30,6 +30,40 @@ export default function ProfilePage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
 
+  const fetchProfileData = useCallback(async (currentUser: User) => {
+    setLoading(true);
+    try {
+        const userDocRef = doc(db, 'users', currentUser.uid);
+        const docSnap = await getDoc(userDocRef);
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            setProfileData(data);
+            setName(data.displayName || currentUser.displayName || '');
+            setPhotoPreview(data.photoURL || currentUser.photoURL || null);
+        } else {
+            // If no document, use auth data as a fallback and prepare to create one
+            const initialData = {
+                uid: currentUser.uid,
+                email: currentUser.email,
+                displayName: currentUser.displayName || currentUser.email?.split('@')[0] || '',
+                photoURL: currentUser.photoURL || null,
+                createdAt: new Date(),
+                membershipTier: "none",
+            };
+            await setDoc(userDocRef, initialData);
+            setProfileData(initialData);
+            setName(initialData.displayName);
+            setPhotoPreview(initialData.photoURL);
+        }
+    } catch (error) {
+        console.error("Failed to fetch or create profile data:", error);
+        toast({ variant: 'destructive', title: 'Error', description: 'Could not load profile data.' });
+    } finally {
+        setLoading(false);
+    }
+  }, [toast]);
+
+
   useEffect(() => {
     if (!authLoading && !user) {
       router.push('/login');
@@ -38,26 +72,9 @@ export default function ProfilePage() {
 
   useEffect(() => {
     if (user) {
-      const fetchProfileData = async () => {
-        setLoading(true);
-        const userDocRef = doc(db, 'users', user.uid);
-        const docSnap = await getDoc(userDocRef);
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setProfileData(data);
-          setName(data.displayName || user.displayName || '');
-          setPhotoPreview(data.photoURL || user.photoURL || null);
-        } else {
-          // If no document, use auth data as a fallback
-          setName(user.displayName || user.email?.split('@')[0] || '');
-          setPhotoPreview(user.photoURL || null);
-          console.log("No profile document yet, will be created on first update.");
-        }
-        setLoading(false);
-      };
-      fetchProfileData();
+      fetchProfileData(user);
     }
-  }, [user]);
+  }, [user, fetchProfileData]);
 
   const resizeImage = (file: File): Promise<Blob> => {
     const MAX_WIDTH = 400;
@@ -129,20 +146,35 @@ export default function ProfilePage() {
     }
   };
 
+  const uploadPhoto = async (userId: string, photoFile: Blob): Promise<string> => {
+      const storageRef = ref(storage, `profile_pictures/${userId}`);
+      const snapshot = await uploadBytes(storageRef, photoFile);
+      const downloadURL = await getDownloadURL(snapshot.ref);
+      return downloadURL;
+  };
+  
+  const updateUserProfile = async (userId: string, dataToUpdate: Partial<DocumentData>) => {
+      const userDocRef = doc(db, "users", userId);
+      await updateDoc(userDocRef, dataToUpdate);
+  
+      if (auth.currentUser) {
+          await updateProfile(auth.currentUser, {
+              displayName: dataToUpdate.displayName,
+              photoURL: dataToUpdate.photoURL,
+          });
+      }
+  };
+
+
   const handleUpdateProfile = async () => {
     if (!user) return;
     setUpdating(true);
 
     try {
-        const userDocRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(userDocRef);
-
-        let photoURL = profileData?.photoURL || user.photoURL;
+        let photoURL = photoPreview;
 
         if (photo) {
-            const storageRef = ref(storage, `profile_pictures/${user.uid}`);
-            const snapshot = await uploadBytes(storageRef, photo);
-            photoURL = await getDownloadURL(snapshot.ref);
+            photoURL = await uploadPhoto(user.uid, photo);
         }
 
         const updatedData = {
@@ -150,35 +182,14 @@ export default function ProfilePage() {
             photoURL: photoURL || null,
         };
 
-        if (docSnap.exists()) {
-            await updateDoc(userDocRef, updatedData);
-        } else {
-            const initialData = {
-                uid: user.uid,
-                email: user.email,
-                createdAt: new Date(),
-                membershipTier: "none",
-                ...updatedData,
-            };
-            await setDoc(userDocRef, initialData);
-        }
+        await updateUserProfile(user.uid, updatedData);
         
-        if (auth.currentUser) {
-            await updateProfile(auth.currentUser, {
-                displayName: name,
-                photoURL: photoURL,
-            });
-        }
+        // Optimistically update local state to reflect changes immediately
+        setProfileData(prev => ({...prev, ...updatedData}));
+        setPhotoPreview(photoURL);
         
-        const newDocSnap = await getDoc(userDocRef);
-        if (newDocSnap.exists()) {
-          const data = newDocSnap.data();
-          setProfileData(data);
-          setName(data.displayName || '');
-          setPhotoPreview(data.photoURL || null);
-        }
-
         toast({ title: 'Success', description: 'Profile updated successfully!' });
+
     } catch (error: any) {
         console.error("Profile update failed:", error);
          toast({
@@ -186,11 +197,11 @@ export default function ProfilePage() {
             title: "Update Failed",
             description: error.code === 'storage/unauthorized' 
                 ? "Permission denied. Please check storage security rules." 
-                : error.message,
+                : "An unexpected error occurred while updating your profile.",
         });
     } finally {
         setUpdating(false);
-        setPhoto(null);
+        setPhoto(null); // Clear the staged photo file
     }
   };
 
