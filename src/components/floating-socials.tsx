@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { Instagram, Linkedin, Facebook } from "lucide-react";
+import { Instagram, Linkedin, Facebook, Youtube } from "lucide-react";
 
 export function FloatingSocials() {
   return (
@@ -22,6 +22,12 @@ export function FloatingSocials() {
         <Link href="https://www.facebook.com/people/Indo-Japan-Chamber-of-Commerce/61573931145126/?mibextid=wwXIfr&rdid=2a8GpUrXi4bfPr4H&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BqB9qNGPw%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener noreferrer" title="Facebook">
           <Facebook className="h-4 w-4" />
           <span className="sr-only">Facebook</span>
+        </Link>
+      </Button>
+      <Button asChild variant="ghost" size="sm" className="h-8 w-8">
+        <Link href="https://youtube.com/@ijcc-q2j?si=w7a8WSiep6_c3he3" target="_blank" rel="noopener noreferrer" title="YouTube">
+          <Youtube className="h-4 w-4" />
+          <span className="sr-only">YouTube</span>
         </Link>
       </Button>
     </div>
