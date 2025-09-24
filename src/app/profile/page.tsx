@@ -35,29 +35,24 @@ export default function ProfilePage() {
     try {
         const userDocRef = doc(db, 'users', currentUser.uid);
         const docSnap = await getDoc(userDocRef);
+
         if (docSnap.exists()) {
             const data = docSnap.data();
             setProfileData(data);
             setName(data.displayName || currentUser.displayName || '');
             setPhotoPreview(data.photoURL || currentUser.photoURL || null);
         } else {
-            // If no document, use auth data as a fallback and prepare to create one
-            const initialData = {
-                uid: currentUser.uid,
-                email: currentUser.email,
-                displayName: currentUser.displayName || currentUser.email?.split('@')[0] || '',
-                photoURL: currentUser.photoURL || null,
-                createdAt: new Date(),
-                membershipTier: "none",
-            };
-            await setDoc(userDocRef, initialData);
-            setProfileData(initialData);
-            setName(initialData.displayName);
-            setPhotoPreview(initialData.photoURL);
+            // This indicates a problem if a user is logged in but has no Firestore document.
+            // The document should have been created on signup.
+            throw new Error("User profile data not found in the database.");
         }
     } catch (error) {
-        console.error("Failed to fetch or create profile data:", error);
+        console.error("Failed to fetch profile data:", error);
         toast({ variant: 'destructive', title: 'Error', description: 'Could not load profile data.' });
+        // Set profile data to a minimal state to avoid crashing the UI
+        setProfileData({ email: currentUser.email });
+        setName(currentUser.displayName || '');
+        setPhotoPreview(currentUser.photoURL || null);
     } finally {
         setLoading(false);
     }
@@ -158,10 +153,16 @@ export default function ProfilePage() {
       await updateDoc(userDocRef, dataToUpdate);
   
       if (auth.currentUser) {
-          await updateProfile(auth.currentUser, {
-              displayName: dataToUpdate.displayName,
-              photoURL: dataToUpdate.photoURL,
-          });
+          const authUpdateData: { displayName?: string, photoURL?: string } = {};
+          if (dataToUpdate.displayName) {
+            authUpdateData.displayName = dataToUpdate.displayName;
+          }
+          if (dataToUpdate.photoURL) {
+            authUpdateData.photoURL = dataToUpdate.photoURL;
+          }
+          if (Object.keys(authUpdateData).length > 0) {
+            await updateProfile(auth.currentUser, authUpdateData);
+          }
       }
   };
 
@@ -177,7 +178,7 @@ export default function ProfilePage() {
             photoURL = await uploadPhoto(user.uid, photo);
         }
 
-        const updatedData = {
+        const updatedData: {displayName: string; photoURL: string | null;} = {
             displayName: name,
             photoURL: photoURL,
         };
@@ -220,7 +221,7 @@ export default function ProfilePage() {
     }
   };
   
-  if (authLoading || loading || !user) {
+  if (authLoading || loading || !user || !profileData) {
     return (
         <div className="flex min-h-screen items-center justify-center">
             <Loader2 className="h-16 w-16 animate-spin text-primary" />
