@@ -5,7 +5,7 @@ import { Instagram, Linkedin, Facebook } from "lucide-react";
 
 export function FloatingSocials() {
   return (
-    <div className="fixed left-0 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-2 p-2">
+    <div className="fixed left-0 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-2 p-2 bg-background/50 backdrop-blur-sm border-r border-t border-b border-border rounded-r-lg">
       <Button asChild variant="ghost" size="icon">
         <Link href="https://www.instagram.com/ijccindia?igsh=YW41MzJzNDY2M25y" target="_blank" rel="noopener noreferrer" title="Instagram">
           <Instagram className="h-5 w-5" />
