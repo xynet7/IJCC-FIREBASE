@@ -145,7 +145,7 @@ export default function Home() {
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative w-full h-[500px] overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 rounded-xl">
             <Image
-              src="https://i.postimg.cc/BQBDNXjS/IMG-20250910-WA0124-1.jpg"
+              src="https://i.postimg.cc/PJ8T5YDR/home-img.png"
               alt="About IJCC"
               layout="fill"
               objectFit="cover"
