@@ -15,7 +15,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 const marugotoBooks = [
   { level: "A1", title: "Marugoto A1 (Starter)", description: "For beginners starting their Japanese journey. Covers basic greetings, self-introduction, and simple daily conversations.", file: "https://drive.google.com/drive/folders/15g3FqaqVf0p-y1i5yJz-Uu-k-F2zD1kQ?usp=drive_link", isExternal: true },
   { level: "A1", title: "Marugoto A1 Rikai", description: "Focuses on understanding and comprehension for the A1 level.", file: "https://jumpshare.com/share/aufWQ9WfeAKcUb5Iv15R", isExternal: true },
-  { level: "A1", title: "Marugoto A1 Katsudo", description: "Focuses on practical communication and activities for the A1 level.", file: "#", isExternal: true },
+  { level: "A1", title: "Marugoto A1 Katsudo", description: "Focuses on practical communication and activities for the A1 level.", file: "https://jumpshare.com/share/qJcmrw5XsCKmKAWnDjuW", isExternal: true },
   { level: "A2", title: "Marugoto A2 (Elementary)", description: "Builds on A1, focusing on comprehension and conversation for everyday situations.", file: "https://drive.google.com/drive/folders/1uHJAiS5n9tqX8vVb-u-4G-kYy1w-o5gG?usp=drive_link", isExternal: true },
   { level: "A2", title: "Marugoto A2 Rikai", description: "Focuses on understanding and comprehension for the A2 level.", file: "https://jumpshare.com/share/E7tQVPZIup5FmZtL83UE", isExternal: true },
   { level: "A2", title: "Marugoto A2 Katsudo", description: "Focuses on practical communication and activities for the A2 level.", file: "https://jumpshare.com/share/TOzJRmN0U45KAUEW5cN9", isExternal: true },
