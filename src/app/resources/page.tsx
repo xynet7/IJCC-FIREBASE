@@ -41,6 +41,14 @@ const resources = [
     href: "/resources/self-study",
   },
   {
+    title: "Marugoto Books",
+    description: "Download Marugoto series books for different levels of Japanese language learning.",
+    type: "Books",
+    icon: <BookOpen className="h-8 w-8 text-primary" />,
+    isLink: true,
+    href: "/resources/marugoto-books",
+  },
+  {
     title: "Cross-Cultural Communication Workshop",
     description: "Presentation slides from our recent workshop on effective cross-cultural communication.",
     type: "Presentation",
@@ -90,7 +98,7 @@ export default function ResourcesPage() {
                  <Button asChild variant="outline" className="w-full rounded-full">
                   <Link href={resource.href!} target={resource.href?.startsWith('http') ? "_blank" : "_self"} rel="noopener noreferrer">
                     {resource.href?.startsWith('http') ? <Download className="mr-2 h-4 w-4" /> : <ArrowRight className="mr-2 h-4 w-4" />}
-                    {resource.href?.startsWith('http') ? `Download ${resource.type}` : `Access ${resource.type === 'Magazine' ? 'Magazines' : resource.type === 'Self Study' ? 'Materials' : 'Papers'}`}
+                    {resource.href?.startsWith('http') ? `Download ${resource.type}` : `Access ${resource.type === 'Magazine' ? 'Magazines' : resource.type === 'Self Study' ? 'Materials' : resource.type === 'Books' ? 'Books' : 'Papers'}`}
                   </Link>
                 </Button>
               ) : (

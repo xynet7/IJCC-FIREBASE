@@ -6,7 +6,7 @@ import { collection, getDocs, QueryDocumentSnapshot, DocumentData } from 'fireba
 import { db } from '@/lib/firebase';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Download, Loader2 } from "lucide-react";
+import { Download, Loader2, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -51,9 +51,26 @@ export default function SelfStudyPage() {
         </p>
       </div>
 
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle className="font-headline text-2xl">Marugoto Books</CardTitle>
+          <CardDescription>
+            Explore the Marugoto series of textbooks for a comprehensive approach to learning Japanese language and culture.
+          </CardDescription>
+        </CardHeader>
+        <CardFooter>
+          <Button asChild>
+            <Link href="/resources/marugoto-books">
+              <ArrowRight className="mr-2 h-4 w-4" />
+              Access Marugoto Books
+            </Link>
+          </Button>
+        </CardFooter>
+      </Card>
+
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[...Array(4)].map((_, i) => (
+          {[...Array(2)].map((_, i) => (
             <Card key={i}>
               <CardHeader>
                 <Skeleton className="h-7 w-3/4" />
@@ -87,8 +104,8 @@ export default function SelfStudyPage() {
         </div>
       ) : (
         <div className="text-center py-16 border rounded-lg bg-secondary/50">
-            <h3 className="text-xl font-semibold">No Books Available Yet</h3>
-            <p className="text-muted-foreground mt-2">Please check back later for self-study resources.</p>
+            <h3 className="text-xl font-semibold">No Other Books Available Yet</h3>
+            <p className="text-muted-foreground mt-2">Please check back later for more self-study resources.</p>
         </div>
       )}
     </div>
