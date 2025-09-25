@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,7 +18,7 @@ const allResources = [
     type: "Document",
     icon: <FileText className="h-8 w-8 text-primary" />,
     isLink: true,
-    href: "https://guide-to-japanese-business.tiiny.site",
+    href: "https://jumpshare.com/share/JnOOQyDsSQOXwzzJZt8X",
     isProtected: true,
   },
   {
