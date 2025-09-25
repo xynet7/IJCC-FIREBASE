@@ -3,8 +3,14 @@
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Download, ExternalLink } from "lucide-react";
+import { Download, ExternalLink, Loader2, Lock } from "lucide-react";
 import Link from "next/link";
+import { useAuth } from "@/context/auth-context";
+import { useEffect, useState } from "react";
+import { doc, getDoc, DocumentData } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import { useToast } from "@/hooks/use-toast";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const marugotoBooks = [
   { level: "A1", title: "Marugoto A1 (Starter)", description: "For beginners starting their Japanese journey. Covers basic greetings, self-introduction, and simple daily conversations.", file: "https://drive.google.com/drive/folders/15g3FqaqVf0p-y1i5yJz-Uu-k-F2zD1kQ?usp=drive_link", isExternal: true },
@@ -14,6 +20,79 @@ const marugotoBooks = [
 ];
 
 export default function MarugotoBooksPage() {
+  const { user, loading: authLoading } = useAuth();
+  const [profile, setProfile] = useState<DocumentData | null>(null);
+  const [loadingProfile, setLoadingProfile] = useState(true);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    if (authLoading) return;
+    if (!user) {
+      setLoadingProfile(false);
+      return;
+    }
+
+    const fetchProfile = async () => {
+      try {
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+          setProfile(userDoc.data());
+        }
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+      } finally {
+        setLoadingProfile(false);
+      }
+    };
+
+    fetchProfile();
+  }, [user, authLoading]);
+
+  const hasMembership = profile?.membershipTier && profile.membershipTier !== "none";
+  const isLoading = authLoading || loadingProfile;
+
+  if (isLoading) {
+    return (
+      <div className="container py-12">
+         <div className="space-y-4 mb-12 text-center">
+          <Skeleton className="h-10 w-3/4 mx-auto" />
+          <Skeleton className="h-6 w-1/2 mx-auto" />
+        </div>
+        <div className="space-y-8">
+            {[...Array(4)].map((_, i) => (
+                <Card key={i}>
+                    <CardHeader>
+                        <Skeleton className="h-8 w-1/4" />
+                        <Skeleton className="h-5 w-3/4 mt-2" />
+                    </CardHeader>
+                    <CardContent>
+                        <Skeleton className="h-4 w-full" />
+                    </CardContent>
+                    <CardFooter>
+                        <Skeleton className="h-10 w-48" />
+                    </CardFooter>
+                </Card>
+            ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (!hasMembership) {
+    return (
+      <div className="container py-12 text-center">
+        <Lock className="h-16 w-16 mx-auto text-muted-foreground" />
+        <h1 className="text-3xl font-headline mt-6">Access Denied</h1>
+        <p className="mt-4 text-muted-foreground max-w-md mx-auto">
+          This resource is exclusive to our members. Please log in and ensure you have an active membership to access the Marugoto books.
+        </p>
+        <Button asChild className="mt-8">
+          <Link href={user ? "/pricing" : "/login"}>{user ? "Upgrade Membership" : "Login or Sign Up"}</Link>
+        </Button>
+      </div>
+    );
+  }
+  
   return (
     <div className="container py-12">
       <div className="space-y-4 mb-12 text-center">

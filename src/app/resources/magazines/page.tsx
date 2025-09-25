@@ -1,9 +1,17 @@
 
+"use client";
+
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Download, ExternalLink } from "lucide-react";
+import { Download, ExternalLink, Loader2, Lock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useAuth } from "@/context/auth-context";
+import { useEffect, useState } from "react";
+import { doc, getDoc, DocumentData } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import { Skeleton } from "@/components/ui/skeleton";
+
 
 const magazines = [
   {
@@ -32,6 +40,61 @@ const magazines = [
 const featuredMagazine = magazines[0];
 
 export default function MagazinesPage() {
+  const { user, loading: authLoading } = useAuth();
+  const [profile, setProfile] = useState<DocumentData | null>(null);
+  const [loadingProfile, setLoadingProfile] = useState(true);
+
+  useEffect(() => {
+    if (authLoading) return;
+    if (!user) {
+      setLoadingProfile(false);
+      return;
+    }
+
+    const fetchProfile = async () => {
+      try {
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+          setProfile(userDoc.data());
+        }
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+      } finally {
+        setLoadingProfile(false);
+      }
+    };
+
+    fetchProfile();
+  }, [user, authLoading]);
+
+  const hasMembership = profile?.membershipTier && profile.membershipTier !== "none";
+  const isLoading = authLoading || loadingProfile;
+
+  if (isLoading) {
+      return (
+          <div className="container py-12">
+              <div className="flex min-h-[calc(100vh-200px)] items-center justify-center">
+                  <Loader2 className="h-16 w-16 animate-spin text-primary" />
+              </div>
+          </div>
+      )
+  }
+
+  if (!hasMembership) {
+    return (
+      <div className="container py-12 text-center">
+        <Lock className="h-16 w-16 mx-auto text-muted-foreground" />
+        <h1 className="text-3xl font-headline mt-6">Access Denied</h1>
+        <p className="mt-4 text-muted-foreground max-w-md mx-auto">
+          This resource is exclusive to our members. Please log in and ensure you have an active membership to access the magazines.
+        </p>
+        <Button asChild className="mt-8">
+          <Link href={user ? "/pricing" : "/login"}>{user ? "Upgrade Membership" : "Login or Sign Up"}</Link>
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <>
     <section className="bg-secondary/50 py-20">
