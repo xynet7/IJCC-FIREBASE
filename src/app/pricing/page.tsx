@@ -130,7 +130,7 @@ export default function PricingPage() {
                         key={tier.id} 
                         id={tier.id} 
                         className={cn(
-                            'flex flex-col h-full transition-all duration-300',
+                            'flex flex-col h-full transition-all duration-300 hover:ring-2 hover:ring-destructive hover:ring-offset-2 hover:ring-offset-background',
                             updatingTier === tier.id && 'ring-2 ring-primary ring-offset-2 ring-offset-background animate-pulse'
                         )}
                     >
