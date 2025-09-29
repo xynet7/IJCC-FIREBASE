@@ -28,8 +28,6 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
@@ -97,34 +95,6 @@ ListItem.displayName = "ListItem";
 export function AppHeader() {
   const pathname = usePathname();
   const { user, loading } = useAuth();
-  const [currentLang, setCurrentLang] = React.useState('en');
-
-  const getCookie = (name: string) => {
-    if (typeof document === 'undefined') return null;
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(';').shift();
-    return null;
-  }
-
-  React.useEffect(() => {
-    const checkCookie = () => {
-      const langCookie = getCookie('googtrans');
-      if (langCookie) {
-        const lang = langCookie.split('/')[2];
-        if (['en', 'ja'].includes(lang) && lang !== currentLang) {
-          setCurrentLang(lang);
-        }
-      } else if (currentLang !== 'en') {
-        setCurrentLang('en');
-      }
-    };
-    
-    // Check periodically to sync state if translation is changed by browser extension
-    const interval = setInterval(checkCookie, 500); 
-    return () => clearInterval(interval);
-  }, [currentLang]);
-
 
   const handleLogout = async () => {
     try {
@@ -140,25 +110,6 @@ export function AppHeader() {
     return email.charAt(0).toUpperCase();
   };
   
-  const changeLanguage = (lang: string) => {
-    if (currentLang === lang) return;
-
-    const googleTranslateElement = document.getElementById('google_translate_element');
-    if (googleTranslateElement) {
-        const select = googleTranslateElement.querySelector('select');
-        if (select) {
-            select.value = lang;
-            select.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-    }
-  };
-
-
-  const handleMobileLangChange = (lang: 'en' | 'ja') => {
-    changeLanguage(lang);
-  };
-
-
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-transparent backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-24 items-center justify-between">
@@ -221,26 +172,7 @@ export function AppHeader() {
               </Link>
             </Button>
             
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Globe className="h-5 w-5" />
-                  <span className="sr-only">Translate</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuLabel>Select Language</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuRadioGroup value={currentLang} onValueChange={changeLanguage}>
-                  <DropdownMenuRadioItem value="en">
-                    English
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="ja">
-                    日本語
-                  </DropdownMenuRadioItem>
-                </DropdownMenuRadioGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <div id="google_translate_element"></div>
 
             {!loading && (
               <div className="hidden md:flex items-center gap-2">
@@ -313,9 +245,6 @@ export function AppHeader() {
                     {link.label}
                   </Link>
                 ))}
-                  <hr className="my-2"/>
-                  <button onClick={() => handleMobileLangChange('en')} className="text-left text-muted-foreground hover:text-primary">English</button>
-                  <button onClick={() => handleMobileLangChange('ja')} className="text-left text-muted-foreground hover:text-primary">日本語</button>
                   <hr className="my-2"/>
                    {!loading && (
                     <div className="flex flex-col gap-2">

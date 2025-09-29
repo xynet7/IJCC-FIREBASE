@@ -63,26 +63,8 @@
   }
 }
 
-body {
-  transition: top 0.5s ease;
-}
-
-#goog-gt-tt {
-  display: none !important;
-}
-
-/* This is the container for the translation widget, we need it to exist but it can be invisible */
-#google_translate_element {
-  position: absolute;
-  top: -9999px;
-  left: -9999px;
-  height: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: -1;
-}
-
 /* This hides the top bar that Google injects */
 .goog-te-banner-frame {
   display: none !important;
 }
+
