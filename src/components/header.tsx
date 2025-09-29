@@ -28,6 +28,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenuGroup,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
@@ -92,6 +93,12 @@ const ListItem = React.forwardRef<
 });
 ListItem.displayName = "ListItem";
 
+declare global {
+    interface Window {
+        changeLanguage: (lang: string) => void;
+    }
+}
+
 export function AppHeader() {
   const pathname = usePathname();
   const { user, loading } = useAuth();
@@ -108,6 +115,12 @@ export function AppHeader() {
   const getInitials = (email: string | null | undefined) => {
     if (!email) return 'U';
     return email.charAt(0).toUpperCase();
+  };
+
+  const handleLanguageChange = (lang: string) => {
+    if (window.changeLanguage) {
+        window.changeLanguage(lang);
+    }
   };
   
   return (
@@ -172,7 +185,27 @@ export function AppHeader() {
               </Link>
             </Button>
             
-            <div id="google_translate_element"></div>
+            <div id="google_translate_element" style={{display: 'none'}}></div>
+            
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Globe className="h-5 w-5" />
+                  <span className="sr-only">Change Language</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuGroup>
+                    <DropdownMenuItem onClick={() => handleLanguageChange('en')}>
+                        <span>English</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => handleLanguageChange('ja')}>
+                        <span>日本語</span>
+                    </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
 
             {!loading && (
               <div className="hidden md:flex items-center gap-2">
