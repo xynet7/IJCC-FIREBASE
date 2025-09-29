@@ -40,6 +40,7 @@ export default function RootLayout({
           <CookieBanner />
           
           <div id="google_translate_element"></div>
+          
           <Script
             src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
             strategy="afterInteractive"
@@ -61,14 +62,23 @@ export default function RootLayout({
 
               function changeLanguage(lang) {
                 var GTE = document.getElementById('google_translate_element');
-                if (GTE) {
-                  var select = GTE.querySelector('select');
-                  if (select) {
-                    select.value = lang;
-                    var event = new Event('change', { bubbles: true });
-                    select.dispatchEvent(event);
-                  }
+                if (!GTE) {
+                  console.error('Google Translate element not found');
+                  return;
                 }
+                var select = GTE.querySelector('select');
+                if (!select) {
+                  console.error('Language select dropdown not found');
+                  return;
+                }
+                select.value = lang;
+                var event = new Event('change', { bubbles: true });
+                select.dispatchEvent(event);
+                
+                // This timeout helps ensure the translation has a moment to apply
+                setTimeout(function(){
+                  document.body.classList.add('translated');
+                }, 500);
               }
             `}
           </Script>
