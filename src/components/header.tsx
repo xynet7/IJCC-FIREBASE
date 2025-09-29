@@ -181,10 +181,10 @@ export function AppHeader() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuGroup>
-                  <DropdownMenuItem onClick={() => changeLanguage('en')}>
+                  <DropdownMenuItem onSelect={() => changeLanguage('en')}>
                     <span>English</span>
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => changeLanguage('ja')}>
+                  <DropdownMenuItem onSelect={() => changeLanguage('ja')}>
                     <span>日本語</span>
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
