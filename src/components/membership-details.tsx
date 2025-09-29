@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -87,15 +88,13 @@ export function MembershipDetails() {
                 ))}
               </ul>
             </CardContent>
-            {user && (
-              <CardFooter>
-                   <Button asChild className="w-full">
-                      <Link href={`/pricing#${tier.priceId}`}>
-                          Get Started <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                  </Button>
-              </CardFooter>
-            )}
+            <CardFooter>
+                <Button asChild className="w-full">
+                    <Link href={user ? `/pricing#${tier.priceId}` : '/login'}>
+                        Get Started <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                </Button>
+            </CardFooter>
           </Card>
         ))}
       </div>
