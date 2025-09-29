@@ -115,8 +115,11 @@ export function AppHeader() {
         if (['en', 'ja'].includes(lang) && lang !== currentLang) {
           setCurrentLang(lang);
         }
+      } else if (currentLang !== 'en') {
+        setCurrentLang('en');
       }
     };
+    
     // Check periodically to sync state if translation is changed by browser extension
     const interval = setInterval(checkCookie, 500); 
     return () => clearInterval(interval);
@@ -148,7 +151,6 @@ export function AppHeader() {
             select.dispatchEvent(new Event('change', { bubbles: true }));
         }
     }
-    // The useEffect will pick up the cookie change and update the state
   };
 
 
