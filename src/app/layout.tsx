@@ -16,39 +16,6 @@ export const metadata: Metadata = {
   },
 };
 
-function GoogleTranslateScript() {
-  return (
-    <>
-      <div id="google_translate_element" style={{ display: 'none' }}></div>
-      <Script
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-        strategy="afterInteractive"
-      />
-      <Script id="google-translate-init" strategy="afterInteractive">
-        {`
-          function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-              pageLanguage: 'en',
-              includedLanguages: 'en,ja',
-              layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-              autoDisplay: false
-            }, 'google_translate_element');
-          }
-
-          function changeLanguage(lang) {
-            var el = document.querySelector('#google_translate_element select');
-            if (el) {
-                el.value = lang;
-                var evt = new Event('change', { 'bubbles': true });
-                el.dispatchEvent(evt);
-            }
-          }
-        `}
-      </Script>
-    </>
-  );
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -71,7 +38,40 @@ export default function RootLayout({
           </div>
           <Toaster />
           <CookieBanner />
-          <GoogleTranslateScript />
+          
+          <div id="google_translate_element"></div>
+          <Script
+            src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+            strategy="afterInteractive"
+          />
+          <Script id="google-translate-init" strategy="afterInteractive">
+            {`
+              function googleTranslateElementInit() {
+                try {
+                  new google.translate.TranslateElement({
+                    pageLanguage: 'en',
+                    includedLanguages: 'en,ja',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                    autoDisplay: false
+                  }, 'google_translate_element');
+                } catch (e) {
+                  console.error('Error initializing Google Translate:', e);
+                }
+              }
+
+              function changeLanguage(lang) {
+                var GTE = document.getElementById('google_translate_element');
+                if (GTE) {
+                  var select = GTE.querySelector('select');
+                  if (select) {
+                    select.value = lang;
+                    var event = new Event('change', { bubbles: true });
+                    select.dispatchEvent(event);
+                  }
+                }
+              }
+            `}
+          </Script>
         </AuthProvider>
       </body>
     </html>

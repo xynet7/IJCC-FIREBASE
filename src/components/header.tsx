@@ -28,11 +28,6 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  DropdownMenuGroup,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
-  DropdownMenuPortal
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
@@ -120,6 +115,8 @@ export function AppHeader() {
     const changeLangFunc = (window as any).changeLanguage;
     if (changeLangFunc) {
       changeLangFunc(lang);
+    } else {
+        console.error("changeLanguage function not found on window object.");
     }
   };
   
