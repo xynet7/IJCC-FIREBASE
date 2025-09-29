@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -59,25 +60,4 @@
   }
 }
 
-/* Hide the default Google Translate widget by moving it off-screen */
-#google_translate_element {
-  position: absolute !important;
-  top: -9999px !important;
-  left: -9999px !important;
-  height: 0 !important;
-  width: 0 !important;
-  overflow: hidden !important;
-  z-index: -1 !important;
-}
-
-/* Hide the Google Translate top bar */
-body > .skiptranslate {
-  display: none !important;
-}
-
-html {
-  scroll-behavior: smooth !important;
-}
-body.translated {
-  top: 0 !important;
-}
+    

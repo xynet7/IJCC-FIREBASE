@@ -31,6 +31,7 @@ export default function RootLayout({
       </head>
       <body>
         <AuthProvider>
+          <div id="google_translate_element" style={{ display: 'none' }}></div>
           <div className="flex min-h-screen flex-col">
             <AppHeader />
             <main className="flex-grow animate-fade-in">{children}</main>
@@ -38,8 +39,6 @@ export default function RootLayout({
           </div>
           <Toaster />
           <CookieBanner />
-          
-          <div id="google_translate_element"></div>
           
           <Script
             src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
@@ -59,27 +58,6 @@ export default function RootLayout({
                   console.error('Error initializing Google Translate:', e);
                 }
               }
-
-              function changeLanguage(lang) {
-                var GTE = document.getElementById('google_translate_element');
-                if (!GTE) {
-                  console.error('Google Translate element not found');
-                  return;
-                }
-                var select = GTE.querySelector('select');
-                if (!select) {
-                  console.error('Language select dropdown not found');
-                  return;
-                }
-                select.value = lang;
-                var event = new Event('change', { bubbles: true });
-                select.dispatchEvent(event);
-                
-                // This timeout helps ensure the translation has a moment to apply
-                setTimeout(function(){
-                  document.body.classList.add('translated');
-                }, 500);
-              }
             `}
           </Script>
         </AuthProvider>
@@ -87,3 +65,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+    

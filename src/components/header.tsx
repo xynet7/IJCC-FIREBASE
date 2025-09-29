@@ -111,15 +111,6 @@ export function AppHeader() {
     return email.charAt(0).toUpperCase();
   };
 
-  const handleLanguageChange = (lang: 'en' | 'ja') => {
-    const changeLangFunc = (window as any).changeLanguage;
-    if (changeLangFunc) {
-      changeLangFunc(lang);
-    } else {
-        console.error("changeLanguage function not found on window object.");
-    }
-  };
-  
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-transparent backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-24 items-center justify-between">
@@ -182,24 +173,6 @@ export function AppHeader() {
               </Link>
             </Button>
             
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Globe className="h-5 w-5" />
-                  <span className="sr-only">Change language</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => handleLanguageChange('en')}>
-                  English
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleLanguageChange('ja')}>
-                  日本語
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-
             {!loading && (
               <div className="hidden md:flex items-center gap-2">
                 {user ? (
@@ -313,3 +286,5 @@ export function AppHeader() {
     </header>
   );
 }
+
+    
