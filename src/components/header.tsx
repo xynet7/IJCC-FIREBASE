@@ -108,15 +108,20 @@ export function AppHeader() {
   }
 
   React.useEffect(() => {
-    // A bit of a hack to get the current language from the Google Translate cookie
-    const langCookie = getCookie('googtrans');
-    if (langCookie) {
-      const lang = langCookie.split('/')[2];
-      if (['en', 'ja'].includes(lang)) {
-        setCurrentLang(lang);
+    const checkCookie = () => {
+      const langCookie = getCookie('googtrans');
+      if (langCookie) {
+        const lang = langCookie.split('/')[2];
+        if (['en', 'ja'].includes(lang) && lang !== currentLang) {
+          setCurrentLang(lang);
+        }
       }
-    }
-  }, []);
+    };
+    // Check periodically to sync state if translation is changed by browser extension
+    const interval = setInterval(checkCookie, 500); 
+    return () => clearInterval(interval);
+  }, [currentLang]);
+
 
   const handleLogout = async () => {
     try {
@@ -135,7 +140,6 @@ export function AppHeader() {
   const changeLanguage = (lang: string) => {
     if (currentLang === lang) return;
 
-    setCurrentLang(lang);
     const googleTranslateElement = document.getElementById('google_translate_element');
     if (googleTranslateElement) {
         const select = googleTranslateElement.querySelector('select');
@@ -144,6 +148,7 @@ export function AppHeader() {
             select.dispatchEvent(new Event('change', { bubbles: true }));
         }
     }
+    // The useEffect will pick up the cookie change and update the state
   };
 
 
