@@ -72,8 +72,5 @@ body {
 }
 
 #google_translate_element {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  z-index: 1000;
+  display: none !important;
 }
