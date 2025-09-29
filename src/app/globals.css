@@ -60,4 +60,18 @@
   }
 }
 
+#google_translate_element {
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+  z-index: -1;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+body > .skiptranslate {
+    display: none !important;
+}
     

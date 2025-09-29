@@ -31,7 +31,7 @@ export default function RootLayout({
       </head>
       <body>
         <AuthProvider>
-          <div id="google_translate_element" style={{ display: 'none' }}></div>
+          <div id="google_translate_element"></div>
           <div className="flex min-h-screen flex-col">
             <AppHeader />
             <main className="flex-grow animate-fade-in">{children}</main>
@@ -56,6 +56,22 @@ export default function RootLayout({
                   }, 'google_translate_element');
                 } catch (e) {
                   console.error('Error initializing Google Translate:', e);
+                }
+              }
+
+              function changeLanguage(lang) {
+                var iframe = document.getElementsByClassName('goog-te-menu-frame')[0];
+                if (!iframe) return;
+
+                var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+                var langElements = innerDoc.getElementsByClassName('goog-te-menu2-item');
+                
+                for (var i = 0; i < langElements.length; i++) {
+                  var el = langElements[i];
+                  if (el.getAttribute('value') === lang) {
+                    el.click();
+                    return;
+                  }
                 }
               }
             `}

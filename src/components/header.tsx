@@ -28,6 +28,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenuGroup,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
@@ -111,6 +112,12 @@ export function AppHeader() {
     return email.charAt(0).toUpperCase();
   };
 
+  const changeLanguage = (lang: string) => {
+    if (typeof window !== 'undefined' && (window as any).changeLanguage) {
+      (window as any).changeLanguage(lang);
+    }
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-transparent backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-24 items-center justify-between">
@@ -165,6 +172,24 @@ export function AppHeader() {
         </NavigationMenu>
         
         <div className="flex items-center justify-end gap-2">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Globe className="h-5 w-5" />
+                  <span className="sr-only">Change language</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuGroup>
+                  <DropdownMenuItem onClick={() => changeLanguage('en')}>
+                    <span>English</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => changeLanguage('ja')}>
+                    <span>日本語</span>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             <Button asChild variant="ghost" size="icon">
               <Link href="https://webmail.cpanel.net/" target="_blank" rel="noopener noreferrer">
@@ -286,5 +311,3 @@ export function AppHeader() {
     </header>
   );
 }
-
-    
