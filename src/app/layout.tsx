@@ -60,19 +60,12 @@ export default function RootLayout({
               }
 
               function changeLanguage(lang) {
-                var iframe = document.getElementsByClassName('goog-te-menu-frame')[0];
-                if (!iframe) return;
-
-                var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-                var langElements = innerDoc.getElementsByClassName('goog-te-menu2-item');
-                
-                for (var i = 0; i < langElements.length; i++) {
-                  var el = langElements[i];
-                  if (el.getAttribute('value') === lang) {
-                    el.click();
-                    return;
-                  }
-                }
+                // This function sets a cookie to remember the language choice and reloads the page.
+                // Google Translate widget will then pick up the language from the cookie.
+                var a = new Date();
+                a.setTime(a.getTime() + 24 * 60 * 60 * 1000 * 30);
+                document.cookie = "googtrans=/" + document.documentElement.lang + "/" + lang + ";expires=" + a.toGMTString() + ";path=/";
+                location.reload();
               }
             `}
           </Script>
@@ -81,5 +74,4 @@ export default function RootLayout({
     </html>
   );
 }
-
     
