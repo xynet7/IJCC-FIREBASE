@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: 'Indo-Japan Chamber of Commerce',
   description: 'Fostering business and cultural ties between India and Japan.',
   icons: {
-    icon: 'https://i.postimg.cc/mkDLyKfN/JPG-LOGO-removebg-preview.png',
+    icon: 'https://i.postimg.cc/HkT5K8PD/IJCC-LOGO.jpg',
   },
 };
 
@@ -60,18 +60,17 @@ export default function RootLayout({
               }
 
               function changeLanguage(lang) {
-                var iframe = document.getElementsByClassName('goog-te-menu-frame')[0];
+                var iframe = document.querySelector('.goog-te-menu-frame');
                 if (!iframe) {
                     console.error('Google Translate iframe not found.');
                     return;
                 }
                 var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-                var langElements = innerDoc.getElementsByClassName('goog-te-menu2-item');
+                var langElements = innerDoc.querySelectorAll('.goog-te-menu2-item span.text');
                 
                 for (var i = 0; i < langElements.length; i++) {
                     var el = langElements[i];
-                    var value = el.getAttribute('value');
-                    if (value === lang) {
+                    if (el.textContent.toLowerCase() === (lang === 'ja' ? 'japanese' : 'english')) {
                         el.click();
                         return;
                     }
