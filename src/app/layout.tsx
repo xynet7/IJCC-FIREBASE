@@ -19,6 +19,7 @@ export const metadata: Metadata = {
 function GoogleTranslateScript() {
   return (
     <>
+      <div id="google_translate_element" style={{ display: 'none' }}></div>
       <Script
         src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
         strategy="afterInteractive"
@@ -29,8 +30,18 @@ function GoogleTranslateScript() {
             new google.translate.TranslateElement({
               pageLanguage: 'en',
               includedLanguages: 'en,ja',
-              layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+              layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+              autoDisplay: false
             }, 'google_translate_element');
+          }
+
+          function changeLanguage(lang) {
+            var el = document.querySelector('#google_translate_element select');
+            if (el) {
+                el.value = lang;
+                var evt = new Event('change', { 'bubbles': true });
+                el.dispatchEvent(evt);
+            }
           }
         `}
       </Script>

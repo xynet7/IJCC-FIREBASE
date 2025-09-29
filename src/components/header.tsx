@@ -29,6 +29,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
   DropdownMenuGroup,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+  DropdownMenuPortal
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
@@ -112,6 +116,12 @@ export function AppHeader() {
     return email.charAt(0).toUpperCase();
   };
 
+  const handleLanguageChange = (lang: 'en' | 'ja') => {
+    const changeLangFunc = (window as any).changeLanguage;
+    if (changeLangFunc) {
+      changeLangFunc(lang);
+    }
+  };
   
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-transparent backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -175,7 +185,22 @@ export function AppHeader() {
               </Link>
             </Button>
             
-            <div id="google_translate_element"></div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Globe className="h-5 w-5" />
+                  <span className="sr-only">Change language</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => handleLanguageChange('en')}>
+                  English
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleLanguageChange('ja')}>
+                  日本語
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
 
 
             {!loading && (
