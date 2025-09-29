@@ -57,23 +57,4 @@
   body {
     @apply bg-background text-foreground;
   }
-
-  body {
-    top: 0px !important; 
-  }
-}
-
-/* This hides the top bar that Google injects */
-.goog-te-banner-frame {
-  display: none !important;
-}
-
-#google_translate_element {
-  visibility: hidden;
-  position: absolute;
-  top: -9999px;
-  left: -9999px;
-  height: 0;
-  width: 0;
-  overflow: hidden;
 }

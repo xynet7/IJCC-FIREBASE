@@ -32,16 +32,6 @@ function GoogleTranslateScript() {
               layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
           }
-
-          function changeLanguage(lang) {
-            const iframe = document.querySelector('.goog-te-menu-frame');
-            if (!iframe) return;
-            const select = iframe.contentWindow.document.querySelector('select.goog-te-combo');
-            if (select) {
-              select.value = lang;
-              select.dispatchEvent(new Event('change'));
-            }
-          }
         `}
       </Script>
     </>

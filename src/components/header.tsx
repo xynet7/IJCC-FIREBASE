@@ -93,11 +93,6 @@ const ListItem = React.forwardRef<
 });
 ListItem.displayName = "ListItem";
 
-declare global {
-    interface Window {
-        changeLanguage: (lang: string) => void;
-    }
-}
 
 export function AppHeader() {
   const pathname = usePathname();
@@ -117,11 +112,6 @@ export function AppHeader() {
     return email.charAt(0).toUpperCase();
   };
 
-  const handleLanguageChange = (lang: string) => {
-    if (window.changeLanguage) {
-        window.changeLanguage(lang);
-    }
-  };
   
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-transparent backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -185,26 +175,7 @@ export function AppHeader() {
               </Link>
             </Button>
             
-            <div id="google_translate_element" style={{display: 'none'}}></div>
-            
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Globe className="h-5 w-5" />
-                  <span className="sr-only">Change Language</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuGroup>
-                    <DropdownMenuItem onClick={() => handleLanguageChange('en')}>
-                        <span>English</span>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => handleLanguageChange('ja')}>
-                        <span>日本語</span>
-                    </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <div id="google_translate_element"></div>
 
 
             {!loading && (
