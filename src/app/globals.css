@@ -59,4 +59,19 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Hide the default Google Translate widget */
+#google_translate_element {
+  display: none;
+}
+
+/* Hide the Google Translate banner */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+/* Prevent top margin from being added by the banner */
+body {
+  top: 0px !important;
+}
     

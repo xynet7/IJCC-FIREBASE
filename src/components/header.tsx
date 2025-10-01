@@ -4,7 +4,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Landmark, Menu, Instagram, Linkedin, Facebook, ChevronDown, Mail, Handshake, Briefcase, FileSignature, Globe, Building, School, University, Lightbulb, Zap, LogOut, User } from "lucide-react";
+import { Landmark, Menu, Instagram, Linkedin, Facebook, ChevronDown, Mail, Handshake, Briefcase, FileSignature, Globe, Building, School, University, Lightbulb, Zap, LogOut, User, Circle } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -28,6 +28,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
@@ -95,6 +97,38 @@ ListItem.displayName = "ListItem";
 export function AppHeader() {
   const pathname = usePathname();
   const { user, loading } = useAuth();
+  const [selectedLang, setSelectedLang] = useState('en');
+
+  const getCookie = (name: string): string | null => {
+    if (typeof document === 'undefined') {
+      return null;
+    }
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+      const cookieValue = parts.pop()?.split(';').shift();
+      const langCode = cookieValue?.split('/').pop();
+      return langCode || null;
+    }
+    return null;
+  };
+
+  useEffect(() => {
+    const currentLang = getCookie('googtrans');
+    if (currentLang) {
+      setSelectedLang(currentLang);
+    }
+  }, []);
+
+  const changeLanguage = (lang: string) => {
+    const iframe = document.getElementsByClassName('goog-te-combo')[0] as HTMLSelectElement;
+    if (iframe) {
+      iframe.value = lang;
+      const event = new Event('change');
+      iframe.dispatchEvent(event);
+      setSelectedLang(lang);
+    }
+  };
   
   const handleLogout = async () => {
     try {
@@ -163,6 +197,27 @@ export function AppHeader() {
         </NavigationMenu>
         
         <div className="flex items-center justify-end gap-2">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Globe className="h-5 w-5" />
+                  <span className="sr-only">Translate</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuRadioGroup value={selectedLang} onValueChange={changeLanguage}>
+                  <DropdownMenuRadioItem value="en" className="flex items-center gap-2">
+                    {selectedLang === 'en' && <Circle className="h-2 w-2 fill-current" />}
+                    <span>English</span>
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="ja" className="flex items-center gap-2">
+                     {selectedLang === 'ja' && <Circle className="h-2 w-2 fill-current" />}
+                    <span>日本語</span>
+                  </DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             <Button asChild variant="ghost" size="icon">
               <Link href="https://webmail.cpanel.net/" target="_blank" rel="noopener noreferrer">
                 <Mail className="h-5 w-5" />
