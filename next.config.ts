@@ -1,13 +1,9 @@
 
 import type {NextConfig} from 'next';
-require('dotenv').config({ path: './.env' });
 
 
 const nextConfig: NextConfig = {
   /* config options here */
-  env: {
-    NEXT_PUBLIC_RAZORPAY_KEY_ID: process.env.RAZORPAY_KEY_ID,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -197,7 +193,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'httpshttps',
+        protocol: 'https',
         hostname: 'necouncil.gov.in',
         port: '',
         pathname: '/**',
