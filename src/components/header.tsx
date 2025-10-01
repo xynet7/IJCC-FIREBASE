@@ -107,11 +107,16 @@ export function AppHeader() {
     const langCookie = getCookie('googtrans');
     const initialLang = langCookie ? langCookie.split('/')[2] : 'en';
     setSelectedLanguage(initialLang);
+
+    if (initialLang === 'ja') {
+        document.body.classList.add('translated-ja');
+    } else {
+        document.body.classList.remove('translated-ja');
+    }
   }, []);
 
   const changeLanguage = (lang: string) => {
-    // Set cookie and reload for Google Translate to take effect
-    document.cookie = `googtrans=/en/${lang}; path=/`;
+    document.cookie = `googtrans=/en/${lang}; path=/; max-age=2592000`; // 30 days
     window.location.reload();
   };
 
@@ -325,3 +330,5 @@ export function AppHeader() {
     </header>
   );
 }
+
+    

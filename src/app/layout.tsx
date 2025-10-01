@@ -16,13 +16,6 @@ export const metadata: Metadata = {
   },
 };
 
-declare global {
-  interface Window {
-    google: any;
-    googleTranslateElementInit: () => void;
-  }
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -55,10 +48,10 @@ export default function RootLayout({
             <Script id="google-translate-init" strategy="afterInteractive">
               {`
                 function googleTranslateElementInit() {
-                  new window.google.translate.TranslateElement({
+                  new google.translate.TranslateElement({
                     pageLanguage: 'en',
                     includedLanguages: 'en,ja',
-                    layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                     autoDisplay: false
                   }, 'google_translate_element');
                 }
@@ -69,3 +62,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+    
