@@ -61,24 +61,10 @@
 }
 
 /* Hide the Google Translate elements by default */
-#google_translate_element, .skiptranslate {
-  display: none;
+#google_translate_element, .skiptranslate, .goog-te-banner-frame {
+  display: none !important;
 }
 
 body {
   top: 0px !important; 
 }
-
-/* When Japanese is selected, show the bar */
-body.google-translate-active .skiptranslate {
-  display: block !important;
-}
-
-/* Adjust top position of body when translate bar is active */
-body.google-translate-active {
-  top: 40px !important;
-}
-
-    
-
-    

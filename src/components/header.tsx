@@ -112,7 +112,6 @@ export function AppHeader() {
   const [selectedLanguage, setSelectedLanguage] = useState('en');
 
   useEffect(() => {
-    // Function to read cookie
     const getCookie = (name: string) => {
       const value = `; ${document.cookie}`;
       const parts = value.split(`; ${name}=`);
@@ -129,22 +128,12 @@ export function AppHeader() {
     const currentLang = getCookie('googtrans');
     if (currentLang) {
       setSelectedLanguage(currentLang);
-      if (currentLang === 'ja') {
-        document.body.classList.add('google-translate-active');
-      } else {
-        document.body.classList.remove('google-translate-active');
-      }
     }
   }, []);
 
   const handleLanguageChange = (lang: string) => {
     window.changeLanguage(lang);
     setSelectedLanguage(lang);
-    if (lang === 'ja') {
-        document.body.classList.add('google-translate-active');
-    } else {
-        document.body.classList.remove('google-translate-active');
-    }
   };
 
   const handleLogout = async () => {
@@ -358,7 +347,3 @@ export function AppHeader() {
     </header>
   );
 }
-
-    
-
-    

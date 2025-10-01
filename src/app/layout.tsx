@@ -61,12 +61,18 @@ export default function RootLayout({
               }
 
               function changeLanguage(lang) {
-                var translateElement = document.querySelector('#google_translate_element select');
-                if (translateElement) {
-                  translateElement.value = lang;
-                  translateElement.dispatchEvent(new Event('change'));
-                } else {
-                  console.error('Google Translate select element not found.');
+                var iframe = document.querySelector('.goog-te-menu-frame');
+                if (!iframe) return;
+
+                var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                var langElements = iframeDoc.querySelectorAll('.goog-te-menu2-item span');
+                
+                for (var i = 0; i < langElements.length; i++) {
+                  var el = langElements[i];
+                  if (el.textContent.trim() === (lang === 'ja' ? 'Japanese' : 'English')) {
+                    el.click();
+                    break;
+                  }
                 }
               }
               
