@@ -4,7 +4,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Landmark, Menu, Instagram, Linkedin, Facebook, ChevronDown, Mail, Handshake, Briefcase, FileSignature, Globe, Building, School, University, Lightbulb, Zap, LogOut, User, Circle } from "lucide-react";
+import { Landmark, Menu, Instagram, Linkedin, Facebook, ChevronDown, Mail, Handshake, Briefcase, FileSignature, Globe, Building, School, University, Lightbulb, Zap, LogOut, User } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -114,19 +114,19 @@ export function AppHeader() {
   };
 
   useEffect(() => {
+    // Check for cookie on mount
     const currentLang = getCookie('googtrans');
     if (currentLang) {
       setSelectedLang(currentLang);
     }
   }, []);
 
-  const changeLanguage = (lang: string) => {
-    const iframe = document.getElementsByClassName('goog-te-combo')[0] as HTMLSelectElement;
-    if (iframe) {
-      iframe.value = lang;
-      const event = new Event('change');
-      iframe.dispatchEvent(event);
+  const handleLanguageChange = (lang: string) => {
+    if (window.changeLanguage) {
+      window.changeLanguage(lang);
       setSelectedLang(lang);
+    } else {
+        console.error("Google Translate not ready yet.");
     }
   };
   
@@ -205,14 +205,12 @@ export function AppHeader() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuRadioGroup value={selectedLang} onValueChange={changeLanguage}>
-                  <DropdownMenuRadioItem value="en" className="flex items-center gap-2">
-                    {selectedLang === 'en' && <Circle className="h-2 w-2 fill-current" />}
-                    <span>English</span>
+                <DropdownMenuRadioGroup value={selectedLang} onValueChange={handleLanguageChange}>
+                  <DropdownMenuRadioItem value="en">
+                    English
                   </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="ja" className="flex items-center gap-2">
-                     {selectedLang === 'ja' && <Circle className="h-2 w-2 fill-current" />}
-                    <span>日本語</span>
+                  <DropdownMenuRadioItem value="ja">
+                    日本語
                   </DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
               </DropdownMenuContent>

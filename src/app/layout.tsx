@@ -16,6 +16,13 @@ export const metadata: Metadata = {
   },
 };
 
+declare global {
+    interface Window {
+        googleTranslateElementInit: () => void;
+        changeLanguage: (lang: string) => void;
+    }
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -57,6 +64,15 @@ export default function RootLayout({
                   layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                   autoDisplay: false
                 }, 'google_translate_element');
+
+                window.changeLanguage = function(lang) {
+                  const select = document.querySelector('select.goog-te-combo');
+                  if (select) {
+                    select.value = lang;
+                    const event = new Event('change');
+                    select.dispatchEvent(event);
+                  }
+                }
               }
             `,
           }}

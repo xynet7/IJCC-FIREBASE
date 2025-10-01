@@ -61,14 +61,10 @@
 }
 
 /* Hide the default Google Translate widget */
-#google_translate_element {
-  display: none;
-}
-
-/* Hide the Google Translate banner */
-.goog-te-banner-frame.skiptranslate {
+#google_translate_element, .goog-te-banner-frame {
   display: none !important;
 }
+
 
 /* Prevent top margin from being added by the banner */
 body {
