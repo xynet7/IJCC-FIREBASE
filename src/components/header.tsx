@@ -94,6 +94,13 @@ const ListItem = React.forwardRef<
 ListItem.displayName = "ListItem";
 
 
+declare global {
+  interface Window {
+    changeLanguage: (lang: string) => void;
+  }
+}
+
+
 export function AppHeader() {
   const pathname = usePathname();
   const { user, loading } = useAuth();
@@ -166,6 +173,23 @@ export function AppHeader() {
         </NavigationMenu>
         
         <div className="flex items-center justify-end gap-2">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Globe className="h-5 w-5" />
+                  <span className="sr-only">Change language</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => window.changeLanguage('en')}>
+                  English
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => window.changeLanguage('ja')}>
+                  日本語
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             <Button asChild variant="ghost" size="icon">
               <Link href="https://webmail.cpanel.net/" target="_blank" rel="noopener noreferrer">
                 <Mail className="h-5 w-5" />
