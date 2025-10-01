@@ -41,6 +41,7 @@ export default function RootLayout({
           <CookieBanner />
           
           <Script
+            id="google-translate-script"
             src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
             strategy="afterInteractive"
           />
@@ -60,11 +61,13 @@ export default function RootLayout({
               }
 
               function changeLanguage(lang) {
-                var GTT = document.querySelector("#google_translate_element select");
-                if (GTT) {
-                  GTT.value = lang;
-                  var evt = new Event('change');
-                  GTT.dispatchEvent(evt);
+                var a = document.querySelector("#google_translate_element select");
+                if (a) {
+                  a.value = lang;
+                  var evt = new Event("change");
+                  a.dispatchEvent(evt);
+                } else {
+                  console.error("Google Translate select element not found.");
                 }
               }
             `}
