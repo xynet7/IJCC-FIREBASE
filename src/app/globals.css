@@ -58,26 +58,6 @@
   body {
     @apply bg-background text-foreground;
   }
-
-  /* Hide Google Translate Widget */
-  #google_translate_element, .skiptranslate {
-    display: none !important;
-  }
-  .goog-te-banner-frame {
-    display: none !important;
-  }
-  body {
-    top: 0px !important;
-  }
-  .goog-te-gadget-simple {
-    border: none !important;
-    background-color: transparent !important;
-  }
-  .goog-te-gadget-simple span {
-      display: none;
-  }
-  .goog-te-menu-value span {
-      display: inline !important;
-  }
 }
+
     

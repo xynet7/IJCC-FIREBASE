@@ -31,7 +31,6 @@ export default function RootLayout({
       </head>
       <body>
         <AuthProvider>
-          <div id="google_translate_element" style={{ display: 'none' }}></div>
           <div className="flex min-h-screen flex-col">
             <AppHeader />
             <main className="flex-grow animate-fade-in">{children}</main>
@@ -52,22 +51,9 @@ export default function RootLayout({
                   new google.translate.TranslateElement({
                     pageLanguage: 'en',
                     includedLanguages: 'en,ja',
-                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                    autoDisplay: false
                   }, 'google_translate_element');
                 } catch (e) {
                   console.error('Error initializing Google Translate:', e);
-                }
-              }
-
-              function changeLanguage(lang) {
-                var a = document.querySelector("#google_translate_element select");
-                if (a) {
-                  a.value = lang;
-                  var evt = new Event("change");
-                  a.dispatchEvent(evt);
-                } else {
-                  console.error("Google Translate select element not found.");
                 }
               }
             `}
@@ -77,4 +63,5 @@ export default function RootLayout({
     </html>
   );
 }
+
     
