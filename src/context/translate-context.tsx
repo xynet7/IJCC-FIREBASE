@@ -27,13 +27,20 @@ export const TranslateProvider = ({ children }: { children: ReactNode }) => {
   const [selectedLanguage, setSelectedLanguage] = useState('en');
 
   const changeLanguage = useCallback((lang: string) => {
+    if (typeof window === 'undefined' || !document.body) return;
+
+    if (lang === 'ja') {
+        document.body.classList.add('show-translate-bar');
+    } else {
+        document.body.classList.remove('show-translate-bar');
+    }
+      
     const googleTranslateElement = document.getElementById('google_translate_element');
     if (googleTranslateElement) {
       const select = googleTranslateElement.querySelector('select');
       if (select) {
         select.value = lang;
         select.dispatchEvent(new Event('change'));
-        // Update cookie to persist selection across reloads/navigation
         document.cookie = `googtrans=/en/${lang}; path=/`;
         setSelectedLanguage(lang);
       }
@@ -41,7 +48,6 @@ export const TranslateProvider = ({ children }: { children: ReactNode }) => {
   }, []);
   
   useEffect(() => {
-    // Function to initialize Google Translate
     window.googleTranslateElementInit = () => {
       new window.google.translate.TranslateElement({
         pageLanguage: 'en',
@@ -50,13 +56,17 @@ export const TranslateProvider = ({ children }: { children: ReactNode }) => {
         autoDisplay: false
       }, 'google_translate_element');
 
-      // Set initial language from cookie after initialization
       const langCookie = getCookie('googtrans');
       const initialLang = langCookie ? langCookie.split('/')[2] : 'en';
       setSelectedLanguage(initialLang);
+        
+      if (initialLang === 'ja') {
+        document.body.classList.add('show-translate-bar');
+      } else {
+        document.body.classList.remove('show-translate-bar');
+      }
     };
 
-    // Check if the script is already there, if so, manually init
     if (window.google && window.google.translate) {
       window.googleTranslateElementInit();
     }
@@ -71,5 +81,3 @@ export const TranslateProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export const useTranslate = () => useContext(TranslateContext);
-
-    

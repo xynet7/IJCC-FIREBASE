@@ -60,20 +60,15 @@
   }
 }
 
-/* Hide the Google Translate elements */
-#google_translate_element, .skiptranslate, .goog-te-spinner-pos, .goog-te-spinner-animation {
+/* Hide the Google Translate elements unless body has 'show-translate-bar' */
+body:not(.show-translate-bar) .goog-te-banner-frame {
   display: none !important;
-  visibility: hidden;
-  height: 0 !important;
-  width: 0 !important;
+}
+
+#google_translate_element {
+  display: none !important;
 }
 
 body {
   top: 0px !important; 
 }
-
-.goog-te-banner-frame {
-  display: none !important;
-}
-
-    
