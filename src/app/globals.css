@@ -60,14 +60,25 @@
   }
 }
 
-/* Hide the default Google Translate widget */
-#google_translate_element {
+/* Hide the Google Translate elements by default */
+#google_translate_element, .skiptranslate {
   display: none;
 }
-body > .skiptranslate {
-  display: none !important;
-}
+
 body {
-  top: 0 !important;
+  top: 0px !important; 
 }
+
+/* When Japanese is selected, show the bar */
+body.google-translate-active .skiptranslate {
+  display: block !important;
+}
+
+/* Adjust top position of body when translate bar is active */
+body.google-translate-active {
+  top: 40px !important;
+}
+
+    
+
     
