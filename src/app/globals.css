@@ -60,23 +60,23 @@
   }
 }
 
+/* Hide the default widget dropdown */
+#google_translate_element {
+  display: none !important;
+}
+
 /* Default state: hide the Google Translate bar */
 .goog-te-banner-frame {
   display: none !important;
 }
 
-#google_translate_element {
-  display: none !important;
-}
-
-/* Adjust top position of body when translate bar is active */
+/* Adjust top position of body ONLY when translate bar is active */
 body.translated-ja {
   top: 40px !important;
 }
 
-/* Show the bar only when the page has been translated to Japanese */
+/* Show the bar ONLY when the page has been translated to Japanese */
 body.translated-ja .goog-te-banner-frame {
     display: block !important;
 }
-
     
