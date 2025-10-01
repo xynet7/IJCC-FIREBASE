@@ -114,7 +114,7 @@ export default function PricingPage() {
               }),
             });
             
-            const { order } = await response.json();
+            const order = await response.json();
 
             if (!order || !order.id) {
                 throw new Error("Order creation failed.");
