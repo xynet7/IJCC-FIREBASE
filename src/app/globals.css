@@ -61,15 +61,7 @@
 }
 
 #google_translate_element {
-  position: absolute !important;
-  top: -9999px !important;
-  left: -9999px !important;
-  z-index: -10;
-  height: 1px !important;
-  width: 1px !important;
-  opacity: 0;
-  overflow: hidden;
-  pointer-events: none;
+  display: none;
 }
 
 body > .skiptranslate {
@@ -87,5 +79,6 @@ body {
   top: 0px !important;
 }
     
+
 
 

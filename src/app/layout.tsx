@@ -60,20 +60,23 @@ export default function RootLayout({
               }
 
               function changeLanguage(lang) {
-                var iframe = document.querySelector('.goog-te-menu-frame');
-                if (!iframe) {
-                    console.error('Google Translate iframe not found.');
-                    return;
-                }
-                var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-                var langElements = innerDoc.querySelectorAll('.goog-te-menu2-item span.text');
-                
-                for (var i = 0; i < langElements.length; i++) {
-                    var el = langElements[i];
-                    if (el.textContent.toLowerCase() === (lang === 'ja' ? 'japanese' : 'english')) {
-                        el.click();
-                        return;
-                    }
+                var GTE_IFRAME_CLASS = '.goog-te-menu-frame';
+                var teCombo = document.querySelector('.goog-te-combo');
+                if (teCombo) {
+                  teCombo.value = lang;
+                  teCombo.dispatchEvent(new Event('change'));
+                } else if (document.querySelector(GTE_IFRAME_CLASS)) {
+                   var teIframe = document.querySelector(GTE_IFRAME_CLASS);
+                   var teIframeDoc = teIframe.contentDocument || teIframe.contentWindow.document;
+                   var langLinks = teIframeDoc.querySelectorAll('.goog-te-menu2-item span.text');
+                   for (var i = 0; i < langLinks.length; i++) {
+                       if (langLinks[i].textContent.toLowerCase() === (lang === 'ja' ? 'japanese' : 'english')) {
+                           langLinks[i].click();
+                           return;
+                       }
+                   }
+                } else {
+                  console.error('Google Translate combo box or iframe not found.');
                 }
               }
             `}
