@@ -17,7 +17,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useAuth } from "@/context/auth-context";
 import { auth } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
@@ -28,13 +28,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  DropdownMenuGroup,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuPortal,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { useTranslate } from "@/context/translate-context";
 
 
 const servicesSubmenu = [
@@ -98,48 +94,14 @@ const ListItem = React.forwardRef<
 ListItem.displayName = "ListItem";
 
 
-declare global {
-  interface Window {
-    googleTranslateElementInit: () => void;
-  }
-}
-
 export function AppHeader() {
   const pathname = usePathname();
   const { user, loading } = useAuth();
-  const [selectedLanguage, setSelectedLanguage] = useState('en');
-
-  const getCookie = (name: string) => {
-    if (typeof document === 'undefined') return null;
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) {
-      return parts.pop()?.split(';').shift() || null;
-    }
-    return null;
-  };
-
-  useEffect(() => {
-    const langCookie = getCookie('googtrans');
-    if (langCookie) {
-      const lang = langCookie.split('/')[2];
-      setSelectedLanguage(lang);
-    }
-  }, []);
-
-  const handleLanguageChange = (lang: string) => {
-    const cookiePath = `/en/${lang}`;
-    if (getCookie('googtrans') !== cookiePath) {
-      document.cookie = `googtrans=${cookiePath}; path=/`;
-      window.location.reload();
-    }
-    setSelectedLanguage(lang);
-  };
+  const { selectedLanguage, changeLanguage } = useTranslate();
 
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      // You can add a toast notification here if you want
     } catch (error) {
       console.error("Error signing out:", error);
     }
@@ -212,13 +174,13 @@ export function AppHeader() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuItem onSelect={() => handleLanguageChange('en')}>
+                <DropdownMenuItem onSelect={() => changeLanguage('en')}>
                   <div className="flex items-center gap-2">
                     {selectedLanguage === 'en' && <Circle className="h-2 w-2 fill-current" />}
                     <span>English</span>
                   </div>
                 </DropdownMenuItem>
-                <DropdownMenuItem onSelect={() => handleLanguageChange('ja')}>
+                <DropdownMenuItem onSelect={() => changeLanguage('ja')}>
                    <div className="flex items-center gap-2">
                     {selectedLanguage === 'ja' && <Circle className="h-2 w-2 fill-current" />}
                     <span>日本語</span>
@@ -347,3 +309,5 @@ export function AppHeader() {
     </header>
   );
 }
+
+    

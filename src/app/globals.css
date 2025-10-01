@@ -60,9 +60,12 @@
   }
 }
 
-/* Hide the Google Translate elements by default */
-#google_translate_element, .skiptranslate {
+/* Hide the Google Translate elements */
+#google_translate_element, .skiptranslate, .goog-te-spinner-pos, .goog-te-spinner-animation {
   display: none !important;
+  visibility: hidden;
+  height: 0 !important;
+  width: 0 !important;
 }
 
 body {
@@ -73,3 +76,4 @@ body {
   display: none !important;
 }
 
+    

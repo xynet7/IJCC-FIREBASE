@@ -6,6 +6,7 @@ import { AppFooter } from '@/components/footer';
 import { Toaster } from '@/components/ui/toaster';
 import { CookieBanner } from '@/components/cookie-banner';
 import { AuthProvider } from '@/context/auth-context';
+import { TranslateProvider } from '@/context/translate-context';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
@@ -15,6 +16,13 @@ export const metadata: Metadata = {
     icon: 'https://i.postimg.cc/HkT5K8PD/IJCC-LOGO.jpg',
   },
 };
+
+declare global {
+  interface Window {
+    google: any;
+    googleTranslateElementInit: () => void;
+  }
+}
 
 export default function RootLayout({
   children,
@@ -31,34 +39,26 @@ export default function RootLayout({
       </head>
       <body>
         <AuthProvider>
-          <div id="google_translate_element" style={{display: 'none'}}></div>
-          <div className="flex min-h-screen flex-col">
-            <AppHeader />
-            <main className="flex-grow animate-fade-in">{children}</main>
-            <AppFooter />
-          </div>
-          <Toaster />
-          <CookieBanner />
-          
-          <Script
-            id="google-translate-script"
-            src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-            strategy="afterInteractive"
-          />
-          <Script id="google-translate-init" strategy="afterInteractive">
-            {`
-              function googleTranslateElementInit() {
-                new google.translate.TranslateElement({
-                  pageLanguage: 'en',
-                  includedLanguages: 'en,ja',
-                  layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                  autoDisplay: false
-                }, 'google_translate_element');
-              }
-            `}
-          </Script>
+          <TranslateProvider>
+            <div id="google_translate_element" style={{display: 'none'}}></div>
+            <div className="flex min-h-screen flex-col">
+              <AppHeader />
+              <main className="flex-grow animate-fade-in">{children}</main>
+              <AppFooter />
+            </div>
+            <Toaster />
+            <CookieBanner />
+            
+            <Script
+              id="google-translate-script"
+              src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+              strategy="afterInteractive"
+            />
+          </TranslateProvider>
         </AuthProvider>
       </body>
     </html>
   );
 }
+
+    
