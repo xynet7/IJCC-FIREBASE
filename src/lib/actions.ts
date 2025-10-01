@@ -2,9 +2,8 @@
 "use server";
 
 import { z } from "zod";
-import { ContactFormSchema, type ContactFormState, RazorpayOrderSchema, RazorpayVerificationSchema } from "./definitions";
+import { ContactFormSchema, type ContactFormState, RazorpayVerificationSchema } from "./definitions";
 import nodemailer from "nodemailer";
-import Razorpay from "razorpay";
 import crypto from "crypto";
 
 export async function submitContactForm(
@@ -28,6 +27,16 @@ export async function submitContactForm(
   }
 
   const { name, email, phone, inquiryType, message } = validatedFields.data;
+
+  // This check is important because environment variables are only available on the server
+  if (!process.env.SMTP_HOST) {
+    console.error("SMTP environment variables are not set.");
+     return {
+      message: "Server configuration error. Could not send email.",
+      success: false,
+      errors: {},
+    };
+  }
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -71,38 +80,6 @@ export async function submitContactForm(
   }
 }
 
-export async function createRazorpayOrder(data: z.infer<typeof RazorpayOrderSchema>) {
-    const validatedFields = RazorpayOrderSchema.safeParse(data);
-
-    if (!validatedFields.success) {
-        throw new Error("Invalid order data.");
-    }
-    
-    if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
-      throw new Error("Razorpay API keys are not configured.");
-    }
-
-    const razorpay = new Razorpay({
-        key_id: process.env.RAZORPAY_KEY_ID,
-        key_secret: process.env.RAZORPAY_KEY_SECRET,
-    });
-
-    const { amount, currency, receipt } = validatedFields.data;
-
-    const options = {
-        amount,
-        currency,
-        receipt,
-    };
-
-    try {
-        const order = await razorpay.orders.create(options);
-        return order;
-    } catch (error) {
-        console.error("Razorpay order creation failed:", error);
-        throw new Error("Could not create Razorpay order.");
-    }
-}
 
 export async function verifyRazorpayPayment(data: z.infer<typeof RazorpayVerificationSchema>) {
     const validatedFields = RazorpayVerificationSchema.safeParse(data);
@@ -112,7 +89,8 @@ export async function verifyRazorpayPayment(data: z.infer<typeof RazorpayVerific
     }
     
     if (!process.env.RAZORPAY_KEY_SECRET) {
-      throw new Error("Razorpay secret key is not configured.");
+      console.error("Razorpay secret key is not configured.");
+      return { success: false, message: "Server configuration error." };
     }
 
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = validatedFields.data;

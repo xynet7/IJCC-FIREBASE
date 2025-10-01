@@ -11,9 +11,15 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import Script from "next/script";
-import { createRazorpayOrder, verifyRazorpayPayment } from "@/lib/actions";
+import { verifyRazorpayPayment } from "@/lib/actions";
 import { db } from "@/lib/firebase";
 import { doc, updateDoc } from "firebase/firestore";
+
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
 
 const pricingTiers = [
     {
@@ -97,11 +103,18 @@ export default function PricingPage() {
         setLoadingTier(tier.id);
 
         try {
-            const order = await createRazorpayOrder({
+            const response = await fetch('/api/createOrder', {
+              method: "POST",
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
                 amount: tier.price * 100, // Amount in paise
-                currency: 'INR',
-                receipt: `receipt_${user.uid}_${tier.id}_${Date.now()}`,
+                currency: 'INR'
+              }),
             });
+            
+            const { order } = await response.json();
 
             if (!order || !order.id) {
                 throw new Error("Order creation failed.");
@@ -127,6 +140,7 @@ export default function PricingPage() {
                             membershipTier: tier.id,
                             paymentId: response.razorpay_payment_id,
                             orderId: response.razorpay_order_id,
+                            membershipUpdatedAt: new Date(),
                         });
                         
                         toast({
