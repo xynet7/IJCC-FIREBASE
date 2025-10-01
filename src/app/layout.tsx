@@ -6,7 +6,6 @@ import { AppFooter } from '@/components/footer';
 import { Toaster } from '@/components/ui/toaster';
 import { CookieBanner } from '@/components/cookie-banner';
 import { AuthProvider } from '@/context/auth-context';
-import { TranslateProvider } from '@/context/translate-context';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
@@ -39,7 +38,6 @@ export default function RootLayout({
       </head>
       <body>
         <AuthProvider>
-          <TranslateProvider>
             <div id="google_translate_element" style={{display: 'none'}}></div>
             <div className="flex min-h-screen flex-col">
               <AppHeader />
@@ -54,11 +52,20 @@ export default function RootLayout({
               src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
               strategy="afterInteractive"
             />
-          </TranslateProvider>
+            <Script id="google-translate-init" strategy="afterInteractive">
+              {`
+                function googleTranslateElementInit() {
+                  new window.google.translate.TranslateElement({
+                    pageLanguage: 'en',
+                    includedLanguages: 'en,ja',
+                    layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+                    autoDisplay: false
+                  }, 'google_translate_element');
+                }
+              `}
+            </Script>
         </AuthProvider>
       </body>
     </html>
   );
 }
-
-    

@@ -17,7 +17,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "@/context/auth-context";
 import { auth } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
@@ -30,8 +30,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { useTranslate } from "@/context/translate-context";
-
 
 const servicesSubmenu = [
     { title: "Indian Schools", href: "/services/indian-schools", icon: <School className="text-primary" />, description: "Cultural exchange, language programs, and partnerships for K-12 institutions." },
@@ -97,7 +95,25 @@ ListItem.displayName = "ListItem";
 export function AppHeader() {
   const pathname = usePathname();
   const { user, loading } = useAuth();
-  const { selectedLanguage, changeLanguage } = useTranslate();
+  const [selectedLanguage, setSelectedLanguage] = useState('en');
+
+  useEffect(() => {
+    const getCookie = (name: string): string | null => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
+        return null;
+    };
+    const langCookie = getCookie('googtrans');
+    const initialLang = langCookie ? langCookie.split('/')[2] : 'en';
+    setSelectedLanguage(initialLang);
+  }, []);
+
+  const changeLanguage = (lang: string) => {
+    // Set cookie and reload for Google Translate to take effect
+    document.cookie = `googtrans=/en/${lang}; path=/`;
+    window.location.reload();
+  };
 
   const handleLogout = async () => {
     try {
@@ -309,5 +325,3 @@ export function AppHeader() {
     </header>
   );
 }
-
-    
