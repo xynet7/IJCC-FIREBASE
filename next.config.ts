@@ -93,7 +93,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'httpshttps',
+        protocol: 'https',
         hostname: 'media.licdn.com',
         port: '',
         pathname: '/**',
