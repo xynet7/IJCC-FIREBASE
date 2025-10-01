@@ -59,26 +59,4 @@
     @apply bg-background text-foreground;
   }
 }
-
-#google_translate_element {
-  display: none;
-}
-
-body > .skiptranslate {
-    display: none !important;
-    opacity: 0;
-    pointer-events: none;
-    visibility: hidden;
-}
-
-iframe.goog-te-banner-frame {
-  display: none !important;
-}
-
-body {
-  top: 0px !important;
-}
     
-
-
-
