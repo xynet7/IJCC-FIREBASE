@@ -48,35 +48,13 @@ export default function RootLayout({
           <Script id="google-translate-init" strategy="afterInteractive">
             {`
               function googleTranslateElementInit() {
-                try {
-                  new google.translate.TranslateElement({
-                    pageLanguage: 'en',
-                    includedLanguages: 'en,ja',
-                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                    autoDisplay: false
-                  }, 'google_translate_element');
-                } catch (e) {
-                  console.error('Error initializing Google Translate:', e);
-                }
+                new google.translate.TranslateElement({
+                  pageLanguage: 'en',
+                  includedLanguages: 'en,ja',
+                  layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                  autoDisplay: false
+                }, 'google_translate_element');
               }
-
-              function changeLanguage(lang) {
-                var iframe = document.querySelector('.goog-te-menu-frame');
-                if (!iframe) return;
-
-                var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                var langElements = iframeDoc.querySelectorAll('.goog-te-menu2-item span');
-                
-                for (var i = 0; i < langElements.length; i++) {
-                  var el = langElements[i];
-                  if (el.textContent.trim() === (lang === 'ja' ? 'Japanese' : 'English')) {
-                    el.click();
-                    break;
-                  }
-                }
-              }
-              
-              window.changeLanguage = changeLanguage;
             `}
           </Script>
         </AuthProvider>

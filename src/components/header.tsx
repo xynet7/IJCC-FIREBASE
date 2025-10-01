@@ -101,38 +101,38 @@ ListItem.displayName = "ListItem";
 declare global {
   interface Window {
     googleTranslateElementInit: () => void;
-    changeLanguage: (lang: string) => void;
   }
 }
-
 
 export function AppHeader() {
   const pathname = usePathname();
   const { user, loading } = useAuth();
   const [selectedLanguage, setSelectedLanguage] = useState('en');
 
+  const getCookie = (name: string) => {
+    if (typeof document === 'undefined') return null;
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+      return parts.pop()?.split(';').shift() || null;
+    }
+    return null;
+  };
+
   useEffect(() => {
-    const getCookie = (name: string) => {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) {
-        const cookieValue = parts.pop()?.split(';').shift();
-        if (cookieValue) {
-          const lang = cookieValue.split('/')[2];
-          return lang;
-        }
-      }
-      return null;
-    };
-    
-    const currentLang = getCookie('googtrans');
-    if (currentLang) {
-      setSelectedLanguage(currentLang);
+    const langCookie = getCookie('googtrans');
+    if (langCookie) {
+      const lang = langCookie.split('/')[2];
+      setSelectedLanguage(lang);
     }
   }, []);
 
   const handleLanguageChange = (lang: string) => {
-    window.changeLanguage(lang);
+    const cookiePath = `/en/${lang}`;
+    if (getCookie('googtrans') !== cookiePath) {
+      document.cookie = `googtrans=${cookiePath}; path=/`;
+      window.location.reload();
+    }
     setSelectedLanguage(lang);
   };
 

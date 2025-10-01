@@ -61,10 +61,15 @@
 }
 
 /* Hide the Google Translate elements by default */
-#google_translate_element, .skiptranslate, .goog-te-banner-frame {
+#google_translate_element, .skiptranslate {
   display: none !important;
 }
 
 body {
   top: 0px !important; 
 }
+
+.goog-te-banner-frame {
+  display: none !important;
+}
+
