@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     if (!order) {
         return NextResponse.json({ error: "Order creation failed" }, { status: 500 });
     }
-    return NextResponse.json({ order }, { status: 200 });
+    return NextResponse.json(order, { status: 200 });
   } catch (error) {
     console.error("Error creating order:", error);
     return NextResponse.json(
