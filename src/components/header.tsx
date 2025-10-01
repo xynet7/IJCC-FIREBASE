@@ -4,7 +4,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Landmark, Menu, Instagram, Linkedin, Facebook, ChevronDown, Mail, Handshake, Briefcase, FileSignature, Globe, Building, School, University, Lightbulb, Zap, LogOut, User, Circle } from "lucide-react";
+import { Landmark, Menu, Instagram, Linkedin, Facebook, ChevronDown, Mail, Handshake, Briefcase, FileSignature, Globe, Building, School, University, Lightbulb, Zap, LogOut, User } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -95,25 +95,9 @@ ListItem.displayName = "ListItem";
 export function AppHeader() {
   const pathname = usePathname();
   const { user, loading } = useAuth();
-  const [selectedLanguage, setSelectedLanguage] = useState('en');
-
-  useEffect(() => {
-    const getCookie = (name: string): string | null => {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
-        return null;
-    };
-    const langCookie = getCookie('googtrans');
-    const initialLang = langCookie ? langCookie.split('/')[2] : 'en';
-    setSelectedLanguage(initialLang);
-  }, []);
-
-  const changeLanguage = (lang: string) => {
-    // Set the cookie for Google Translate
-    document.cookie = `googtrans=/en/${lang}; path=/; max-age=2592000`; // 30 days
-    // Reload the page to apply the translation
-    window.location.reload();
+  
+  const toggleTranslateBar = () => {
+    document.body.classList.toggle('show-translate-bar');
   };
 
   const handleLogout = async () => {
@@ -183,28 +167,10 @@ export function AppHeader() {
         </NavigationMenu>
         
         <div className="flex items-center justify-end gap-2">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Globe className="h-5 w-5" />
-                  <span className="sr-only">Change language</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onSelect={() => changeLanguage('en')}>
-                  <div className="flex items-center gap-2">
-                    {selectedLanguage === 'en' && <Circle className="h-2 w-2 fill-current" />}
-                    <span>English</span>
-                  </div>
-                </DropdownMenuItem>
-                <DropdownMenuItem onSelect={() => changeLanguage('ja')}>
-                   <div className="flex items-center gap-2">
-                    {selectedLanguage === 'ja' && <Circle className="h-2 w-2 fill-current" />}
-                    <span>日本語</span>
-                  </div>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <Button variant="ghost" size="icon" onClick={toggleTranslateBar}>
+              <Globe className="h-5 w-5" />
+              <span className="sr-only">Toggle Language Bar</span>
+            </Button>
 
             <Button asChild variant="ghost" size="icon">
               <Link href="https://webmail.cpanel.net/" target="_blank" rel="noopener noreferrer">
