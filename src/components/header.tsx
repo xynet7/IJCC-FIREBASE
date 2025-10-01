@@ -96,10 +96,6 @@ export function AppHeader() {
   const pathname = usePathname();
   const { user, loading } = useAuth();
   
-  const toggleTranslateBar = () => {
-    document.body.classList.toggle('show-translate-bar');
-  };
-
   const handleLogout = async () => {
     try {
       await signOut(auth);
@@ -167,11 +163,6 @@ export function AppHeader() {
         </NavigationMenu>
         
         <div className="flex items-center justify-end gap-2">
-            <Button variant="ghost" size="icon" onClick={toggleTranslateBar}>
-              <Globe className="h-5 w-5" />
-              <span className="sr-only">Toggle Language Bar</span>
-            </Button>
-
             <Button asChild variant="ghost" size="icon">
               <Link href="https://webmail.cpanel.net/" target="_blank" rel="noopener noreferrer">
                 <Mail className="h-5 w-5" />
