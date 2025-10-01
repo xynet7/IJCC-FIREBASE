@@ -4,7 +4,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Landmark, Menu, Instagram, Linkedin, Facebook, ChevronDown, Mail, Handshake, Briefcase, FileSignature, Globe, Building, School, University, Lightbulb, Zap, LogOut, User } from "lucide-react";
+import { Landmark, Menu, Instagram, Linkedin, Facebook, ChevronDown, Mail, Handshake, Briefcase, FileSignature, Globe, Building, School, University, Lightbulb, Zap, LogOut, User, Circle } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -17,7 +17,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "@/context/auth-context";
 import { auth } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
@@ -109,6 +109,33 @@ declare global {
 export function AppHeader() {
   const pathname = usePathname();
   const { user, loading } = useAuth();
+  const [selectedLanguage, setSelectedLanguage] = useState('en');
+
+  useEffect(() => {
+    // Function to read cookie
+    const getCookie = (name: string) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) {
+        const cookieValue = parts.pop()?.split(';').shift();
+        if (cookieValue) {
+          const lang = cookieValue.split('/')[2];
+          return lang;
+        }
+      }
+      return null;
+    };
+    
+    const currentLang = getCookie('googtrans');
+    if (currentLang) {
+      setSelectedLanguage(currentLang);
+    }
+  }, []);
+
+  const handleLanguageChange = (lang: string) => {
+    window.changeLanguage(lang);
+    setSelectedLanguage(lang);
+  };
 
   const handleLogout = async () => {
     try {
@@ -186,11 +213,17 @@ export function AppHeader() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuItem onSelect={() => window.changeLanguage('en')}>
-                  English
+                <DropdownMenuItem onSelect={() => handleLanguageChange('en')}>
+                  <div className="flex items-center gap-2">
+                    {selectedLanguage === 'en' && <Circle className="h-2 w-2 fill-current" />}
+                    <span>English</span>
+                  </div>
                 </DropdownMenuItem>
-                <DropdownMenuItem onSelect={() => window.changeLanguage('ja')}>
-                  日本語
+                <DropdownMenuItem onSelect={() => handleLanguageChange('ja')}>
+                   <div className="flex items-center gap-2">
+                    {selectedLanguage === 'ja' && <Circle className="h-2 w-2 fill-current" />}
+                    <span>日本語</span>
+                  </div>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -315,3 +348,5 @@ export function AppHeader() {
     </header>
   );
 }
+
+    
