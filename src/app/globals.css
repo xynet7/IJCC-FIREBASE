@@ -60,4 +60,14 @@
   }
 }
 
+/* Hide the default Google Translate widget */
+#google_translate_element {
+  display: none;
+}
+body > .skiptranslate {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+}
     
