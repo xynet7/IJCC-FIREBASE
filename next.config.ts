@@ -234,7 +234,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https://',
+        protocol: 'https',
         hostname: 'timestech.in',
         port: '',
         pathname: '/**',
