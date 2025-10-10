@@ -60,14 +60,26 @@
   }
 }
 
-/* Hide the default Google Translate widget */
-#google_translate_element, .goog-te-banner-frame {
+/* Hide the default Google Translate banner */
+.goog-te-banner-frame {
   display: none !important;
 }
-
 
 /* Prevent top margin from being added by the banner */
 body {
   top: 0px !important;
+}
+
+#google_translate_element .goog-te-combo {
+    @apply rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground;
+    cursor: pointer;
+}
+
+#google_translate_element .goog-te-gadget-icon {
+    display: none;
+}
+#google_translate_element .goog-te-gadget-simple {
+    border: none;
+    background-color: transparent;
 }
     

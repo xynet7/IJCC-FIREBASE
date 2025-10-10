@@ -28,8 +28,6 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
@@ -97,38 +95,6 @@ ListItem.displayName = "ListItem";
 export function AppHeader() {
   const pathname = usePathname();
   const { user, loading } = useAuth();
-  const [selectedLang, setSelectedLang] = useState('en');
-
-  const getCookie = (name: string): string | null => {
-    if (typeof document === 'undefined') {
-      return null;
-    }
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) {
-      const cookieValue = parts.pop()?.split(';').shift();
-      const langCode = cookieValue?.split('/').pop();
-      return langCode || null;
-    }
-    return null;
-  };
-
-  useEffect(() => {
-    // Check for cookie on mount
-    const currentLang = getCookie('googtrans');
-    if (currentLang) {
-      setSelectedLang(currentLang);
-    }
-  }, []);
-
-  const handleLanguageChange = (lang: string) => {
-    if (window.changeLanguage) {
-      window.changeLanguage(lang);
-      setSelectedLang(lang);
-    } else {
-        console.error("Google Translate not ready yet.");
-    }
-  };
   
   const handleLogout = async () => {
     try {
@@ -197,24 +163,7 @@ export function AppHeader() {
         </NavigationMenu>
         
         <div className="flex items-center justify-end gap-2">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Globe className="h-5 w-5" />
-                  <span className="sr-only">Translate</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuRadioGroup value={selectedLang} onValueChange={handleLanguageChange}>
-                  <DropdownMenuRadioItem value="en">
-                    English
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="ja">
-                    日本語
-                  </DropdownMenuRadioItem>
-                </DropdownMenuRadioGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <div id="google_translate_element" className="flex items-center"></div>
 
             <Button asChild variant="ghost" size="icon">
               <Link href="https://webmail.cpanel.net/" target="_blank" rel="noopener noreferrer">

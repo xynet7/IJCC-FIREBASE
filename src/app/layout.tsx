@@ -16,13 +16,6 @@ export const metadata: Metadata = {
   },
 };
 
-declare global {
-    interface Window {
-        googleTranslateElementInit: () => void;
-        changeLanguage: (lang: string) => void;
-    }
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,7 +31,6 @@ export default function RootLayout({
       </head>
       <body>
         <AuthProvider>
-            <div id="google_translate_element" style={{display: 'none'}}></div>
             <div className="flex min-h-screen flex-col">
               <AppHeader />
               <main className="flex-grow animate-fade-in">{children}</main>
@@ -64,15 +56,6 @@ export default function RootLayout({
                   layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                   autoDisplay: false
                 }, 'google_translate_element');
-
-                window.changeLanguage = function(lang) {
-                  const select = document.querySelector('select.goog-te-combo');
-                  if (select) {
-                    select.value = lang;
-                    const event = new Event('change');
-                    select.dispatchEvent(event);
-                  }
-                }
               }
             `,
           }}
