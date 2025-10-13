@@ -52,7 +52,7 @@ function MembershipFormComponent() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-headline">Your Details</CardTitle>
+        <CardTitle className="font-headline">Part A: Company & Primary Contact Information</CardTitle>
         <CardDescription>All fields are required unless marked optional.</CardDescription>
       </CardHeader>
       <CardContent>
