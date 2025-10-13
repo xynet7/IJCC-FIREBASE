@@ -10,11 +10,19 @@ export async function submitMembershipForm(
   prevState: MembershipFormState,
   formData: FormData
 ): Promise<MembershipFormState> {
-  const validatedFields = MembershipFormSchema.safeParse(
-    Object.fromEntries(formData.entries())
-  );
+    
+  const rawFormData = Object.fromEntries(formData.entries());
+
+  // Manually handle date conversion
+  if (rawFormData.dateOfIncorporation) {
+      rawFormData.dateOfIncorporation = new Date(rawFormData.dateOfIncorporation as string);
+  }
+
+  const validatedFields = MembershipFormSchema.safeParse(rawFormData);
+    
 
   if (!validatedFields.success) {
+    console.log(validatedFields.error.flatten().fieldErrors);
     return {
       errors: validatedFields.error.flatten().fieldErrors,
       message: "Validation failed. Please check your input and try again.",

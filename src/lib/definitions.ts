@@ -25,15 +25,22 @@ export const ContactFormSchema = z.object({
 });
 
 export const MembershipFormSchema = z.object({
-  name: z.string().min(2, "Name is required."),
-  email: z.string().email("Please enter a valid email."),
-  phone: z.string().min(10, "Please enter a valid phone number."),
-  website: z.string().url("Please enter a valid URL.").optional().or(z.literal('')),
-  address: z.string().min(5, "Address is required."),
+  legalCompanyName: z.string().min(2, "Legal company name is required."),
+  entityType: z.enum(["private-ltd", "public-ltd", "llp", "partnership", "proprietorship"], {
+    required_error: "You need to select an entity type.",
+  }),
+  dateOfIncorporation: z.date({
+    required_error: "Date of incorporation is required.",
+  }),
+  msmeRegistration: z.string().optional(),
+  registeredAddress: z.string().min(10, "Official registered address is required."),
   city: z.string().min(2, "City is required."),
-  pincode: z.string().min(5, "Pincode is required."),
-  country: z.string().min(2, "Country is required."),
-  interest: z.string().optional(),
+  state: z.string().min(2, "State is required."),
+  website: z.string().url("Please enter a valid URL.").optional().or(z.literal('')),
+  directors: z.string().min(2, "Please list at least one director."),
+  primaryContactPerson: z.string().min(2, "Primary contact person is required."),
+  mobileNumber: z.string().min(10, "A valid mobile number is required."),
+  emailAddress: z.string().email("A valid email address is required."),
   membershipTier: z.enum([
     "individual", 
     "startup", 

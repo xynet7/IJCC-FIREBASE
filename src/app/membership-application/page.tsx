@@ -11,7 +11,7 @@ function MembershipApplication() {
           Please fill out the form below to apply for membership. We're excited to have you join us.
         </p>
       </div>
-      <div className="mx-auto max-w-2xl">
+      <div className="mx-auto max-w-4xl">
         <MembershipForm />
       </div>
     </div>
@@ -20,7 +20,7 @@ function MembershipApplication() {
 
 export default function MembershipApplicationPage() {
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div className="flex justify-center items-center h-screen"><div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-primary"></div></div>}>
             <MembershipApplication />
         </Suspense>
     )
