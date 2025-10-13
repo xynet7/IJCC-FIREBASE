@@ -13,16 +13,23 @@ export async function submitMembershipForm(
     
   const rawFormData = Object.fromEntries(formData.entries());
 
-  // Manually handle date conversion
+  // Manually handle date and boolean conversion for FormData
   if (rawFormData.dateOfIncorporation) {
-      rawFormData.dateOfIncorporation = new Date(rawFormData.dateOfIncorporation as string);
+    rawFormData.dateOfIncorporation = new Date(rawFormData.dateOfIncorporation as string);
   }
+  if (rawFormData.applicantDate) {
+    rawFormData.applicantDate = new Date(rawFormData.applicantDate as string);
+  }
+  rawFormData.declaration = rawFormData.declaration === 'on';
+
+  // Handle array for japanInterest
+  rawFormData.japanInterest = formData.getAll('japanInterest');
 
   const validatedFields = MembershipFormSchema.safeParse(rawFormData);
     
 
   if (!validatedFields.success) {
-    console.log(validatedFields.error.flatten().fieldErrors);
+    console.log('Validation Errors:', validatedFields.error.flatten().fieldErrors);
     return {
       errors: validatedFields.error.flatten().fieldErrors,
       message: "Validation failed. Please check your input and try again.",
@@ -30,10 +37,13 @@ export async function submitMembershipForm(
     };
   }
 
-  // Placeholder: In the next step, we will connect this to send data to Google Sheets.
-  console.log("Membership Form Data:", validatedFields.data);
+  const { applicantSignature, ...formDataForSheet } = validatedFields.data;
+  console.log("Membership Form Data for Sheet:", formDataForSheet);
+  console.log("Signature File:", applicantSignature.name, applicantSignature.size, applicantSignature.type);
 
-  // Simulate a successful submission for now
+  // Placeholder for sending data to Google Sheets
+  // Placeholder for uploading signature to cloud storage
+
   return {
     message: "Your application has been received! You will now be redirected to complete the payment.",
     success: true,

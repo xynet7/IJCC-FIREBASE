@@ -2,7 +2,7 @@
 "use client";
 
 import { useFormState, useFormStatus } from "react-dom";
-import { useEffect, useState, Suspense } from "react";
+import { useEffect, useState, Suspense, useRef } from "react";
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -10,7 +10,7 @@ import { submitMembershipForm } from "@/lib/actions";
 import { MembershipFormSchema, type MembershipFormState } from "@/lib/definitions";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -47,12 +47,13 @@ const japanInterestItems = [
 ]
 
 function MembershipFormComponent() {
-  const initialState = { message: "", errors: {}, success: false };
+  const initialState: MembershipFormState = { message: "", errors: {}, success: false };
   const [state, dispatch] = useFormState(submitMembershipForm, initialState);
   const { toast } = useToast();
   const router = useRouter();
   const searchParams = useSearchParams();
   const [selectedTier, setSelectedTier] = useState(searchParams.get('tier') || 'individual');
+  const formRef = useRef<HTMLFormElement>(null);
   
   const form = useForm<z.infer<typeof MembershipFormSchema>>({
     resolver: zodResolver(MembershipFormSchema),
@@ -76,43 +77,60 @@ function MembershipFormComponent() {
       otherJapanInterest: "",
       companyDescription: "",
       marketObjectives: "",
+      declaration: undefined,
+      applicantName: "",
+      applicantDesignation: "",
+      applicantDate: new Date(),
+      applicantSignature: undefined,
     },
   });
 
   useEffect(() => {
     form.setValue('membershipTier', selectedTier as "individual" | "startup" | "corporate" | "large-corporate");
   }, [selectedTier, form]);
-
+  
   useEffect(() => {
-    if (state.success) {
-      toast({
-        title: "Application Submitted!",
-        description: state.message,
-      });
-      router.push(`/pricing#${selectedTier}`);
-    } else if (state.message && state.errors) {
-       toast({
-        variant: "destructive",
-        title: "Error Submitting Form",
-        description: state.message,
-      });
-    }
-  }, [state, router, toast, selectedTier]);
+      if(state.success) {
+          toast({
+              title: "Application Submitted!",
+              description: state.message,
+          });
+          form.reset();
+          router.push(`/pricing?tier=${selectedTier}#${selectedTier}`);
+      } else if (state.message && state.errors) {
+          toast({
+              variant: "destructive",
+              title: "Error Submitting Form",
+              description: state.message,
+          });
+          // Manually set form errors for server-side validation issues
+          for (const [key, value] of Object.entries(state.errors)) {
+              form.setError(key as keyof z.infer<typeof MembershipFormSchema>, {
+                  type: 'server',
+                  message: Array.isArray(value) ? value.join(', ') : String(value),
+              });
+          }
+      }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state]);
 
-  function onSubmit(values: z.infer<typeof MembershipFormSchema>) {
+  const onFormSubmit = (data: z.infer<typeof MembershipFormSchema>) => {
     const formData = new FormData();
-    Object.entries(values).forEach(([key, value]) => {
+    for (const key in data) {
+        const value = data[key as keyof typeof data];
         if (value instanceof Date) {
             formData.append(key, value.toISOString());
+        } else if (value instanceof File) {
+            formData.append(key, value);
         } else if (Array.isArray(value)) {
             value.forEach(item => formData.append(key, item));
-        } else if (value != null) {
+        } else if (value !== undefined && value !== null) {
             formData.append(key, String(value));
         }
-    });
+    }
     dispatch(formData);
-  }
-
+  };
+  
   const watchingCoreBusiness = form.watch("coreBusinessActivity");
   const watchingJapanInterest = form.watch("japanInterest");
 
@@ -120,9 +138,14 @@ function MembershipFormComponent() {
   return (
     <Card>
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form 
+              ref={formRef} 
+              action={(formData) => dispatch(formData)}
+              onSubmit={form.handleSubmit(onFormSubmit)}
+              className="space-y-8"
+            >
               <CardHeader>
-                <CardTitle className="font-headline text-2xl">Part A: Company & Primary Contact Information</CardTitle>
+                <CardTitle className="font-headline text-2xl">Part A: Company &amp; Primary Contact Information</CardTitle>
                 <CardDescription>All fields are required unless marked optional.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-8">
@@ -361,7 +384,7 @@ function MembershipFormComponent() {
               </CardContent>
 
               <CardHeader>
-                <CardTitle className="font-headline text-2xl">Part B: Japan Collaboration Intent & Business Profile</CardTitle>
+                <CardTitle className="font-headline text-2xl">Part B: Japan Collaboration Intent &amp; Business Profile</CardTitle>
               </CardHeader>
               <CardContent className="space-y-8">
                 
@@ -377,15 +400,15 @@ function MembershipFormComponent() {
                           defaultValue={field.value}
                           className="flex flex-wrap gap-x-6 gap-y-3"
                         >
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="accounting-finance" /></FormControl><FormLabel className="font-normal">Accounting & Finance</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="accounting-finance" /></FormControl><FormLabel className="font-normal">Accounting &amp; Finance</FormLabel></FormItem>
                           <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="manufacturing" /></FormControl><FormLabel className="font-normal">Manufacturing</FormLabel></FormItem>
                           <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="it-ites" /></FormControl><FormLabel className="font-normal">IT / ITES / Software Services</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="engineering-automotive" /></FormControl><FormLabel className="font-normal">Engineering & Automotive</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="healthcare-pharma" /></FormControl><FormLabel className="font-normal">Healthcare & Pharmaceuticals</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="agri-food" /></FormControl><FormLabel className="font-normal">Agriculture & Food Processing</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="textiles-apparel" /></FormControl><FormLabel className="font-normal">Textiles & Apparel</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="engineering-automotive" /></FormControl><FormLabel className="font-normal">Engineering &amp; Automotive</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="healthcare-pharma" /></FormControl><FormLabel className="font-normal">Healthcare &amp; Pharmaceuticals</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="agri-food" /></FormControl><FormLabel className="font-normal">Agriculture &amp; Food Processing</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="textiles-apparel" /></FormControl><FormLabel className="font-normal">Textiles &amp; Apparel</FormLabel></FormItem>
                           <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="cleantech-energy" /></FormControl><FormLabel className="font-normal">Clean-Tech / Renewable Energy</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="consulting-services" /></FormControl><FormLabel className="font-normal">Consulting & Professional Services</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="consulting-services" /></FormControl><FormLabel className="font-normal">Consulting &amp; Professional Services</FormLabel></FormItem>
                           <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="other" /></FormControl><FormLabel className="font-normal">Other</FormLabel></FormItem>
                         </RadioGroup>
                       </FormControl>
@@ -449,7 +472,7 @@ function MembershipFormComponent() {
                                         checked={field.value?.includes(item.id)}
                                         onCheckedChange={(checked) => {
                                         return checked
-                                            ? field.onChange([...field.value, item.id])
+                                            ? field.onChange([...(field.value || []), item.id])
                                             : field.onChange(
                                                 field.value?.filter(
                                                 (value) => value !== item.id
@@ -508,9 +531,133 @@ function MembershipFormComponent() {
                 />
               </CardContent>
 
-              <CardContent>
-                <SubmitButton />
+               <CardHeader>
+                <CardTitle className="font-headline text-2xl">Part C: Declaration &amp; Commitment</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-8">
+                <FormField
+                  control={form.control}
+                  name="declaration"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel>
+                          I/We have read and understood the membership criteria and agree to abide by the rules and regulations of the India Japan Chamber of Commerce (IJCC). The information provided in this application is true and correct to the best of my knowledge.
+                        </FormLabel>
+                      </div>
+                       <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                    control={form.control}
+                    name="applicantSignature"
+                    render={({ field: { onChange, value, ...rest } }) => (
+                        <FormItem>
+                            <FormLabel>Applicant&apos;s Signature</FormLabel>
+                            <FormControl>
+                                <Input 
+                                    type="file" 
+                                    accept="image/png, image/jpeg, image/webp" 
+                                    onChange={(e) => onChange(e.target.files ? e.target.files[0] : null)}
+                                    {...rest}
+                                />
+                            </FormControl>
+                            <FormDescription>
+                                Please upload an image of your signature (PNG, JPG, or WEBP). Size: 10KB to 50KB.
+                            </FormDescription>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                   <FormField
+                      control={form.control}
+                      name="applicantName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Name</FormLabel>
+                          <FormControl><Input placeholder="Your Full Name" {...field} /></FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="applicantDesignation"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Designation</FormLabel>
+                          <FormControl><Input placeholder="e.g. Director" {...field} /></FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                </div>
+                 <FormField
+                  control={form.control}
+                  name="applicantDate"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col">
+                      <FormLabel>Date</FormLabel>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant={"outline"}
+                              className={cn(
+                                "w-full pl-3 text-left font-normal",
+                                !field.value && "text-muted-foreground"
+                              )}
+                            >
+                              {field.value ? (
+                                format(field.value, "PPP")
+                              ) : (
+                                <span>Pick a date</span>
+                              )}
+                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <Calendar
+                            mode="single"
+                            selected={field.value}
+                            onSelect={field.onChange}
+                            disabled={(date) =>
+                              date > new Date() || date < new Date("1900-01-01")
+                            }
+                            initialFocus
+                          />
+                        </PopoverContent>
+                      </Popover>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                 <Card className="bg-muted/50 mt-8">
+                  <CardHeader>
+                    <CardTitle className="text-base">For Office Use Only</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-sm text-muted-foreground space-y-2">
+                    <p>Application No.: ______________ Date Received: ______________</p>
+                    <p>Status: [ ] Approved [ ] Under Review [ ] Additional Info Requested</p>
+                    <p>Membership Tier Allotted: ______________ / ______________ / ______________</p>
+                  </CardContent>
+                </Card>
               </CardContent>
+
+              <CardFooter>
+                <SubmitButton />
+              </CardFooter>
             </form>
         </Form>
     </Card>

@@ -24,6 +24,10 @@ export const ContactFormSchema = z.object({
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 });
 
+const MAX_FILE_SIZE = 50 * 1024; // 50 KB
+const MIN_FILE_SIZE = 10 * 1024; // 10 KB
+const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
+
 export const MembershipFormSchema = z.object({
   // Part A
   legalCompanyName: z.string().min(2, "Legal company name is required."),
@@ -79,6 +83,25 @@ export const MembershipFormSchema = z.object({
   otherJapanInterest: z.string().optional(),
   companyDescription: z.string().min(50, "Description must be at least 50 words.").max(1000, "Description must be less than 1000 characters (approx. 150 words)."),
   marketObjectives: z.string().min(20, "Please provide more detail on your objectives."),
+  
+  // Part C
+  declaration: z.literal(true, {
+    errorMap: () => ({ message: "You must accept the declaration." }),
+  }),
+  applicantName: z.string().min(2, "Applicant name is required."),
+  applicantDesignation: z.string().min(2, "Applicant designation is required."),
+  applicantDate: z.date({
+    required_error: "Please select the date of application.",
+  }),
+  applicantSignature: z
+    .instanceof(File, { message: "Signature is required." })
+    .refine((file) => file.size >= MIN_FILE_SIZE, `Signature image must be at least 10KB.`)
+    .refine((file) => file.size <= MAX_FILE_SIZE, `Signature image must be less than 50KB.`)
+    .refine(
+      (file) => ACCEPTED_IMAGE_TYPES.includes(file.type),
+      ".jpg, .jpeg, .png and .webp files are accepted."
+    ),
+
 }).refine(data => {
     if (data.coreBusinessActivity === 'other') {
         return !!data.otherBusinessActivity && data.otherBusinessActivity.length > 2;
@@ -106,7 +129,8 @@ export type ContactFormState = {
 
 export type MembershipFormState = {
   message: string;
-  errors?: z.ZodError<z.infer<typeof MembershipFormSchema>>['formErrors']['fieldErrors'];
+  // Use a more specific type for errors to allow for file upload errors
+  errors?: z.ZodError<z.infer<typeof MembershipFormSchema>>['formErrors']['fieldErrors'] | { applicantSignature?: string[] };
   success: boolean;
 };
 
