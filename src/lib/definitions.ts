@@ -45,6 +45,7 @@ export const MembershipFormSchema = z.object({
   website: z.string().url("Please enter a valid URL.").optional().or(z.literal('')),
   directors: z.string().min(2, "Please list at least one director."),
   primaryContactPerson: z.string().min(2, "Primary contact person is required."),
+  primaryContactDesignation: z.string().min(2, "Designation is required."),
   mobileNumber: z.string().min(10, "A valid mobile number is required."),
   emailAddress: z.string().email("A valid email address is required."),
   membershipTier: z.enum([

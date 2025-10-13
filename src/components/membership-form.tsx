@@ -69,6 +69,7 @@ function MembershipFormComponent() {
       website: "",
       directors: "",
       primaryContactPerson: "",
+      primaryContactDesignation: "",
       mobileNumber: "",
       emailAddress: "",
       coreBusinessActivity: undefined,
@@ -357,17 +358,30 @@ function MembershipFormComponent() {
                   )}
                 />
                 
-                <FormField
-                  control={form.control}
-                  name="primaryContactPerson"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>11. Primary Contact Person</FormLabel>
-                      <FormControl><Input placeholder="e.g. Mr. Akira Sato" {...field} /></FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <FormField
+                    control={form.control}
+                    name="primaryContactPerson"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>11. Primary Contact Person</FormLabel>
+                        <FormControl><Input placeholder="e.g. Mr. Akira Sato" {...field} /></FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="primaryContactDesignation"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Designation</FormLabel>
+                        <FormControl><Input placeholder="e.g. Manager" {...field} /></FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <FormField
