@@ -25,6 +25,7 @@ export const ContactFormSchema = z.object({
 });
 
 export const MembershipFormSchema = z.object({
+  // Part A
   legalCompanyName: z.string().min(2, "Legal company name is required."),
   entityType: z.enum(["private-ltd", "public-ltd", "llp", "partnership", "proprietorship"], {
     required_error: "You need to select an entity type.",
@@ -47,6 +48,53 @@ export const MembershipFormSchema = z.object({
     "corporate",
     "large-corporate"
   ]),
+
+  // Part B
+  coreBusinessActivity: z.enum([
+    "accounting-finance",
+    "manufacturing",
+    "it-ites",
+    "engineering-automotive",
+    "healthcare-pharma",
+    "agri-food",
+    "textiles-apparel",
+    "cleantech-energy",
+    "consulting-services",
+    "other"
+  ], {
+    required_error: "Please select a core business activity.",
+  }),
+  otherBusinessActivity: z.string().optional(),
+  annualTurnover: z.enum([
+    "less-than-5cr",
+    "5-25cr",
+    "25-100cr",
+    "above-100cr"
+  ], {
+    required_error: "Please select your annual turnover.",
+  }),
+  japanInterest: z.array(z.string()).refine((value) => value.some((item) => item), {
+    message: "You have to select at least one interest.",
+  }),
+  otherJapanInterest: z.string().optional(),
+  companyDescription: z.string().min(50, "Description must be at least 50 words.").max(1000, "Description must be less than 1000 characters (approx. 150 words)."),
+  marketObjectives: z.string().min(20, "Please provide more detail on your objectives."),
+}).refine(data => {
+    if (data.coreBusinessActivity === 'other') {
+        return !!data.otherBusinessActivity && data.otherBusinessActivity.length > 2;
+    }
+    return true;
+}, {
+    message: "Please specify your business activity.",
+    path: ["otherBusinessActivity"],
+}).refine(data => {
+    if (data.japanInterest.includes('other')) {
+        return !!data.otherJapanInterest && data.otherJapanInterest.length > 2;
+    }
+    return true;
+}, {
+    message: "Please specify your interest.",
+    path: ["otherJapanInterest"],
 });
 
 

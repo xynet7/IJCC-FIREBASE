@@ -16,6 +16,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -34,6 +35,16 @@ function SubmitButton() {
     </Button>
   );
 }
+
+const japanInterestItems = [
+    { id: "jv-partner", label: "Finding a Japanese Joint Venture (JV) Partner" },
+    { id: "tech-transfer", label: "Securing Technology Transfer / Licensing" },
+    { id: "investment", label: "Raising Investment / Funding from Japan" },
+    { id: "export", label: "Exporting our Products/Services to the Japanese Market" },
+    { id: "sourcing", label: "Sourcing Components/Raw Materials from Japan" },
+    { id: "culture", label: "Understanding Japanese Business Culture & Practices" },
+    { id: "other", label: "Other (Please specify)" },
+]
 
 function MembershipFormComponent() {
   const initialState = { message: "", errors: {}, success: false };
@@ -58,6 +69,13 @@ function MembershipFormComponent() {
       primaryContactPerson: "",
       mobileNumber: "",
       emailAddress: "",
+      coreBusinessActivity: undefined,
+      otherBusinessActivity: "",
+      annualTurnover: undefined,
+      japanInterest: [],
+      otherJapanInterest: "",
+      companyDescription: "",
+      marketObjectives: "",
     },
   });
 
@@ -86,6 +104,8 @@ function MembershipFormComponent() {
     Object.entries(values).forEach(([key, value]) => {
         if (value instanceof Date) {
             formData.append(key, value.toISOString());
+        } else if (Array.isArray(value)) {
+            value.forEach(item => formData.append(key, item));
         } else if (value != null) {
             formData.append(key, String(value));
         }
@@ -93,16 +113,19 @@ function MembershipFormComponent() {
     dispatch(formData);
   }
 
+  const watchingCoreBusiness = form.watch("coreBusinessActivity");
+  const watchingJapanInterest = form.watch("japanInterest");
+
+
   return (
     <Card>
-      <CardHeader>
-        <CardTitle className="font-headline">Part A: Company & Primary Contact Information</CardTitle>
-        <CardDescription>All fields are required unless marked optional.</CardDescription>
-      </CardHeader>
-      <CardContent>
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              
+              <CardHeader>
+                <CardTitle className="font-headline text-2xl">Part A: Company & Primary Contact Information</CardTitle>
+                <CardDescription>All fields are required unless marked optional.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-8">
                 <FormField
                   control={form.control}
                   name="membershipTier"
@@ -151,7 +174,7 @@ function MembershipFormComponent() {
                         <RadioGroup
                           onValueChange={field.onChange}
                           defaultValue={field.value}
-                          className="flex flex-col space-y-1"
+                          className="flex flex-wrap gap-4"
                         >
                           <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl><RadioGroupItem value="private-ltd" /></FormControl>
@@ -335,11 +358,161 @@ function MembershipFormComponent() {
                     )}
                   />
                 </div>
+              </CardContent>
 
-                <Button type="submit" className="w-full">Submit Part A</Button>
+              <CardHeader>
+                <CardTitle className="font-headline text-2xl">Part B: Japan Collaboration Intent & Business Profile</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-8">
+                
+                <FormField
+                  control={form.control}
+                  name="coreBusinessActivity"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel>13. Core Business Activity</FormLabel>
+                      <FormControl>
+                        <RadioGroup
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                          className="flex flex-wrap gap-x-6 gap-y-3"
+                        >
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="accounting-finance" /></FormControl><FormLabel className="font-normal">Accounting & Finance</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="manufacturing" /></FormControl><FormLabel className="font-normal">Manufacturing</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="it-ites" /></FormControl><FormLabel className="font-normal">IT / ITES / Software Services</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="engineering-automotive" /></FormControl><FormLabel className="font-normal">Engineering & Automotive</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="healthcare-pharma" /></FormControl><FormLabel className="font-normal">Healthcare & Pharmaceuticals</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="agri-food" /></FormControl><FormLabel className="font-normal">Agriculture & Food Processing</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="textiles-apparel" /></FormControl><FormLabel className="font-normal">Textiles & Apparel</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="cleantech-energy" /></FormControl><FormLabel className="font-normal">Clean-Tech / Renewable Energy</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="consulting-services" /></FormControl><FormLabel className="font-normal">Consulting & Professional Services</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="other" /></FormControl><FormLabel className="font-normal">Other</FormLabel></FormItem>
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {watchingCoreBusiness === 'other' && (
+                    <FormField
+                      control={form.control}
+                      name="otherBusinessActivity"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Please Specify Other Activity</FormLabel>
+                          <FormControl><Input placeholder="e.g. Media and Entertainment" {...field} /></FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                )}
+
+                <FormField
+                  control={form.control}
+                  name="annualTurnover"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel>14. Current Annual Turnover (INR)</FormLabel>
+                      <FormControl>
+                        <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-wrap gap-x-6 gap-y-3">
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="less-than-5cr" /></FormControl><FormLabel className="font-normal">Less than 5 Crore</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="5-25cr" /></FormControl><FormLabel className="font-normal">5 Crore - 25 Crore</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="25-100cr" /></FormControl><FormLabel className="font-normal">25 Crore - 100 Crore</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="above-100cr" /></FormControl><FormLabel className="font-normal">Above 100 Crore</FormLabel></FormItem>
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="japanInterest"
+                  render={() => (
+                    <FormItem>
+                        <div className="mb-4">
+                            <FormLabel className="text-base">15. Your Japan Interest</FormLabel>
+                            <FormDescription>Please tick all that apply.</FormDescription>
+                        </div>
+                        {japanInterestItems.map((item) => (
+                            <FormField
+                            key={item.id}
+                            control={form.control}
+                            name="japanInterest"
+                            render={({ field }) => {
+                                return (
+                                <FormItem key={item.id} className="flex flex-row items-start space-x-3 space-y-0">
+                                    <FormControl>
+                                    <Checkbox
+                                        checked={field.value?.includes(item.id)}
+                                        onCheckedChange={(checked) => {
+                                        return checked
+                                            ? field.onChange([...field.value, item.id])
+                                            : field.onChange(
+                                                field.value?.filter(
+                                                (value) => value !== item.id
+                                                )
+                                            )
+                                        }}
+                                    />
+                                    </FormControl>
+                                    <FormLabel className="font-normal">{item.label}</FormLabel>
+                                </FormItem>
+                                )
+                            }}
+                            />
+                        ))}
+                        <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {watchingJapanInterest?.includes('other') && (
+                    <FormField
+                      control={form.control}
+                      name="otherJapanInterest"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Please Specify Other Interest</FormLabel>
+                          <FormControl><Input placeholder="Your specific interest" {...field} /></FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                )}
+
+                <FormField
+                  control={form.control}
+                  name="companyDescription"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>16. Company Description (50-150 words)</FormLabel>
+                      <FormControl><Textarea placeholder="Provide a brief description of your company's products/services. This helps us understand your unique value proposition." {...field} /></FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="marketObjectives"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>17. Specific Objectives for the Japanese Market</FormLabel>
+                      <FormControl><Textarea placeholder='e.g., "We want to partner with a Japanese auto-component manufacturer for technical collaboration," or "We are seeking a distributor in Osaka for our specialty teas."' {...field} /></FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>
+
+              <CardContent>
+                <SubmitButton />
+              </CardContent>
             </form>
         </Form>
-      </CardContent>
     </Card>
   );
 }
