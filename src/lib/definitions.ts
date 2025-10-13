@@ -41,6 +41,7 @@ export const MembershipFormSchema = z.object({
   registeredAddress: z.string().min(10, "Official registered address is required."),
   city: z.string().min(2, "City is required."),
   state: z.string().min(2, "State is required."),
+  pincode: z.string().min(6, "Pincode must be at least 6 characters.").max(10, "Pincode can be at most 10 characters."),
   website: z.string().url("Please enter a valid URL.").optional().or(z.literal('')),
   directors: z.string().min(2, "Please list at least one director."),
   primaryContactPerson: z.string().min(2, "Primary contact person is required."),
@@ -145,3 +146,5 @@ export const RazorpayVerificationSchema = z.object({
   razorpay_payment_id: z.string(),
   razorpay_signature: z.string(),
 });
+
+    

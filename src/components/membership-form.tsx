@@ -65,6 +65,7 @@ function MembershipFormComponent() {
       registeredAddress: "",
       city: "",
       state: "",
+      pincode: "",
       website: "",
       directors: "",
       primaryContactPerson: "",
@@ -296,7 +297,7 @@ function MembershipFormComponent() {
                   )}
                 />
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <FormField
                     control={form.control}
                     name="city"
@@ -319,6 +320,17 @@ function MembershipFormComponent() {
                       </FormItem>
                     )}
                   />
+                  <FormField
+                    control={form.control}
+                    name="pincode"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>8. Pincode</FormLabel>
+                        <FormControl><Input placeholder="e.g. 122001" {...field} /></FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                 </div>
 
                 <FormField
@@ -326,7 +338,7 @@ function MembershipFormComponent() {
                   name="website"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>8. Website (Optional)</FormLabel>
+                      <FormLabel>9. Website (Optional)</FormLabel>
                       <FormControl><Input placeholder="https://example.com" {...field} /></FormControl>
                       <FormMessage />
                     </FormItem>
@@ -338,7 +350,7 @@ function MembershipFormComponent() {
                   name="directors"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>9. Name of Directors</FormLabel>
+                      <FormLabel>10. Name of Directors</FormLabel>
                       <FormControl><Textarea placeholder="e.g. Mr. Kenji Tanaka, Mrs. Yui Suzuki" {...field} /></FormControl>
                       <FormMessage />
                     </FormItem>
@@ -350,7 +362,7 @@ function MembershipFormComponent() {
                   name="primaryContactPerson"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>10. Primary Contact Person</FormLabel>
+                      <FormLabel>11. Primary Contact Person</FormLabel>
                       <FormControl><Input placeholder="e.g. Mr. Akira Sato" {...field} /></FormControl>
                       <FormMessage />
                     </FormItem>
@@ -363,7 +375,7 @@ function MembershipFormComponent() {
                     name="mobileNumber"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>11. Mobile No.</FormLabel>
+                        <FormLabel>12. Mobile No.</FormLabel>
                         <FormControl><Input type="tel" placeholder="+91 98765 43210" {...field} /></FormControl>
                         <FormMessage />
                       </FormItem>
@@ -374,7 +386,7 @@ function MembershipFormComponent() {
                     name="emailAddress"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>12. Email Address</FormLabel>
+                        <FormLabel>13. Email Address</FormLabel>
                         <FormControl><Input type="email" placeholder="contact@example.com" {...field} /></FormControl>
                         <FormMessage />
                       </FormItem>
@@ -393,7 +405,7 @@ function MembershipFormComponent() {
                   name="coreBusinessActivity"
                   render={({ field }) => (
                     <FormItem className="space-y-3">
-                      <FormLabel>13. Core Business Activity</FormLabel>
+                      <FormLabel>14. Core Business Activity</FormLabel>
                       <FormControl>
                         <RadioGroup
                           onValueChange={field.onChange}
@@ -436,7 +448,7 @@ function MembershipFormComponent() {
                   name="annualTurnover"
                   render={({ field }) => (
                     <FormItem className="space-y-3">
-                      <FormLabel>14. Current Annual Turnover (INR)</FormLabel>
+                      <FormLabel>15. Current Annual Turnover (INR)</FormLabel>
                       <FormControl>
                         <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-wrap gap-x-6 gap-y-3">
                           <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="less-than-5cr" /></FormControl><FormLabel className="font-normal">Less than 5 Crore</FormLabel></FormItem>
@@ -456,7 +468,7 @@ function MembershipFormComponent() {
                   render={() => (
                     <FormItem>
                         <div className="mb-4">
-                            <FormLabel className="text-base">15. Your Japan Interest</FormLabel>
+                            <FormLabel className="text-base">16. Your Japan Interest</FormLabel>
                             <FormDescription>Please tick all that apply.</FormDescription>
                         </div>
                         {japanInterestItems.map((item) => (
@@ -511,7 +523,7 @@ function MembershipFormComponent() {
                   name="companyDescription"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>16. Company Description (50-150 words)</FormLabel>
+                      <FormLabel>17. Company Description (50-150 words)</FormLabel>
                       <FormControl><Textarea placeholder="Provide a brief description of your company's products/services. This helps us understand your unique value proposition." {...field} /></FormControl>
                       <FormMessage />
                     </FormItem>
@@ -523,7 +535,7 @@ function MembershipFormComponent() {
                   name="marketObjectives"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>17. Specific Objectives for the Japanese Market</FormLabel>
+                      <FormLabel>18. Specific Objectives for the Japanese Market</FormLabel>
                       <FormControl><Textarea placeholder='e.g., "We want to partner with a Japanese auto-component manufacturer for technical collaboration," or "We are seeking a distributor in Osaka for our specialty teas."' {...field} /></FormControl>
                       <FormMessage />
                     </FormItem>
@@ -671,3 +683,5 @@ export function MembershipForm() {
         </Suspense>
     )
 }
+
+    
