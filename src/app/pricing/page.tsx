@@ -91,12 +91,7 @@ export default function PricingPage() {
 
     const handlePayment = async (tier: typeof pricingTiers[0]) => {
         if (!user) {
-            toast({
-                variant: "destructive",
-                title: "Not Logged In",
-                description: "Please log in or create an account to choose a membership plan.",
-            });
-            router.push('/login');
+            router.push(`/membership-application?tier=${tier.id}`);
             return;
         }
 
@@ -114,10 +109,15 @@ export default function PricingPage() {
               }),
             });
             
+            if (!response.ok) {
+              const errorData = await response.json();
+              throw new Error(errorData.error || "Order creation failed.");
+            }
+            
             const order = await response.json();
 
             if (!order || !order.id) {
-                throw new Error("Order creation failed.");
+                throw new Error("Received invalid order data from server.");
             }
 
             const options = {
@@ -128,6 +128,7 @@ export default function PricingPage() {
                 description: `Membership - ${tier.title}`,
                 order_id: order.id,
                 handler: async function (response: any) {
+                    setLoadingTier(tier.id);
                     const verificationResult = await verifyRazorpayPayment({
                         razorpay_order_id: response.razorpay_order_id,
                         razorpay_payment_id: response.razorpay_payment_id,
@@ -155,6 +156,7 @@ export default function PricingPage() {
                             description: "Your payment could not be verified. Please contact support.",
                         });
                     }
+                    setLoadingTier(null);
                 },
                 prefill: {
                     name: user.displayName || undefined,
@@ -162,6 +164,11 @@ export default function PricingPage() {
                 },
                 theme: {
                     color: "#D40000"
+                },
+                modal: {
+                    ondismiss: function() {
+                        setLoadingTier(null);
+                    }
                 }
             };
             
@@ -173,9 +180,8 @@ export default function PricingPage() {
             toast({
                 variant: "destructive",
                 title: "Payment Failed",
-                description: "Could not initiate payment. Please try again.",
+                description: error.message || "Could not initiate payment. Please try again.",
             });
-        } finally {
             setLoadingTier(null);
         }
     };
@@ -235,7 +241,7 @@ export default function PricingPage() {
                                         <span>Processing...</span>
                                     </>
                                  ) : (
-                                    "Choose Plan"
+                                    user ? "Pay Now" : "Apply Now"
                                  )}
                                </Button>
                             </CardFooter>

@@ -24,15 +24,34 @@ export const ContactFormSchema = z.object({
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 });
 
+export const MembershipFormSchema = z.object({
+  name: z.string().min(2, "Name is required."),
+  email: z.string().email("Please enter a valid email."),
+  phone: z.string().min(10, "Please enter a valid phone number."),
+  website: z.string().url("Please enter a valid URL.").optional().or(z.literal('')),
+  address: z.string().min(5, "Address is required."),
+  city: z.string().min(2, "City is required."),
+  pincode: z.string().min(5, "Pincode is required."),
+  country: z.string().min(2, "Country is required."),
+  interest: z.string().optional(),
+  membershipTier: z.enum([
+    "individual", 
+    "startup", 
+    "corporate",
+    "large-corporate"
+  ]),
+});
+
+
 export type ContactFormState = {
   message: string;
-  errors?: {
-    name?: string[];
-    email?: string[];
-    phone?: string[];
-    inquiryType?: string[];
-    message?: string[];
-  };
+  errors?: z.ZodError<z.infer<typeof ContactFormSchema>>['formErrors']['fieldErrors'];
+  success: boolean;
+};
+
+export type MembershipFormState = {
+  message: string;
+  errors?: z.ZodError<z.infer<typeof MembershipFormSchema>>['formErrors']['fieldErrors'];
   success: boolean;
 };
 

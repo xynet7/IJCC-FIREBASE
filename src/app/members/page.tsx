@@ -45,8 +45,8 @@ export default function MembersPage() {
 
        <div className="text-center mt-16">
           <Button asChild size="lg">
-            <Link href="/contact">
-              <Mail className="mr-2 h-5 w-5" /> Become a Member
+            <Link href="/membership-application">
+              <Mail className="mr-2 h-5 w-5" /> Apply for Membership
             </Link>
           </Button>
       </div>

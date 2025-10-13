@@ -5,7 +5,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Check, User, Rocket, Building, Landmark, Mail, Phone, Globe, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { useAuth } from "@/context/auth-context";
 
 const membershipTiers = [
   {
@@ -63,8 +62,6 @@ const membershipTiers = [
 ];
 
 export function MembershipDetails() {
-  const { user } = useAuth();
-
   return (
     <div className="space-y-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -90,7 +87,7 @@ export function MembershipDetails() {
             </CardContent>
             <CardFooter>
                 <Button asChild className="w-full">
-                    <Link href={user ? `/pricing#${tier.priceId}` : '/login'}>
+                    <Link href={`/membership-application?tier=${tier.priceId}`}>
                         Get Started <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                 </Button>
@@ -105,7 +102,7 @@ export function MembershipDetails() {
                 <CardTitle className="font-headline">Enrollment Procedure</CardTitle>
             </CardHeader>
             <CardContent>
-                <p className="text-muted-foreground">Submit your profile and application form along with payment. Upon approval, a welcome letter and membership certificate will be issued.</p>
+                <p className="text-muted-foreground">Submit your profile and application form. Upon approval, a welcome letter and membership certificate will be issued. You will then be prompted for payment.</p>
             </CardContent>
         </Card>
         <Card>

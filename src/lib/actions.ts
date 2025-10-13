@@ -2,21 +2,45 @@
 "use server";
 
 import { z } from "zod";
-import { ContactFormSchema, type ContactFormState, RazorpayVerificationSchema } from "./definitions";
+import { ContactFormSchema, type ContactFormState, RazorpayVerificationSchema, MembershipFormSchema, MembershipFormState } from "./definitions";
 import nodemailer from "nodemailer";
 import crypto from "crypto";
+
+export async function submitMembershipForm(
+  prevState: MembershipFormState,
+  formData: FormData
+): Promise<MembershipFormState> {
+  const validatedFields = MembershipFormSchema.safeParse(
+    Object.fromEntries(formData.entries())
+  );
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Validation failed. Please check your input and try again.",
+      success: false,
+    };
+  }
+
+  // Placeholder: In the next step, we will connect this to send data to Google Sheets.
+  console.log("Membership Form Data:", validatedFields.data);
+
+  // Simulate a successful submission for now
+  return {
+    message: "Your application has been received! You will now be redirected to complete the payment.",
+    success: true,
+    errors: {},
+  };
+}
+
 
 export async function submitContactForm(
   prevState: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
-  const validatedFields = ContactFormSchema.safeParse({
-    name: formData.get("name"),
-    email: formData.get("email"),
-    phone: formData.get("phone"),
-    inquiryType: formData.get("inquiryType"),
-    message: formData.get("message"),
-  });
+  const validatedFields = ContactFormSchema.safeParse(
+    Object.fromEntries(formData.entries())
+  );
 
   if (!validatedFields.success) {
     return {
@@ -105,6 +129,7 @@ export async function verifyRazorpayPayment(data: z.infer<typeof RazorpayVerific
     if (expectedSignature === razorpay_signature) {
         return { success: true, message: "Payment verified successfully." };
     } else {
+        console.error("Razorpay signature mismatch.");
         return { success: false, message: "Payment verification failed." };
     }
 }
