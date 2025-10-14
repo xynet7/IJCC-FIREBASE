@@ -1,8 +1,7 @@
 
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
-import { useEffect, useState, Suspense, useRef } from "react";
+import { useState, Suspense, useRef } from "react";
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -25,35 +24,12 @@ import { format } from "date-fns";
 import { CalendarIcon, Loader2 } from "lucide-react";
 import { z } from "zod";
 
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <Button type="submit" disabled={pending} className="w-full">
-      {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-      Submit Application
-    </Button>
-  );
-}
-
-const japanInterestItems = [
-    { id: "jv-partner", label: "Finding a Japanese Joint Venture (JV) Partner" },
-    { id: "tech-transfer", label: "Securing Technology Transfer / Licensing" },
-    { id: "investment", label: "Raising Investment / Funding from Japan" },
-    { id: "export", label: "Exporting our Products/Services to the Japanese Market" },
-    { id: "sourcing", label: "Sourcing Components/Raw Materials from Japan" },
-    { id: "culture", label: "Understanding Japanese Business Culture & Practices" },
-    { id: "other", label: "Other (Please specify)" },
-]
-
 function MembershipFormComponent() {
-  const initialState: MembershipFormState = { message: "", errors: {}, success: false };
-  const [state, dispatch] = useFormState(submitMembershipForm, initialState);
   const { toast } = useToast();
   const router = useRouter();
   const searchParams = useSearchParams();
   const [selectedTier, setSelectedTier] = useState(searchParams.get('tier') || 'individual');
-  const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<z.infer<typeof MembershipFormSchema>>({
     resolver: zodResolver(MembershipFormSchema),
@@ -61,6 +37,7 @@ function MembershipFormComponent() {
       membershipTier: selectedTier as "individual" | "startup" | "corporate" | "large-corporate",
       legalCompanyName: "",
       entityType: undefined,
+      dateOfIncorporation: undefined,
       msmeRegistration: "",
       registeredAddress: "",
       city: "",
@@ -87,50 +64,49 @@ function MembershipFormComponent() {
     },
   });
 
-  useEffect(() => {
-    form.setValue('membershipTier', selectedTier as "individual" | "startup" | "corporate" | "large-corporate");
-  }, [selectedTier, form]);
-  
-  useEffect(() => {
-      if(state.success) {
-          toast({
-              title: "Application Submitted!",
-              description: state.message,
-          });
-          form.reset();
-          router.push(`/pricing?tier=${selectedTier}#${selectedTier}`);
-      } else if (state.message && state.errors) {
-          toast({
-              variant: "destructive",
-              title: "Error Submitting Form",
-              description: state.message,
-          });
-          // Manually set form errors for server-side validation issues
-          for (const [key, value] of Object.entries(state.errors)) {
-              form.setError(key as keyof z.infer<typeof MembershipFormSchema>, {
-                  type: 'server',
-                  message: Array.isArray(value) ? value.join(', ') : String(value),
-              });
-          }
-      }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state]);
-
-  const onFormSubmit = (data: z.infer<typeof MembershipFormSchema>) => {
+  const onFormSubmit = async (values: z.infer<typeof MembershipFormSchema>) => {
+    setIsSubmitting(true);
     const formData = new FormData();
-    for (const key in data) {
-        const value = data[key as keyof typeof data];
-        if (value instanceof Date) {
-            formData.append(key, value.toISOString());
-        } else if (value instanceof File) {
-            formData.append(key, value);
-        } else if (Array.isArray(value)) {
-            value.forEach(item => formData.append(key, item));
-        } else if (value !== undefined && value !== null) {
-            formData.append(key, String(value));
+    
+    // Manually append all form values to FormData
+    Object.entries(values).forEach(([key, value]) => {
+      if (value instanceof Date) {
+        formData.append(key, value.toISOString());
+      } else if (Array.isArray(value)) {
+        value.forEach(item => formData.append(key, item));
+      } else if (typeof value === 'boolean') {
+        formData.append(key, value ? 'on' : '');
+      } else if (value) {
+        formData.append(key, value as string | Blob);
+      }
+    });
+
+    const result = await submitMembershipForm(formData);
+
+    if (result.success) {
+      toast({
+        title: "Application Submitted!",
+        description: result.message,
+      });
+      form.reset();
+      router.push(`/pricing?tier=${selectedTier}#${selectedTier}`);
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Error Submitting Form",
+        description: result.message,
+      });
+      // Optionally handle field errors if the server sends them back
+       if (result.errors) {
+        for (const [key, value] of Object.entries(result.errors)) {
+          form.setError(key as keyof z.infer<typeof MembershipFormSchema>, {
+            type: 'server',
+            message: Array.isArray(value) ? value.join(', ') : String(value),
+          });
         }
+      }
     }
-    dispatch(formData);
+    setIsSubmitting(false);
   };
   
   const watchingCoreBusiness = form.watch("coreBusinessActivity");
@@ -141,8 +117,6 @@ function MembershipFormComponent() {
     <Card>
         <Form {...form}>
             <form 
-              ref={formRef} 
-              action={(formData) => dispatch(formData)}
               onSubmit={form.handleSubmit(onFormSubmit)}
               className="space-y-8"
             >
@@ -485,7 +459,15 @@ function MembershipFormComponent() {
                             <FormLabel className="text-base">16. Your Japan Interest</FormLabel>
                             <FormDescription>Please tick all that apply.</FormDescription>
                         </div>
-                        {japanInterestItems.map((item) => (
+                        {[
+                            { id: "jv-partner", label: "Finding a Japanese Joint Venture (JV) Partner" },
+                            { id: "tech-transfer", label: "Securing Technology Transfer / Licensing" },
+                            { id: "investment", label: "Raising Investment / Funding from Japan" },
+                            { id: "export", label: "Exporting our Products/Services to the Japanese Market" },
+                            { id: "sourcing", label: "Sourcing Components/Raw Materials from Japan" },
+                            { id: "culture", label: "Understanding Japanese Business Culture & Practices" },
+                            { id: "other", label: "Other (Please specify)" },
+                        ].map((item) => (
                             <FormField
                             key={item.id}
                             control={form.control}
@@ -593,7 +575,6 @@ function MembershipFormComponent() {
                                     type="file" 
                                     accept="image/png, image/jpeg, image/webp" 
                                     onChange={(e) => onChange(e.target.files ? e.target.files[0] : null)}
-                                    {...rest}
                                 />
                             </FormControl>
                             <FormDescription>
@@ -682,7 +663,10 @@ function MembershipFormComponent() {
               </CardContent>
 
               <CardFooter>
-                <SubmitButton />
+                 <Button type="submit" disabled={isSubmitting} className="w-full">
+                    {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                    Submit Application
+                </Button>
               </CardFooter>
             </form>
         </Form>

@@ -9,18 +9,28 @@ import { storage } from './firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 export async function submitMembershipForm(
-  prevState: MembershipFormState,
   formData: FormData
 ): Promise<MembershipFormState> {
     
   const rawFormData = Object.fromEntries(formData.entries());
 
+  // Manually handle file for validation
+  if (formData.has('applicantSignature')) {
+      rawFormData.applicantSignature = formData.get('applicantSignature');
+  } else {
+      rawFormData.applicantSignature = null;
+  }
+  
   // Manually handle date and boolean conversion for FormData
   if (rawFormData.dateOfIncorporation) {
     rawFormData.dateOfIncorporation = new Date(rawFormData.dateOfIncorporation as string);
+  } else {
+    rawFormData.dateOfIncorporation = undefined;
   }
   if (rawFormData.applicantDate) {
     rawFormData.applicantDate = new Date(rawFormData.applicantDate as string);
+  } else {
+    rawFormData.applicantDate = undefined;
   }
   rawFormData.declaration = rawFormData.declaration === 'on';
 
@@ -42,16 +52,20 @@ export async function submitMembershipForm(
   
   try {
     // 1. Upload signature to Firebase Storage
-    const signatureFile = applicantSignature;
-    const storageRef = ref(storage, `membership-signatures/${Date.now()}-${signatureFile.name}`);
-    const snapshot = await uploadBytes(storageRef, signatureFile);
-    const signatureUrl = await getDownloadURL(snapshot.ref);
+    let signatureUrl = '';
+    if (applicantSignature) {
+        const signatureFile = applicantSignature as File;
+        const storageRef = ref(storage, `membership-signatures/${Date.now()}-${signatureFile.name}`);
+        const snapshot = await uploadBytes(storageRef, signatureFile);
+        signatureUrl = await getDownloadURL(snapshot.ref);
+    }
+
 
     // 2. Prepare data for Google Sheet
     const dataForGoogleSheet = {
       ...formDataForSheet,
-      dateOfIncorporation: formDataForSheet.dateOfIncorporation.toISOString().split('T')[0], // Format date
-      applicantDate: formDataForSheet.applicantDate.toISOString().split('T')[0], // Format date
+      dateOfIncorporation: formDataForSheet.dateOfIncorporation?.toISOString().split('T')[0], // Format date
+      applicantDate: formDataForSheet.applicantDate?.toISOString().split('T')[0], // Format date
       signatureUrl: signatureUrl, // Add the signature URL
     };
     
@@ -62,12 +76,16 @@ export async function submitMembershipForm(
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(dataForGoogleSheet),
+        // Important for Apps Script redirects
+        redirect: 'follow', 
     });
 
-    const result = await response.json();
-    if (result.result !== 'success') {
-        throw new Error(result.error || 'Failed to send data to Google Sheet.');
+    // Check if the response is OK, since Apps Script can redirect on success
+    if (!response.ok && response.type !== 'opaque' && response.redirected !== true) {
+         const result = await response.json();
+         throw new Error(result.error || 'Failed to send data to Google Sheet.');
     }
+
 
     return {
         message: "Your application has been received! You will now be redirected to complete the payment.",
@@ -185,3 +203,5 @@ export async function verifyRazorpayPayment(data: z.infer<typeof RazorpayVerific
         return { success: false, message: "Payment verification failed." };
     }
 }
+
+    
