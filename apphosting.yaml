@@ -8,6 +8,4 @@ runConfig:
   # Expose a secret as an environment variable.
   # The secret must be created in Google Cloud Secret Manager.
   # https://firebase.google.com/docs/app-hosting/configure#secrets
-  env:
-    - variable: GOOGLE_SHEET_WEB_APP_URL
-      secret: GOOGLE_SHEET_WEB_APP_URL
+  env: []
