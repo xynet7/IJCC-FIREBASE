@@ -1,12 +1,12 @@
 
 "use client";
 
-import { useState, Suspense, useRef } from "react";
+import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { submitMembershipForm } from "@/lib/actions";
-import { MembershipFormSchema, type MembershipFormState } from "@/lib/definitions";
+import { MembershipFormSchema } from "@/lib/definitions";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -60,28 +60,13 @@ function MembershipFormComponent() {
       applicantName: "",
       applicantDesignation: "",
       applicantDate: new Date(),
-      applicantSignature: undefined,
     },
   });
 
   const onFormSubmit = async (values: z.infer<typeof MembershipFormSchema>) => {
     setIsSubmitting(true);
-    const formData = new FormData();
     
-    // Manually append all form values to FormData
-    Object.entries(values).forEach(([key, value]) => {
-      if (value instanceof Date) {
-        formData.append(key, value.toISOString());
-      } else if (Array.isArray(value)) {
-        value.forEach(item => formData.append(key, item));
-      } else if (typeof value === 'boolean') {
-        formData.append(key, value ? 'on' : '');
-      } else if (value) {
-        formData.append(key, value as string | Blob);
-      }
-    });
-
-    const result = await submitMembershipForm(formData);
+    const result = await submitMembershipForm(values);
 
     if (result.success) {
       toast({
@@ -96,7 +81,6 @@ function MembershipFormComponent() {
         title: "Error Submitting Form",
         description: result.message,
       });
-      // Optionally handle field errors if the server sends them back
        if (result.errors) {
         for (const [key, value] of Object.entries(result.errors)) {
           form.setError(key as keyof z.infer<typeof MembershipFormSchema>, {
@@ -564,27 +548,6 @@ function MembershipFormComponent() {
                   )}
                 />
 
-                <FormField
-                    control={form.control}
-                    name="applicantSignature"
-                    render={({ field: { onChange, value, ...rest } }) => (
-                        <FormItem>
-                            <FormLabel>Applicant&apos;s Signature</FormLabel>
-                            <FormControl>
-                                <Input 
-                                    type="file" 
-                                    accept="image/png, image/jpeg, image/webp" 
-                                    onChange={(e) => onChange(e.target.files ? e.target.files[0] : null)}
-                                />
-                            </FormControl>
-                            <FormDescription>
-                                Please upload an image of your signature (PNG, JPG, or WEBP). Size: 10KB to 50KB.
-                            </FormDescription>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                    <FormField
                       control={form.control}
@@ -681,5 +644,3 @@ export function MembershipForm() {
         </Suspense>
     )
 }
-
-    

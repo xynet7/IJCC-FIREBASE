@@ -24,10 +24,6 @@ export const ContactFormSchema = z.object({
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 });
 
-const MAX_FILE_SIZE = 50 * 1024; // 50 KB
-const MIN_FILE_SIZE = 10 * 1024; // 10 KB
-const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
-
 export const MembershipFormSchema = z.object({
   // Part A
   legalCompanyName: z.string().min(2, "Legal company name is required."),
@@ -95,14 +91,6 @@ export const MembershipFormSchema = z.object({
   applicantDate: z.date({
     required_error: "Please select the date of application.",
   }),
-  applicantSignature: z
-    .instanceof(File, { message: "Signature is required." })
-    .refine((file) => file.size >= MIN_FILE_SIZE, `Signature image must be at least 10KB.`)
-    .refine((file) => file.size <= MAX_FILE_SIZE, `Signature image must be less than 50KB.`)
-    .refine(
-      (file) => ACCEPTED_IMAGE_TYPES.includes(file.type),
-      ".jpg, .jpeg, .png and .webp files are accepted."
-    ),
 
 }).refine(data => {
     if (data.coreBusinessActivity === 'other') {
@@ -131,8 +119,7 @@ export type ContactFormState = {
 
 export type MembershipFormState = {
   message: string;
-  // Use a more specific type for errors to allow for file upload errors
-  errors?: z.ZodError<z.infer<typeof MembershipFormSchema>>['formErrors']['fieldErrors'] | { applicantSignature?: string[] };
+  errors?: z.ZodError<z.infer<typeof MembershipFormSchema>>['formErrors']['fieldErrors'];
   success: boolean;
 };
 

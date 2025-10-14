@@ -5,87 +5,45 @@ import { z } from "zod";
 import { ContactFormSchema, type ContactFormState, RazorpayVerificationSchema, MembershipFormSchema, MembershipFormState } from "./definitions";
 import nodemailer from "nodemailer";
 import crypto from "crypto";
-import { storage } from './firebase';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 export async function submitMembershipForm(
-  formData: FormData
+  values: z.infer<typeof MembershipFormSchema>
 ): Promise<MembershipFormState> {
     
-  const rawFormData = Object.fromEntries(formData.entries());
-
-  // Manually handle file for validation
-  if (formData.has('applicantSignature')) {
-      rawFormData.applicantSignature = formData.get('applicantSignature');
-  } else {
-      rawFormData.applicantSignature = null;
-  }
-  
-  // Manually handle date and boolean conversion for FormData
-  if (rawFormData.dateOfIncorporation) {
-    rawFormData.dateOfIncorporation = new Date(rawFormData.dateOfIncorporation as string);
-  } else {
-    rawFormData.dateOfIncorporation = undefined;
-  }
-  if (rawFormData.applicantDate) {
-    rawFormData.applicantDate = new Date(rawFormData.applicantDate as string);
-  } else {
-    rawFormData.applicantDate = undefined;
-  }
-  rawFormData.declaration = rawFormData.declaration === 'on';
-
-  // Handle array for japanInterest
-  rawFormData.japanInterest = formData.getAll('japanInterest');
-
-  const validatedFields = MembershipFormSchema.safeParse(rawFormData);
+  const validatedFields = MembershipFormSchema.safeParse(values);
 
   if (!validatedFields.success) {
     console.log('Validation Errors:', validatedFields.error.flatten().fieldErrors);
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: "Validation failed. Please check your input and try again.",
+      message: "Validation failed on the server. Please check your input and try again.",
       success: false,
     };
   }
-
-  const { applicantSignature, ...formDataForSheet } = validatedFields.data;
   
   try {
-    // 1. Upload signature to Firebase Storage
-    let signatureUrl = '';
-    if (applicantSignature) {
-        const signatureFile = applicantSignature as File;
-        const storageRef = ref(storage, `membership-signatures/${Date.now()}-${signatureFile.name}`);
-        const snapshot = await uploadBytes(storageRef, signatureFile);
-        signatureUrl = await getDownloadURL(snapshot.ref);
-    }
-
-
-    // 2. Prepare data for Google Sheet
+    // Prepare data for Google Sheet
     const dataForGoogleSheet = {
-      ...formDataForSheet,
-      dateOfIncorporation: formDataForSheet.dateOfIncorporation?.toISOString().split('T')[0], // Format date
-      applicantDate: formDataForSheet.applicantDate?.toISOString().split('T')[0], // Format date
-      signatureUrl: signatureUrl, // Add the signature URL
+      ...validatedFields.data,
+      dateOfIncorporation: validatedFields.data.dateOfIncorporation?.toISOString().split('T')[0], // Format date
+      applicantDate: validatedFields.data.applicantDate?.toISOString().split('T')[0], // Format date
+      signatureUrl: '', // Signature feature removed
     };
     
-    // 3. Send data to Google Apps Script
+    // Send data to Google Apps Script
     const response = await fetch(process.env.GOOGLE_SHEET_WEB_APP_URL!, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(dataForGoogleSheet),
-        // Important for Apps Script redirects
         redirect: 'follow', 
     });
 
-    // Check if the response is OK, since Apps Script can redirect on success
     if (!response.ok && response.type !== 'opaque' && response.redirected !== true) {
          const result = await response.json();
          throw new Error(result.error || 'Failed to send data to Google Sheet.');
     }
-
 
     return {
         message: "Your application has been received! You will now be redirected to complete the payment.",
@@ -122,7 +80,6 @@ export async function submitContactForm(
 
   const { name, email, phone, inquiryType, message } = validatedFields.data;
 
-  // This check is important because environment variables are only available on the server
   if (!process.env.SMTP_HOST) {
     console.error("SMTP environment variables are not set.");
      return {
@@ -203,5 +160,3 @@ export async function verifyRazorpayPayment(data: z.infer<typeof RazorpayVerific
         return { success: false, message: "Payment verification failed." };
     }
 }
-
-    
