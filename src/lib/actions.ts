@@ -5,6 +5,8 @@ import { z } from "zod";
 import { ContactFormSchema, type ContactFormState, RazorpayVerificationSchema, MembershipFormSchema, MembershipFormState } from "./definitions";
 import nodemailer from "nodemailer";
 import crypto from "crypto";
+import { storage } from './firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 export async function submitMembershipForm(
   prevState: MembershipFormState,
@@ -26,7 +28,6 @@ export async function submitMembershipForm(
   rawFormData.japanInterest = formData.getAll('japanInterest');
 
   const validatedFields = MembershipFormSchema.safeParse(rawFormData);
-    
 
   if (!validatedFields.success) {
     console.log('Validation Errors:', validatedFields.error.flatten().fieldErrors);
@@ -38,17 +39,50 @@ export async function submitMembershipForm(
   }
 
   const { applicantSignature, ...formDataForSheet } = validatedFields.data;
-  console.log("Membership Form Data for Sheet:", formDataForSheet);
-  console.log("Signature File:", applicantSignature.name, applicantSignature.size, applicantSignature.type);
+  
+  try {
+    // 1. Upload signature to Firebase Storage
+    const signatureFile = applicantSignature;
+    const storageRef = ref(storage, `membership-signatures/${Date.now()}-${signatureFile.name}`);
+    const snapshot = await uploadBytes(storageRef, signatureFile);
+    const signatureUrl = await getDownloadURL(snapshot.ref);
 
-  // Placeholder for sending data to Google Sheets
-  // Placeholder for uploading signature to cloud storage
+    // 2. Prepare data for Google Sheet
+    const dataForGoogleSheet = {
+      ...formDataForSheet,
+      dateOfIncorporation: formDataForSheet.dateOfIncorporation.toISOString().split('T')[0], // Format date
+      applicantDate: formDataForSheet.applicantDate.toISOString().split('T')[0], // Format date
+      signatureUrl: signatureUrl, // Add the signature URL
+    };
+    
+    // 3. Send data to Google Apps Script
+    const response = await fetch(process.env.GOOGLE_SHEET_WEB_APP_URL!, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataForGoogleSheet),
+    });
 
-  return {
-    message: "Your application has been received! You will now be redirected to complete the payment.",
-    success: true,
-    errors: {},
-  };
+    const result = await response.json();
+    if (result.result !== 'success') {
+        throw new Error(result.error || 'Failed to send data to Google Sheet.');
+    }
+
+    return {
+        message: "Your application has been received! You will now be redirected to complete the payment.",
+        success: true,
+        errors: {},
+    };
+
+  } catch (error: any) {
+      console.error("Error during form submission process:", error);
+      return {
+          message: error.message || "An unexpected error occurred. Please try again.",
+          success: false,
+          errors: {},
+      }
+  }
 }
 
 
