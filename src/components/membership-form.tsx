@@ -28,13 +28,12 @@ function MembershipFormComponent() {
   const { toast } = useToast();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [selectedTier, setSelectedTier] = useState(searchParams.get('tier') || 'individual');
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<z.infer<typeof MembershipFormSchema>>({
     resolver: zodResolver(MembershipFormSchema),
     defaultValues: {
-      membershipTier: selectedTier as "individual" | "startup" | "corporate" | "large-corporate",
+      membershipTier: (searchParams.get('tier') as "individual" | "startup" | "corporate" | "large-corporate") || 'individual',
       legalCompanyName: "",
       entityType: undefined,
       dateOfIncorporation: undefined,
@@ -65,6 +64,7 @@ function MembershipFormComponent() {
 
   const onFormSubmit = async (values: z.infer<typeof MembershipFormSchema>) => {
     setIsSubmitting(true);
+    console.log("Form values being submitted:", values);
     
     const result = await submitMembershipForm(values);
 
@@ -74,7 +74,7 @@ function MembershipFormComponent() {
         description: result.message,
       });
       form.reset();
-      router.push(`/pricing?tier=${selectedTier}#${selectedTier}`);
+      router.push(`/pricing?tier=${values.membershipTier}#${values.membershipTier}`);
     } else {
       toast({
         variant: "destructive",
@@ -115,7 +115,7 @@ function MembershipFormComponent() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Membership Tier</FormLabel>
-                      <Select onValueChange={(value) => { field.onChange(value); setSelectedTier(value); }} defaultValue={field.value}>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
                             <SelectValue placeholder="Select a membership tier" />

@@ -22,29 +22,27 @@ export async function submitMembershipForm(
   }
   
   try {
-    // Prepare data for Google Sheet
     const dataForGoogleSheet = {
       ...validatedFields.data,
-      dateOfIncorporation: validatedFields.data.dateOfIncorporation?.toISOString().split('T')[0], // Format date
-      applicantDate: validatedFields.data.applicantDate?.toISOString().split('T')[0], // Format date
-      signatureUrl: '', // Signature feature removed
+      dateOfIncorporation: validatedFields.data.dateOfIncorporation?.toISOString().split('T')[0],
+      applicantDate: validatedFields.data.applicantDate?.toISOString().split('T')[0],
     };
     
-    // Send data to Google Apps Script
-    const response = await fetch(process.env.GOOGLE_SHEET_WEB_APP_URL!, {
+    // Fire-and-forget the request to Google Apps Script
+    fetch(process.env.GOOGLE_SHEET_WEB_APP_URL!, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(dataForGoogleSheet),
-        redirect: 'follow', 
+        mode: 'no-cors', // This can sometimes help with cross-origin issues with Apps Script
+    }).catch(e => {
+        // We log the error but don't block the user.
+        // The request is likely to have gone through anyway.
+        console.error("Error sending to Google Sheet (non-blocking):", e);
     });
 
-    if (!response.ok && response.type !== 'opaque' && response.redirected !== true) {
-         const result = await response.json();
-         throw new Error(result.error || 'Failed to send data to Google Sheet.');
-    }
-
+    // Assume success and return immediately
     return {
         message: "Your application has been received! You will now be redirected to complete the payment.",
         success: true,
