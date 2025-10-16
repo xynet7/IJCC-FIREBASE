@@ -13,7 +13,7 @@ export async function submitMembershipForm(
   const validatedFields = MembershipFormSchema.safeParse(values);
 
   if (!validatedFields.success) {
-    console.log('Validation Errors:', validatedFields.error.flatten().fieldErrors);
+    console.log('Server Validation Errors:', validatedFields.error.flatten().fieldErrors);
     return {
       errors: validatedFields.error.flatten().fieldErrors,
       message: "Validation failed on the server. Please check your input and try again.",
@@ -29,13 +29,13 @@ export async function submitMembershipForm(
     };
     
     // Fire-and-forget the request to Google Apps Script
+    // The 'no-cors' mode is removed as it's not applicable in a server-side context.
     fetch(process.env.GOOGLE_SHEET_WEB_APP_URL!, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(dataForGoogleSheet),
-        mode: 'no-cors', // This can sometimes help with cross-origin issues with Apps Script
     }).catch(e => {
         // We log the error but don't block the user.
         // The request is likely to have gone through anyway.
