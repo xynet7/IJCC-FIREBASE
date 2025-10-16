@@ -13,7 +13,6 @@ export async function submitMembershipForm(
   const validatedFields = MembershipFormSchema.safeParse(values);
 
   if (!validatedFields.success) {
-    console.log('Server Validation Errors:', validatedFields.error.flatten().fieldErrors);
     return {
       errors: validatedFields.error.flatten().fieldErrors,
       message: "Validation failed on the server. Please check your input and try again.",
@@ -26,23 +25,35 @@ export async function submitMembershipForm(
       ...validatedFields.data,
       dateOfIncorporation: validatedFields.data.dateOfIncorporation?.toISOString().split('T')[0],
       applicantDate: validatedFields.data.applicantDate?.toISOString().split('T')[0],
+      japanInterest: Array.isArray(validatedFields.data.japanInterest) ? validatedFields.data.japanInterest.join(', ') : validatedFields.data.japanInterest,
     };
     
-    // Fire-and-forget the request to Google Apps Script
-    // The 'no-cors' mode is removed as it's not applicable in a server-side context.
-    fetch(process.env.GOOGLE_SHEET_WEB_APP_URL!, {
+    // This is the Google Apps Script URL from your environment variables
+    const GOOGLE_SHEET_URL = process.env.GOOGLE_SHEET_WEB_APP_URL;
+
+    if (!GOOGLE_SHEET_URL) {
+      throw new Error("Server configuration error: Google Sheet URL is not set.");
+    }
+    
+    // Make the request to the Google Apps Script
+    // The script will perform a redirect which we must handle.
+    const response = await fetch(GOOGLE_SHEET_URL, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'text/plain;charset=utf-8', // Use text/plain for this redirect-based approach
         },
         body: JSON.stringify(dataForGoogleSheet),
-    }).catch(e => {
-        // We log the error but don't block the user.
-        // The request is likely to have gone through anyway.
-        console.error("Error sending to Google Sheet (non-blocking):", e);
+        redirect: 'follow' // Explicitly tell fetch to follow the redirect
     });
+    
+    // Check if the final response (after following redirects) is successful
+    if (!response.ok) {
+        // Try to get more context from the response if possible
+        const errorText = await response.text();
+        console.error("Google Sheet submission failed. Status:", response.status, "Response:", errorText);
+        throw new Error(`The form could not be submitted at this time (Status: ${response.status}). Please try again shortly.`);
+    }
 
-    // Assume success and return immediately
     return {
         message: "Your application has been received! You will now be redirected to complete the payment.",
         success: true,
