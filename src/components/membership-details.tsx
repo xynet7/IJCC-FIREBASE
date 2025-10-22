@@ -5,6 +5,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Check, User, Rocket, Building, Landmark, Mail, Phone, Globe, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { useAuth } from "@/context/auth-context";
+import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 const membershipTiers = [
   {
@@ -61,12 +64,26 @@ const membershipTiers = [
   },
 ];
 
-export function MembershipDetails() {
-  return (
-    <div className="space-y-16">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {membershipTiers.map((tier) => (
-          <Card key={tier.title} className="flex flex-col">
+const TierCard = ({ tier }: { tier: (typeof membershipTiers)[0] }) => {
+    const { user, loading } = useAuth();
+    const { toast } = useToast();
+    const router = useRouter();
+
+    const handleGetStarted = () => {
+        if (!user) {
+            toast({
+                title: "Authentication Required",
+                description: "Please log in or create an account to apply for membership.",
+                variant: "destructive",
+            });
+            router.push('/login');
+        } else {
+            router.push(`/membership-application?tier=${tier.priceId}`);
+        }
+    };
+
+    return (
+        <Card className="flex flex-col">
             <CardHeader>
               <div className="flex items-center gap-4 mb-2">
                 {tier.icon}
@@ -86,13 +103,20 @@ export function MembershipDetails() {
               </ul>
             </CardContent>
             <CardFooter>
-                <Button asChild className="w-full">
-                    <Link href={`/membership-application?tier=${tier.priceId}`}>
-                        Get Started <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
+                <Button onClick={handleGetStarted} className="w-full" disabled={loading}>
+                    Get Started <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
             </CardFooter>
-          </Card>
+        </Card>
+    );
+};
+
+export function MembershipDetails() {
+  return (
+    <div className="space-y-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {membershipTiers.map((tier) => (
+          <TierCard key={tier.title} tier={tier} />
         ))}
       </div>
 
