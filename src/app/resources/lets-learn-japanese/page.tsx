@@ -8,13 +8,6 @@ import Link from "next/link";
 
 const resources = [
     { 
-      title: "Lets Learn Japanese - Interactive Platform", 
-      description: "A free, interactive Japanese language learning platform provided by The Japan Foundation.",
-      file: "https://tsunahiro.jp/en/let-s-learn-japanese-from-the-japan-foundation", 
-      isExternal: true,
-      buttonText: "Access Platform"
-    },
-    { 
       title: "Lets Learn Japanese - Vol 1 PDF", 
       description: "The downloadable PDF coursebook for the first volume of the 'Lets Learn Japanese' series.",
       file: "https://jumpshare.com/share/hl8x1mh8XIANZnyigTWA", 
