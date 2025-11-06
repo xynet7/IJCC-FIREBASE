@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -73,14 +72,31 @@ export default function SelfStudyPage() {
           <CardHeader>
             <CardTitle className="font-headline text-2xl">Lets Learn Japanese</CardTitle>
             <CardDescription>
-                A free, interactive Japanese language learning platform and downloadable books provided by The Japan Foundation.
+                Free downloadable coursebooks provided by The Japan Foundation to start your language journey.
             </CardDescription>
           </CardHeader>
           <CardFooter className="flex-wrap gap-4">
             <Button asChild>
                 <Link href="/resources/lets-learn-japanese">
                     <ArrowRight className="mr-2 h-4 w-4" />
-                    Access Resources
+                    Access Books
+                </Link>
+            </Button>
+          </CardFooter>
+        </Card>
+        
+        <Card>
+          <CardHeader>
+            <CardTitle className="font-headline text-2xl">Japan Foundation Lessons</CardTitle>
+            <CardDescription>
+                A series of lessons from The Japan Foundation covering various topics for language learners.
+            </CardDescription>
+          </CardHeader>
+          <CardFooter className="flex-wrap gap-4">
+            <Button asChild>
+                <Link href="/resources/japan-foundation-lessons">
+                    <ArrowRight className="mr-2 h-4 w-4" />
+                    Access Lessons
                 </Link>
             </Button>
           </CardFooter>
