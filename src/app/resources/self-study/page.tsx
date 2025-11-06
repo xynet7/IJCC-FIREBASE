@@ -73,32 +73,23 @@ export default function SelfStudyPage() {
           <CardHeader>
             <CardTitle className="font-headline text-2xl">Lets Learn Japanese</CardTitle>
             <CardDescription>
-                A free, interactive Japanese language learning platform provided by The Japan Foundation. Perfect for beginners.
+                A free, interactive Japanese language learning platform provided by The Japan Foundation, and a downloadable PDF for the first volume of the series.
             </CardDescription>
           </CardHeader>
-          <CardFooter>
+          <CardFooter className="flex-wrap gap-4">
             <Button asChild>
                 <Link href="https://tsunahiro.jp/en/let-s-learn-japanese-from-the-japan-foundation" target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="mr-2 h-4 w-4" />
-                    Start Learning
+                    Start Learning Platform
+                </Link>
+            </Button>
+             <Button asChild variant="outline">
+                <Link href="https://jumpshare.com/share/hl8x1mh8XIANZnyigTWA" target="_blank" rel="noopener noreferrer" download>
+                    <Download className="mr-2 h-4 w-4" />
+                    Download Vol 1 PDF
                 </Link>
             </Button>
           </CardFooter>
-        </Card>
-
-        <Card>
-            <CardHeader>
-                <CardTitle className="font-headline text-2xl">Lets Learn Japanese Vol 1</CardTitle>
-                <CardDescription>Downloadable PDF for the first volume of the 'Lets Learn Japanese' series.</CardDescription>
-            </CardHeader>
-            <CardFooter>
-                <Button asChild>
-                    <Link href="https://jumpshare.com/share/hl8x1mh8XIANZnyigTWA" target="_blank" rel="noopener noreferrer" download>
-                        <Download className="mr-2 h-4 w-4" />
-                        Download PDF
-                    </Link>
-                </Button>
-            </CardFooter>
         </Card>
       </div>
 
