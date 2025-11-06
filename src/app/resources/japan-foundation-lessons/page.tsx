@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -5,8 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Download, ExternalLink } from "lucide-react";
 import Link from "next/link";
 
-const resources: any[] = [
-    // Future lesson links will be added here
+const resources = [
+    {
+        title: "Japan Foundation Video Lessons",
+        description: "A comprehensive YouTube playlist from The Japan Foundation covering various aspects of the Japanese language.",
+        file: "https://www.youtube.com/playlist?list=PLSCa5W3CPVCiYZpeh-6KSfaxpwjCIWg27",
+        isExternal: true,
+        buttonText: "Watch on YouTube"
+    }
 ];
 
 export default function JapanFoundationLessonsPage() {
