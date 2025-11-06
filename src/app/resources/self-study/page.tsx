@@ -80,7 +80,7 @@ export default function SelfStudyPage() {
             <Button asChild>
                 <Link href="https://tsunahiro.jp/en/let-s-learn-japanese-from-the-japan-foundation" target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="mr-2 h-4 w-4" />
-                    Start Learning Platform
+                    Access Books
                 </Link>
             </Button>
              <Button asChild variant="outline">
