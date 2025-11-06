@@ -85,6 +85,21 @@ export default function SelfStudyPage() {
             </Button>
           </CardFooter>
         </Card>
+
+        <Card>
+            <CardHeader>
+                <CardTitle className="font-headline text-2xl">Lets Learn Japanese Vol 1</CardTitle>
+                <CardDescription>Downloadable PDF for the first volume of the 'Lets Learn Japanese' series.</CardDescription>
+            </CardHeader>
+            <CardFooter>
+                <Button asChild>
+                    <Link href="https://jumpshare.com/share/hl8x1mh8XIANZnyigTWA" target="_blank" rel="noopener noreferrer" download>
+                        <Download className="mr-2 h-4 w-4" />
+                        Download PDF
+                    </Link>
+                </Button>
+            </CardFooter>
+        </Card>
       </div>
 
       {loading ? (
