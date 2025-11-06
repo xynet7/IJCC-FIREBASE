@@ -21,6 +21,13 @@ const resources = [
       isExternal: true,
       buttonText: "Download PDF"
     },
+    { 
+      title: "Lets Learn Japanese - Vol 2 PDF", 
+      description: "The downloadable PDF coursebook for the second volume of the 'Lets Learn Japanese' series.",
+      file: "https://jumpshare.com/share/7oDaV9tFLionMvWA4b5t", 
+      isExternal: true,
+      buttonText: "Download PDF"
+    },
 ];
 
 export default function LetsLearnJapanesePage() {
