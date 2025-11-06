@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: 'Indo-Japan Chamber of Commerce',
   description: 'Fostering business and cultural ties between India and Japan.',
   icons: {
-    icon: 'https://i.postimg.cc/HkT5K8PD/IJCC-LOGO.jpg',
+    icon: 'https://i.postimg.cc/HkT5K8PD/IJCC-LOGO.jpg?v=1',
   },
 };
 
