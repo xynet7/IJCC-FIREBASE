@@ -6,7 +6,7 @@ import { collection, getDocs, QueryDocumentSnapshot, DocumentData } from 'fireba
 import { db } from '@/lib/firebase';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Download, Loader2, ArrowRight } from "lucide-react";
+import { Download, Loader2, ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -51,25 +51,44 @@ export default function SelfStudyPage() {
         </p>
       </div>
 
-      <Card className="mb-8">
-        <CardHeader>
-          <CardTitle className="font-headline text-2xl">Marugoto Books</CardTitle>
-          <CardDescription>
-            Explore the Marugoto series of textbooks for a comprehensive approach to learning Japanese language and culture.
-          </CardDescription>
-        </CardHeader>
-        <CardFooter>
-          <Button asChild>
-            <Link href="/resources/marugoto-books">
-              <ArrowRight className="mr-2 h-4 w-4" />
-              Access Marugoto Books
-            </Link>
-          </Button>
-        </CardFooter>
-      </Card>
+      <div className="space-y-8">
+        <Card>
+          <CardHeader>
+            <CardTitle className="font-headline text-2xl">Marugoto Books</CardTitle>
+            <CardDescription>
+              Explore the Marugoto series of textbooks for a comprehensive approach to learning Japanese language and culture. This resource is for members only.
+            </CardDescription>
+          </CardHeader>
+          <CardFooter>
+            <Button asChild>
+              <Link href="/resources/marugoto-books">
+                <ArrowRight className="mr-2 h-4 w-4" />
+                Access Marugoto Books
+              </Link>
+            </Button>
+          </CardFooter>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="font-headline text-2xl">Lets Learn Japanese</CardTitle>
+            <CardDescription>
+                A free, interactive Japanese language learning platform provided by The Japan Foundation. Perfect for beginners.
+            </CardDescription>
+          </CardHeader>
+          <CardFooter>
+            <Button asChild>
+                <Link href="https://tsunahiro.jp/en/let-s-learn-japanese-from-the-japan-foundation" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Start Learning
+                </Link>
+            </Button>
+          </CardFooter>
+        </Card>
+      </div>
 
       {loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
           {[...Array(2)].map((_, i) => (
             <Card key={i}>
               <CardHeader>
@@ -84,7 +103,7 @@ export default function SelfStudyPage() {
           ))}
         </div>
       ) : books.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
           {books.map((book) => (
             <Card key={book.id}>
               <CardHeader>
@@ -103,7 +122,7 @@ export default function SelfStudyPage() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-16 border rounded-lg bg-secondary/50">
+        <div className="text-center py-16 border rounded-lg bg-secondary/50 mt-8">
             <h3 className="text-xl font-semibold">No Other Books Available Yet</h3>
             <p className="text-muted-foreground mt-2">Please check back later for more self-study resources.</p>
         </div>
