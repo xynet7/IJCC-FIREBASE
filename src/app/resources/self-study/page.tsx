@@ -20,7 +20,6 @@ interface BookResource {
 export default function SelfStudyPage() {
   const [books, setBooks] = useState<BookResource[]>([]);
   const [loading, setLoading] = useState(true);
-  const [showLetsLearnDownload, setShowLetsLearnDownload] = useState(false);
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -74,24 +73,16 @@ export default function SelfStudyPage() {
           <CardHeader>
             <CardTitle className="font-headline text-2xl">Lets Learn Japanese</CardTitle>
             <CardDescription>
-                A free, interactive Japanese language learning platform provided by The Japan Foundation, and a downloadable PDF for the first volume of the series.
+                A free, interactive Japanese language learning platform and downloadable books provided by The Japan Foundation.
             </CardDescription>
           </CardHeader>
           <CardFooter className="flex-wrap gap-4">
             <Button asChild>
-                <Link href="https://tsunahiro.jp/en/let-s-learn-japanese-from-the-japan-foundation" target="_blank" rel="noopener noreferrer" onClick={() => setShowLetsLearnDownload(true)}>
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Access Books
+                <Link href="/resources/lets-learn-japanese">
+                    <ArrowRight className="mr-2 h-4 w-4" />
+                    Access Resources
                 </Link>
             </Button>
-            {showLetsLearnDownload && (
-                 <Button asChild variant="outline">
-                    <Link href="https://jumpshare.com/share/hl8x1mh8XIANZnyigTWA" target="_blank" rel="noopener noreferrer" download>
-                        <Download className="mr-2 h-4 w-4" />
-                        Download Vol 1 PDF
-                    </Link>
-                </Button>
-            )}
           </CardFooter>
         </Card>
       </div>

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -46,6 +47,15 @@ const allResources = [
     icon: <Sparkles className="h-8 w-8 text-primary" />,
     isLink: true,
     href: "/resources/self-study",
+    isProtected: false,
+  },
+  {
+    title: "Lets Learn Japanese",
+    description: "Interactive learning platform and downloadable books from The Japan Foundation.",
+    type: "Books",
+    icon: <BookOpen className="h-8 w-8 text-primary" />,
+    isLink: true,
+    href: "/resources/lets-learn-japanese",
     isProtected: false,
   },
   {
