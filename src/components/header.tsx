@@ -147,15 +147,15 @@ export function AppHeader() {
                                 </NavigationMenuContent>
                             </>
                         ) : (
-                            <Link href={link.href} legacyBehavior passHref>
-                                <NavigationMenuLink className={cn(
-                                    navigationMenuTriggerStyle(),
-                                    "bg-transparent",
-                                    pathname === link.href && "text-primary"
-                                )}>
-                                  {link.label}
-                                </NavigationMenuLink>
-                            </Link>
+                          <NavigationMenuLink asChild className={cn(
+                              navigationMenuTriggerStyle(),
+                              "bg-transparent",
+                              pathname === link.href && "text-primary"
+                          )}>
+                              <Link href={link.href}>
+                                {link.label}
+                              </Link>
+                          </NavigationMenuLink>
                         )}
                     </NavigationMenuItem>
                 ))}
