@@ -5,17 +5,7 @@ import { useState } from 'react';
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const galleryImages = [
-    { src: "https://i.postimg.cc/kX64VzGb/gallery1.jpg", alt: "Gallery image 10", hint: "event" },
-    { src: "https://i.postimg.cc/xTvdyHGf/gallery2.jpg", alt: "Gallery image 11", hint: "group photo" },
-    { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.14.jpeg", alt: "Gallery image 1", hint: "event business" },
-    { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.15%20(1).jpeg", alt: "Gallery image 2", hint: "people meeting" },
-    { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.15%20(2).jpeg", alt: "Gallery image 3", hint: "conference presentation" },
-    { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.15.jpeg", alt: "Gallery image 4", hint: "networking event" },
-    { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.16.jpeg", alt: "Gallery image 5", hint: "podium speaker" },
-    { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.17%20(1).jpeg", alt: "Gallery image 6", hint: "group photo" },
-    { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.17%20(2).jpeg", alt: "Gallery image 7", hint: "business award" },
-    { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.17.jpeg", alt: "Gallery image 8", hint: "cultural exchange" },
-    { src: "https://www.ijcc.in/images/Gallery/WhatsApp%20Image%202025-05-30%20at%2014.10.19%20(1).jpeg", alt: "Gallery image 9", hint: "audience event" },
+    { src: "https://postimg.cc/pyPsCJjv", alt: "Gallery image 1", hint: "event" },
 ];
 
 export default function GalleryPage() {
