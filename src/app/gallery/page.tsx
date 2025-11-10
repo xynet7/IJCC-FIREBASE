@@ -13,6 +13,7 @@ const galleryImages = [
     { src: "https://i.postimg.cc/QM5sRjPq/Whats-App-Image-2025-11-10-at-15-12-08-c51675a9.jpg", alt: "Gallery image 6", hint: "event" },
     { src: "https://i.postimg.cc/sD1kkVGr/Whats-App-Image-2025-11-10-at-15-12-09-02c945e1.jpg", alt: "Gallery image 7", hint: "event" },
     { src: "https://i.postimg.cc/qRkYj0dJ/Whats-App-Image-2025-11-10-at-15-12-09-8475aeb6.jpg", alt: "Gallery image 8", hint: "event" },
+    { src: "https://i.postimg.cc/MGY3c4fV/Whats-App-Image-2025-11-10-at-15-12-09-b6ecaeea.jpg", alt: "Gallery image 9", hint: "event" },
 ];
 
 export default function GalleryPage() {
