@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -5,24 +6,24 @@ import { useState } from 'react';
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const galleryImages = [
-    { src: "https://postimg.cc/pyPsCJjv", alt: "Gallery image 1", hint: "event" },
-    { src: "https://postimg.cc/grSkk4qP", alt: "Gallery image 2", hint: "event" },
-    { src: "https://postimg.cc/Pp6hJrZT", alt: "Gallery image 3", hint: "event" },
-    { src: "https://postimg.cc/LJdSnWqf", alt: "Gallery image 4", hint: "event" },
-    { src: "https://postimg.cc/N29h08Bb", alt: "Gallery image 5", hint: "event" },
-    { src: "https://postimg.cc/WhLYrc7W", alt: "Gallery image 6", hint: "event" },
-    { src: "https://postimg.cc/bGB3w7JW", alt: "Gallery image 7", hint: "event" },
-    { src: "https://postimg.cc/wt7QZwVj", alt: "Gallery image 8", hint: "event" },
-    { src: "https://postimg.cc/QHmgM2Yb", alt: "Gallery image 9", hint: "event" },
-    { src: "https://postimg.cc/SYq8Sd6b", alt: "Gallery image 10", hint: "event" },
-    { src: "https://postimg.cc/MXxdKmKp", alt: "Gallery image 11", hint: "event" },
-    { src: "https://postimg.cc/Q9qgWvNY", alt: "Gallery image 12", hint: "event" },
-    { src: "https://postimg.cc/njnBZTKK", alt: "Gallery image 13", hint: "event" },
-    { src: "https://postimg.cc/PLj8zK75", alt: "Gallery image 14", hint: "event" },
-    { src: "https://postimg.cc/kVqBtGV7", alt: "Gallery image 15", hint: "event" },
-    { src: "https://postimg.cc/BPKqzfL3", alt: "Gallery image 16", hint: "event" },
-    { src: "https://postimg.cc/kBP95ZRB", alt: "Gallery image 17", hint: "event" },
-    { src: "https://postimg.cc/7JgF7HJC", alt: "Gallery image 18", hint: "event" },
+    { src: "https://i.postimg.cc/V6Qf8G0x/py-Ps-CJjv.jpg", alt: "Gallery image 1", hint: "event" },
+    { src: "https://i.postimg.cc/tJ0G9G40/gr-Skk4q-P.jpg", alt: "Gallery image 2", hint: "event" },
+    { src: "https://i.postimg.cc/GpdN5s2j/Pp6h-Jr-ZT.jpg", alt: "Gallery image 3", hint: "event" },
+    { src: "https://i.postimg.cc/xT3x7VPs/LJd-Sn-Wqf.jpg", alt: "Gallery image 4", hint: "event" },
+    { src: "https://i.postimg.cc/3JmNym3S/N29h08-Bb.jpg", alt: "Gallery image 5", hint: "event" },
+    { src: "https://i.postimg.cc/9Q2f4m8T/Wh-LYrc7-W.jpg", alt: "Gallery image 6", hint: "event" },
+    { src: "https://i.postimg.cc/Y9D9XTYH/b-GB3w7-JW.jpg", alt: "Gallery image 7", hint: "event" },
+    { src: "https://i.postimg.cc/9F7pY7Zp/wt7-QZw-Vj.jpg", alt: "Gallery image 8", hint: "event" },
+    { src: "https://i.postimg.cc/tTPtTqj4/QHmg-M2-Yb.jpg", alt: "Gallery image 9", hint: "event" },
+    { src: "https://i.postimg.cc/x8xLqmrG/SYq8-Sd6b.jpg", alt: "Gallery image 10", hint: "event" },
+    { src: "https://i.postimg.cc/nLpGQRnK/MXxd-Km-Kp.jpg", alt: "Gallery image 11", hint: "event" },
+    { src: "https://i.postimg.cc/k47j0mGw/Q9qg-Wv-NY.jpg", alt: "Gallery image 12", hint: "event" },
+    { src: "https://i.postimg.cc/zX04FMNx/njn-BZTKK.jpg", alt: "Gallery image 13", hint: "event" },
+    { src: "https://i.postimg.cc/L8gCQMwj/PLj8z-K75.jpg", alt: "Gallery image 14", hint: "event" },
+    { src: "https://i.postimg.cc/PqYg4w4k/kVq-Bt-GV7.jpg", alt: "Gallery image 15", hint: "event" },
+    { src: "https://i.postimg.cc/7hrz4F9R/BPKqzf-L3.jpg", alt: "Gallery image 16", hint: "event" },
+    { src: "https://i.postimg.cc/c4bSfvTB/k-BP95-ZRB.jpg", alt: "Gallery image 17", hint: "event" },
+    { src: "https://i.postimg.cc/J4yqXyVv/7-Jg-F7-HJC.jpg", alt: "Gallery image 18", hint: "event" },
 ];
 
 export default function GalleryPage() {
