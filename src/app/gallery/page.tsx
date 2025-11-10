@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const galleryImages = [
     { src: "https://postimg.cc/pyPsCJjv", alt: "Gallery image 1", hint: "event" },
+    { src: "https://postimg.cc/pyPsCJjv", alt: "Gallery image 2", hint: "event" },
 ];
 
 export default function GalleryPage() {
