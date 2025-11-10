@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const galleryImages = [
-    { src: "https://i.postimg.cc/V6Qf8G0x/py-Ps-CJjv.jpg", alt: "Gallery image 1", hint: "event" },
+    { src: "https://i.postimg.cc/pyPsCJjv/image.jpg", alt: "Gallery image 1", hint: "event" },
     { src: "https://i.postimg.cc/tJ0G9G40/gr-Skk4q-P.jpg", alt: "Gallery image 2", hint: "event" },
     { src: "https://i.postimg.cc/GpdN5s2j/Pp6h-Jr-ZT.jpg", alt: "Gallery image 3", hint: "event" },
     { src: "https://i.postimg.cc/xT3x7VPs/LJd-Sn-Wqf.jpg", alt: "Gallery image 4", hint: "event" },
