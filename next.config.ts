@@ -104,6 +104,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'postimg.cc',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'nd.jpf.go.jp',
         port: '',
         pathname: '/**',
@@ -145,7 +151,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https' as const,
+        protocol: 'https',
         hostname: 'www.indembassy-tokyo.gov.in',
         port: '',
         pathname: '/**',
