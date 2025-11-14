@@ -21,7 +21,9 @@ const membershipTiers = [
       "Discounts on training, tours & workshops",
       "Eligibility for mentorship and project collaboration",
     ],
-    priceId: "individual"
+    priceId: "individual",
+    price: "₹5,000",
+    period: "/ year",
   },
   {
     icon: <Rocket className="h-10 w-10 text-primary" />,
@@ -34,7 +36,9 @@ const membershipTiers = [
       "Networking with Japanese incubators & VCs",
       "Visibility on IJCC's startup showcases & newsletters",
     ],
-    priceId: "startup"
+    priceId: "startup",
+    price: "₹10,000",
+    period: "/ year",
   },
   {
     icon: <Building className="h-10 w-10 text-primary" />,
@@ -47,7 +51,9 @@ const membershipTiers = [
       "Access to advisory panels on trade & legal matters",
       "Leads for Indo-Japan collaboration & procurement",
     ],
-    priceId: "corporate"
+    priceId: "corporate",
+    price: "₹25,000",
+    period: "/ year",
   },
   {
     icon: <Landmark className="h-10 w-10 text-primary" />,
@@ -60,7 +66,9 @@ const membershipTiers = [
       "Brand visibility across IJCC platforms & delegations",
       "Joint whitepapers, reports, and knowledge partnerships",
     ],
-    priceId: "large-corporate"
+    priceId: "large-corporate",
+    price: "₹50,000",
+    period: "/ year",
   },
 ];
 
@@ -85,9 +93,15 @@ const TierCard = ({ tier }: { tier: (typeof membershipTiers)[0] }) => {
     return (
         <Card className="flex flex-col">
             <CardHeader>
-              <div className="flex items-center gap-4 mb-2">
+              <div className="flex items-start gap-4 mb-2">
                 {tier.icon}
-                <CardTitle className="font-headline text-2xl">{tier.title}</CardTitle>
+                <div className="flex-1">
+                    <CardTitle className="font-headline text-2xl">{tier.title}</CardTitle>
+                    <div className="flex items-baseline gap-2 pt-2">
+                        <span className="text-3xl font-bold">{tier.price}</span>
+                        {tier.period && <span className="text-muted-foreground">{tier.period}</span>}
+                    </div>
+                </div>
               </div>
               <CardDescription>{tier.eligibility}</CardDescription>
             </CardHeader>
