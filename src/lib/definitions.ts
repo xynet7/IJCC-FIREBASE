@@ -46,7 +46,8 @@ export const MembershipFormSchema = z.object({
   emailAddress: z.string().email("A valid email address is required."),
   membershipTier: z.enum([
     "individual", 
-    "startup", 
+    "startup",
+    "association", 
     "corporate",
     "large-corporate"
   ]),

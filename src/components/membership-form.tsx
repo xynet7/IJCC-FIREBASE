@@ -33,7 +33,7 @@ function MembershipFormComponent() {
   const form = useForm<z.infer<typeof MembershipFormSchema>>({
     resolver: zodResolver(MembershipFormSchema),
     defaultValues: {
-      membershipTier: (searchParams.get('tier') as "individual" | "startup" | "corporate" | "large-corporate") || 'individual',
+      membershipTier: (searchParams.get('tier') as "individual" | "startup" | "association" | "corporate" | "large-corporate") || 'individual',
       legalCompanyName: "",
       entityType: undefined,
       dateOfIncorporation: undefined,
@@ -124,6 +124,7 @@ function MembershipFormComponent() {
                         <SelectContent>
                             <SelectItem value="individual">Individual Professionals / Freelancers (₹5,000)</SelectItem>
                             <SelectItem value="startup">Startups / SMEs (₹10,000)</SelectItem>
+                            <SelectItem value="association">Associations (₹15,000)</SelectItem>
                             <SelectItem value="corporate">Corporates / MSMEs (₹25,000)</SelectItem>
                             <SelectItem value="large-corporate">Large Corporates / Institutions (₹50,000)</SelectItem>
                         </SelectContent>

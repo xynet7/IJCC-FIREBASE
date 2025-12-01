@@ -52,6 +52,20 @@ const pricingTiers = [
         ],
     },
     {
+        id: "association",
+        title: "Associations",
+        price: 15000,
+        displayPrice: "₹15,000",
+        period: "/ year",
+        description: "For non-profits and industry bodies.",
+        features: [
+            "Listing on IJCC website & directories",
+            "Co-hosting opportunities for events",
+            "Access to policy-making forums",
+            "Joint advocacy & research initiatives",
+        ],
+    },
+    {
         id: "corporate",
         title: "Corporates / MSMEs",
         price: 25000,
@@ -200,7 +214,7 @@ export default function PricingPage() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
                     {pricingTiers.map((tier) => (
                         <Card 
                             key={tier.id} 

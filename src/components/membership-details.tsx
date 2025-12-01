@@ -41,6 +41,21 @@ const membershipTiers = [
     price: "₹10,000",
     period: "/ year",
   },
+   {
+    icon: <Landmark className="h-10 w-10 text-primary" />,
+    title: "Associations",
+    eligibility: "Non-profit organizations, industry bodies, trade associations, and academic institutions.",
+    benefits: [
+      "Listing on IJCC website & directories",
+      "Co-hosting opportunities for events & seminars",
+      "Access to policy-making forums",
+      "Joint advocacy and research initiatives",
+      "Brand visibility across IJCC platforms",
+    ],
+    priceId: "association",
+    price: "₹15,000",
+    period: "/ year",
+  },
   {
     icon: <Building className="h-10 w-10 text-primary" />,
     title: "Corporates / MSMEs",
