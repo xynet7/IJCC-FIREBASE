@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useAuth } from "@/context/auth-context";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const membershipTiers = [
   {
@@ -134,7 +135,7 @@ export function MembershipDetails() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         <Card>
             <CardHeader>
                 <CardTitle className="font-headline">Enrollment Procedure</CardTitle>
@@ -147,14 +148,26 @@ export function MembershipDetails() {
             <CardHeader>
                 <CardTitle className="font-headline">Payment Details</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-2 text-muted-foreground">
-                <p><strong>Account Name:</strong> INDO JAPAN CHAMBER OF COMMERCE</p>
-                <p><strong>Bank Name:</strong> IDFC Bank</p>
-                <p><strong>A/c No.:</strong> 10226043148</p>
-                <p><strong>Branch:</strong> Crossing Republic-Ghaziabad</p>
-                <p><strong>IFSC Code:</strong> IDFB0021413</p>
-                <p><strong>MICR Code:</strong> 110751034</p>
-                <p><strong>Branch Code:</strong> 21413</p>
+            <CardContent className="flex flex-col sm:flex-row gap-6">
+                <div className="space-y-2 text-muted-foreground flex-1">
+                    <p><strong>Account Name:</strong> INDO JAPAN CHAMBER OF COMMERCE</p>
+                    <p><strong>Bank Name:</strong> IDFC Bank</p>
+                    <p><strong>A/c No.:</strong> 10226043148</p>
+                    <p><strong>Branch:</strong> Crossing Republic-Ghaziabad</p>
+                    <p><strong>IFSC Code:</strong> IDFB0021413</p>
+                    <p><strong>MICR Code:</strong> 110751034</p>
+                    <p><strong>Branch Code:</strong> 21413</p>
+                </div>
+                <div className="flex-shrink-0">
+                    <Image 
+                        src="https://i.postimg.cc/hGRkss7h/qr-ijcc.jpg"
+                        alt="Payment QR Code"
+                        width={150}
+                        height={150}
+                        className="rounded-lg shadow-md"
+                        data-ai-hint="qr code"
+                    />
+                </div>
             </CardContent>
         </Card>
       </div>
