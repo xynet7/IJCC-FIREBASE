@@ -6,7 +6,8 @@ import { useState } from 'react';
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const galleryImages = [
-    { src: "https://i.ibb.co/yBNpG0q/4.jpg", alt: "Gallery image 25", hint: "event" },
+    { src: "https://i.ibb.co/SDXqkPqj/5.jpg", alt: "Gallery image 26", hint: "event" },
+    { src: "https://i.ibb.co/TBnDzCSf/4.jpg", alt: "Gallery image 25", hint: "event" },
     { src: "https://i.ibb.co/rG9Rzj08/Whats-App-Image-2025-12-02-at-12-50-55-870b5c9e.jpg", alt: "Gallery image 24", hint: "event" },
     { src: "https://i.ibb.co/qhxVm3D/2.jpg", alt: "Gallery image 23", hint: "event" },
     { src: "https://i.ibb.co/Ng78w5Dh/1.jpg", alt: "Gallery image 22", hint: "event" },
@@ -71,5 +72,3 @@ export default function GalleryPage() {
         </div>
     );
 }
-
-    
