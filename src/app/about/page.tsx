@@ -40,13 +40,10 @@ const legalTeam = [
   { name: "Ms. Anjali Sharma", title: "Advocate, Supreme Court of India", imageUrl: "https://i.postimg.cc/kX4zvbb0/anjali1.jpg", hint: "woman face", bio: "As an advocate in the Supreme Court of India, Ms. Anjali Sharma provides critical legal counsel to the chamber. Her expertise in international law is essential for members navigating cross-border business transactions." },
 ];
 
-const varanasiChapter = [
-  { name: "Mr. Raj Singh", title: "Director Sunlite Consulting", imageUrl: "https://i.postimg.cc/RV5W1scJ/raj.jpg", hint: "man face", bio: "Mr. Raj Singh has been a guiding force since the chamber's inception. Through Sunlite Consulting, he continues to provide strategic business advice to companies looking to enter the Indo-Japan corridor, with a focus on fostering growth in the Varanasi region." },
-  { name: "Mr. M Nazir", title: "Director ICAE India", imageUrl: "https://i.postimg.cc/Jz7NkNHX/nazir1.jpg", hint: "man face", bio: "Mr. M Nazir has been a pillar of the IJCC, championing numerous initiatives focused on adult education and vocational training. In Varanasi, he works to align local talent with the needs of Japanese industries." },
-];
-
-const gayaChapter = [
-    { name: "Mr. Lokendra Rana", title: "Executive Director", imageUrl: "https://aamidainfotech.com/wp-content/uploads/2021/01/lokendra-rana.jpg", hint: "man face", bio: "With extensive experience in international sales, marketing, and operations, Lokendra Rana leads the Gaya chapter. His expertise is pivotal in driving business development and fostering cross-cultural partnerships in the region." },
+const regionalChapters = [
+  { name: "Mr. Raj Singh", title: "Director Sunlite Consulting (Varanasi)", imageUrl: "https://i.postimg.cc/RV5W1scJ/raj.jpg", hint: "man face", bio: "Mr. Raj Singh has been a guiding force since the chamber's inception. Through Sunlite Consulting, he continues to provide strategic business advice to companies looking to enter the Indo-Japan corridor, with a focus on fostering growth in the Varanasi region." },
+  { name: "Mr. M Nazir", title: "Director ICAE India (Varanasi)", imageUrl: "https://i.postimg.cc/Jz7NkNHX/nazir1.jpg", hint: "man face", bio: "Mr. M Nazir has been a pillar of the IJCC, championing numerous initiatives focused on adult education and vocational training. In Varanasi, he works to align local talent with the needs of Japanese industries." },
+  { name: "Mr. Lokendra Rana", title: "Executive Director (Gaya)", imageUrl: "https://aamidainfotech.com/wp-content/uploads/2021/01/lokendra-rana.jpg", hint: "man face", bio: "With extensive experience in international sales, marketing, and operations, Lokendra Rana leads the Gaya chapter. His expertise is pivotal in driving business development and fostering cross-cultural partnerships in the region." },
 ];
 
 const TeamMemberCard = ({ member }: { member: typeof leadership[0] }) => (
@@ -160,15 +157,9 @@ export default function AboutPage() {
       />
 
       <TeamSection
-        title="Varanasi Chapter"
-        members={varanasiChapter}
-        description="Our dedicated team in Varanasi, fostering local business and cultural ties with Japan."
-      />
-
-      <TeamSection
-        title="Gaya Chapter"
-        members={gayaChapter}
-        description="Leading our initiatives in Gaya to promote economic and cultural exchange with Japan."
+        title="Regional Chapters"
+        members={regionalChapters}
+        description="Our dedicated teams in Varanasi and Gaya, fostering local business and cultural exchange with Japan."
       />
 
     </div>
