@@ -24,7 +24,7 @@ const events = [
     description: "An exclusive business delegation trip for Indian business leaders to explore opportunities in Japan. More details coming soon.",
     imageUrl: "https://i.ibb.co/V0CNvmGh/Screenshot-2-12-2025-125555.jpg",
     hint: "business delegation",
-    isVertical: false, 
+    isVertical: false,
     href: "/contact"
   },
   {
@@ -72,6 +72,7 @@ const events = [
     description: "Coming Soon",
     imageUrl: "https://picsum.photos/seed/tech-summit/800/400",
     hint: "tech conference",
+    isVertical: false,
   },
 ];
 
@@ -108,21 +109,20 @@ export default function EventsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
           {events.map((event, index) => (
-            <Card key={index} className={cn("flex flex-col overflow-hidden", !event.isFeatured && "md:flex-row")}>
+            <Card key={index} className={cn("flex flex-col overflow-hidden md:flex-row")}>
               {event.imageUrl && (
                 <Dialog>
                   <DialogTrigger asChild>
                     <div className={cn("relative flex-shrink-0 cursor-pointer", 
-                       event.isFeatured ? "w-full aspect-[1/1.4]" :
                        event.isVertical ? 'w-full md:w-1/3' : 'w-full h-64 md:h-auto md:w-1/2'
                     )}>
                       <Image 
                           src={event.imageUrl} 
                           alt={event.title} 
                           layout="fill" 
-                          objectFit={event.isFeatured ? "contain" : (event.isVertical ? "contain" : "cover")}
+                          objectFit={(event.isVertical ? "contain" : "cover")}
                           data-ai-hint={event.hint}
-                          className={cn(!event.isFeatured && "transition-transform duration-300 hover:scale-105")}
+                          className={cn("transition-transform duration-300 hover:scale-105")}
                       />
                     </div>
                   </DialogTrigger>
