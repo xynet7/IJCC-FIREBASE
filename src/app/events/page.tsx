@@ -22,7 +22,7 @@ const events = [
     time: "All Day",
     location: "Japan (Tokyo, Osaka, etc.)",
     description: "An exclusive business delegation trip for Indian business leaders to explore opportunities in Japan. More details coming soon.",
-    imageUrl: "https://i.ibb.co/V0CNvmGh/Screenshot-2-12-2025-125555.jpg",
+    imageUrl: "https://i.ibb.co/WpWSq89m/Screenshot-2-12-2025-125555.jpg",
     hint: "business delegation",
     isVertical: false,
     href: "/contact"
