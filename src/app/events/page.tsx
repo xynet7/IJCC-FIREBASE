@@ -16,6 +16,18 @@ import {
 
 const events = [
   {
+    title: "Exclusive India Business Delegation Trip to Japan",
+    date: "2026-01-16",
+    displayDate: "January 16 - 25, 2026",
+    time: "All Day",
+    location: "Japan (Tokyo, Osaka, etc.)",
+    description: "An exclusive business delegation trip for Indian business leaders to explore opportunities in Japan. More details coming soon.",
+    imageUrl: "https://i.ibb.co/V0CNvmGh/Screenshot-2-12-2025-125555.jpg",
+    hint: "business delegation",
+    isVertical: false, 
+    href: "/contact"
+  },
+  {
     title: "Matsuri - Japan Festival",
     date: "2025-10-11",
     displayDate: "October 11, 2025",
@@ -122,7 +134,7 @@ export default function EventsPage() {
                 </Dialog>
               )}
               <div className="flex flex-col justify-between p-6">
-                <Link href={event.href || "#"} target="_blank" rel="noopener noreferrer" className={cn("flex flex-col justify-between h-full group", !event.href && "pointer-events-none")}>
+                <Link href={event.href || "#"} target={event.href?.startsWith('http') ? "_blank" : "_self"} rel="noopener noreferrer" className={cn("flex flex-col justify-between h-full group", !event.href && "pointer-events-none")}>
                     <div>
                     <CardHeader className="p-0">
                         <CardTitle className="font-headline text-xl group-hover:underline">{event.title}</CardTitle>
