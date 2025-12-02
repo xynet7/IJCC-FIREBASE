@@ -148,18 +148,7 @@ export function MembershipDetails() {
         {membershipTiers.map((tier) => (
           <TierCard key={tier.title} tier={tier} />
         ))}
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        <Card>
-            <CardHeader>
-                <CardTitle className="font-headline">Enrollment Procedure</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <p className="text-muted-foreground">Submit your profile and application form. Upon approval, a welcome letter and membership certificate will be issued. You will then be prompted for payment.</p>
-            </CardContent>
-        </Card>
-        <Card>
+         <Card>
             <CardHeader>
                 <CardTitle className="font-headline">Payment Details</CardTitle>
             </CardHeader>
@@ -183,6 +172,17 @@ export function MembershipDetails() {
                         data-ai-hint="qr code"
                     />
                 </div>
+            </CardContent>
+        </Card>
+      </div>
+
+      <div className="grid grid-cols-1 gap-8 items-start">
+        <Card>
+            <CardHeader>
+                <CardTitle className="font-headline">Enrollment Procedure</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <p className="text-muted-foreground">Submit your profile and application form. Upon approval, a welcome letter and membership certificate will be issued. You will then be prompted for payment.</p>
             </CardContent>
         </Card>
       </div>
