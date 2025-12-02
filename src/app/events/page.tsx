@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Calendar as CalendarIcon, Clock, MapPin } from "lucide-react";
@@ -20,7 +19,7 @@ const events = [
     date: "2026-01-16",
     displayDate: "January 16 - 25, 2026",
     time: "All Day",
-    location: "Japan (Tokyo, Osaka, etc.)",
+    location: "Japan",
     description: "An exclusive business delegation trip for Indian business leaders to explore opportunities in Japan. More details coming soon.",
     imageUrl: "https://i.ibb.co/WpWSq89m/Screenshot-2-12-2025-125555.jpg",
     hint: "business delegation",
