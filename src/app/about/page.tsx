@@ -157,7 +157,7 @@ export default function AboutPage() {
       />
 
       <TeamSection
-        title="Regional Chapters"
+        title="Varanasi & Gaya Chapters"
         members={regionalChapters}
         description="Our dedicated teams in Varanasi and Gaya, fostering local business and cultural exchange with Japan."
       />
