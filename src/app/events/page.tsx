@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Calendar as CalendarIcon, Clock, MapPin } from "lucide-react";
@@ -124,8 +125,8 @@ export default function EventsPage() {
               {event.imageUrl && (
                 <Dialog>
                   <DialogTrigger asChild>
-                    <div className={cn("relative flex-shrink-0 cursor-pointer", 
-                       event.isVertical ? 'w-full md:w-1/3' : 'w-full h-64 md:h-auto md:w-1/2'
+                    <div className={cn("relative flex-shrink-0 cursor-pointer w-full md:w-1/3", 
+                       !event.isVertical && 'md:w-1/2 aspect-video md:aspect-auto'
                     )}>
                       <Image 
                           src={event.imageUrl} 
