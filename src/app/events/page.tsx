@@ -15,6 +15,18 @@ import {
 
 const events = [
   {
+    title: "Japan Business Tour for Indian Doctors",
+    date: "2026-03-09",
+    displayDate: "March 9 - 14, 2026",
+    time: "All Day",
+    location: "Japan",
+    description: "An exclusive business tour for Indian doctors to explore healthcare opportunities and collaborations in Japan.",
+    imageUrl: "https://i.ibb.co/Ngg6ZF2p/japanese-event-for-doc.jpg",
+    hint: "doctors business tour",
+    isVertical: false,
+    href: "/contact"
+  },
+  {
     title: "Exclusive India Business Delegation Trip to Japan",
     date: "2026-01-16",
     displayDate: "January 16 - 25, 2026",
