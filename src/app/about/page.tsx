@@ -40,10 +40,13 @@ const legalTeam = [
   { name: "Ms. Anjali Sharma", title: "Advocate, Supreme Court of India", imageUrl: "https://i.postimg.cc/kX4zvbb0/anjali1.jpg", hint: "woman face", bio: "As an advocate in the Supreme Court of India, Ms. Anjali Sharma provides critical legal counsel to the chamber. Her expertise in international law is essential for members navigating cross-border business transactions." },
 ];
 
-const foundingMembers = [
-  { name: "Mr. Raj Singh", title: "Founding Member, Director Sunlite Consulting", imageUrl: "https://i.postimg.cc/RV5W1scJ/raj.jpg", hint: "man face", bio: "A founding member of the IJCC, Mr. Raj Singh has been a guiding force since its inception. Through Sunlite Consulting, he continues to provide strategic business advice to companies looking to enter the Indo-Japan corridor." },
-  { name: "Mr. M Nazir", title: "Founding Member, Director ICAE India", imageUrl: "https://i.postimg.cc/Jz7NkNHX/nazir1.jpg", hint: "man face", bio: "Mr. M Nazir, another founding member, has been a pillar of the IJCC. As Director of ICAE India, he has championed numerous initiatives focused on adult education and vocational training, aligning Indian talent with Japanese industry needs." },
-  { name: "Mr. Lokendra Rana", title: "Founding Member, Executive Director", imageUrl: "https://aamidainfotech.com/wp-content/uploads/2021/01/lokendra-rana.jpg", hint: "man face", bio: "Lokendra Rana the Executive Director (International Sales and Marketing) of the company, graduated and post-graduated, Bachelor of Arts in English, Economics, and Sociology and completed his masters in English Literature.\n\nAdditional to the academic degrees, he has done Japanese Language and obtained the JLPT certification Level-3 in the year 2005 from the Japan Foundation and Japan Educational Exchanges and Services. He did his Post Graduate Diploma in International Business and did his MBA in Marketing, He also did a certificate course in C, C++, Linux, Unix, and also a part of the core team to get implement SAP S4/HANA implementation in his company at Ethiopia Plant.\n\nHe also served in Bangladesh as Head Operations (CEO) and the last assignment was in Ethiopia, Africa in the capacity of General Manager. He has won the Best Team Performance award from Raymond’s in 2013 and has vast work experience Internationally & Nationally in various companies.\n\nHe also specialized skill of traditional North Indian farming and has over two decades of experience. He has a good knowledge of the Indian share market and cryptocurrency trade. He did inceptions of two plants in his career from the Greenfield project to commissioning. Mr. Rana has joined ACS as Executive Director of Aamida Infotech." },
+const varanasiChapter = [
+  { name: "Mr. Raj Singh", title: "Director Sunlite Consulting", imageUrl: "https://i.postimg.cc/RV5W1scJ/raj.jpg", hint: "man face", bio: "Mr. Raj Singh has been a guiding force since the chamber's inception. Through Sunlite Consulting, he continues to provide strategic business advice to companies looking to enter the Indo-Japan corridor, with a focus on fostering growth in the Varanasi region." },
+  { name: "Mr. M Nazir", title: "Director ICAE India", imageUrl: "https://i.postimg.cc/Jz7NkNHX/nazir1.jpg", hint: "man face", bio: "Mr. M Nazir has been a pillar of the IJCC, championing numerous initiatives focused on adult education and vocational training. In Varanasi, he works to align local talent with the needs of Japanese industries." },
+];
+
+const gayaChapter = [
+    { name: "Mr. Lokendra Rana", title: "Executive Director", imageUrl: "https://aamidainfotech.com/wp-content/uploads/2021/01/lokendra-rana.jpg", hint: "man face", bio: "With extensive experience in international sales, marketing, and operations, Lokendra Rana leads the Gaya chapter. His expertise is pivotal in driving business development and fostering cross-cultural partnerships in the region." },
 ];
 
 const TeamMemberCard = ({ member }: { member: typeof leadership[0] }) => (
@@ -157,9 +160,15 @@ export default function AboutPage() {
       />
 
       <TeamSection
-        title="Founding Members"
-        members={foundingMembers}
-        description="The visionary founders who laid the groundwork for our chamber's success."
+        title="Varanasi Chapter"
+        members={varanasiChapter}
+        description="Our dedicated team in Varanasi, fostering local business and cultural ties with Japan."
+      />
+
+      <TeamSection
+        title="Gaya Chapter"
+        members={gayaChapter}
+        description="Leading our initiatives in Gaya to promote economic and cultural exchange with Japan."
       />
 
     </div>
@@ -176,9 +185,9 @@ export default function AboutPage() {
 
     
 
+
+
+
     
-
-
-
 
     
