@@ -8,6 +8,11 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const events = [
   {
@@ -93,12 +98,12 @@ export default function EventsPage() {
           {events.map((event, index) => (
             <Card key={index} className={cn("flex flex-col overflow-hidden", !event.isFeatured && "md:flex-row")}>
               {event.imageUrl && (
-                 <div className={cn("relative flex-shrink-0", 
-                    event.isFeatured ? "w-full aspect-[1/1.4]" :
-                    event.isVertical ? 'w-full md:w-1/3' : 'w-full h-64 md:h-auto md:w-1/2'
-                 )}>
-                  {event.href ? (
-                    <Link href={event.href} target="_blank" rel="noopener noreferrer">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className={cn("relative flex-shrink-0 cursor-pointer", 
+                       event.isFeatured ? "w-full aspect-[1/1.4]" :
+                       event.isVertical ? 'w-full md:w-1/3' : 'w-full h-64 md:h-auto md:w-1/2'
+                    )}>
                       <Image 
                           src={event.imageUrl} 
                           alt={event.title} 
@@ -107,39 +112,38 @@ export default function EventsPage() {
                           data-ai-hint={event.hint}
                           className={cn(!event.isFeatured && "transition-transform duration-300 hover:scale-105")}
                       />
-                    </Link>
-                  ) : (
-                    <Image 
-                        src={event.imageUrl} 
-                        alt={event.title} 
-                        layout="fill" 
-                        objectFit={event.isFeatured ? "contain" : (event.isVertical ? "contain" : "cover")}
-                        data-ai-hint={event.hint}
-                    />
-                  )}
-                </div>
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl p-0">
+                    <div className="relative aspect-video">
+                        <Image src={event.imageUrl} alt={event.title} fill className="object-contain" />
+                    </div>
+                  </DialogContent>
+                </Dialog>
               )}
               <div className="flex flex-col justify-between p-6">
-                <div>
-                  <CardHeader className="p-0">
-                    <CardTitle className="font-headline text-xl">{event.title}</CardTitle>
-                    <CardDescription className="pt-2">{event.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="grid sm:grid-cols-2 gap-4 text-sm p-0 pt-4">
-                    <div className="flex items-center gap-2">
-                      <CalendarIcon className="w-4 h-4 text-muted-foreground" />
-                      <span>{event.displayDate}</span>
+                <Link href={event.href || "#"} target="_blank" rel="noopener noreferrer" className={cn("flex flex-col justify-between h-full group", !event.href && "pointer-events-none")}>
+                    <div>
+                    <CardHeader className="p-0">
+                        <CardTitle className="font-headline text-xl group-hover:underline">{event.title}</CardTitle>
+                        <CardDescription className="pt-2">{event.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="grid sm:grid-cols-2 gap-4 text-sm p-0 pt-4">
+                        <div className="flex items-center gap-2">
+                        <CalendarIcon className="w-4 h-4 text-muted-foreground" />
+                        <span>{event.displayDate}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4 text-muted-foreground" />
+                        <span>{event.time}</span>
+                        </div>
+                        <div className="flex items-center col-span-2 gap-2">
+                        <MapPin className="w-4 h-4 text-muted-foreground" />
+                        <span>{event.location}</span>
+                        </div>
+                    </CardContent>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-muted-foreground" />
-                      <span>{event.time}</span>
-                    </div>
-                    <div className="flex items-center col-span-2 gap-2">
-                      <MapPin className="w-4 h-4 text-muted-foreground" />
-                      <span>{event.location}</span>
-                    </div>
-                  </CardContent>
-                </div>
+                </Link>
               </div>
             </Card>
           ))}
