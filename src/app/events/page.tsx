@@ -133,12 +133,12 @@ export default function EventsPage() {
                           layout="fill" 
                           objectFit={(event.isVertical ? "contain" : "cover")}
                           data-ai-hint={event.hint}
-                          className={cn("transition-transform duration-300 hover:scale-105")}
+                          className={cn("transition-transform duration-300 hover:scale-105", event.isVertical && "bg-secondary p-2")}
                       />
                     </div>
                   </DialogTrigger>
                   <DialogContent className="max-w-4xl p-0">
-                    <div className="relative aspect-video">
+                    <div className={cn("relative", event.isVertical ? "aspect-[9/16]" : "aspect-video")}>
                         <Image src={event.imageUrl} alt={event.title} fill className="object-contain" />
                     </div>
                   </DialogContent>
