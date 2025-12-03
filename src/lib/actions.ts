@@ -15,7 +15,7 @@ export async function submitMembershipForm(
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: "Validation failed on the server. Please check your input and try again.",
+      message: "membershipForm_toastErrorValidation",
       success: false,
     };
   }
@@ -23,8 +23,8 @@ export async function submitMembershipForm(
   try {
     const dataForGoogleSheet = {
       ...validatedFields.data,
-      dateOfIncorporation: validatedFields.data.dateOfIncorporation?.toISOString().split('T')[0],
-      applicantDate: validatedFields.data.applicantDate?.toISOString().split('T')[0],
+      dateOfIncorporation: validatedFields.data.dateOfIncorporation,
+      applicantDate: validatedFields.data.applicantDate,
       japanInterest: Array.isArray(validatedFields.data.japanInterest) ? validatedFields.data.japanInterest.join(', ') : validatedFields.data.japanInterest,
     };
     
@@ -55,7 +55,7 @@ export async function submitMembershipForm(
     }
 
     return {
-        message: "Your application has been received! You will now be redirected to complete the payment.",
+        message: "membershipForm_toastSuccessDescription",
         success: true,
         errors: {},
     };
@@ -63,7 +63,7 @@ export async function submitMembershipForm(
   } catch (error: any) {
       console.error("Error during form submission process:", error);
       return {
-          message: error.message || "An unexpected error occurred. Please try again.",
+          message: error.message || "membershipForm_toastErrorGeneric",
           success: false,
           errors: {},
       }
@@ -82,7 +82,7 @@ export async function submitContactForm(
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: "Validation failed. Please check your input.",
+      message: "contactForm_toastErrorValidation",
       success: false,
     };
   }
@@ -92,7 +92,7 @@ export async function submitContactForm(
   if (!process.env.SMTP_HOST) {
     console.error("SMTP environment variables are not set.");
      return {
-      message: "Server configuration error. Could not send email.",
+      message: "contactForm_toastErrorServerConfig",
       success: false,
       errors: {},
     };
@@ -126,14 +126,14 @@ export async function submitContactForm(
   try {
     await transporter.sendMail(mailOptions);
     return {
-      message: "Thank you! Your message has been sent successfully.",
+      message: "contactForm_toastSuccessDescription",
       success: true,
       errors: {},
     };
   } catch (error) {
     console.error("Failed to send email:", error);
     return {
-      message: "An error occurred while sending your message. Please try again later.",
+      message: "contactForm_toastErrorGeneric",
       success: false,
       errors: {},
     };

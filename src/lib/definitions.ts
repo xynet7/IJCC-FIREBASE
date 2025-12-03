@@ -2,8 +2,8 @@
 import { z } from 'zod';
 
 export const ContactFormSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email." }),
+  name: z.string().min(2, { message: "contactForm_validation_name" }),
+  email: z.string().email({ message: "contactForm_validation_email" }),
   phone: z.string().optional(),
   inquiryType: z.enum([
     "general", 
@@ -19,29 +19,29 @@ export const ContactFormSchema = z.object({
     "startup-support",
     "management-training"
   ], {
-    errorMap: () => ({ message: "Please select an inquiry type." }),
+    errorMap: () => ({ message: "contactForm_validation_inquiryType" }),
   }),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+  message: z.string().min(10, { message: "contactForm_validation_message" }),
 });
 
 export const MembershipFormSchema = z.object({
   // Part A
-  legalCompanyName: z.string().min(2, "Legal company name is required."),
+  legalCompanyName: z.string().min(2, "membershipForm_validation_legalCompanyName"),
   entityType: z.enum(["private-ltd", "public-ltd", "llp", "partnership", "proprietorship"], {
-    required_error: "You need to select an entity type.",
+    required_error: "membershipForm_validation_entityType",
   }),
-  dateOfIncorporation: z.string().min(1, { message: "Date of incorporation is required." }),
+  dateOfIncorporation: z.string().min(1, { message: "membershipForm_validation_dateOfIncorporation" }),
   msmeRegistration: z.string().optional(),
-  registeredAddress: z.string().min(10, "Official registered address is required."),
-  city: z.string().min(2, "City is required."),
-  state: z.string().min(2, "State is required."),
-  pincode: z.string().min(6, "Pincode must be at least 6 characters.").max(10, "Pincode can be at most 10 characters."),
+  registeredAddress: z.string().min(10, "membershipForm_validation_registeredAddress"),
+  city: z.string().min(2, "membershipForm_validation_city"),
+  state: z.string().min(2, "membershipForm_validation_state"),
+  pincode: z.string().min(6, "membershipForm_validation_pincode_min").max(10, "membershipForm_validation_pincode_max"),
   website: z.string().optional(),
-  directors: z.string().min(2, "Please list at least one director."),
-  primaryContactPerson: z.string().min(2, "Primary contact person is required."),
-  primaryContactDesignation: z.string().min(2, "Designation is required."),
-  mobileNumber: z.string().min(10, "A valid mobile number is required."),
-  emailAddress: z.string().email("A valid email address is required."),
+  directors: z.string().min(2, "membershipForm_validation_directors"),
+  primaryContactPerson: z.string().min(2, "membershipForm_validation_primaryContactPerson"),
+  primaryContactDesignation: z.string().min(2, "membershipForm_validation_primaryContactDesignation"),
+  mobileNumber: z.string().min(10, "membershipForm_validation_mobileNumber"),
+  emailAddress: z.string().email("membershipForm_validation_emailAddress"),
   membershipTier: z.enum([
     "individual", 
     "startup",
@@ -63,7 +63,7 @@ export const MembershipFormSchema = z.object({
     "consulting-services",
     "other"
   ], {
-    required_error: "Please select a core business activity.",
+    required_error: "membershipForm_validation_coreBusinessActivity",
   }),
   otherBusinessActivity: z.string().optional(),
   annualTurnover: z.enum([
@@ -72,22 +72,22 @@ export const MembershipFormSchema = z.object({
     "25-100cr",
     "above-100cr"
   ], {
-    required_error: "Please select your annual turnover.",
+    required_error: "membershipForm_validation_annualTurnover",
   }),
   japanInterest: z.array(z.string()).refine((value) => value.some((item) => item), {
-    message: "You have to select at least one interest.",
+    message: "membershipForm_validation_japanInterest",
   }),
   otherJapanInterest: z.string().optional(),
-  companyDescription: z.string().min(50, "Description must be at least 50 words.").max(1000, "Description must be less than 1000 characters (approx. 150 words)."),
-  marketObjectives: z.string().min(20, "Please provide more detail on your objectives."),
+  companyDescription: z.string().min(50, "membershipForm_validation_companyDescription_min").max(1000, "membershipForm_validation_companyDescription_max"),
+  marketObjectives: z.string().min(20, "membershipForm_validation_marketObjectives"),
   
   // Part C
   declaration: z.literal(true, {
-    errorMap: () => ({ message: "You must accept the declaration." }),
+    errorMap: () => ({ message: "membershipForm_validation_declaration" }),
   }),
-  applicantName: z.string().min(2, "Applicant name is required."),
-  applicantDesignation: z.string().min(2, "Applicant designation is required."),
-  applicantDate: z.string().min(1, { message: "Date of application is required." }),
+  applicantName: z.string().min(2, "membershipForm_validation_applicantName"),
+  applicantDesignation: z.string().min(2, "membershipForm_validation_applicantDesignation"),
+  applicantDate: z.string().min(1, { message: "membershipForm_validation_applicantDate" }),
 
 }).refine(data => {
     if (data.coreBusinessActivity === 'other') {
@@ -95,7 +95,7 @@ export const MembershipFormSchema = z.object({
     }
     return true;
 }, {
-    message: "Please specify your business activity.",
+    message: "membershipForm_validation_otherBusinessActivity",
     path: ["otherBusinessActivity"],
 }).refine(data => {
     if (data.japanInterest.includes('other')) {
@@ -103,7 +103,7 @@ export const MembershipFormSchema = z.object({
     }
     return true;
 }, {
-    message: "Please specify your interest.",
+    message: "membershipForm_validation_otherJapanInterest",
     path: ["otherJapanInterest"],
 });
 

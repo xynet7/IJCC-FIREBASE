@@ -1,14 +1,19 @@
 
+"use client";
+
 import { ContactForm } from "@/components/contact-form";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { useTranslation } from "@/hooks/use-translation";
 
 export default function ContactPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="container py-12">
       <div className="space-y-4 mb-12 text-center">
-        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">Join Us</h1>
+        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">{t('contact_title')}</h1>
         <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
-          We're here to help. Reach out to us with any questions or inquiries.
+          {t('contact_subtitle')}
         </p>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -16,27 +21,27 @@ export default function ContactPage() {
           <ContactForm />
         </div>
         <div className="space-y-8">
-            <h2 className="text-2xl font-headline">Our Offices</h2>
+            <h2 className="text-2xl font-headline">{t('contact_officesTitle')}</h2>
             <div className="space-y-4">
                 <div className="flex items-start gap-4">
                     <MapPin className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
                     <div>
-                        <h3 className="font-semibold">Corporate Office</h3>
-                        <p className="text-muted-foreground">218-219, T3, Golden I, Techzone 4 Greater Noida West, Greater Noida, Uttar Pradesh, PIN Code: 201318</p>
+                        <h3 className="font-semibold">{t('contact_corporateOfficeTitle')}</h3>
+                        <p className="text-muted-foreground">{t('contact_corporateOfficeAddress')}</p>
                     </div>
                 </div>
                 <div className="flex items-start gap-4">
                     <MapPin className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
                     <div>
-                        <h3 className="font-semibold">Branch Office</h3>
-                        <p className="text-muted-foreground">Indo-Japan Chamber of Commerce, C/o. Aju Japanese Hotel, Behind Star Mall, Shilokhara Road, Vijay Vihar, Sec-30, Gurgaon, Haryana, India</p>
+                        <h3 className="font-semibold">{t('contact_branchOfficeTitle')}</h3>
+                        <p className="text-muted-foreground">{t('contact_branchOfficeAddress')}</p>
                     </div>
                 </div>
                  <div className="flex items-start gap-4">
                     <MapPin className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
                     <div>
-                        <h3 className="font-semibold">Japan Office</h3>
-                        <p className="text-muted-foreground">Shinagawa-ku, Kita Shinagawa 3-3-6-704, Tokyo 140-0001, Japan</p>
+                        <h3 className="font-semibold">{t('contact_japanOfficeTitle')}</h3>
+                        <p className="text-muted-foreground">{t('contact_japanOfficeAddress')}</p>
                     </div>
                 </div>
             </div>
