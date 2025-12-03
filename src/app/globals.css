@@ -73,13 +73,4 @@
 body {
   top: 0px !important;
 }
-
-/* Hide the powered by google text */
-.goog-logo-link {
-  display: none !important;
-}
-
-.goog-te-gadget {
-  color: transparent !important;
-}
     

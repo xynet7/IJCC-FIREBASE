@@ -187,7 +187,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https//i.postimg.cc/mr4wdjkb/ammida.jpg',
+        protocol: 'https',
         hostname: 'necouncil.gov.in',
         port: '',
         pathname: '/**',
@@ -258,12 +258,6 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
-      {
-        protocol: 'https',
-        hostname: 'flagcdn.com',
-        port: '',
-        pathname: '/**',
-      }
     ],
   },
   env: {
