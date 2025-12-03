@@ -30,6 +30,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { LanguageSwitcher } from "./language-switcher";
 
 
 const servicesSubmenu = [
@@ -164,7 +165,7 @@ export function AppHeader() {
         </NavigationMenu>
         
         <div className="flex items-center justify-end gap-2">
-            <div id="google_translate_element"></div>
+            <LanguageSwitcher />
             
             <Button asChild variant="ghost" size="icon">
               <Link href="https://sh003.webhostingservices.com:2096/webmaillogout.cgi" target="_blank" rel="noopener noreferrer">

@@ -7,6 +7,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { CookieBanner } from '@/components/cookie-banner';
 import { AuthProvider } from '@/context/auth-context';
 import Script from 'next/script';
+import { LanguageProvider } from '@/components/language-provider';
 
 export const metadata: Metadata = {
   title: 'Indo-Japan Chamber of Commerce',
@@ -31,6 +32,7 @@ export default function RootLayout({
       </head>
       <body>
         <AuthProvider>
+          <LanguageProvider>
             <div className="flex min-h-screen flex-col">
               <AppHeader />
               <main className="flex-grow animate-fade-in">{children}</main>
@@ -38,6 +40,7 @@ export default function RootLayout({
             </div>
             <Toaster />
             <CookieBanner />
+          </LanguageProvider>
         </AuthProvider>
         <Script
           id="google-translate-script"

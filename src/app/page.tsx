@@ -10,6 +10,7 @@ import { ArrowRight, Calendar, Users, BookOpen, Mail } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import React from "react";
 import { FloatingSocials } from "@/components/floating-socials";
+import { useTranslation } from "@/hooks/use-translation";
 
 
 const features = [
@@ -69,6 +70,8 @@ const heroItems = [
 
 
 export default function Home() {
+  const { t } = useTranslation();
+
   return (
     <>
       <FloatingSocials />
@@ -118,6 +121,8 @@ export default function Home() {
               <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
                 Connecting <span className="text-accent">India</span> & <span className="text-accent">Japan</span> for Mutual Prosperity
               </h1>
+              <p className="text-xl">{t('greeting')}</p>
+              <p className="text-lg">{t('welcomeMessage')}</p>
               <div className="flex flex-col gap-4 sm:flex-row justify-center">
                 <Button asChild size="lg" className="rounded-full">
                   <Link href="/contact">
