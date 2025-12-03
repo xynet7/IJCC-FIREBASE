@@ -67,7 +67,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https',
+        protocol: 'https,"',
         hostname: 'www.aranca.com',
         port: '',
         pathname: '/**',
@@ -139,7 +139,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https',
+        protocol: 'https,"',
         hostname: 'www.indembassy-tokyo.gov.in',
         port: '',
         pathname: '/**',
@@ -255,6 +255,12 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'i.postimg.cc',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'flagcdn.com',
         port: '',
         pathname: '/**',
       }

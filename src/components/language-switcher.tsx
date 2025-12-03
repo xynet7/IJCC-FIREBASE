@@ -20,8 +20,8 @@ declare global {
 }
 
 const languages = [
-  { code: 'en', name: 'English', flag: 'https://i.ibb.co/VvzYcRk/flag-uk.png' },
-  { code: 'ja', name: 'Japanese', flag: 'https://i.ibb.co/3s6x1P5/flag-jp.png' },
+  { code: 'en', name: 'English', flag: 'https://flagcdn.com/w320/gb.png' },
+  { code: 'ja', name: 'Japanese', flag: 'https://flagcdn.com/w320/jp.png' },
 ];
 
 export function LanguageSwitcher() {
