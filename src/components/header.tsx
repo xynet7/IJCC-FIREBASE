@@ -30,6 +30,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { LanguageSwitcher } from "./language-switcher";
+
 
 const servicesSubmenu = [
     { title: "Indian Schools", href: "/services/indian-schools", icon: <School className="text-primary" />, description: "Cultural exchange, language programs, and partnerships for K-12 institutions." },
@@ -163,7 +165,8 @@ export function AppHeader() {
         </NavigationMenu>
         
         <div className="flex items-center justify-end gap-2">
-            <div id="google_translate_element" className="flex items-center"></div>
+            <div id="google_translate_element" className="hidden"></div>
+            <LanguageSwitcher />
 
             <Button asChild variant="ghost" size="icon">
               <Link href="https://sh003.webhostingservices.com:2096/webmaillogout.cgi" target="_blank" rel="noopener noreferrer">
