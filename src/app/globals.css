@@ -69,6 +69,11 @@
   display: none !important;
 }
 
+/* Hide the Google logo */
+.goog-te-gadget-icon {
+    display: none !important;
+}
+
 /* Prevent top margin from being added by the banner */
 body {
   top: 0px !important;
