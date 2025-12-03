@@ -30,9 +30,7 @@ export const MembershipFormSchema = z.object({
   entityType: z.enum(["private-ltd", "public-ltd", "llp", "partnership", "proprietorship"], {
     required_error: "You need to select an entity type.",
   }),
-  dateOfIncorporation: z.date({
-    required_error: "Date of incorporation is required.",
-  }),
+  dateOfIncorporation: z.string().min(1, { message: "Date of incorporation is required." }),
   msmeRegistration: z.string().optional(),
   registeredAddress: z.string().min(10, "Official registered address is required."),
   city: z.string().min(2, "City is required."),
