@@ -23,12 +23,14 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { CalendarIcon, Loader2 } from "lucide-react";
 import { z } from "zod";
+import { useTranslation } from "@/hooks/use-translation";
 
 function MembershipFormComponent() {
   const { toast } = useToast();
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { t } = useTranslation();
   
   const form = useForm<z.infer<typeof MembershipFormSchema>>({
     resolver: zodResolver(MembershipFormSchema),
@@ -70,7 +72,7 @@ function MembershipFormComponent() {
 
     if (result.success) {
       toast({
-        title: "Application Submitted!",
+        title: t('membershipForm_toastSuccessTitle'),
         description: result.message,
       });
       form.reset();
@@ -78,7 +80,7 @@ function MembershipFormComponent() {
     } else {
       toast({
         variant: "destructive",
-        title: "Error Submitting Form",
+        title: t('membershipForm_toastErrorTitle'),
         description: result.message,
       });
        if (result.errors) {
@@ -105,8 +107,8 @@ function MembershipFormComponent() {
               className="space-y-8"
             >
               <CardHeader>
-                <CardTitle className="font-headline text-2xl">Part A: Company &amp; Primary Contact Information</CardTitle>
-                <CardDescription>All fields are required unless marked optional.</CardDescription>
+                <CardTitle className="font-headline text-2xl">{t('membershipForm_partA_title')}</CardTitle>
+                <CardDescription>{t('membershipForm_partA_description')}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-8">
                 <FormField
@@ -114,19 +116,19 @@ function MembershipFormComponent() {
                   name="membershipTier"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Membership Tier</FormLabel>
+                      <FormLabel>{t('membershipForm_tier_label')}</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select a membership tier" />
+                            <SelectValue placeholder={t('membershipForm_tier_placeholder')} />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                            <SelectItem value="individual">Individual Professionals / Freelancers (₹5,000)</SelectItem>
-                            <SelectItem value="startup">Startups / SMEs (₹10,000)</SelectItem>
-                            <SelectItem value="association">Associations (₹15,000)</SelectItem>
-                            <SelectItem value="corporate">Corporates / MSMEs (₹25,000)</SelectItem>
-                            <SelectItem value="large-corporate">Large Corporates / Institutions (₹50,000)</SelectItem>
+                            <SelectItem value="individual">{t('membershipForm_tier_individual')}</SelectItem>
+                            <SelectItem value="startup">{t('membershipForm_tier_startup')}</SelectItem>
+                            <SelectItem value="association">{t('membershipForm_tier_association')}</SelectItem>
+                            <SelectItem value="corporate">{t('membershipForm_tier_corporate')}</SelectItem>
+                            <SelectItem value="large-corporate">{t('membershipForm_tier_largeCorporate')}</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -139,9 +141,9 @@ function MembershipFormComponent() {
                   name="legalCompanyName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>1. Legal Company Name</FormLabel>
+                      <FormLabel>{t('membershipForm_legalName_label')}</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g. Tanaka Corporation Pvt. Ltd." {...field} />
+                        <Input placeholder={t('membershipForm_legalName_placeholder')} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -153,7 +155,7 @@ function MembershipFormComponent() {
                   name="entityType"
                   render={({ field }) => (
                     <FormItem className="space-y-3">
-                      <FormLabel>2. Type of Entity</FormLabel>
+                      <FormLabel>{t('membershipForm_entityType_label')}</FormLabel>
                       <FormControl>
                         <RadioGroup
                           onValueChange={field.onChange}
@@ -162,23 +164,23 @@ function MembershipFormComponent() {
                         >
                           <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl><RadioGroupItem value="private-ltd" /></FormControl>
-                            <FormLabel className="font-normal">Private Ltd</FormLabel>
+                            <FormLabel className="font-normal">{t('membershipForm_entityType_privateLtd')}</FormLabel>
                           </FormItem>
                            <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl><RadioGroupItem value="public-ltd" /></FormControl>
-                            <FormLabel className="font-normal">Public Ltd</FormLabel>
+                            <FormLabel className="font-normal">{t('membershipForm_entityType_publicLtd')}</FormLabel>
                           </FormItem>
                            <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl><RadioGroupItem value="llp" /></FormControl>
-                            <FormLabel className="font-normal">LLP</FormLabel>
+                            <FormLabel className="font-normal">{t('membershipForm_entityType_llp')}</FormLabel>
                           </FormItem>
                            <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl><RadioGroupItem value="partnership" /></FormControl>
-                            <FormLabel className="font-normal">Partnership</FormLabel>
+                            <FormLabel className="font-normal">{t('membershipForm_entityType_partnership')}</FormLabel>
                           </FormItem>
                           <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl><RadioGroupItem value="proprietorship" /></FormControl>
-                            <FormLabel className="font-normal">Proprietorship</FormLabel>
+                            <FormLabel className="font-normal">{t('membershipForm_entityType_proprietorship')}</FormLabel>
                           </FormItem>
                         </RadioGroup>
                       </FormControl>
@@ -192,9 +194,9 @@ function MembershipFormComponent() {
                   name="dateOfIncorporation"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>3. Date of Incorporation (DD/MM/YYYY)</FormLabel>
+                      <FormLabel>{t('membershipForm_incorporationDate_label')}</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g. 25/12/2020" {...field} />
+                        <Input placeholder={t('membershipForm_incorporationDate_placeholder')} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -206,9 +208,9 @@ function MembershipFormComponent() {
                   name="msmeRegistration"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>4. MSME or Udyam Registration No. (Optional)</FormLabel>
+                      <FormLabel>{t('membershipForm_msme_label')}</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g. UDYAM-XX-00-0000000" {...field} />
+                        <Input placeholder={t('membershipForm_msme_placeholder')} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -220,9 +222,9 @@ function MembershipFormComponent() {
                   name="registeredAddress"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>5. Official Registered Address</FormLabel>
+                      <FormLabel>{t('membershipForm_address_label')}</FormLabel>
                       <FormControl>
-                        <Textarea placeholder="Enter your full registered address" {...field} />
+                        <Textarea placeholder={t('membershipForm_address_placeholder')} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -235,8 +237,8 @@ function MembershipFormComponent() {
                     name="city"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>6. City</FormLabel>
-                        <FormControl><Input placeholder="e.g. Gurugram" {...field} /></FormControl>
+                        <FormLabel>{t('membershipForm_city_label')}</FormLabel>
+                        <FormControl><Input placeholder={t('membershipForm_city_placeholder')} {...field} /></FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -246,8 +248,8 @@ function MembershipFormComponent() {
                     name="state"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>7. State</FormLabel>
-                        <FormControl><Input placeholder="e.g. Haryana" {...field} /></FormControl>
+                        <FormLabel>{t('membershipForm_state_label')}</FormLabel>
+                        <FormControl><Input placeholder={t('membershipForm_state_placeholder')} {...field} /></FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -257,8 +259,8 @@ function MembershipFormComponent() {
                     name="pincode"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>8. Pincode</FormLabel>
-                        <FormControl><Input placeholder="e.g. 122001" {...field} /></FormControl>
+                        <FormLabel>{t('membershipForm_pincode_label')}</FormLabel>
+                        <FormControl><Input placeholder={t('membershipForm_pincode_placeholder')} {...field} /></FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -270,7 +272,7 @@ function MembershipFormComponent() {
                   name="website"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>9. Website (Optional)</FormLabel>
+                      <FormLabel>{t('membershipForm_website_label')}</FormLabel>
                       <FormControl><Input placeholder="https://example.com" {...field} /></FormControl>
                       <FormMessage />
                     </FormItem>
@@ -282,8 +284,8 @@ function MembershipFormComponent() {
                   name="directors"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>10. Name of Directors</FormLabel>
-                      <FormControl><Textarea placeholder="e.g. Mr. Kenji Tanaka, Mrs. Yui Suzuki" {...field} /></FormControl>
+                      <FormLabel>{t('membershipForm_directors_label')}</FormLabel>
+                      <FormControl><Textarea placeholder={t('membershipForm_directors_placeholder')} {...field} /></FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -295,8 +297,8 @@ function MembershipFormComponent() {
                     name="primaryContactPerson"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>11. Primary Contact Person</FormLabel>
-                        <FormControl><Input placeholder="e.g. Mr. Akira Sato" {...field} /></FormControl>
+                        <FormLabel>{t('membershipForm_primaryContact_label')}</FormLabel>
+                        <FormControl><Input placeholder={t('membershipForm_primaryContact_placeholder')} {...field} /></FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -306,8 +308,8 @@ function MembershipFormComponent() {
                     name="primaryContactDesignation"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Designation</FormLabel>
-                        <FormControl><Input placeholder="e.g. Manager" {...field} /></FormControl>
+                        <FormLabel>{t('membershipForm_designation_label')}</FormLabel>
+                        <FormControl><Input placeholder={t('membershipForm_designation_placeholder')} {...field} /></FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -320,7 +322,7 @@ function MembershipFormComponent() {
                     name="mobileNumber"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>12. Mobile No.</FormLabel>
+                        <FormLabel>{t('membershipForm_mobile_label')}</FormLabel>
                         <FormControl><Input type="tel" placeholder="+91 98765 43210" {...field} /></FormControl>
                         <FormMessage />
                       </FormItem>
@@ -331,7 +333,7 @@ function MembershipFormComponent() {
                     name="emailAddress"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>13. Email Address</FormLabel>
+                        <FormLabel>{t('membershipForm_email_label')}</FormLabel>
                         <FormControl><Input type="email" placeholder="contact@example.com" {...field} /></FormControl>
                         <FormMessage />
                       </FormItem>
@@ -341,7 +343,7 @@ function MembershipFormComponent() {
               </CardContent>
 
               <CardHeader>
-                <CardTitle className="font-headline text-2xl">Part B: Japan Collaboration Intent &amp; Business Profile</CardTitle>
+                <CardTitle className="font-headline text-2xl">{t('membershipForm_partB_title')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-8">
                 
@@ -350,23 +352,23 @@ function MembershipFormComponent() {
                   name="coreBusinessActivity"
                   render={({ field }) => (
                     <FormItem className="space-y-3">
-                      <FormLabel>14. Core Business Activity</FormLabel>
+                      <FormLabel>{t('membershipForm_coreBusiness_label')}</FormLabel>
                       <FormControl>
                         <RadioGroup
                           onValueChange={field.onChange}
                           defaultValue={field.value}
                           className="flex flex-wrap gap-x-6 gap-y-3"
                         >
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="accounting-finance" /></FormControl><FormLabel className="font-normal">Accounting &amp; Finance</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="manufacturing" /></FormControl><FormLabel className="font-normal">Manufacturing</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="it-ites" /></FormControl><FormLabel className="font-normal">IT / ITES / Software Services</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="engineering-automotive" /></FormControl><FormLabel className="font-normal">Engineering &amp; Automotive</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="healthcare-pharma" /></FormControl><FormLabel className="font-normal">Healthcare &amp; Pharmaceuticals</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="agri-food" /></FormControl><FormLabel className="font-normal">Agriculture &amp; Food Processing</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="textiles-apparel" /></FormControl><FormLabel className="font-normal">Textiles &amp; Apparel</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="cleantech-energy" /></FormControl><FormLabel className="font-normal">Clean-Tech / Renewable Energy</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="consulting-services" /></FormControl><FormLabel className="font-normal">Consulting &amp; Professional Services</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="other" /></FormControl><FormLabel className="font-normal">Other</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="accounting-finance" /></FormControl><FormLabel className="font-normal">{t('membershipForm_coreBusiness_accounting')}</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="manufacturing" /></FormControl><FormLabel className="font-normal">{t('membershipForm_coreBusiness_manufacturing')}</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="it-ites" /></FormControl><FormLabel className="font-normal">{t('membershipForm_coreBusiness_it')}</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="engineering-automotive" /></FormControl><FormLabel className="font-normal">{t('membershipForm_coreBusiness_engineering')}</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="healthcare-pharma" /></FormControl><FormLabel className="font-normal">{t('membershipForm_coreBusiness_healthcare')}</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="agri-food" /></FormControl><FormLabel className="font-normal">{t('membershipForm_coreBusiness_agri')}</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="textiles-apparel" /></FormControl><FormLabel className="font-normal">{t('membershipForm_coreBusiness_textiles')}</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="cleantech-energy" /></FormControl><FormLabel className="font-normal">{t('membershipForm_coreBusiness_cleantech')}</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="consulting-services" /></FormControl><FormLabel className="font-normal">{t('membershipForm_coreBusiness_consulting')}</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="other" /></FormControl><FormLabel className="font-normal">{t('membershipForm_coreBusiness_other')}</FormLabel></FormItem>
                         </RadioGroup>
                       </FormControl>
                       <FormMessage />
@@ -380,8 +382,8 @@ function MembershipFormComponent() {
                       name="otherBusinessActivity"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Please Specify Other Activity</FormLabel>
-                          <FormControl><Input placeholder="e.g. Media and Entertainment" {...field} /></FormControl>
+                          <FormLabel>{t('membershipForm_otherActivity_label')}</FormLabel>
+                          <FormControl><Input placeholder={t('membershipForm_otherActivity_placeholder')} {...field} /></FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -393,13 +395,13 @@ function MembershipFormComponent() {
                   name="annualTurnover"
                   render={({ field }) => (
                     <FormItem className="space-y-3">
-                      <FormLabel>15. Current Annual Turnover (INR)</FormLabel>
+                      <FormLabel>{t('membershipForm_turnover_label')}</FormLabel>
                       <FormControl>
                         <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-wrap gap-x-6 gap-y-3">
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="less-than-5cr" /></FormControl><FormLabel className="font-normal">Less than 5 Crore</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="5-25cr" /></FormControl><FormLabel className="font-normal">5 Crore - 25 Crore</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="25-100cr" /></FormControl><FormLabel className="font-normal">25 Crore - 100 Crore</FormLabel></FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="above-100cr" /></FormControl><FormLabel className="font-normal">Above 100 Crore</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="less-than-5cr" /></FormControl><FormLabel className="font-normal">{t('membershipForm_turnover_lessThan5')}</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="5-25cr" /></FormControl><FormLabel className="font-normal">{t('membershipForm_turnover_5to25')}</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="25-100cr" /></FormControl><FormLabel className="font-normal">{t('membershipForm_turnover_25to100')}</FormLabel></FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="above-100cr" /></FormControl><FormLabel className="font-normal">{t('membershipForm_turnover_above100')}</FormLabel></FormItem>
                         </RadioGroup>
                       </FormControl>
                       <FormMessage />
@@ -413,17 +415,17 @@ function MembershipFormComponent() {
                   render={() => (
                     <FormItem>
                         <div className="mb-4">
-                            <FormLabel className="text-base">16. Your Japan Interest</FormLabel>
-                            <FormDescription>Please tick all that apply.</FormDescription>
+                            <FormLabel className="text-base">{t('membershipForm_japanInterest_label')}</FormLabel>
+                            <FormDescription>{t('membershipForm_japanInterest_description')}</FormDescription>
                         </div>
                         {[
-                            { id: "jv-partner", label: "Finding a Japanese Joint Venture (JV) Partner" },
-                            { id: "tech-transfer", label: "Securing Technology Transfer / Licensing" },
-                            { id: "investment", label: "Raising Investment / Funding from Japan" },
-                            { id: "export", label: "Exporting our Products/Services to the Japanese Market" },
-                            { id: "sourcing", label: "Sourcing Components/Raw Materials from Japan" },
-                            { id: "culture", label: "Understanding Japanese Business Culture & Practices" },
-                            { id: "other", label: "Other (Please specify)" },
+                            { id: "jv-partner", label: t('membershipForm_japanInterest_jv') },
+                            { id: "tech-transfer", label: t('membershipForm_japanInterest_tech') },
+                            { id: "investment", label: t('membershipForm_japanInterest_investment') },
+                            { id: "export", label: t('membershipForm_japanInterest_export') },
+                            { id: "sourcing", label: t('membershipForm_japanInterest_sourcing') },
+                            { id: "culture", label: t('membershipForm_japanInterest_culture') },
+                            { id: "other", label: t('membershipForm_japanInterest_other') },
                         ].map((item) => (
                             <FormField
                             key={item.id}
@@ -463,8 +465,8 @@ function MembershipFormComponent() {
                       name="otherJapanInterest"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Please Specify Other Interest</FormLabel>
-                          <FormControl><Input placeholder="Your specific interest" {...field} /></FormControl>
+                          <FormLabel>{t('membershipForm_otherInterest_label')}</FormLabel>
+                          <FormControl><Input placeholder={t('membershipForm_otherInterest_placeholder')} {...field} /></FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -476,8 +478,8 @@ function MembershipFormComponent() {
                   name="companyDescription"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>17. Company Description (50-150 words)</FormLabel>
-                      <FormControl><Textarea placeholder="Provide a brief description of your company's products/services. This helps us understand your unique value proposition." {...field} /></FormControl>
+                      <FormLabel>{t('membershipForm_companyDescription_label')}</FormLabel>
+                      <FormControl><Textarea placeholder={t('membershipForm_companyDescription_placeholder')} {...field} /></FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -488,8 +490,8 @@ function MembershipFormComponent() {
                   name="marketObjectives"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>18. Specific Objectives for the Japanese Market</FormLabel>
-                      <FormControl><Textarea placeholder='e.g., "We want to partner with a Japanese auto-component manufacturer for technical collaboration," or "We are seeking a distributor in Osaka for our specialty teas."' {...field} /></FormControl>
+                      <FormLabel>{t('membershipForm_marketObjectives_label')}</FormLabel>
+                      <FormControl><Textarea placeholder={t('membershipForm_marketObjectives_placeholder')} {...field} /></FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -497,7 +499,7 @@ function MembershipFormComponent() {
               </CardContent>
 
                <CardHeader>
-                <CardTitle className="font-headline text-2xl">Part C: Declaration &amp; Commitment</CardTitle>
+                <CardTitle className="font-headline text-2xl">{t('membershipForm_partC_title')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-8">
                 <FormField
@@ -513,7 +515,7 @@ function MembershipFormComponent() {
                       </FormControl>
                       <div className="space-y-1 leading-none">
                         <FormLabel>
-                          I/We have read and understood the membership criteria and agree to abide by the rules and regulations of the India Japan Chamber of Commerce (IJCC). The information provided in this application is true and correct to the best of my knowledge.
+                          {t('membershipForm_declaration_label')}
                         </FormLabel>
                       </div>
                        <FormMessage />
@@ -527,8 +529,8 @@ function MembershipFormComponent() {
                       name="applicantName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Name</FormLabel>
-                          <FormControl><Input placeholder="Your Full Name" {...field} /></FormControl>
+                          <FormLabel>{t('membershipForm_applicantName_label')}</FormLabel>
+                          <FormControl><Input placeholder={t('membershipForm_applicantName_placeholder')} {...field} /></FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -538,8 +540,8 @@ function MembershipFormComponent() {
                       name="applicantDesignation"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Designation</FormLabel>
-                          <FormControl><Input placeholder="e.g. Director" {...field} /></FormControl>
+                          <FormLabel>{t('membershipForm_applicantDesignation_label')}</FormLabel>
+                          <FormControl><Input placeholder={t('membershipForm_applicantDesignation_placeholder')} {...field} /></FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -550,9 +552,9 @@ function MembershipFormComponent() {
                   name="applicantDate"
                   render={({ field }) => (
                      <FormItem>
-                      <FormLabel>Date (DD/MM/YYYY)</FormLabel>
+                      <FormLabel>{t('membershipForm_applicantDate_label')}</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g. 25/12/2024" {...field} />
+                        <Input placeholder={t('membershipForm_applicantDate_placeholder')} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -560,12 +562,12 @@ function MembershipFormComponent() {
                 />
                  <Card className="bg-muted/50 mt-8">
                   <CardHeader>
-                    <CardTitle className="text-base">For Office Use Only</CardTitle>
+                    <CardTitle className="text-base">{t('membershipForm_officeUse_title')}</CardTitle>
                   </CardHeader>
                   <CardContent className="text-sm text-muted-foreground space-y-2">
-                    <p>Application No.: ______________ Date Received: ______________</p>
-                    <p>Status: [ ] Approved [ ] Under Review [ ] Additional Info Requested</p>
-                    <p>Membership Tier Allotted: ______________ / ______________ / ______________</p>
+                    <p>{t('membershipForm_officeUse_appNo')}: ______________ {t('membershipForm_officeUse_dateReceived')}: ______________</p>
+                    <p>{t('membershipForm_officeUse_status')}: [ ] {t('membershipForm_officeUse_approved')} [ ] {t('membershipForm_officeUse_underReview')} [ ] {t('membershipForm_officeUse_infoRequested')}</p>
+                    <p>{t('membershipForm_officeUse_tierAllotted')}: ______________ / ______________ / ______________</p>
                   </CardContent>
                 </Card>
               </CardContent>
@@ -573,7 +575,7 @@ function MembershipFormComponent() {
               <CardFooter>
                  <Button type="submit" disabled={isSubmitting} className="w-full">
                     {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                    Submit Application
+                    {t('membershipForm_submitButton')}
                 </Button>
               </CardFooter>
             </form>

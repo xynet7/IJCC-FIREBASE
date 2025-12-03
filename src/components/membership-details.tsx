@@ -9,82 +9,78 @@ import { useAuth } from "@/context/auth-context";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useTranslation } from "@/hooks/use-translation";
 
 const membershipTiers = [
   {
     icon: <User className="h-10 w-10 text-primary" />,
-    title: "Individual Professionals / Freelancers",
-    eligibility: "Freelancers, consultants, independent professionals across domains interested in Indo-Japan collaboration.",
-    benefits: [
-      "Invites to Indo-Japan networking events & webinars",
-      "Access to cultural exchange and educational programs",
-      "Digital certificate of IJCC Membership",
-      "Discounts on training, tours & workshops",
-      "Eligibility for mentorship and project collaboration",
+    titleKey: "membershipTier_individual_title",
+    eligibilityKey: "membershipTier_individual_eligibility",
+    benefitsKeys: [
+      "membershipTier_individual_benefit1",
+      "membershipTier_individual_benefit2",
+      "membershipTier_individual_benefit3",
+      "membershipTier_individual_benefit4",
+      "membershipTier_individual_benefit5",
     ],
     priceId: "individual",
     price: "₹5,000",
-    period: "/ year",
   },
   {
     icon: <Rocket className="h-10 w-10 text-primary" />,
-    title: "Startups / SMEs",
-    eligibility: "Early-stage startups, growing SMEs, bootstrapped or VC-backed Indian ventures.",
-    benefits: [
-      "Business exposure via Indo-Japan platforms",
-      "Support in market linkages and B2B matchmaking",
-      "Invitations to pitch events and startup delegations",
-      "Networking with Japanese incubators & VCs",
-      "Visibility on IJCC's startup showcases & newsletters",
+    titleKey: "membershipTier_startup_title",
+    eligibilityKey: "membershipTier_startup_eligibility",
+    benefitsKeys: [
+      "membershipTier_startup_benefit1",
+      "membershipTier_startup_benefit2",
+      "membershipTier_startup_benefit3",
+      "membershipTier_startup_benefit4",
+      "membershipTier_startup_benefit5",
     ],
     priceId: "startup",
     price: "₹10,000",
-    period: "/ year",
   },
    {
     icon: <Landmark className="h-10 w-10 text-primary" />,
-    title: "Associations",
-    eligibility: "Non-profit organizations, industry bodies, trade associations, and academic institutions.",
-    benefits: [
-      "Listing on IJCC website & directories",
-      "Co-hosting opportunities for events & seminars",
-      "Access to policy-making forums",
-      "Joint advocacy and research initiatives",
-      "Brand visibility across IJCC platforms",
+    titleKey: "membershipTier_association_title",
+    eligibilityKey: "membershipTier_association_eligibility",
+    benefitsKeys: [
+      "membershipTier_association_benefit1",
+      "membershipTier_association_benefit2",
+      "membershipTier_association_benefit3",
+      "membershipTier_association_benefit4",
+      "membershipTier_association_benefit5",
     ],
     priceId: "association",
     price: "₹15,000",
-    period: "/ year",
   },
   {
     icon: <Building className="h-10 w-10 text-primary" />,
-    title: "Corporates / MSMEs",
-    eligibility: "Registered MSMEs, joint ventures, established private limited companies with a Japan interest.",
-    benefits: [
-      "Listing on IJCC website & business directories",
-      "Priority participation in Indo-Japan trade missions",
-      "Assistance with Japanese business introductions",
-      "Access to advisory panels on trade & legal matters",
-      "Leads for Indo-Japan collaboration & procurement",
+    titleKey: "membershipTier_corporate_title",
+    eligibilityKey: "membershipTier_corporate_eligibility",
+    benefitsKeys: [
+      "membershipTier_corporate_benefit1",
+      "membershipTier_corporate_benefit2",
+      "membershipTier_corporate_benefit3",
+      "membershipTier_corporate_benefit4",
+      "membershipTier_corporate_benefit5",
     ],
     priceId: "corporate",
     price: "₹25,000",
-    period: "/ year",
   },
   {
     icon: <Landmark className="h-10 w-10 text-primary" />,
-    title: "Large Corporates / Institutions",
-    eligibility: "MNCs, large Indian corporates, institutions, and think tanks engaged in Indo-Japan programs.",
-    benefits: [
-      "Co-hosting opportunities for major events & summits",
-      "Direct access to senior officials, embassies & policy bodies",
-      "Representation in Indo-Japan working groups",
-      "Brand visibility across IJCC platforms & delegations",
-      "Joint whitepapers, reports, and knowledge partnerships",
+    titleKey: "membershipTier_largeCorporate_title",
+    eligibilityKey: "membershipTier_largeCorporate_eligibility",
+    benefitsKeys: [
+      "membershipTier_largeCorporate_benefit1",
+      "membershipTier_largeCorporate_benefit2",
+      "membershipTier_largeCorporate_benefit3",
+      "membershipTier_largeCorporate_benefit4",
+      "membershipTier_largeCorporate_benefit5",
     ],
     priceId: "large-corporate",
     price: "₹50,000",
-    period: "/ year",
   },
 ];
 
@@ -92,12 +88,13 @@ const TierCard = ({ tier }: { tier: (typeof membershipTiers)[0] }) => {
     const { user, loading } = useAuth();
     const { toast } = useToast();
     const router = useRouter();
+    const { t } = useTranslation();
 
     const handleGetStarted = () => {
         if (!user) {
             toast({
-                title: "Authentication Required",
-                description: "Please log in or create an account to apply for membership.",
+                title: t('membershipDetails_authRequiredTitle'),
+                description: t('membershipDetails_authRequiredDescription'),
                 variant: "destructive",
             });
             router.push('/login');
@@ -112,29 +109,29 @@ const TierCard = ({ tier }: { tier: (typeof membershipTiers)[0] }) => {
               <div className="flex items-start gap-4 mb-2">
                 {tier.icon}
                 <div className="flex-1">
-                    <CardTitle className="font-headline text-2xl">{tier.title}</CardTitle>
+                    <CardTitle className="font-headline text-2xl">{t(tier.titleKey)}</CardTitle>
                     <div className="flex items-baseline gap-2 pt-2">
                         <span className="text-3xl font-bold">{tier.price}</span>
-                        {tier.period && <span className="text-muted-foreground">{tier.period}</span>}
+                        <span className="text-muted-foreground">{t('membershipDetails_perYear')}</span>
                     </div>
                 </div>
               </div>
-              <CardDescription>{tier.eligibility}</CardDescription>
+              <CardDescription>{t(tier.eligibilityKey)}</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
-              <h4 className="font-semibold mb-3">Benefits:</h4>
+              <h4 className="font-semibold mb-3">{t('membershipDetails_benefitsTitle')}:</h4>
               <ul className="space-y-2">
-                {tier.benefits.map((benefit) => (
-                  <li key={benefit} className="flex items-start gap-2">
+                {tier.benefitsKeys.map((benefitKey) => (
+                  <li key={benefitKey} className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
-                    <span className="text-muted-foreground">{benefit}</span>
+                    <span className="text-muted-foreground">{t(benefitKey)}</span>
                   </li>
                 ))}
               </ul>
             </CardContent>
             <CardFooter>
                 <Button onClick={handleGetStarted} className="w-full" disabled={loading}>
-                    Get Started <ArrowRight className="ml-2 h-4 w-4" />
+                    {t('membershipDetails_getStartedButton')} <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
             </CardFooter>
         </Card>
@@ -142,25 +139,26 @@ const TierCard = ({ tier }: { tier: (typeof membershipTiers)[0] }) => {
 };
 
 export function MembershipDetails() {
+  const { t } = useTranslation();
   return (
     <div className="space-y-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {membershipTiers.map((tier) => (
-          <TierCard key={tier.title} tier={tier} />
+          <TierCard key={tier.titleKey} tier={tier} />
         ))}
          <Card>
             <CardHeader>
-                <CardTitle className="font-headline">Payment Details</CardTitle>
+                <CardTitle className="font-headline">{t('membershipDetails_paymentTitle')}</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col sm:flex-row gap-6">
                 <div className="space-y-2 text-muted-foreground flex-1">
-                    <p><strong>Account Name:</strong> INDO JAPAN CHAMBER OF COMMERCE</p>
-                    <p><strong>Bank Name:</strong> IDFC Bank</p>
-                    <p><strong>A/c No.:</strong> 10226043148</p>
-                    <p><strong>Branch:</strong> Crossing Republic-Ghaziabad</p>
-                    <p><strong>IFSC Code:</strong> IDFB0021413</p>
-                    <p><strong>MICR Code:</strong> 110751034</p>
-                    <p><strong>Branch Code:</strong> 21413</p>
+                    <p><strong>{t('membershipDetails_accountNameLabel')}:</strong> INDO JAPAN CHAMBER OF COMMERCE</p>
+                    <p><strong>{t('membershipDetails_bankNameLabel')}:</strong> IDFC Bank</p>
+                    <p><strong>{t('membershipDetails_accountNoLabel')}:</strong> 10226043148</p>
+                    <p><strong>{t('membershipDetails_branchLabel')}:</strong> Crossing Republic-Ghaziabad</p>
+                    <p><strong>{t('membershipDetails_ifscCodeLabel')}:</strong> IDFB0021413</p>
+                    <p><strong>{t('membershipDetails_micrCodeLabel')}:</strong> 110751034</p>
+                    <p><strong>{t('membershipDetails_branchCodeLabel')}:</strong> 21413</p>
                 </div>
                 <div className="flex-shrink-0">
                     <Image 
@@ -179,17 +177,17 @@ export function MembershipDetails() {
       <div className="grid grid-cols-1 gap-8 items-start">
         <Card>
             <CardHeader>
-                <CardTitle className="font-headline">Enrollment Procedure</CardTitle>
+                <CardTitle className="font-headline">{t('membershipDetails_enrollmentTitle')}</CardTitle>
             </CardHeader>
             <CardContent>
-                <p className="text-muted-foreground">Submit your profile and application form. Upon approval, a welcome letter and membership certificate will be issued. You will then be prompted for payment.</p>
+                <p className="text-muted-foreground">{t('membershipDetails_enrollmentDescription')}</p>
             </CardContent>
         </Card>
       </div>
 
        <Card className="text-center">
         <CardHeader>
-            <CardTitle className="font-headline">Contact for More Information</CardTitle>
+            <CardTitle className="font-headline">{t('membershipDetails_contactTitle')}</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-wrap justify-center gap-6 text-muted-foreground">
              <div className="flex items-center gap-2">

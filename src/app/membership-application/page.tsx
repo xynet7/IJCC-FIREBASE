@@ -1,14 +1,18 @@
 
+"use client";
+
 import { MembershipForm } from "@/components/membership-form";
 import { Suspense } from "react";
+import { useTranslation } from "@/hooks/use-translation";
 
 function MembershipApplication() {
+  const { t } = useTranslation();
   return (
     <div className="container py-12">
       <div className="space-y-4 mb-12 text-center">
-        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">Membership Application</h1>
+        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">{t('membershipApplication_title')}</h1>
         <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
-          Please fill out the form below to apply for membership. We're excited to have you join us.
+          {t('membershipApplication_description')}
         </p>
       </div>
       <div className="mx-auto max-w-4xl">

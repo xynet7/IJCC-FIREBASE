@@ -1,10 +1,13 @@
 
+"use client";
+
 import { MembershipDetails } from "@/components/membership-details";
 import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
+import { useTranslation } from "@/hooks/use-translation";
 
 const members = [
     { name: "All India Management Association", href: "https://www.aima.in", logoUrl: "https://www.aima.in/img/logo.png", hint: "company logo" },
@@ -32,12 +35,14 @@ const members = [
 
 
 export default function MembersPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="container py-12">
       <div className="space-y-4 mb-12 text-center">
-        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">Membership</h1>
+        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">{t('members_title')}</h1>
         <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
-          Join us to foster Indo-Japan collaboration across trade, education, technology, and cultural exchanges.
+          {t('members_description')}
         </p>
       </div>
 
@@ -46,15 +51,15 @@ export default function MembersPage() {
        <div className="text-center mt-16">
           <Button asChild size="lg">
             <Link href="/membership-application">
-              <Mail className="mr-2 h-5 w-5" /> Apply for Membership
+              <Mail className="mr-2 h-5 w-5" /> {t('members_applyButton')}
             </Link>
           </Button>
       </div>
 
       <div className="space-y-4 my-20 text-center pt-12 border-t">
-        <h2 className="text-3xl font-headline tracking-tighter sm:text-4xl">Members, Associates & Support Organisations</h2>
+        <h2 className="text-3xl font-headline tracking-tighter sm:text-4xl">{t('members_associatesTitle')}</h2>
         <p className="max-w-[900px] mx-auto text-muted-foreground md:text-xl">
-          IJCC is powered by a strong network of members, associates, and support organisations who share our vision of strengthening Indo-Japan relations. Our members include businesses, educational institutions, and professionals; our associates collaborate with us on programs and initiatives; and our support organisations comprise industry bodies, government agencies, and cultural institutions that enable IJCC to deliver impactful projects. Together, they form the backbone of IJCC’s mission to connect India and Japan through business, education, culture, and innovation.
+          {t('members_associatesDescription')}
         </p>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
