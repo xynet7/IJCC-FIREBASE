@@ -1,8 +1,8 @@
 
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
-import { useEffect } from "react";
+import { useActionState, useEffect } from "react";
+import { useFormStatus } from "react-dom";
 import { submitContactForm } from "@/lib/actions";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -28,7 +28,7 @@ function SubmitButton() {
 export function ContactForm() {
   const { t } = useTranslation();
   const initialState = { message: "", errors: {}, success: false };
-  const [state, dispatch] = useFormState(submitContactForm, initialState);
+  const [state, dispatch] = useActionState(submitContactForm, initialState);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export function ContactForm() {
       });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.message, state.success]);
+  }, [state, toast, t]);
 
   return (
     <Card>
