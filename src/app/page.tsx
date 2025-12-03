@@ -121,8 +121,9 @@ export default function Home() {
               <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
                 Connecting <span className="text-accent">India</span> & <span className="text-accent">Japan</span> for Mutual Prosperity
               </h1>
-              <p className="text-xl">{t('greeting')}</p>
-              <p className="text-lg">{t('welcomeMessage')}</p>
+              <p className="max-w-2xl mx-auto text-lg md:text-xl">
+                  The Indo-Japan Chamber of Commerce (IJCC) is a premier bilateral chamber fostering economic, cultural, and educational ties between India and Japan.
+              </p>
               <div className="flex flex-col gap-4 sm:flex-row justify-center">
                 <Button asChild size="lg" className="rounded-full">
                   <Link href="/contact">
