@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
@@ -10,6 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useLanguage } from '@/context/language-context';
 
 declare global {
   interface Window {
@@ -25,6 +27,7 @@ const languages = [
 export function LanguageSwitcher() {
   const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
   const [isMounted, setIsMounted] = useState(false);
+  const { setLanguage } = useLanguage();
 
   const getCookie = (name: string): string | undefined => {
     if (typeof document === 'undefined') return undefined;
@@ -42,12 +45,13 @@ export function LanguageSwitcher() {
         const currentLang = languages.find(l => l.code === langCode);
         if (currentLang && currentLang.code !== selectedLanguage.code) {
           setSelectedLanguage(currentLang);
+          setLanguage(currentLang.code);
         }
       }
     }, 200);
 
     return () => clearInterval(interval);
-  }, [selectedLanguage.code]);
+  }, [selectedLanguage.code, setLanguage]);
 
 
   const changeLanguage = (langCode: string) => {
@@ -55,6 +59,7 @@ export function LanguageSwitcher() {
       const currentLang = languages.find(l => l.code === langCode);
       if (currentLang) {
         setSelectedLanguage(currentLang);
+        setLanguage(currentLang.code);
 
         const translateElement = document.getElementById('google_translate_element');
         if (translateElement) {
