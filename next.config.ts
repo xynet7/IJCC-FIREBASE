@@ -67,7 +67,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https,"',
+        protocol: 'https',
         hostname: 'www.aranca.com',
         port: '',
         pathname: '/**',
@@ -139,7 +139,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https,"',
+        protocol: 'https',
         hostname: 'www.indembassy-tokyo.gov.in',
         port: '',
         pathname: '/**',
@@ -187,7 +187,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https',
+        protocol: 'https//i.postimg.cc/mr4wdjkb/ammida.jpg',
         hostname: 'necouncil.gov.in',
         port: '',
         pathname: '/**',
