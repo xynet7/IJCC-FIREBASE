@@ -246,16 +246,16 @@ export default function Home() {
         <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
           <div className="space-y-3">
             <h2 className="text-3xl font-headline tracking-tighter md:text-4xl/tight">
-              Ready to Foster Stronger Business Ties?
+              {t('ctaTitle')}
             </h2>
             <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Become a part of our growing network. Get in touch with us to learn more about membership benefits.
+              {t('ctaDescription')}
             </p>
           </div>
           <div className="mx-auto w-full max-w-sm space-y-2">
             <Button asChild size="lg" className="w-full rounded-full">
               <Link href="/contact">
-                <Mail className="mr-2 h-5 w-5" /> Join Us
+                <Mail className="mr-2 h-5 w-5" /> {t('ctaButton')}
               </Link>
             </Button>
           </div>
