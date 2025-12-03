@@ -161,15 +161,15 @@ export default function Home() {
           </div>
           <div className="space-y-6">
             <div className="space-y-2">
-              <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">About Us</div>
-              <h2 className="text-3xl font-headline sm:text-4xl">Fostering Bilateral Trade for Decades</h2>
+              <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">{t('homeAboutUsBadge')}</div>
+              <h2 className="text-3xl font-headline sm:text-4xl">{t('homeAboutUsTitle')}</h2>
             </div>
             <p className="text-muted-foreground md:text-lg">
-              The Indo-Japan Chamber of Commerce (IJCC) was formed with a view to promoting closer economic relations between India and Japan. The Chamber has facilitated several business interactions, forged partnerships, and promoted bilateral trade over the years. We work to enhance trade relations, attract investment, and create platforms for business success in both countries.
+              {t('homeAboutUsDescription')}
             </p>
             <Button asChild size="lg" className="rounded-full">
               <Link href="/about">
-                Learn More <ArrowRight className="ml-2 h-5 w-5" />
+                {t('homeAboutUsButton')} <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
           </div>
@@ -264,4 +264,3 @@ export default function Home() {
     </>
   );
 }
-    

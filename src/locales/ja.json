@@ -22,5 +22,9 @@
   "authSignUp": "新規登録",
   "userMenuMyAccount": "マイアカウント",
   "userMenuProfile": "プロフィール",
-  "userMenuLogout": "ログアウト"
+  "userMenuLogout": "ログアウト",
+  "homeAboutUsBadge": "私たちについて",
+  "homeAboutUsTitle": "数十年にわたる二国間貿易の促進",
+  "homeAboutUsDescription": "印日商工会議所（IJCC）は、インドと日本の経済関係を緊密化することを目的として設立されました。当会議所は長年にわたり、数多くのビジネス交流を促進し、パートナーシップを築き、二国間貿易を推進してきました。私たちは、貿易関係を強化し、投資を誘致し、両国でのビジネス成功のためのプラットフォームを創出するために活動しています。",
+  "homeAboutUsButton": "詳細を見る"
 }

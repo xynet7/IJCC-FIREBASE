@@ -22,5 +22,9 @@
   "authSignUp": "Sign Up",
   "userMenuMyAccount": "My Account",
   "userMenuProfile": "Profile",
-  "userMenuLogout": "Log out"
+  "userMenuLogout": "Log out",
+  "homeAboutUsBadge": "About Us",
+  "homeAboutUsTitle": "Fostering Bilateral Trade for Decades",
+  "homeAboutUsDescription": "The Indo-Japan Chamber of Commerce (IJCC) was formed with a view to promoting closer economic relations between India and Japan. The Chamber has facilitated several business interactions, forged partnerships, and promoted bilateral trade over the years. We work to enhance trade relations, attract investment, and create platforms for business success in both countries.",
+  "homeAboutUsButton": "Learn More"
 }
