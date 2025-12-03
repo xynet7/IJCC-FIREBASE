@@ -1,3 +1,4 @@
+
 {
   "greeting": "こんにちは、世界！",
   "welcomeMessage": "私たちのアプリケーションへようこそ。",
@@ -8,5 +9,18 @@
   "heroDescription": "印日商工会議所（IJCC）は、インドと日本の経済、文化、教育の結びつきを促進する主要な二国間会議所です。",
   "heroJoinUsButton": "参加する",
   "heroUpcomingEventsButton": "今後のイベント",
-  "heroGalleryButton": "ギャラリー"
+  "heroGalleryButton": "ギャラリー",
+  "navHome": "ホーム",
+  "navAboutUs": "私たちについて",
+  "navServices": "サービス",
+  "navMembers": "会員",
+  "navNews": "ニュース",
+  "navEvents": "イベント",
+  "navResources": "リソース",
+  "navContact": "連絡先",
+  "authLogin": "ログイン",
+  "authSignUp": "新規登録",
+  "userMenuMyAccount": "マイアカウント",
+  "userMenuProfile": "プロフィール",
+  "userMenuLogout": "ログアウト"
 }

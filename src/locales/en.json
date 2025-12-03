@@ -1,3 +1,4 @@
+
 {
   "greeting": "Hello, World!",
   "welcomeMessage": "Welcome to our application.",
@@ -8,5 +9,18 @@
   "heroDescription": "The Indo-Japan Chamber of Commerce (IJCC) is a premier bilateral chamber fostering economic, cultural, and educational ties between India and Japan.",
   "heroJoinUsButton": "JOIN US",
   "heroUpcomingEventsButton": "Upcoming Events",
-  "heroGalleryButton": "Gallery"
+  "heroGalleryButton": "Gallery",
+  "navHome": "Home",
+  "navAboutUs": "About Us",
+  "navServices": "Services",
+  "navMembers": "Members",
+  "navNews": "News",
+  "navEvents": "Events",
+  "navResources": "Resources",
+  "navContact": "Contact",
+  "authLogin": "Login",
+  "authSignUp": "Sign Up",
+  "userMenuMyAccount": "My Account",
+  "userMenuProfile": "Profile",
+  "userMenuLogout": "Log out"
 }

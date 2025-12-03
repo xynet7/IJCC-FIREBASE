@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { LanguageSwitcher } from "./language-switcher";
+import { useTranslation } from "@/hooks/use-translation";
 
 
 const servicesSubmenu = [
@@ -43,21 +44,6 @@ const servicesSubmenu = [
     { title: "Digital & Marketing", href: "/services/digital-services", icon: <Globe className="text-primary" />, description: "Bilingual web development, SEO, and SMM for cross-border success." },
     { title: "Startup Support", href: "/services/startup-support", icon: <Lightbulb className="text-primary" />, description: "Incubation, mentorship, and investor connections for Indo-Japan startups." },
     { title: "Management Training", href: "/services/management-training", icon: <Zap className="text-primary" />, description: "Specialized training in Kaizen, Lean, TQM, and other Japanese management practices." },
-];
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
-  { 
-    href: "/services", 
-    label: "Services",
-    submenu: servicesSubmenu
-  },
-  { href: "/members", label: "Members" },
-  { href: "/news", label: "News" },
-  { href: "/events", label: "Events" },
-  { href: "/resources", label: "Resources" },
-  { href: "/contact", label: "Contact" },
 ];
 
 const logoUrl = "https://i.postimg.cc/mkDLyKfN/JPG-LOGO-removebg-preview.png";
@@ -97,6 +83,22 @@ ListItem.displayName = "ListItem";
 export function AppHeader() {
   const pathname = usePathname();
   const { user, loading } = useAuth();
+  const { t } = useTranslation();
+
+  const navLinks = [
+    { href: "/", label: t('navHome') },
+    { href: "/about", label: t('navAboutUs') },
+    { 
+      href: "/services", 
+      label: t('navServices'),
+      submenu: servicesSubmenu
+    },
+    { href: "/members", label: t('navMembers') },
+    { href: "/news", label: t('navNews') },
+    { href: "/events", label: t('navEvents') },
+    { href: "/resources", label: t('navResources') },
+    { href: "/contact", label: t('navContact') },
+  ];
   
   const handleLogout = async () => {
     try {
@@ -188,7 +190,7 @@ export function AppHeader() {
                     <DropdownMenuContent className="w-56" align="end" forceMount>
                       <DropdownMenuLabel className="font-normal">
                         <div className="flex flex-col space-y-1">
-                          <p className="text-sm font-medium leading-none">My Account</p>
+                          <p className="text-sm font-medium leading-none">{t('userMenuMyAccount')}</p>
                           <p className="text-xs leading-none text-muted-foreground">
                             {user.email}
                           </p>
@@ -198,23 +200,23 @@ export function AppHeader() {
                       <DropdownMenuItem asChild>
                          <Link href="/profile">
                             <User className="mr-2 h-4 w-4" />
-                            <span>Profile</span>
+                            <span>{t('userMenuProfile')}</span>
                           </Link>
                       </DropdownMenuItem>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem onClick={handleLogout}>
                         <LogOut className="mr-2 h-4 w-4" />
-                        <span>Log out</span>
+                        <span>{t('userMenuLogout')}</span>
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 ) : (
                   <>
                     <Button asChild variant="ghost">
-                      <Link href="/login">Login</Link>
+                      <Link href="/login">{t('authLogin')}</Link>
                     </Button>
                     <Button asChild>
-                      <Link href="/signup">Sign Up</Link>
+                      <Link href="/signup">{t('authSignUp')}</Link>
                     </Button>
                   </>
                 )}
@@ -250,13 +252,13 @@ export function AppHeader() {
                     <div className="flex flex-col gap-2">
                         {user ? (
                             <>
-                                <Link href="/profile" className="text-muted-foreground hover:text-primary">Profile</Link>
-                                <button onClick={handleLogout} className="text-left text-muted-foreground hover:text-primary">Logout</button>
+                                <Link href="/profile" className="text-muted-foreground hover:text-primary">{t('userMenuProfile')}</Link>
+                                <button onClick={handleLogout} className="text-left text-muted-foreground hover:text-primary">{t('userMenuLogout')}</button>
                             </>
                         ) : (
                             <>
-                                <Link href="/login" className="text-muted-foreground hover:text-primary">Login</Link>
-                                <Link href="/signup" className="text-muted-foreground hover:text-primary">Sign Up</Link>
+                                <Link href="/login" className="text-muted-foreground hover:text-primary">{t('authLogin')}</Link>
+                                <Link href="/signup" className="text-muted-foreground hover:text-primary">{t('authSignUp')}</Link>
                             </>
                         )}
                     </div>
