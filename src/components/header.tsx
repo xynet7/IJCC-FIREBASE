@@ -33,19 +33,6 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { LanguageSwitcher } from "./language-switcher";
 import { useTranslation } from "@/hooks/use-translation";
 
-
-const servicesSubmenu = [
-    { title: "Indian Schools", href: "/services/indian-schools", icon: <School className="text-primary" />, description: "Cultural exchange, language programs, and partnerships for K-12 institutions." },
-    { title: "Indian Universities", href: "/services/indian-universities", icon: <University className="text-primary" />, description: "Academic collaboration, internships, and career guidance for higher education." },
-    { title: "Indian Businesses", href: "/services/indian-smes", icon: <Handshake className="text-primary" />, description: "Market access, capacity building, and advisory for Indian SMEs & startups." },
-    { title: "Japanese Businesses", href: "/services/japanese-smes", icon: <Briefcase className="text-primary" />, description: "Market entry, B2B matchmaking, and talent support for Japanese firms in India." },
-    { title: "Company Registration (JP in IN)", href: "/services/company-registration-jp-in", icon: <Building className="text-primary" />, description: "End-to-end legal and compliance support for Japanese companies establishing in India." },
-    { title: "Company Registration (IN in JP)", href: "/services/company-registration-in-jp", icon: <Landmark className="text-primary" />, description: "Comprehensive assistance for Indian companies registering their business in Japan." },
-    { title: "Digital & Marketing", href: "/services/digital-services", icon: <Globe className="text-primary" />, description: "Bilingual web development, SEO, and SMM for cross-border success." },
-    { title: "Startup Support", href: "/services/startup-support", icon: <Lightbulb className="text-primary" />, description: "Incubation, mentorship, and investor connections for Indo-Japan startups." },
-    { title: "Management Training", href: "/services/management-training", icon: <Zap className="text-primary" />, description: "Specialized training in Kaizen, Lean, TQM, and other Japanese management practices." },
-];
-
 const logoUrl = "https://i.postimg.cc/mkDLyKfN/JPG-LOGO-removebg-preview.png";
 
 const ListItem = React.forwardRef<
@@ -84,6 +71,23 @@ export function AppHeader() {
   const pathname = usePathname();
   const { user, loading } = useAuth();
   const { t } = useTranslation();
+
+  const servicesSubmenu = [
+    { id: "indian-schools", icon: <School className="text-primary" /> },
+    { id: "indian-universities", icon: <University className="text-primary" /> },
+    { id: "indian-smes", icon: <Handshake className="text-primary" /> },
+    { id: "japanese-smes", icon: <Briefcase className="text-primary" /> },
+    { id: "company-registration-jp-in", icon: <Building className="text-primary" /> },
+    { id: "company-registration-in-jp", icon: <Landmark className="text-primary" /> },
+    { id: "digital-services", icon: <Globe className="text-primary" /> },
+    { id: "startup-support", icon: <Lightbulb className="text-primary" /> },
+    { id: "management-training", icon: <Zap className="text-primary" /> },
+  ].map(item => ({
+    href: `/services/${item.id}`,
+    title: t(`service_${item.id}_title`),
+    description: t(`service_${item.id}_description`),
+    icon: item.icon,
+  }));
 
   const navLinks = [
     { href: "/", label: t('navHome') },
