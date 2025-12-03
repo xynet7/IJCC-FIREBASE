@@ -13,82 +13,59 @@ import {
   DialogContent,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useTranslation } from "@/hooks/use-translation";
 
-const events = [
+const eventsData = [
   {
-    title: "Japan Business Tour for Indian Doctors",
+    id: 1,
     date: "2026-03-09",
-    displayDate: "March 9 - 14, 2026",
-    time: "All Day",
-    location: "Japan",
-    description: "An exclusive business tour for Indian doctors to explore healthcare opportunities and collaborations in Japan.",
     imageUrl: "https://i.ibb.co/Ngg6ZF2p/japanese-event-for-doc.jpg",
     hint: "doctors business tour",
     isVertical: false,
     href: "/contact"
   },
   {
-    title: "Exclusive India Business Delegation Trip to Japan",
+    id: 2,
     date: "2026-01-16",
-    displayDate: "January 16 - 25, 2026",
-    time: "All Day",
-    location: "Japan",
-    description: "An exclusive business delegation trip for Indian business leaders to explore opportunities in Japan. More details coming soon.",
     imageUrl: "https://i.ibb.co/WpWSq89m/Screenshot-2-12-2025-125555.jpg",
     hint: "business delegation",
     isVertical: false,
     href: "/contact"
   },
   {
-    title: "Matsuri - Japan Festival",
+    id: 3,
     date: "2025-10-11",
-    displayDate: "October 11, 2025",
-    time: "11:00 AM - 6:00 PM",
-    location: "Star Mall Outer Plaza & AJU Nagomi Family Dining. Contact: 98711 59420 (WhatsApp)",
-    description: "Experience the vibrant culture of Japan in India! Organized by AJU Japanese Hotel.",
     imageUrl: "https://i.postimg.cc/3xCPnydB/Matsuri-Bigposter.png",
     hint: "japan festival",
     isVertical: true,
     href: "https://www.instagram.com/p/DOnlVZPEfJ6/?igsh=MWI3enhqYXpramd3aw==",
   },
   {
-    title: "INDIA - JAPAN: SHAPING THE FUTURE IN RAPIDLY EVOLVING BUSINESS ECOSYSTEM",
+    id: 4,
     date: "2025-11-07",
-    displayDate: "November 7, 2025",
-    time: "5:00 PM - 8:00 PM",
-    location: "AJU Hinode",
-    description: "A business seminar featuring presentations from 4 states, a Q&A session, and discussions on BIS, Solar Power, IPR & Data Privacy.",
     imageUrl: "https://i.postimg.cc/VvZSTtBC/7-NOV-EVENT.jpg",
     hint: "business seminar",
     isVertical: true,
     href: "https://www.instagram.com/p/DOc9zoOkUkh/?igsh=OGpzMDRhbXA2anBt",
   },
   {
-    title: "Konnichiwa Japan",
+    id: 5,
     date: "2025-12-13",
-    displayDate: "December 13 & 14, 2025",
-    time: "11:00 AM - 09:00 PM",
-    location: "Saket District Centre, Sector 6, Pushp Vihar, New Delhi - 110017",
-    description: "A Day of Culture, Business and Friendship",
     imageUrl: "https://i.postimg.cc/CL3BP6v9/konnichiwa-japan.png",
     hint: "cultural event",
     isVertical: true,
     href: "https://www.instagram.com/p/DOc7xSuEfHe/?utm_source=ig_web_copy_link",
   },
   {
-    title: "Tech Innovation Summit",
+    id: 6,
     date: "2026-01-20",
-    displayDate: "Coming Soon",
-    time: "00:00 AM - 00:00 PM",
-    location: "Online / Virtual",
-    description: "Coming Soon",
     imageUrl: "https://picsum.photos/seed/tech-summit/800/400",
     hint: "tech conference",
     isVertical: false,
   },
 ];
 
-const eventDates = events.map(event => new Date(event.date + 'T00:00:00'));
+const eventDates = eventsData.map(event => new Date(event.date + 'T00:00:00'));
 
 const modifiers = {
   event: eventDates,
@@ -104,6 +81,16 @@ const modifiersStyles = {
 
 export default function EventsPage() {
   const [isClient, setIsClient] = useState(false);
+  const { t } = useTranslation();
+
+  const events = eventsData.map(event => ({
+    ...event,
+    title: t(`event_${event.id}_title`),
+    displayDate: t(`event_${event.id}_displayDate`),
+    time: t(`event_${event.id}_time`),
+    location: t(`event_${event.id}_location`),
+    description: t(`event_${event.id}_description`),
+  }));
 
   useEffect(() => {
     setIsClient(true);
@@ -112,9 +99,9 @@ export default function EventsPage() {
   return (
     <div className="container py-12">
       <div className="space-y-4 mb-12 text-center">
-        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">Upcoming Events</h1>
+        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">{t('events_page_title')}</h1>
         <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
-          Join our events to network, learn, and grow your business connections.
+          {t('events_page_subtitle')}
         </p>
       </div>
 
@@ -176,7 +163,7 @@ export default function EventsPage() {
         <div className="lg:col-span-1">
           <Card>
             <CardHeader>
-              <CardTitle className="font-headline text-2xl">Event Calendar</CardTitle>
+              <CardTitle className="font-headline text-2xl">{t('events_calendar_title')}</CardTitle>
             </CardHeader>
             <CardContent>
               {isClient ? (

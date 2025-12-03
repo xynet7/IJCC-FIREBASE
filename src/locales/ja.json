@@ -480,7 +480,7 @@
   "membershipForm_primaryContact_label": "11. 主要連絡担当者",
   "membershipForm_primaryContact_placeholder": "例：佐藤明氏",
   "membershipForm_designation_label": "役職",
-  "membershipForm_designation_placeholder": "例：マネージャー",
+  "membershipForm_applicantDesignation_placeholder": "例：取締役",
   "membershipForm_mobile_label": "12. 携帯電話番号",
   "membershipForm_email_label": "13. メールアドレス",
   "membershipForm_partB_title": "パートB：日本との連携意図と事業概要",
@@ -521,8 +521,6 @@
   "membershipForm_declaration_label": "私は、印日商工会議所（IJCC）の会員基準を読み、理解し、その規則および規制を遵守することに同意します。この申込書に記載された情報は、私の知る限り真実かつ正確です。",
   "membershipForm_applicantName_label": "氏名",
   "membershipForm_applicantName_placeholder": "あなたのフルネーム",
-  "membershipForm_applicantDesignation_label": "役職",
-  "membershipForm_applicantDesignation_placeholder": "例：取締役",
   "membershipForm_applicantDate_label": "日付（日/月/年）",
   "membershipForm_applicantDate_placeholder": "例：25/12/2024",
   "membershipForm_officeUse_title": "事務局専用",
@@ -534,7 +532,6 @@
   "membershipForm_officeUse_infoRequested": "追加情報要求",
   "membershipForm_officeUse_tierAllotted": "割り当てられた会員ティア",
   "membershipForm_submitButton": "申込書を提出する",
-
   "news_title": "最新ニュース",
   "news_description": "インドと日本のビジネスおよび文化関係に関する最新情報を入手してください。",
   "news_readMoreButton": "続きを読む",
@@ -543,7 +540,45 @@
   "news_article_2_title": "日本の秋祭り「まつり」が10月11日にグルグラムで本格的な日本体験を提供",
   "news_article_2_description": "グルグラムは、AJU日本のホテルが印日商工会議所（IJCC）や他の日本の組織と協力して「まつり」祭りを開催したことで、日本の片鱗を目の当たりにした。",
   "news_article_3_title": "IJCCIとAIMAが戦略的パートナーシップを締結し、印日中小企業、教育、ビジネス連携を強化",
-  "news_article_3_description": "印日商工会議所（IJCCI）と全インド経営協会（AIMA）は、インドと日本の中小企業、教育機関、企業の協力を促進するための覚書に署名した。"
-}
+  "news_article_3_description": "印日商工会議所（IJCCI）と全インド経営協会（AIMA）は、インドと日本の中小企業、教育機関、企業の協力を促進するための覚書に署名した。",
+  
+  "events_page_title": "今後のイベント",
+  "events_page_subtitle": "私たちのイベントに参加して、ネットワークを広げ、学び、ビジネスのつながりを成長させましょう。",
+  "events_calendar_title": "イベントカレンダー",
 
-    
+  "event_1_title": "インド人医師向け日本ビジネスツアー",
+  "event_1_displayDate": "2026年3月9日～14日",
+  "event_1_time": "終日",
+  "event_1_location": "日本",
+  "event_1_description": "インド人医師が日本のヘルスケア機会と協力を探るための特別なビジネスツアー。",
+
+  "event_2_title": "インドビジネス代表団の日本への特別旅行",
+  "event_2_displayDate": "2026年1月16日～25日",
+  "event_2_time": "終日",
+  "event_2_location": "日本",
+  "event_2_description": "インドのビジネスリーダーが日本の機会を探るための特別なビジネス代表団旅行。詳細は近日公開。",
+
+  "event_3_title": "まつり - 日本祭り",
+  "event_3_displayDate": "2025年10月11日",
+  "event_3_time": "午前11時～午後6時",
+  "event_3_location": "スターモールアウタープラザ＆AJUなごみファミリーダイニング。連絡先：98711 59420 (WhatsApp)",
+  "event_3_description": "インドで日本の活気ある文化を体験してください！AJU日本のホテル主催。",
+
+  "event_4_title": "インド - 日本：急速に進化するビジネスエコシステムにおける未来の形成",
+  "event_4_displayDate": "2025年11月7日",
+  "event_4_time": "午後5時～午後8時",
+  "event_4_location": "AJU Hinode",
+  "event_4_description": "4つの州からのプレゼンテーション、質疑応答セッション、BIS、太陽光発電、IPR＆データプライバシーに関する議論を特集するビジネスセミナー。",
+
+  "event_5_title": "こんにちは日本",
+  "event_5_displayDate": "2025年12月13日＆14日",
+  "event_5_time": "午前11時～午後9時",
+  "event_5_location": "サケット地区センター、セクター6、プシュプ・ビハール、ニューデリー - 110017",
+  "event_5_description": "文化、ビジネス、友情の一日",
+  
+  "event_6_title": "技術イノベーションサミット",
+  "event_6_displayDate": "近日公開",
+  "event_6_time": "午前00時00分～午後00時00分",
+  "event_6_location": "オンライン／バーチャル",
+  "event_6_description": "近日公開"
+}

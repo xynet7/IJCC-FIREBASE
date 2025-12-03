@@ -83,7 +83,7 @@
   "team_surajitKalita_bio": "Mr. Surajit Kalita is a master of logistics and planning. His role as Vice-Chairman of Operations & Planning ensures the smooth execution of all IJCC events, delegations, and initiatives, making every interaction seamless and effective.",
   "team_mukeshRanjan_name": "Mr. Mukesh Ranjan",
   "team_mukeshRanjan_title": "Director- HR & Strategy",
-  "team_mukeshRanjan_bio": "Mukesh Ranjan is a seasoned professional in HR, IT, and educational development. He has served as Deputy Director (General Affairs) at the National Industries Development Council Committee and as General Manager for the Digital India initiatives of the Krishna Sudarshan Charitable Trust.\n\nPassionate about bridging education and employment, he has led campus recruitment drives with Purnia University and represented Royal Metropolitan University, Kyrgyzstan, to guide Indian students toward medical education. Recognised with honors such as Best HR & IT Professional of the Year 2021 and the International Education Pride Award 2021, he is also an environmental activist and an invited speaker at international education and skills summits.",
+  "team_mukeshRanjan_bio": "Mukesh Ranjan is a seasoned professional in HR, IT, and educational development. He has served as Deputy Director (General Affairs) at the National Industries Development Council Committee and as General Manager for the Digital India initiatives of the Krishna Sudarshan Charitable Trust.\nPassionate about bridging education and employment, he has led campus recruitment drives with Purnia University and represented Royal Metropolitan University, Kyrgyzstan, to guide Indian students toward medical education. Recognised with honors such as Best HR & IT Professional of the Year 2021 and the International Education Pride Award 2021, he is also an environmental activist and an invited speaker at international education and skills summits.",
   "team_tomoyukiIwama_name": "Mr. Tomoyuki Iwama",
   "team_tomoyukiIwama_title": "Director Yakult India",
   "team_tomoyukiIwama_bio": "Mr. Tomoyuki Iwama is a seasoned international business and operations leader with over 30 years of global experience across Europe, Southeast Asia, and India. A graduate in Biology from the University of Tsukuba (1989), he has built a distinguished career with Yakult Honsha Co., Ltd., Japan, where he currently serves as General Manager for International Business Development and Global Operations Support.\n\nSince 2007, he has also been Director of Yakult Danone India Pvt. Ltd., playing a key role in expanding Yakult’s presence in the Indian market. His prior international assignments include serving as Advisor at PT Yakult Indonesia Persada (2004–2007), Director at Yakult Malaysia (2003–2004), and Quality Control Manager at Yakult Europe and Yakult Netherlands (1994–2001), where he specialized in production management and establishing overseas manufacturing plants.\n\nIn addition to his corporate career, Mr. Iwama contributes to academia as an International Cooperation Advisor (India) at the University of Tsukuba’s Bureau of Global Initiatives (since 2025). Fluent in Japanese and English, with conversational proficiency in Indonesian and Malay, he is widely recognized for his cross-cultural leadership, strategic planning, and operational excellence in global business.",
@@ -132,10 +132,8 @@
   "team_lokendraRana_name": "Mr. Lokendra Rana",
   "team_lokendraRana_title": "Executive Director (Gaya)",
   "team_lokendraRana_bio": "With extensive experience in international sales, marketing, and operations, Lokendra Rana leads the Gaya chapter. His expertise is pivotal in driving business development and fostering cross-cultural partnerships in the region.",
-
   "services_title": "Our Services",
   "services_description": "We offer a comprehensive suite of services to facilitate trade, education, and investment between India and Japan.",
-
   "service_indian-schools_title": "Indian Schools",
   "service_indian-schools_description": "Strengthening educational and cultural ties between India and Japan for K-12 students and educators.",
   "service_indian-universities_title": "Indian Universities",
@@ -154,7 +152,6 @@
   "service_startup-support_description": "Fostering innovation and entrepreneurship by connecting startups with investors and markets.",
   "service_management-training_title": "Japanese Management Training",
   "service_management-training_description": "Equipping Indian businesses with the proven principles of Japanese management.",
-
   "servicedetail_indian-schools_title": "Indian Schools",
   "servicedetail_indian-schools_description": "The Indo-Japan Chamber of Commerce (IJCC) works to strengthen educational and cultural ties between India and Japan. For Indian schools, IJCC offers a wide range of programs and services designed to provide students and educators with international exposure, cultural understanding, and future career pathways.",
   "servicedetail_indian-schools_cat1_title": "School Partnerships & Exchange Programs",
@@ -179,7 +176,6 @@
   "servicedetail_indian-schools_cat6_title": "Community & Homestay Opportunities",
   "servicedetail_indian-schools_cat6_point1": "Student homestay programs in Japan for immersive cultural learning (future initiative).",
   "servicedetail_indian-schools_cat6_point2": "Hosting Japanese students in Indian schools for reciprocal cultural sharing (future initiative).",
-
   "servicedetail_indian-universities_title": "Indian Universities",
   "servicedetail_indian-universities_description": "The Indo-Japan Chamber of Commerce (IJCC) is committed to building strong academic, cultural, and professional bridges between India and Japan. For universities and colleges in India, IJCC offers a range of services designed to enhance student exposure, global competencies, and career pathways.",
   "servicedetail_indian-universities_cat1_title": "Academic Partnerships & Exchange Programs",
@@ -209,7 +205,6 @@
   "servicedetail_indian-universities_cat7_title": "Global Networking & Exposure",
   "servicedetail_indian-universities_cat7_point1": "Opportunities for students to connect with Japanese peers, professionals, and entrepreneurs.",
   "servicedetail_indian-universities_cat7_point2": "Participation in Indo-Japan youth summits, cultural festivals, and innovation challenges.",
-
   "servicedetail_indian-smes_title": "Indian Businesses",
   "servicedetail_indian-smes_description": "The Indo-Japan Chamber of Commerce (IJCC) offers targeted support for Indian SMEs, MSMEs, startups, and entrepreneurs looking to engage with the Japanese market, fostering growth and global competitiveness.",
   "servicedetail_indian-smes_cat1_title": "Business Matchmaking & Market Access",
@@ -228,7 +223,6 @@
   "servicedetail_indian-smes_cat5_title": "Startup & Innovation Support",
   "servicedetail_indian-smes_cat5_point1": "Access to Japanese startup ecosystems, incubators, and VCs.",
   "servicedetail_indian-smes_cat5_point2": "Joint hackathons, accelerator tie-ups, and pilot projects with Japanese firms.",
-  
   "servicedetail_japanese-smes_title": "Japanese Businesses",
   "servicedetail_japanese-smes_description": "The Indo-Japan Chamber of Commerce (IJCC) provides comprehensive support for Japanese SMEs, MSMEs, and startups aiming to enter and thrive in the Indian market, offering services from market research to talent acquisition.",
   "servicedetail_japanese-smes_cat1_title": "India Market Entry Support",
@@ -246,7 +240,6 @@
   "servicedetail_japanese-smes_cat5_title": "Innovation & Technology Collaboration",
   "servicedetail_japanese-smes_cat5_point1": "Co-development of products/solutions with Indian startups.",
   "servicedetail_japanese-smes_cat5_point2": "Partnerships in sectors like EVs, AI, robotics, agritech, healthcare, and clean energy.",
-  
   "servicedetail_company-registration-jp-in_title": "Company Registration: Japanese Companies in India",
   "servicedetail_company-registration-jp-in_description": "IJCC provides end-to-end support for Japanese companies seeking to establish a legal presence in India, from strategic advisory on the best entry structure to post-incorporation compliance.",
   "servicedetail_company-registration-jp-in_cat1_title": "Advisory on Entry Strategy",
@@ -280,7 +273,6 @@
   "servicedetail_company-registration-jp-in_cat7_point1": "Ongoing legal, tax, and compliance advisory.",
   "servicedetail_company-registration-jp-in_cat7_point2": "Secretarial services (ROC filings, board meetings, annual reports).",
   "servicedetail_company-registration-jp-in_cat7_point3": "Advisory on expansion, mergers, acquisitions, or JV structuring.",
-
   "servicedetail_company-registration-in-jp_title": "Company Registration: Indian Companies in Japan",
   "servicedetail_company-registration-in-jp_description": "IJCC offers comprehensive assistance for Indian companies looking to register and operate in Japan, covering everything from legal structure advisory to post-incorporation support.",
   "servicedetail_company-registration-in-jp_cat1_title": "Advisory & Consultation",
@@ -314,7 +306,6 @@
   "servicedetail_company-registration-in-jp_cat6_point1": "Education & training for Indian founders on Japanese corporate culture and business etiquette.",
   "servicedetail_company-registration-in-jp_cat6_point2": "Recruitment support for hiring Japanese/Indian bilingual staff.",
   "servicedetail_company-registration-in-jp_cat6_point3": "Assistance with government incentives (JETRO programs, startup subsidies, SME grants).",
-
   "servicedetail_digital-services_title": "Website Development & Digital Marketing",
   "servicedetail_digital-services_description": "IJCC provides bilingual website development, branding, and digital marketing services to help businesses succeed across Indian and Japanese markets.",
   "servicedetail_digital-services_cat1_title": "Website Development",
@@ -338,7 +329,6 @@
   "servicedetail_digital-services_cat4_point1": "Website localization: Japanese → English & Indian context.",
   "servicedetail_digital-services_cat4_point2": "Digital campaigns targeting Indian customers.",
   "servicedetail_digital-services_cat4_point3": "Social media presence in India to build brand recognition.",
-
   "servicedetail_startup-support_title": "IJCC Startup Support Services",
   "servicedetail_startup-support_description": "The Indo-Japan Chamber of Commerce (IJCC) is committed to fostering innovation and entrepreneurship by connecting Indian startups with Japanese expertise, investors, and markets. Through its network of industry leaders, government bodies, and academic institutions, IJCC provides end-to-end support for startups to grow globally.",
   "servicedetail_startup-support_cat1_title": "Incubation & Mentorship",
@@ -365,7 +355,6 @@
   "servicedetail_startup-support_cat6_point1": "Participation in Indo-Japan startup summits, exhibitions, and conferences.",
   "servicedetail_startup-support_cat6_point2": "Opportunities to showcase products/services to Japanese businesses and investors.",
   "servicedetail_startup-support_cat6_point3": "Access to IJCC’s cross-border network of industry professionals, academics, and policymakers.",
-
   "servicedetail_management-training_title": "Japanese Management Training",
   "servicedetail_management-training_description": "The Indo-Japan Chamber of Commerce (IJCC) offers specialized training programs designed to equip Indian SMEs, MSMEs, and entrepreneurs with the proven principles of Japanese management. These programs blend global best practices with local business needs, enabling enterprises to enhance productivity, quality, and competitiveness.",
   "servicedetail_management-training_cat1_title": "Kaizen & Continuous Improvement",
@@ -396,13 +385,11 @@
   "servicedetail_management-training_cat7_point1": "Training in Japanese business communication, negotiation, and etiquette.",
   "servicedetail_management-training_cat7_point2": "Preparing Indian entrepreneurs for collaborations with Japanese companies.",
   "servicedetail_management-training_cat7_point3": "Bridging cultural differences in global partnerships.",
-
   "members_title": "Membership",
   "members_description": "Join us to foster Indo-Japan collaboration across trade, education, technology, and cultural exchanges.",
   "members_applyButton": "Apply for Membership",
   "members_associatesTitle": "Members, Associates & Support Organisations",
   "members_associatesDescription": "IJCC is powered by a strong network of members, associates, and support organisations who share our vision of strengthening Indo-Japan relations. Our members include businesses, educational institutions, and professionals; our associates collaborate with us on programs and initiatives; and our support organisations comprise industry bodies, government agencies, and cultural institutions that enable IJCC to deliver impactful projects. Together, they form the backbone of IJCC’s mission to connect India and Japan through business, education, culture, and innovation.",
-  
   "membershipDetails_perYear": "/ year",
   "membershipDetails_benefitsTitle": "Benefits",
   "membershipDetails_getStartedButton": "Get Started",
@@ -454,7 +441,6 @@
   "membershipTier_largeCorporate_benefit3": "Representation in Indo-Japan working groups",
   "membershipTier_largeCorporate_benefit4": "Brand visibility across IJCC platforms & delegations",
   "membershipTier_largeCorporate_benefit5": "Joint whitepapers, reports, and knowledge partnerships",
-
   "membershipApplication_title": "Membership Application",
   "membershipApplication_description": "Please fill out the form below to apply for membership. We're excited to have you join us.",
   "membershipForm_toastSuccessTitle": "Application Submitted!",
@@ -494,7 +480,7 @@
   "membershipForm_primaryContact_label": "11. Primary Contact Person",
   "membershipForm_primaryContact_placeholder": "e.g. Mr. Akira Sato",
   "membershipForm_designation_label": "Designation",
-  "membershipForm_designation_placeholder": "e.g. Manager",
+  "membershipForm_applicantDesignation_placeholder": "e.g. Director",
   "membershipForm_mobile_label": "12. Mobile No.",
   "membershipForm_email_label": "13. Email Address",
   "membershipForm_partB_title": "Part B: Japan Collaboration Intent & Business Profile",
@@ -536,7 +522,6 @@
   "membershipForm_applicantName_label": "Name",
   "membershipForm_applicantName_placeholder": "Your Full Name",
   "membershipForm_applicantDesignation_label": "Designation",
-  "membershipForm_applicantDesignation_placeholder": "e.g. Director",
   "membershipForm_applicantDate_label": "Date (DD/MM/YYYY)",
   "membershipForm_applicantDate_placeholder": "e.g. 25/12/2024",
   "membershipForm_officeUse_title": "For Office Use Only",
@@ -548,7 +533,6 @@
   "membershipForm_officeUse_infoRequested": "Additional Info Requested",
   "membershipForm_officeUse_tierAllotted": "Membership Tier Allotted",
   "membershipForm_submitButton": "Submit Application",
-
   "news_title": "Latest News",
   "news_description": "Stay informed with the latest updates on Indo-Japan business and cultural relations.",
   "news_readMoreButton": "Read More",
@@ -557,5 +541,45 @@
   "news_article_2_title": "Japanese autumn ‘Matsuri’ Utsav brings authentic Japanese experience in Gurugram on Oct 11",
   "news_article_2_description": "Gurugram witnessed a slice of Japan as the AJU Japanese hotel, in association with the Indo-Japan Chamber of Commerce (IJCC) and other Japanese organizations, hosted the ‘Matsuri’ Utsav.",
   "news_article_3_title": "IJCCI, AIMA Forge Strategic Partnership to Boost Indo-Japanese SME, Edn, and Biz Collaboration",
-  "news_article_3_description": "The Indo-Japan Chamber of Commerce and Industry (IJCCI) and the All India Management Association (AIMA) have signed an MoU to foster collaboration between Indian and Japanese SMEs, educational institutions, and businesses."
+  "news_article_3_description": "The Indo-Japan Chamber of Commerce and Industry (IJCCI) and the All India Management Association (AIMA) have signed an MoU to foster collaboration between Indian and Japanese SMEs, educational institutions, and businesses.",
+
+  "events_page_title": "Upcoming Events",
+  "events_page_subtitle": "Join our events to network, learn, and grow your business connections.",
+  "events_calendar_title": "Event Calendar",
+
+  "event_1_title": "Japan Business Tour for Indian Doctors",
+  "event_1_displayDate": "March 9 - 14, 2026",
+  "event_1_time": "All Day",
+  "event_1_location": "Japan",
+  "event_1_description": "An exclusive business tour for Indian doctors to explore healthcare opportunities and collaborations in Japan.",
+
+  "event_2_title": "Exclusive India Business Delegation Trip to Japan",
+  "event_2_displayDate": "January 16 - 25, 2026",
+  "event_2_time": "All Day",
+  "event_2_location": "Japan",
+  "event_2_description": "An exclusive business delegation trip for Indian business leaders to explore opportunities in Japan. More details coming soon.",
+
+  "event_3_title": "Matsuri - Japan Festival",
+  "event_3_displayDate": "October 11, 2025",
+  "event_3_time": "11:00 AM - 6:00 PM",
+  "event_3_location": "Star Mall Outer Plaza & AJU Nagomi Family Dining. Contact: 98711 59420 (WhatsApp)",
+  "event_3_description": "Experience the vibrant culture of Japan in India! Organized by AJU Japanese Hotel.",
+
+  "event_4_title": "INDIA - JAPAN: SHAPING THE FUTURE IN RAPIDLY EVOLVING BUSINESS ECOSYSTEM",
+  "event_4_displayDate": "November 7, 2025",
+  "event_4_time": "5:00 PM - 8:00 PM",
+  "event_4_location": "AJU Hinode",
+  "event_4_description": "A business seminar featuring presentations from 4 states, a Q&A session, and discussions on BIS, Solar Power, IPR & Data Privacy.",
+
+  "event_5_title": "Konnichiwa Japan",
+  "event_5_displayDate": "December 13 & 14, 2025",
+  "event_5_time": "11:00 AM - 09:00 PM",
+  "event_5_location": "Saket District Centre, Sector 6, Pushp Vihar, New Delhi - 110017",
+  "event_5_description": "A Day of Culture, Business and Friendship",
+
+  "event_6_title": "Tech Innovation Summit",
+  "event_6_displayDate": "Coming Soon",
+  "event_6_time": "00:00 AM - 00:00 PM",
+  "event_6_location": "Online / Virtual",
+  "event_6_description": "Coming Soon"
 }
