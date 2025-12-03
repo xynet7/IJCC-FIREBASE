@@ -119,26 +119,26 @@ export default function Home() {
         <div className="relative z-10 container px-4 md:px-6">
            <div className="space-y-6 max-w-4xl mx-auto">
               <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-                Connecting <span className="text-accent">India</span> & <span className="text-accent">Japan</span> for Mutual Prosperity
+                {t('heroTitlePart1')} <span className="text-accent">{t('heroTitleIndia')}</span> & <span className="text-accent">{t('heroTitleJapan')}</span> {t('heroTitlePart2')}
               </h1>
               <p className="max-w-2xl mx-auto text-lg md:text-xl">
-                  The Indo-Japan Chamber of Commerce (IJCC) is a premier bilateral chamber fostering economic, cultural, and educational ties between India and Japan.
+                {t('heroDescription')}
               </p>
               <div className="flex flex-col gap-4 sm:flex-row justify-center">
                 <Button asChild size="lg" className="rounded-full">
                   <Link href="/contact">
-                    JOIN US <ArrowRight className="ml-2 h-5 w-5" />
+                    {t('heroJoinUsButton')} <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
                 <span className="flex flex-col sm:flex-row gap-4">
                   <Button asChild size="lg" variant="secondary" className="rounded-full">
                     <Link href="/events">
-                      Upcoming Events
+                      {t('heroUpcomingEventsButton')}
                     </Link>
                   </Button>
                   <Button asChild size="lg" variant="secondary" className="rounded-full">
                     <Link href="/gallery">
-                      Gallery
+                      {t('heroGalleryButton')}
                     </Link>
                   </Button>
                 </span>

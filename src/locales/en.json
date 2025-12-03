@@ -1,4 +1,12 @@
 {
   "greeting": "Hello, World!",
-  "welcomeMessage": "Welcome to our application."
+  "welcomeMessage": "Welcome to our application.",
+  "heroTitlePart1": "Connecting",
+  "heroTitleIndia": "India",
+  "heroTitleJapan": "Japan",
+  "heroTitlePart2": "for Mutual Prosperity",
+  "heroDescription": "The Indo-Japan Chamber of Commerce (IJCC) is a premier bilateral chamber fostering economic, cultural, and educational ties between India and Japan.",
+  "heroJoinUsButton": "JOIN US",
+  "heroUpcomingEventsButton": "Upcoming Events",
+  "heroGalleryButton": "Gallery"
 }
