@@ -13,33 +13,6 @@ import { FloatingSocials } from "@/components/floating-socials";
 import { useTranslation } from "@/hooks/use-translation";
 
 
-const features = [
-  {
-    icon: <Calendar className="h-8 w-8 text-primary" />,
-    title: "Dynamic Event Calendar",
-    description: "Stay updated with our interactive calendar of upcoming events, seminars, and workshops. Plan your participation and network with industry leaders from both India and Japan. Never miss an opportunity to connect.",
-    href: "/events",
-  },
-  {
-    icon: <Users className="h-8 w-8 text-primary" />,
-    title: "Membership Directory",
-    description: "Connect with a diverse network of professionals, businesses, and organizations. Our comprehensive directory helps you find partners, clients, and collaborators to foster growth and innovation.",
-    href: "/members",
-  },
-  {
-    icon: <BookOpen className="h-8 w-8 text-primary" />,
-    title: "Resource Library",
-    description: "Access a rich repository of documents, JLPT papers, market reports, and presentations. Enhance your knowledge and stay ahead of the curve with our curated collection of valuable resources.",
-    href: "/resources",
-  },
-  {
-    icon: <Mail className="h-8 w-8 text-primary" />,
-    title: "Join Us",
-    description: "Become a part of our thriving community. Get in touch with us for any inquiries, support, or to start your membership application today and unlock a world of opportunities.",
-    href: "/contact",
-  },
-];
-
 const partners = [
     { name: "All India Management Association", href: "https://www.aima.in", logoUrl: "https://www.aima.in/img/logo.png", hint: "company logo" },
     { name: "Aranca", href: "https://www.aranca.com/", logoUrl: "https://www.aranca.com/assets/images/icons/aranca-logo-0203.png", hint: "company logo" },
@@ -71,6 +44,33 @@ const heroItems = [
 
 export default function Home() {
   const { t } = useTranslation();
+
+  const features = [
+    {
+      icon: <Calendar className="h-8 w-8 text-primary" />,
+      title: t('feature1Title'),
+      description: t('feature1Description'),
+      href: "/events",
+    },
+    {
+      icon: <Users className="h-8 w-8 text-primary" />,
+      title: t('feature2Title'),
+      description: t('feature2Description'),
+      href: "/members",
+    },
+    {
+      icon: <BookOpen className="h-8 w-8 text-primary" />,
+      title: t('feature3Title'),
+      description: t('feature3Description'),
+      href: "/resources",
+    },
+    {
+      icon: <Mail className="h-8 w-8 text-primary" />,
+      title: t('feature4Title'),
+      description: t('feature4Description'),
+      href: "/contact",
+    },
+  ];
 
   return (
     <>
@@ -184,10 +184,10 @@ export default function Home() {
         <div className="container px-4 md:px-6 relative">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Key Features</div>
-              <h2 className="text-3xl font-headline sm:text-5xl">Why Join Us?</h2>
+              <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">{t('keyFeaturesBadge')}</div>
+              <h2 className="text-3xl font-headline sm:text-5xl">{t('whyJoinUsTitle')}</h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Explore the tools and resources we offer to help your business thrive and expand its horizons across borders.
+                {t('whyJoinUsDescription')}
               </p>
             </div>
           </div>
@@ -206,7 +206,7 @@ export default function Home() {
                 <CardFooter>
                   <Button asChild variant="outline" className="w-full rounded-full">
                     <Link href={feature.href}>
-                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                      {t('learnMoreButton')} <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </CardFooter>
@@ -264,3 +264,5 @@ export default function Home() {
     </>
   );
 }
+
+    
