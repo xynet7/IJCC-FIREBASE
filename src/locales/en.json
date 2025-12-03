@@ -83,7 +83,7 @@
   "team_surajitKalita_bio": "Mr. Surajit Kalita is a master of logistics and planning. His role as Vice-Chairman of Operations & Planning ensures the smooth execution of all IJCC events, delegations, and initiatives, making every interaction seamless and effective.",
   "team_mukeshRanjan_name": "Mr. Mukesh Ranjan",
   "team_mukeshRanjan_title": "Director- HR & Strategy",
-  "team_mukeshRanjan_bio": "Mukesh Ranjan is a seasoned professional in HR, IT, and educational development. He has served as Deputy Director (General Affairs) at the National Industries Development Council Committee and as General Manager for the Digital India initiatives of the Krishna Sudarshan Charitable Trust.\nPassionate about bridging education and employment, he has led campus recruitment drives with Purnia University and represented Royal Metropolitan University, Kyrgyzstan, to guide Indian students toward medical education. Recognised with honors such as Best HR & IT Professional of the Year 2021 and the International Education Pride Award 2021, he is also an environmental activist and an invited speaker at international education and skills summits.",
+  "team_mukeshRanjan_bio": "Mukesh Ranjan is a seasoned professional in HR, IT, and educational development. He has served as Deputy Director (General Affairs) at the National Industries Development Council Committee and as General Manager for the Digital India initiatives of the Krishna Sudarshan Charitable Trust.\n\nPassionate about bridging education and employment, he has led campus recruitment drives with Purnia University and represented Royal Metropolitan University, Kyrgyzstan, to guide Indian students toward medical education. Recognised with honors such as Best HR & IT Professional of the Year 2021 and the International Education Pride Award 2021, he is also an environmental activist and an invited speaker at international education and skills summits.",
   "team_tomoyukiIwama_name": "Mr. Tomoyuki Iwama",
   "team_tomoyukiIwama_title": "Director Yakult India",
   "team_tomoyukiIwama_bio": "Mr. Tomoyuki Iwama is a seasoned international business and operations leader with over 30 years of global experience across Europe, Southeast Asia, and India. A graduate in Biology from the University of Tsukuba (1989), he has built a distinguished career with Yakult Honsha Co., Ltd., Japan, where he currently serves as General Manager for International Business Development and Global Operations Support.\n\nSince 2007, he has also been Director of Yakult Danone India Pvt. Ltd., playing a key role in expanding Yakult’s presence in the Indian market. His prior international assignments include serving as Advisor at PT Yakult Indonesia Persada (2004–2007), Director at Yakult Malaysia (2003–2004), and Quality Control Manager at Yakult Europe and Yakult Netherlands (1994–2001), where he specialized in production management and establishing overseas manufacturing plants.\n\nIn addition to his corporate career, Mr. Iwama contributes to academia as an International Cooperation Advisor (India) at the University of Tsukuba’s Bureau of Global Initiatives (since 2025). Fluent in Japanese and English, with conversational proficiency in Indonesian and Malay, he is widely recognized for his cross-cultural leadership, strategic planning, and operational excellence in global business.",
@@ -547,5 +547,15 @@
   "membershipForm_officeUse_underReview": "Under Review",
   "membershipForm_officeUse_infoRequested": "Additional Info Requested",
   "membershipForm_officeUse_tierAllotted": "Membership Tier Allotted",
-  "membershipForm_submitButton": "Submit Application"
+  "membershipForm_submitButton": "Submit Application",
+
+  "news_title": "Latest News",
+  "news_description": "Stay informed with the latest updates on Indo-Japan business and cultural relations.",
+  "news_readMoreButton": "Read More",
+  "news_article_1_title": "Mela Mela Anime Japan returns with double the Japanese content in Delhi",
+  "news_article_1_description": "The popular Anime and Japanese cultural festival, 'Mela Mela Anime Japan,' is set to return to New Delhi, promising an even bigger and more immersive experience for fans.",
+  "news_article_2_title": "Japanese autumn ‘Matsuri’ Utsav brings authentic Japanese experience in Gurugram on Oct 11",
+  "news_article_2_description": "Gurugram witnessed a slice of Japan as the AJU Japanese hotel, in association with the Indo-Japan Chamber of Commerce (IJCC) and other Japanese organizations, hosted the ‘Matsuri’ Utsav.",
+  "news_article_3_title": "IJCCI, AIMA Forge Strategic Partnership to Boost Indo-Japanese SME, Edn, and Biz Collaboration",
+  "news_article_3_description": "The Indo-Japan Chamber of Commerce and Industry (IJCCI) and the All India Management Association (AIMA) have signed an MoU to foster collaboration between Indian and Japanese SMEs, educational institutions, and businesses."
 }
