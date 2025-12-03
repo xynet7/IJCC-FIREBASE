@@ -58,7 +58,7 @@ function MembershipFormComponent() {
       declaration: undefined,
       applicantName: "",
       applicantDesignation: "",
-      applicantDate: new Date(),
+      applicantDate: new Date().toLocaleDateString('en-GB').split('/').join('/'),
     },
   });
 
@@ -549,39 +549,11 @@ function MembershipFormComponent() {
                   control={form.control}
                   name="applicantDate"
                   render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                      <FormLabel>Date</FormLabel>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant={"outline"}
-                              className={cn(
-                                "w-full pl-3 text-left font-normal",
-                                !field.value && "text-muted-foreground"
-                              )}
-                            >
-                              {field.value ? (
-                                format(field.value, "PPP")
-                              ) : (
-                                <span>Pick a date</span>
-                              )}
-                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={field.value}
-                            onSelect={field.onChange}
-                            disabled={(date) =>
-                              date > new Date() || date < new Date("1900-01-01")
-                            }
-                            initialFocus
-                          />
-                        </PopoverContent>
-                      </Popover>
+                     <FormItem>
+                      <FormLabel>Date (DD/MM/YYYY)</FormLabel>
+                      <FormControl>
+                        <Input placeholder="e.g. 25/12/2024" {...field} />
+                      </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}

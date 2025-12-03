@@ -87,9 +87,7 @@ export const MembershipFormSchema = z.object({
   }),
   applicantName: z.string().min(2, "Applicant name is required."),
   applicantDesignation: z.string().min(2, "Applicant designation is required."),
-  applicantDate: z.date({
-    required_error: "Please select the date of application.",
-  }),
+  applicantDate: z.string().min(1, { message: "Date of application is required." }),
 
 }).refine(data => {
     if (data.coreBusinessActivity === 'other') {
