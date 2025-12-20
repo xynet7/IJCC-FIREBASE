@@ -46,6 +46,9 @@ const regionalChaptersData = [
   { id: "rajSingh", imageUrl: "https://i.postimg.cc/RV5W1scJ/raj.jpg", hint: "man face" },
   { id: "mNazir", imageUrl: "https://i.postimg.cc/Jz7NkNHX/nazir1.jpg", hint: "man face" },
   { id: "lokendraRana", imageUrl: "https://aamidainfotech.com/wp-content/uploads/2021/01/lokendra-rana.jpg", hint: "man face" },
+];
+
+const regionalCoordinatorData = [
   { id: "muazAhmed", imageUrl: "https://i.ibb.co/fYjdtSwp/Mr-Muaz-Ahmed.jpg", hint: "man face" },
 ];
 
@@ -173,6 +176,13 @@ export default function AboutPage() {
         title={t('regionalChaptersTitle')}
         members={regionalChaptersData}
         description={t('regionalChaptersDescription')}
+        t={t}
+      />
+
+      <TeamSection
+        title={t('regionalCoordinatorTitle')}
+        members={regionalCoordinatorData}
+        description={t('regionalCoordinatorDescription')}
         t={t}
       />
 
