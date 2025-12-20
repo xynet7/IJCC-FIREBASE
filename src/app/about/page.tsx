@@ -46,6 +46,7 @@ const regionalChaptersData = [
   { id: "rajSingh", imageUrl: "https://i.postimg.cc/RV5W1scJ/raj.jpg", hint: "man face" },
   { id: "mNazir", imageUrl: "https://i.postimg.cc/Jz7NkNHX/nazir1.jpg", hint: "man face" },
   { id: "lokendraRana", imageUrl: "https://aamidainfotech.com/wp-content/uploads/2021/01/lokendra-rana.jpg", hint: "man face" },
+  { id: "muazAhmed", imageUrl: "https://i.ibb.co/fYjdtSwp/Mr-Muaz-Ahmed.jpg", hint: "man face" },
 ];
 
 const TeamMemberCard = ({ member, name, title, bio }: { member: { imageUrl: string, hint: string }, name: string, title: string, bio: string }) => (
