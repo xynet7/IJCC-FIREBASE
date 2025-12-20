@@ -52,6 +52,10 @@ const regionalCoordinatorData = [
   { id: "muazAhmed", imageUrl: "https://i.ibb.co/fYjdtSwp/Mr-Muaz-Ahmed.jpg", hint: "man face" },
 ];
 
+const programCoordinatorData = [
+    { id: "dhruvHans", imageUrl: "https://i.ibb.co/8D7x8kKq/Mr-Dhruv-Hans-Dhruv.jpg", hint: "man face" },
+];
+
 const TeamMemberCard = ({ member, name, title, bio }: { member: { imageUrl: string, hint: string }, name: string, title: string, bio: string }) => (
   <Dialog>
     <DialogTrigger asChild>
@@ -183,6 +187,13 @@ export default function AboutPage() {
         title={t('regionalCoordinatorTitle')}
         members={regionalCoordinatorData}
         description={t('regionalCoordinatorDescription')}
+        t={t}
+      />
+        
+      <TeamSection
+        title={t('programCoordinatorTitle')}
+        members={programCoordinatorData}
+        description={t('programCoordinatorDescription')}
         t={t}
       />
 
