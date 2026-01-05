@@ -38,7 +38,7 @@ const pricingTiers = [
     },
     {
         id: "startup",
-        title: "Startups / SMEs",
+        title: "Startups / SMEs / Partnerships",
         price: 10000,
         displayPrice: "₹10,000",
         period: "/ year",
