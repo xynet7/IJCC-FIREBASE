@@ -124,10 +124,10 @@
   "team_anjaliSharma_title": "インド最高裁判所弁護士",
   "team_anjaliSharma_bio": "インド最高裁判所の弁護士として、アンジャリ・シャルマ氏は商工会議所に重要な法律顧問を提供しています。彼女の国際法における専門知識は、国境を越えたビジネス取引を行う会員にとって不可欠です。",
   "team_rajSingh_name": "ラージ・シン氏",
-  "team_rajSingh_title": "サンライトコンサルティング取締役（バラナシ）",
+  "team_rajSingh_title": "サンライトコンサルティング取締役",
   "team_rajSingh_bio": "ラージ・シン氏は、商工会議所の設立以来、指導的な力となってきました。サンライトコンサルティングを通じて、彼は印日回廊への参入を目指す企業に戦略的なビジネスアドバイスを提供し続け、バラナシ地域の成長促進に焦点を当てています。",
   "team_lokendraRana_name": "ロケンドラ・ラナ氏",
-  "team_lokendraRana_title": "常務取締役（ガヤ）",
+  "team_lokendraRana_title": "常務取締役",
   "team_lokendraRana_bio": "国際的な販売、マーケティング、運営における豊富な経験を持つロケンドラ・ラナがガヤ支部を率いています。彼の専門知識は、この地域での事業開発を推進し、異文化パートナーシップを育む上で極めて重要です。",
   "team_muazAhmed_name": "ムアズ・アハメド氏",
   "team_muazAhmed_title": "地域コーディネーター",
@@ -616,7 +616,7 @@
   "event_6_time": "午前00時00分～午後00時00分",
   "event_6_location": "オンライン／バーチャル",
   "event_6_description": "近日公開",
-  "contact_title": "ご参加ください",
+  "contact_title": "お問い合わせ",
   "contact_subtitle": "お手伝いさせていただきます。ご質問やお問い合わせは、お気軽にご連絡ください。",
   "contact_officesTitle": "私たちのオフィス",
   "contact_corporateOfficeTitle": "本社",
@@ -650,3 +650,5 @@
   "contactForm_validation_inquiryType": "お問い合わせの種類を選択してください。",
   "contactForm_validation_message": "メッセージは10文字以上である必要があります。"
 }
+
+    

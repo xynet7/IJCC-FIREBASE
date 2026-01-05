@@ -124,10 +124,10 @@
   "team_anjaliSharma_title": "Advocate, Supreme Court of India",
   "team_anjaliSharma_bio": "As an advocate in the Supreme Court of India, Ms. Anjali Sharma provides critical legal counsel to the chamber. Her expertise in international law is essential for members navigating cross-border business transactions.",
   "team_rajSingh_name": "Mr. Raj Singh",
-  "team_rajSingh_title": "Director Sunlite Consulting (Varanasi)",
+  "team_rajSingh_title": "Director Sunlite Consulting",
   "team_rajSingh_bio": "Mr. Raj Singh has been a guiding force since the chamber's inception. Through Sunlite Consulting, he continues to provide strategic business advice to companies looking to enter the Indo-Japan corridor, with a focus on fostering growth in the Varanasi region.",
   "team_lokendraRana_name": "Mr. Lokendra Rana",
-  "team_lokendraRana_title": "Executive Director (Gaya)",
+  "team_lokendraRana_title": "Executive Director",
   "team_lokendraRana_bio": "With extensive experience in international sales, marketing, and operations, Lokendra Rana leads the Gaya chapter. His expertise is pivotal in driving business development and fostering cross-cultural partnerships in the region.",
   "team_muazAhmed_name": "Mr. Muaz Ahmed",
   "team_muazAhmed_title": "Regional Coordinator",
@@ -616,7 +616,7 @@
   "event_6_time": "00:00 AM - 00:00 PM",
   "event_6_location": "Online / Virtual",
   "event_6_description": "Coming Soon",
-  "contact_title": "Join Us",
+  "contact_title": "Contact Us",
   "contact_subtitle": "We're here to help. Reach out to us with any questions or inquiries.",
   "contact_officesTitle": "Our Offices",
   "contact_corporateOfficeTitle": "Corporate Office",
@@ -650,3 +650,5 @@
   "contactForm_validation_inquiryType": "Please select an inquiry type.",
   "contactForm_validation_message": "Message must be at least 10 characters."
 }
+
+    
