@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -22,6 +21,8 @@ const leadershipData = [
   { id: "surajitKalita", imageUrl: "https://i.postimg.cc/4x39GSf0/surajit-removebg-preview.png", hint: "man face" },
   { id: "mukeshRanjan", imageUrl: "https://i.postimg.cc/HnrRBVXS/mukesh-removebg.png", hint: "man face" },
   { id: "muazAhmed", imageUrl: "https://i.ibb.co/fYjdtSwp/Mr-Muaz-Ahmed.jpg", hint: "man face" },
+  { id: "dhruvHans", imageUrl: "https://i.ibb.co/8D7x8kKq/Mr-Dhruv-Hans-Dhruv.jpg", hint: "man face" },
+  { id: "yokoTorii", imageUrl: "https://i.ibb.co/99zx9ZGn/yoko-torii.jpg", hint: "woman face" },
 ];
 
 const advisorsData = [
@@ -46,14 +47,6 @@ const legalTeamData = [
 const regionalChaptersData = [
   { id: "rajSingh", imageUrl: "https://i.postimg.cc/RV5W1scJ/raj.jpg", hint: "man face" },
   { id: "lokendraRana", imageUrl: "https://aamidainfotech.com/wp-content/uploads/2021/01/lokendra-rana.jpg", hint: "man face" },
-];
-
-const programCoordinatorData = [
-    { id: "dhruvHans", imageUrl: "https://i.ibb.co/8D7x8kKq/Mr-Dhruv-Hans-Dhruv.jpg", hint: "man face" },
-];
-
-const travelCoordinatorData = [
-    { id: "yokoTorii", imageUrl: "https://i.ibb.co/99zx9ZGn/yoko-torii.jpg", hint: "woman face" },
 ];
 
 const TeamMemberCard = ({ member, name, title, bio }: { member: { imageUrl: string, hint: string }, name: string, title: string, bio: string }) => (
@@ -180,20 +173,6 @@ export default function AboutPage() {
         title={t('regionalChaptersTitle')}
         members={regionalChaptersData}
         description={t('regionalChaptersDescription')}
-        t={t}
-      />
-        
-      <TeamSection
-        title={t('programCoordinatorTitle')}
-        members={programCoordinatorData}
-        description={t('programCoordinatorDescription')}
-        t={t}
-      />
-
-      <TeamSection
-        title={t('travelCoordinatorTitle')}
-        members={travelCoordinatorData}
-        description={t('travelCoordinatorDescription')}
         t={t}
       />
 
