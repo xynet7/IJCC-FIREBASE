@@ -1,3 +1,4 @@
+
 {
   "greeting": "Hello, World!",
   "welcomeMessage": "Welcome to our application.",
@@ -435,7 +436,7 @@
   "membershipTier_startup_benefit4": "Networking with Japanese incubators & VCs",
   "membershipTier_startup_benefit5": "Visibility on IJCC's startup showcases & newsletters",
   "membershipTier_association_title": "Associations",
-  "membershipTier_association_eligibility": "Non-profit organizations, industry bodies, trade associations, academic institutions, Pvt/Ltd/LLP/Section 8 Companies.",
+  "membershipTier_association_eligibility": "Non-profit organizations, industry bodies, trade associations, academic institutions, Pvt / Ltd / LLP / Section 8 Company.",
   "membershipTier_association_benefit1": "Listing on IJCC website & directories",
   "membershipTier_association_benefit2": "Co-hosting opportunities for events & seminars",
   "membershipTier_association_benefit3": "Access to policy-making forums",
@@ -497,6 +498,7 @@
   "membershipForm_primaryContact_label": "11. Primary Contact Person",
   "membershipForm_primaryContact_placeholder": "e.g. Mr. Akira Sato",
   "membershipForm_designation_label": "Designation",
+  "membershipForm_designation_placeholder": "e.g. Director",
   "membershipForm_mobile_label": "12. Mobile No.",
   "membershipForm_email_label": "13. Email Address",
   "membershipForm_partB_title": "Part B: Japan Collaboration Intent & Business Profile",
