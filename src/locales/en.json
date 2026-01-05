@@ -442,8 +442,8 @@
   "membershipTier_association_benefit3": "Access to policy-making forums",
   "membershipTier_association_benefit4": "Joint advocacy and research initiatives",
   "membershipTier_association_benefit5": "Brand visibility across IJCC platforms",
-  "membershipTier_corporate_title": "Corporates / MSMEs",
-  "membershipTier_corporate_eligibility": "Registered MSMEs, joint ventures, established private limited companies with a Japan interest.",
+  "membershipTier_corporate_title": "Corporates / MSMEs / LLP",
+  "membershipTier_corporate_eligibility": "Registered MSMEs, LLPs, joint ventures, established private limited companies with a Japan interest.",
   "membershipTier_corporate_benefit1": "Listing on IJCC website & business directories",
   "membershipTier_corporate_benefit2": "Priority participation in Indo-Japan trade missions",
   "membershipTier_corporate_benefit3": "Assistance with Japanese business introductions",
@@ -470,7 +470,7 @@
   "membershipForm_tier_individual": "Individual Professionals / Freelancers (₹5,000)",
   "membershipForm_tier_startup": "Startups / SMEs / Partnerships (₹10,000)",
   "membershipForm_tier_association": "Associations (₹15,000)",
-  "membershipForm_tier_corporate": "Corporates / MSMEs (₹25,000)",
+  "membershipForm_tier_corporate": "Corporates / MSMEs / LLP (₹25,000)",
   "membershipForm_tier_largeCorporate": "Large Corporates / Institutions (₹50,000)",
   "membershipForm_legalName_label": "1. Legal Company Name",
   "membershipForm_legalName_placeholder": "e.g. Tanaka Corporation Pvt. Ltd.",
@@ -653,3 +653,5 @@
   "contactForm_validation_inquiryType": "Please select an inquiry type.",
   "contactForm_validation_message": "Message must be at least 10 characters."
 }
+
+    

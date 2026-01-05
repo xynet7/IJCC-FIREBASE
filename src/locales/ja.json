@@ -442,8 +442,8 @@
   "membershipTier_association_benefit3": "政策決定フォーラムへのアクセス",
   "membershipTier_association_benefit4": "共同の提唱活動と研究イニシアチブ",
   "membershipTier_association_benefit5": "IJCCプラットフォーム全体でのブランドの可視性",
-  "membershipTier_corporate_title": "法人／MSME",
-  "membershipTier_corporate_eligibility": "登録MSME、合弁会社、日本に関心のある設立された非公開有限会社。",
+  "membershipTier_corporate_title": "法人／MSME／LLP",
+  "membershipTier_corporate_eligibility": "登録MSME、LLP、合弁会社、日本に関心のある設立された非公開有限会社。",
   "membershipTier_corporate_benefit1": "IJCCウェブサイト＆ビジネスディレクトリへの掲載",
   "membershipTier_corporate_benefit2": "印日貿易ミッションへの優先参加",
   "membershipTier_corporate_benefit3": "日本のビジネス紹介の支援",
@@ -470,7 +470,7 @@
   "membershipForm_tier_individual": "個人専門家／フリーランサー（₹5,000）",
   "membershipForm_tier_startup": "スタートアップ／中小企業／パートナーシップ（₹10,000）",
   "membershipForm_tier_association": "協会（₹15,000）",
-  "membershipForm_tier_corporate": "法人／MSME（₹25,000）",
+  "membershipForm_tier_corporate": "法人／MSME／LLP（₹25,000）",
   "membershipForm_tier_largeCorporate": "大企業／機関（₹50,000）",
   "membershipForm_legalName_label": "1. 会社法人名",
   "membershipForm_legalName_placeholder": "例：タナカ株式会社",
@@ -653,3 +653,5 @@
   "contactForm_validation_inquiryType": "お問い合わせの種類を選択してください。",
   "contactForm_validation_message": "メッセージは10文字以上である必要があります。"
 }
+
+    
