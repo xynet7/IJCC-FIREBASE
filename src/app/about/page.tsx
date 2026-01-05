@@ -21,6 +21,7 @@ const leadershipData = [
   { id: "neelamRamaiah", imageUrl: "https://i.postimg.cc/L5nGMJBJ/neelam-removebg-preview.png", hint: "woman face" },
   { id: "surajitKalita", imageUrl: "https://i.postimg.cc/4x39GSf0/surajit-removebg-preview.png", hint: "man face" },
   { id: "mukeshRanjan", imageUrl: "https://i.postimg.cc/HnrRBVXS/mukesh-removebg.png", hint: "man face" },
+  { id: "muazAhmed", imageUrl: "https://i.ibb.co/fYjdtSwp/Mr-Muaz-Ahmed.jpg", hint: "man face" },
 ];
 
 const advisorsData = [
@@ -45,10 +46,6 @@ const legalTeamData = [
 const regionalChaptersData = [
   { id: "rajSingh", imageUrl: "https://i.postimg.cc/RV5W1scJ/raj.jpg", hint: "man face" },
   { id: "lokendraRana", imageUrl: "https://aamidainfotech.com/wp-content/uploads/2021/01/lokendra-rana.jpg", hint: "man face" },
-];
-
-const regionalCoordinatorData = [
-  { id: "muazAhmed", imageUrl: "https://i.ibb.co/fYjdtSwp/Mr-Muaz-Ahmed.jpg", hint: "man face" },
 ];
 
 const programCoordinatorData = [
@@ -183,13 +180,6 @@ export default function AboutPage() {
         title={t('regionalChaptersTitle')}
         members={regionalChaptersData}
         description={t('regionalChaptersDescription')}
-        t={t}
-      />
-
-      <TeamSection
-        title={t('regionalCoordinatorTitle')}
-        members={regionalCoordinatorData}
-        description={t('regionalCoordinatorDescription')}
         t={t}
       />
         
