@@ -2,7 +2,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Handshake, School, Lightbulb, Briefcase, Building, Landmark, Globe, Zap, University } from "lucide-react";
+import { Handshake, School, Lightbulb, Briefcase, Building, Landmark, Globe, Zap, University, Plane } from "lucide-react";
 import Link from "next/link";
 import { useTranslation } from "@/hooks/use-translation";
 
@@ -13,7 +13,7 @@ const servicesListRaw = [
     { id: "japanese-smes", icon: <Briefcase className="h-10 w-10 text-primary" /> },
     { id: "company-registration-jp-in", icon: <Building className="h-10 w-10 text-primary" /> },
     { id: "company-registration-in-jp", icon: <Landmark className="h-10 w-10 text-primary" /> },
-    { id: "digital-services", icon: <Globe className="h-10 w-10 text-primary" /> },
+    { id: "digital-services", icon: <Plane className="h-10 w-10 text-primary" /> },
     { id: "startup-support", icon: <Lightbulb className="h-10 w-10 text-primary" /> },
     { id: "management-training", icon: <Zap className="h-10 w-10 text-primary" /> },
 ];

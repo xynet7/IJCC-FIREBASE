@@ -131,10 +131,12 @@ const allServicesData = [
   {
     id: "digital-services",
     categories: [
-      { icon: <Globe className="h-8 w-8 text-primary" />, points: ["servicedetail_digital-services_cat1_point1", "servicedetail_digital-services_cat1_point2", "servicedetail_digital-services_cat1_point3", "servicedetail_digital-services_cat1_point4", "servicedetail_digital-services_cat1_point5"] },
-      { icon: <Megaphone className="h-8 w-8 text-primary" />, points: ["servicedetail_digital-services_cat2_point1", "servicedetail_digital-services_cat2_point2", "servicedetail_digital-services_cat2_point3", "servicedetail_digital-services_cat2_point4", "servicedetail_digital-services_cat2_point5"] },
-      { icon: <Palette className="h-8 w-8 text-primary" />, points: ["servicedetail_digital-services_cat3_point1", "servicedetail_digital-services_cat3_point2", "servicedetail_digital-services_cat3_point3", "servicedetail_digital-services_cat3_point4"] },
-      { icon: <Sparkles className="h-8 w-8 text-primary" />, points: ["servicedetail_digital-services_cat4_point1", "servicedetail_digital-services_cat4_point2", "servicedetail_digital-services_cat4_point3"] },
+      { icon: <Plane className="h-8 w-8 text-primary" />, points: ["servicedetail_digital-services_cat1_point1", "servicedetail_digital-services_cat1_point2", "servicedetail_digital-services_cat1_point3", "servicedetail_digital-services_cat1_point4", "servicedetail_digital-services_cat1_point5"] },
+      { icon: <FileSignature className="h-8 w-8 text-primary" />, points: ["servicedetail_digital-services_cat2_point1", "servicedetail_digital-services_cat2_point2", "servicedetail_digital-services_cat2_point3", "servicedetail_digital-services_cat2_point4", "servicedetail_digital-services_cat2_point5", "servicedetail_digital-services_cat2_point6"] },
+      { icon: <Building2 className="h-8 w-8 text-primary" />, points: ["servicedetail_digital-services_cat3_point1", "servicedetail_digital-services_cat3_point2", "servicedetail_digital-services_cat3_point3", "servicedetail_digital-services_cat3_point4"] },
+      { icon: <GraduationCap className="h-8 w-8 text-primary" />, points: ["servicedetail_digital-services_cat4_point1", "servicedetail_digital-services_cat4_point2", "servicedetail_digital-services_cat4_point3", "servicedetail_digital-services_cat4_point4"] },
+      { icon: <Wallet className="h-8 w-8 text-primary" />, points: ["servicedetail_digital-services_cat5_point1", "servicedetail_digital-services_cat5_point2", "servicedetail_digital-services_cat5_point3", "servicedetail_digital-services_cat5_point4", "servicedetail_digital-services_cat5_point5"] },
+      { icon: <Handshake className="h-8 w-8 text-primary" />, points: ["servicedetail_digital-services_cat6_point1", "servicedetail_digital-services_cat6_point2", "servicedetail_digital-services_cat6_point3", "servicedetail_digital-services_cat6_point4"] },
     ],
   },
   {
