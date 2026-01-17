@@ -45,8 +45,14 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
         };
     } catch (error: any) {
         console.error("CRITICAL: Error calling the AI model in askSiteAssistant:", error.message || error);
+        
+        // --- DEBUGGING CHANGE ---
+        // This will display the actual error message in the chatbot UI.
+        // This is NOT safe for production but is necessary for debugging.
+        const errorMessage = error.message || "An unknown error occurred.";
         return {
-            responseText: "I seem to be having some technical difficulties. Please try again in a moment.",
+            responseText: `DEBUG: Server Error: ${errorMessage}`,
         };
+        // --- END DEBUGGING CHANGE ---
     }
 }
