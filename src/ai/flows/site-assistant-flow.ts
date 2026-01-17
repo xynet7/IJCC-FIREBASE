@@ -21,7 +21,7 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
 
     try {
         const { text } = await ai.generate({
-            model: 'googleai/gemini-1.0-pro',
+            model: 'googleai/gemini-pro',
             prompt: `You are a friendly and helpful assistant for the Indo-Japan Chamber of Commerce website.
                 Your goal is to answer user questions about the organization, its services, membership, events, and resources.
                 
