@@ -29,6 +29,8 @@ const siteAssistantPrompt = ai.definePrompt({
 
       Based on the user's query: "{{{prompt}}}"
 
+      Always respond in the JSON format defined by the output schema.
+
       1.  If the query can be directly answered by a specific page, set the 'navigation' object with the correct 'path' and 'label' for that page. Also provide a brief, introductory response in 'responseText', for example: "Certainly! You can find all the details about our membership options on this page."
       2.  If the query is a general question (e.g., "what is the purpose of IJCC?"), provide a concise answer in 'responseText' and do not include the 'navigation' object.
       3.  Keep your answers brief and professional. Do not make up information. If you don't know the answer, say "I'm not sure about that, but you can find more information on our website or by contacting us."
@@ -48,16 +50,25 @@ const siteAssistantFlow = ai.defineFlow(
         outputSchema: SiteAssistantOutputSchema,
     },
     async (prompt) => {
-        const { output } = await siteAssistantPrompt({ prompt });
+        try {
+            const { output } = await siteAssistantPrompt({ prompt });
 
-        if (!output) {
-            // This case happens if the model doesn't return a parsable JSON object.
-            // We'll return a graceful failure message instead of crashing.
+            if (!output) {
+                // This case happens if the model doesn't return a parsable JSON object.
+                // We'll return a graceful failure message instead of crashing.
+                return {
+                    responseText: "I'm sorry, I couldn't process that request. Could you try rephrasing it?",
+                };
+            }
+            
+            return output;
+        } catch (error) {
+            console.error("Error in siteAssistantFlow:", error);
+            // Return a structured error response that the frontend can handle
+            // This prevents the entire flow from crashing and throwing an unhandled exception.
             return {
-                responseText: "I'm sorry, I couldn't process that request. Could you try rephrasing it?",
+                responseText: "I seem to be having some technical difficulties. Please try again in a moment.",
             };
         }
-        
-        return output;
     }
 );
