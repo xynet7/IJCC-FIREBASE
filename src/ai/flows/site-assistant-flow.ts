@@ -21,7 +21,7 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
 
     try {
         const { text } = await ai.generate({
-            model: 'googleai/gemini-pro',
+            model: 'googleai/gemini-1.0-pro',
             prompt: `You are a friendly and helpful assistant for the Indo-Japan Chamber of Commerce website.
                 Your goal is to answer user questions about the organization, its services, membership, events, and resources.
                 
@@ -45,9 +45,8 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
     } catch (error: any) {
         console.error("CRITICAL: Error calling the AI model in askSiteAssistant:", error);
         
-        // Temporarily expose the error message for debugging
         return {
-             responseText: `DEBUG: Server Error: ${error.message}`,
+             responseText: "I seem to be having some technical difficulties. Please try again in a moment.",
         };
     }
 }
