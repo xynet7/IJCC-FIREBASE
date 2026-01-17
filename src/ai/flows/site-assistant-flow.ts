@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview A site assistant AI agent for the IJCC website.
@@ -12,7 +13,6 @@ import { z } from 'zod';
 
 const siteAssistantPrompt = ai.definePrompt({
     name: 'siteAssistantPrompt',
-    model: 'gemini-1.5-flash',
     input: { schema: z.object({ prompt: z.string() }) },
     output: { schema: SiteAssistantOutputSchema },
     prompt: `You are a friendly and helpful assistant for the Indo-Japan Chamber of Commerce website.
@@ -49,6 +49,15 @@ const siteAssistantFlow = ai.defineFlow(
     },
     async (prompt) => {
         const { output } = await siteAssistantPrompt({ prompt });
-        return output!;
+
+        if (!output) {
+            // This case happens if the model doesn't return a parsable JSON object.
+            // We'll return a graceful failure message instead of crashing.
+            return {
+                responseText: "I'm sorry, I couldn't process that request. Could you try rephrasing it?",
+            };
+        }
+        
+        return output;
     }
 );
