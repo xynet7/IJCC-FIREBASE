@@ -26,7 +26,7 @@ const siteAssistantPrompt = ai.definePrompt({
       - Contact Us: /contact
       - Home: /
 
-      Based on the user's query: "{prompt}"
+      Based on the user's query: "{{{prompt}}}"
 
       1.  If the query can be directly answered by a specific page, set the 'navigation' object with the correct 'path' and 'label' for that page. Also provide a brief, introductory response in 'responseText', for example: "Certainly! You can find all the details about our membership options on this page."
       2.  If the query is a general question (e.g., "what is the purpose of IJCC?"), provide a concise answer in 'responseText' and do not include the 'navigation' object.
