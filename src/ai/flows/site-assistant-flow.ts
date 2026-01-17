@@ -11,10 +11,12 @@ import { ai } from '@/ai/genkit';
 import { SiteAssistantOutputSchema, type SiteAssistantOutput } from '@/lib/definitions';
 import { z } from 'zod';
 
+// Simplified the prompt to test core functionality without structured JSON output.
+// This helps isolate whether the connection/API key is the problem.
 const siteAssistantPrompt = ai.definePrompt({
     name: 'siteAssistantPrompt',
     input: { schema: z.object({ prompt: z.string() }) },
-    output: { schema: SiteAssistantOutputSchema },
+    model: 'googleai/gemini-1.5-flash-latest', // Explicitly define a reliable model
     prompt: `You are a friendly and helpful assistant for the Indo-Japan Chamber of Commerce website.
       Your goal is to answer user questions about the organization, its services, membership, events, and resources.
       You have access to the following page information:
@@ -29,11 +31,8 @@ const siteAssistantPrompt = ai.definePrompt({
 
       Based on the user's query: "{{{prompt}}}"
 
-      Always respond in the JSON format defined by the output schema.
-
-      1.  If the query can be directly answered by a specific page, set the 'navigation' object with the correct 'path' and 'label' for that page. Also provide a brief, introductory response in 'responseText', for example: "Certainly! You can find all the details about our membership options on this page."
-      2.  If the query is a general question (e.g., "what is the purpose of IJCC?"), provide a concise answer in 'responseText' and do not include the 'navigation' object.
-      3.  Keep your answers brief and professional. Do not make up information. If you don't know the answer, say "I'm not sure about that, but you can find more information on our website or by contacting us."
+      Provide a concise answer. Do not make up information. If you don't know the answer, say "I'm not sure about that, but you can find more information on our website or by contacting us."
+      If you think the user should visit a page, suggest it in your response, for example: "You can find information about membership on the /members page."
       `,
 });
 
@@ -51,21 +50,24 @@ const siteAssistantFlow = ai.defineFlow(
     },
     async (prompt) => {
         try {
-            const { output } = await siteAssistantPrompt({ prompt });
+            // Call the simplified prompt that returns a simple text response
+            const response = await siteAssistantPrompt({ prompt });
+            const responseText = response.text;
 
-            if (!output) {
-                // This case happens if the model doesn't return a parsable JSON object.
-                // We'll return a graceful failure message instead of crashing.
+            if (!responseText) {
                 return {
                     responseText: "I'm sorry, I couldn't process that request. Could you try rephrasing it?",
                 };
             }
             
-            return output;
+            // Return the raw text response. The frontend component will display it.
+            // This bypasses any potential JSON parsing errors for now.
+            return {
+                responseText: responseText,
+            };
         } catch (error) {
             console.error("Error in siteAssistantFlow:", error);
-            // Return a structured error response that the frontend can handle
-            // This prevents the entire flow from crashing and throwing an unhandled exception.
+            // This catch block is triggered if the call to the AI model fails.
             return {
                 responseText: "I seem to be having some technical difficulties. Please try again in a moment.",
             };
