@@ -12,13 +12,6 @@ import { type SiteAssistantOutput } from '@/lib/definitions';
 
 export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOutput> {
     
-    // For debugging purposes, let's return a static response to confirm the flow is working.
-    // This will help isolate the issue to the AI model call.
-    return {
-        responseText: `I received your message: "${prompt}". The connection to the AI service is still being debugged. Thank you for your patience.`,
-    };
-
-    /*
     if (!process.env.GEMINI_API_KEY) {
         console.error("GEMINI_API_KEY is not set in the environment.");
         return {
@@ -56,5 +49,4 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
             responseText: "I seem to be having some technical difficulties. Please try again in a moment.",
         };
     }
-    */
 }
