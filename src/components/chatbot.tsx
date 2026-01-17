@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -114,7 +113,7 @@ export function Chatbot() {
         className="w-80 md:w-96 rounded-xl shadow-2xl p-0 border-0"
         sideOffset={16}
       >
-        <Card className="w-full h-[60vh] flex flex-col border-0">
+        <Card className="w-full h-[60vh] flex flex-col border-0 rounded-xl overflow-hidden">
           <CardHeader className="flex-row items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="p-2 bg-primary/10 rounded-full">
