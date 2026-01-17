@@ -21,7 +21,7 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
 
     try {
         const { text } = await ai.generate({
-            model: 'googleai/gemini-1.5-flash', 
+            model: 'googleai/gemini-pro',
             prompt: `You are a friendly and helpful assistant for the Indo-Japan Chamber of Commerce website.
                 Your goal is to answer user questions about the organization, its services, membership, events, and resources.
                 
@@ -34,7 +34,6 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
         const responseText = text;
 
         if (!responseText) {
-            console.error("AI model returned an empty response.");
             return {
                 responseText: "I'm sorry, I couldn't process that request. Could you try rephrasing it?",
             };
@@ -46,8 +45,9 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
     } catch (error: any) {
         console.error("CRITICAL: Error calling the AI model in askSiteAssistant:", error);
         
+        // Temporarily expose the error message for debugging
         return {
-            responseText: "I seem to be having some technical difficulties. Please try again in a moment.",
+             responseText: `DEBUG: Server Error: ${error.message}`,
         };
     }
 }
