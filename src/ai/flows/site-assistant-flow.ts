@@ -21,7 +21,7 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
 
     try {
         const { text } = await ai.generate({
-            model: 'googleai/gemini-1.5-flash-latest', 
+            model: 'googleai/gemini-1.5-flash', 
             prompt: `You are a friendly and helpful assistant for the Indo-Japan Chamber of Commerce website.
                 Your goal is to answer user questions about the organization, its services, membership, events, and resources.
                 
@@ -44,15 +44,10 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
             responseText: responseText,
         };
     } catch (error: any) {
-        console.error("CRITICAL: Error calling the AI model in askSiteAssistant:", error.message || error);
+        console.error("CRITICAL: Error calling the AI model in askSiteAssistant:", error);
         
-        // --- DEBUGGING CHANGE ---
-        // This will display the actual error message in the chatbot UI.
-        // This is NOT safe for production but is necessary for debugging.
-        const errorMessage = error.message || "An unknown error occurred.";
         return {
-            responseText: `DEBUG: Server Error: ${errorMessage}`,
+            responseText: "I seem to be having some technical difficulties. Please try again in a moment.",
         };
-        // --- END DEBUGGING CHANGE ---
     }
 }
