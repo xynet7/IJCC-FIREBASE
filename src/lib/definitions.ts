@@ -131,3 +131,13 @@ export const RazorpayVerificationSchema = z.object({
   razorpay_payment_id: z.string(),
   razorpay_signature: z.string(),
 });
+
+export const SiteAssistantOutputSchema = z.object({
+  responseText: z.string().describe("The text-based response to the user's query."),
+  navigation: z.object({
+    path: z.string().describe("The URL path to navigate to (e.g., '/about')."),
+    label: z.string().describe("The user-friendly name of the page (e.g., 'About Us').")
+  }).optional().describe("An optional navigation suggestion if the query can be answered by a specific page.")
+});
+
+export type SiteAssistantOutput = z.infer<typeof SiteAssistantOutputSchema>;
