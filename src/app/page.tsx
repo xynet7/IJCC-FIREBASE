@@ -24,7 +24,7 @@ const partners = [
 const heroItems = [
    {
     type: 'video',
-    src: "https://www.youtube.com/embed/WLIv7HnZ_fE?autoplay=1&mute=1&controls=0&loop=1&playlist=WLIv7HnZ_fE",
+    src: "https://www.youtube.com/embed/_JzU0rmDaCg?autoplay=1&mute=1&controls=0&loop=1&playlist=_JzU0rmDaCg",
     alt: "Indo-Japan collaboration video",
   },
   {
@@ -264,5 +264,3 @@ export default function Home() {
     </>
   );
 }
-
-    
