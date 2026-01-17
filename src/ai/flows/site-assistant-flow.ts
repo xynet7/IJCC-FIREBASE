@@ -11,6 +11,14 @@ import { ai } from '@/ai/genkit';
 import { type SiteAssistantOutput } from '@/lib/definitions';
 
 export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOutput> {
+    
+    // For debugging purposes, let's return a static response to confirm the flow is working.
+    // This will help isolate the issue to the AI model call.
+    return {
+        responseText: `I received your message: "${prompt}". The connection to the AI service is still being debugged. Thank you for your patience.`,
+    };
+
+    /*
     if (!process.env.GEMINI_API_KEY) {
         console.error("GEMINI_API_KEY is not set in the environment.");
         return {
@@ -19,9 +27,8 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
     }
 
     try {
-        // Using a highly reliable, standard model to ensure availability.
         const { text } = await ai.generate({
-            model: 'googleai/gemini-1.5-flash-latest', // Switched to a more standard and reliable model
+            model: 'googleai/gemini-1.5-flash-latest', 
             prompt: `You are a friendly and helpful assistant for the Indo-Japan Chamber of Commerce website.
                 Your goal is to answer user questions about the organization, its services, membership, events, and resources.
                 
@@ -44,10 +51,10 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
             responseText: responseText,
         };
     } catch (error: any) {
-        // Log the specific error to the server console for better debugging.
         console.error("CRITICAL: Error calling the AI model in askSiteAssistant:", error.message || error);
         return {
             responseText: "I seem to be having some technical difficulties. Please try again in a moment.",
         };
     }
+    */
 }
