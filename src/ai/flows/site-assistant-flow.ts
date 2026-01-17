@@ -12,6 +12,7 @@ import { z } from 'zod';
 
 const siteAssistantPrompt = ai.definePrompt({
     name: 'siteAssistantPrompt',
+    model: 'gemini-1.5-flash',
     input: { schema: z.object({ prompt: z.string() }) },
     output: { schema: SiteAssistantOutputSchema },
     prompt: `You are a friendly and helpful assistant for the Indo-Japan Chamber of Commerce website.
