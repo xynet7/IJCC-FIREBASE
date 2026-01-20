@@ -46,7 +46,7 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
         console.error("CRITICAL: Error calling the AI model in askSiteAssistant:", error);
         
         return {
-             responseText: `DEBUG: Server Error: ${error.message}`,
+             responseText: "I seem to be having some technical difficulties. Please try again in a moment.",
         };
     }
 }
