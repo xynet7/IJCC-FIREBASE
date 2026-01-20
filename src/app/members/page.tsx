@@ -31,6 +31,7 @@ const members = [
     { name: "India Cellular & Electronics Association", href: "https://icea.org.in/", logoUrl: "https://timestech.in/wp-content/uploads/2025/08/Untitled-design-2025-08-04T153554.381.jpg", hint: "organization logo" },
     { name: "The Shipbuilders' Association of Japan", href: "https://www.seaj.or.jp/", logoUrl: "https://www.seaj.or.jp/images/logo.png", hint: "organization logo" },
     { name: "Enpointe Adwisers", href: "https://enpointeadwisers.com/", logoUrl: "https://enpointeadwisers.com/wp-content/uploads/2024/02/EPA-Logo-Black.png", hint: "company logo" },
+    { name: "BLS International", href: "https://www.blsinternational.com/", logoUrl: "https://www.blsinternational.com/assets/images/bls-logo.png", hint: "company logo" },
 ];
 
 
