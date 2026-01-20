@@ -270,6 +270,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.harkesh.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   env: {

@@ -32,6 +32,7 @@ const members = [
     { name: "The Shipbuilders' Association of Japan", href: "https://www.seaj.or.jp/", logoUrl: "https://www.seaj.or.jp/images/logo.png", hint: "organization logo" },
     { name: "Enpointe Adwisers", href: "https://enpointeadwisers.com/", logoUrl: "https://enpointeadwisers.com/wp-content/uploads/2024/02/EPA-Logo-Black.png", hint: "company logo" },
     { name: "BLS International", href: "https://www.blsinternational.com/", logoUrl: "https://www.blsinternational.com/assets/images/bls-logo.png", hint: "company logo" },
+    { name: "Harkesh", href: "https://www.harkesh.com/", logoUrl: "https://www.harkesh.com/wp-content/uploads/2020/09/logo.png", hint: "company logo" },
 ];
 
 
