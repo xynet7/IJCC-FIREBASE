@@ -276,6 +276,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'sumankhaitanco.in',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   env: {

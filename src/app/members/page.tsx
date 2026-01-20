@@ -33,6 +33,7 @@ const members = [
     { name: "Enpointe Adwisers", href: "https://enpointeadwisers.com/", logoUrl: "https://enpointeadwisers.com/wp-content/uploads/2024/02/EPA-Logo-Black.png", hint: "company logo" },
     { name: "BLS International", href: "https://www.blsinternational.com/", logoUrl: "https://www.blsinternational.com/assets/images/bls-logo.png", hint: "company logo" },
     { name: "Harkesh", href: "https://www.harkesh.com/", logoUrl: "https://www.harkesh.com/wp-content/uploads/2020/09/logo.png", hint: "company logo" },
+    { name: "Suman Khaitan & Co", href: "https://sumankhaitanco.in/", logoUrl: "https://sumankhaitanco.in/wp-content/uploads/2020/01/toplogo.png", hint: "company logo" },
 ];
 
 
