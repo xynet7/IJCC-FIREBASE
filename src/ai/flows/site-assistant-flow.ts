@@ -8,7 +8,7 @@
  */
 
 import { ai } from '@/ai/genkit';
-import { type SiteAssistantOutput } from '@/lib/definitions';
+import type { SiteAssistantOutput } from '@/lib/definitions';
 
 export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOutput> {
     
@@ -21,7 +21,7 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
 
     try {
         const { text } = await ai.generate({
-            model: 'googleai/gemini-pro',
+            model: 'gemini-pro',
             prompt: `You are a friendly and helpful assistant for the Indo-Japan Chamber of Commerce website.
                 Your goal is to answer user questions about the organization, its services, membership, events, and resources.
                 
@@ -46,7 +46,7 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
         console.error("CRITICAL: Error calling the AI model in askSiteAssistant:", error);
         
         return {
-             responseText: "I seem to be having some technical difficulties. Please try again in a moment.",
+             responseText: `DEBUG: Server Error: ${error.message}`,
         };
     }
 }
