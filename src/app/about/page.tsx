@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -18,7 +19,7 @@ const leadershipData = [
   { id: "gajendraBadgujar", imageUrl: "https://i.postimg.cc/25KMJ8NH/gajendra1.jpg", hint: "man face" },
   { id: "prakashYadav", imageUrl: "https://i.postimg.cc/9QnxQ442/prakash2.jpg", hint: "man face" },
   { id: "neelamRamaiah", imageUrl: "https://i.postimg.cc/L5nGMJBJ/neelam-removebg-preview.png", hint: "woman face" },
-  { id: "surajitKalita", imageUrl: "https://i.postimg.cc/4x39GSf0/surajit-removebg-preview.png", hint: "man face" },
+  { id: "surajitKalita", imageUrl: "https://i.ibb.co/xcg7tmW/sujit.jpg", hint: "man face" },
   { id: "mukeshRanjan", imageUrl: "https://i.postimg.cc/HnrRBVXS/mukesh-removebg.png", hint: "man face" },
   { id: "muazAhmed", imageUrl: "https://i.ibb.co/fYjdtSwp/Mr-Muaz-Ahmed.jpg", hint: "man face" },
   { id: "dhruvHans", imageUrl: "https://i.ibb.co/8D7x8kKq/Mr-Dhruv-Hans-Dhruv.jpg", hint: "man face" },
