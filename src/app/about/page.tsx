@@ -3,7 +3,6 @@
 
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Dialog,
   DialogContent,
@@ -55,10 +54,16 @@ const TeamMemberCard = ({ member, name, title, bio }: { member: { imageUrl: stri
     <DialogTrigger asChild>
       <Card className="text-center transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
         <CardContent className="pt-6">
-          <Avatar className="w-32 h-32 mb-4 border-4 border-primary/20 mx-auto">
-            <AvatarImage src={member.imageUrl} alt={name} data-ai-hint={member.hint} />
-            <AvatarFallback>{name.charAt(0)}</AvatarFallback>
-          </Avatar>
+          <div className="relative w-32 h-40 mx-auto mb-4">
+            <Image
+              src={member.imageUrl}
+              alt={name}
+              layout="fill"
+              objectFit="contain"
+              className="rounded-md"
+              data-ai-hint={member.hint}
+            />
+          </div>
           <h3 className="font-headline text-2xl">{name}</h3>
           <p className="text-primary font-semibold">{title}</p>
         </CardContent>
@@ -67,10 +72,16 @@ const TeamMemberCard = ({ member, name, title, bio }: { member: { imageUrl: stri
     <DialogContent className="sm:max-w-[425px] rounded-2xl">
       <DialogHeader>
         <div className="flex items-center gap-4 mb-4">
-          <Avatar className="w-24 h-24 border-4 border-primary/20">
-            <AvatarImage src={member.imageUrl} alt={name} data-ai-hint={member.hint} />
-            <AvatarFallback>{name.charAt(0)}</AvatarFallback>
-          </Avatar>
+          <div className="relative w-24 h-32 flex-shrink-0">
+            <Image
+              src={member.imageUrl}
+              alt={name}
+              layout="fill"
+              objectFit="contain"
+              className="rounded-md"
+              data-ai-hint={member.hint}
+            />
+          </div>
           <div>
             <DialogTitle className="font-headline text-2xl">{name}</DialogTitle>
             <p className="text-primary font-semibold">{title}</p>
