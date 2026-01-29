@@ -54,7 +54,7 @@ const TeamMemberCard = ({ member, name, title, bio }: { member: { imageUrl: stri
     <DialogTrigger asChild>
       <Card className="text-center transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
         <CardContent className="pt-6">
-          <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
+          <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-2">
             <Image
               src={member.imageUrl}
               alt={name}
@@ -71,7 +71,7 @@ const TeamMemberCard = ({ member, name, title, bio }: { member: { imageUrl: stri
     <DialogContent className="sm:max-w-[425px] rounded-2xl">
       <DialogHeader>
         <div className="flex items-center gap-4 mb-4">
-          <div className="relative w-24 h-24 flex-shrink-0 rounded-full overflow-hidden">
+          <div className="relative w-24 h-24 flex-shrink-0 rounded-full overflow-hidden border-2">
             <Image
               src={member.imageUrl}
               alt={name}
