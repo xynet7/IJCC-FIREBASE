@@ -18,9 +18,9 @@ import { useTranslation } from "@/hooks/use-translation";
 const eventsData = [
   {
     id: 7,
-    date: "2026-01-30",
+    date: "2025-04-15",
     imageUrl: "https://i.ibb.co/L7dcJzf/Screenshot-2026-01-28-202520.png",
-    hint: "business delegation",
+    hint: "japan immersive program",
     isVertical: false,
     href: "/contact"
   },
