@@ -14,13 +14,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useTranslation } from "@/hooks/use-translation";
+import placeholders from "@/app/lib/placeholder-images.json";
 
 const eventsData = [
   {
     id: 8,
     date: "2026-04-01",
-    imageUrl: "https://i.ibb.co/vrs15qb/event.jpg",
-    hint: "japan immersive program",
+    imageUrl: placeholders.japanImmersivePoster.url,
+    hint: placeholders.japanImmersivePoster.hint,
     isVertical: true,
     href: "/events/japan-immersive-program"
   },
