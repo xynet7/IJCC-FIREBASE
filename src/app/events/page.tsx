@@ -18,11 +18,11 @@ import { useTranslation } from "@/hooks/use-translation";
 const eventsData = [
   {
     id: 8,
-    date: "2026-01-16",
+    date: "2026-04-01",
     imageUrl: "https://i.ibb.co/vrs15qb/event.jpg",
-    hint: "business delegation",
+    hint: "japan immersive program",
     isVertical: true,
-    href: "/contact"
+    href: "/events/japan-immersive-program"
   },
   {
     id: 7,
@@ -30,7 +30,7 @@ const eventsData = [
     imageUrl: "https://i.ibb.co/L7dcJzf/Screenshot-2026-01-28-202520.png",
     hint: "japan immersive program",
     isVertical: false,
-    href: "/contact"
+    href: "/events/japan-immersive-program"
   },
   {
     id: 1,
