@@ -18,10 +18,10 @@ import { useTranslation } from "@/hooks/use-translation";
 const eventsData = [
   {
     id: 8,
-    date: "2026-06-15",
+    date: "2026-01-16",
     imageUrl: "https://i.ibb.co/vrs15qb/event.jpg",
-    hint: "business summit",
-    isVertical: false,
+    hint: "business delegation",
+    isVertical: true,
     href: "/contact"
   },
   {
@@ -128,8 +128,9 @@ export default function EventsPage() {
               {event.imageUrl && (
                 <Dialog>
                   <DialogTrigger asChild>
-                    <div className={cn("relative flex-shrink-0 cursor-pointer w-full md:w-1/3", 
-                       !event.isVertical && 'md:w-1/2 aspect-video md:aspect-auto'
+                    <div className={cn(
+                        "relative flex-shrink-0 cursor-pointer w-full",
+                        event.isVertical ? "md:w-1/3 aspect-[2/3] md:aspect-auto" : "md:w-1/2 aspect-video md:aspect-auto"
                     )}>
                       <Image 
                           src={event.imageUrl} 
@@ -142,13 +143,13 @@ export default function EventsPage() {
                     </div>
                   </DialogTrigger>
                   <DialogContent className="max-w-4xl p-0">
-                    <div className={cn("relative", event.isVertical ? "aspect-[9/16]" : "aspect-video")}>
+                    <div className={cn("relative", event.isVertical ? "aspect-[2/3] h-[80vh] mx-auto" : "aspect-video")}>
                         <Image src={event.imageUrl} alt={event.title} fill className="object-contain" />
                     </div>
                   </DialogContent>
                 </Dialog>
               )}
-              <div className="flex flex-col justify-between p-6">
+              <div className="flex flex-col justify-between p-6 flex-1">
                 <Link href={event.href || "#"} target={event.href?.startsWith('http') ? "_blank" : "_self"} rel="noopener noreferrer" className={cn("flex flex-col justify-between h-full group", !event.href && "pointer-events-none")}>
                     <div>
                     <CardHeader className="p-0">
