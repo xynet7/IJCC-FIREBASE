@@ -19,7 +19,7 @@ const eventsData = [
   {
     id: 8,
     date: "2026-06-15",
-    imageUrl: "https://picsum.photos/seed/event8/800/400",
+    imageUrl: "https://i.ibb.co/vrs15qb/event.jpg",
     hint: "business summit",
     isVertical: false,
     href: "/contact"
