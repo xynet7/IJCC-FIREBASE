@@ -6,7 +6,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useTranslation } from "@/hooks/use-translation";
 import { 
-  Calendar, 
   Users, 
   Star, 
   GraduationCap, 
@@ -23,6 +22,7 @@ import {
   QrCode
 } from "lucide-react";
 import Link from "next/link";
+import placeholders from "@/app/lib/placeholder-images.json";
 
 export default function JapanImmersiveProgramPage() {
   const { t } = useTranslation();
@@ -67,10 +67,11 @@ export default function JapanImmersiveProgramPage() {
             <div className="sticky top-28 space-y-8">
               <div className="relative aspect-[2/3] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-primary/10 bg-white">
                 <Image
-                  src="https://i.ibb.co/vrs15qb/event.jpg"
-                  alt="Japan Immersive Program Poster"
+                  src={placeholders.japanImmersivePoster.url}
+                  alt="Japan Immersive Program"
                   fill
-                  className="object-contain"
+                  className="object-cover"
+                  data-ai-hint={placeholders.japanImmersivePoster.hint}
                   priority
                 />
               </div>
@@ -103,10 +104,10 @@ export default function JapanImmersiveProgramPage() {
                 </CardHeader>
                 <CardContent className="space-y-4 pt-6">
                   {[
-                    { icon: <Phone />, label: "+91 95993 01261" },
-                    { icon: <Phone />, label: "+91 86383 38422" },
-                    { icon: <Mail />, label: "info@ijcc.in" },
-                    { icon: <Globe />, label: "www.ijcc.in" },
+                    { icon: <Phone className="h-5 w-5" />, label: "+91 95993 01261" },
+                    { icon: <Phone className="h-5 w-5" />, label: "+91 86383 38422" },
+                    { icon: <Mail className="h-5 w-5" />, label: "info@ijcc.in" },
+                    { icon: <Globe className="h-5 w-5" />, label: "www.ijcc.in" },
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-sakura-pink/10 border border-sakura-pink/20">
                       <div className="text-primary">{item.icon}</div>
@@ -207,10 +208,10 @@ export default function JapanImmersiveProgramPage() {
                 <h2 className="text-4xl font-headline text-primary">{t('immersive_program_safety_title')}</h2>
                 <div className="grid sm:grid-cols-2 gap-8">
                   {[
-                    { title: "Indian Coordinators", content: "Group travel supervised by experienced Indian coordinators.", icon: <ShieldCheck className="text-primary" /> },
-                    { title: "Live Tracking", content: "Safe accommodation with live location tracking technology.", icon: <Navigation className="text-primary" /> },
-                    { title: "Pre-planned Itinerary", content: "Guided movements and pre-planned local support in Japan.", icon: <MapPin className="text-primary" /> },
-                    { title: "IJCC Coordination", content: "Continuous 24/7 coordination by the core IJCC team.", icon: <HeartHandshake className="text-primary" /> },
+                    { title: "Indian Coordinators", content: "Group travel supervised by experienced Indian coordinators.", icon: <ShieldCheck className="h-6 w-6 text-primary" /> },
+                    { title: "Live Tracking", content: "Safe accommodation with live location tracking technology.", icon: <Navigation className="h-6 w-6 text-primary" /> },
+                    { title: "Pre-planned Itinerary", content: "Guided movements and pre-planned local support in Japan.", icon: <MapPin className="h-6 w-6 text-primary" /> },
+                    { title: "IJCC Coordination", content: "Continuous 24/7 coordination by the core IJCC team.", icon: <HeartHandshake className="h-6 w-6 text-primary" /> },
                   ].map((item, i) => (
                     <div key={i} className="flex gap-4">
                       <div className="bg-primary/10 p-3 rounded-full h-fit mt-1">
