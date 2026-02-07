@@ -17,6 +17,14 @@ import { useTranslation } from "@/hooks/use-translation";
 
 const eventsData = [
   {
+    id: 8,
+    date: "2026-06-15",
+    imageUrl: "https://picsum.photos/seed/event8/800/400",
+    hint: "business summit",
+    isVertical: false,
+    href: "/contact"
+  },
+  {
     id: 7,
     date: "2025-04-15",
     imageUrl: "https://i.ibb.co/L7dcJzf/Screenshot-2026-01-28-202520.png",
