@@ -84,13 +84,15 @@ export default function JapanImmersiveProgramPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-8 space-y-6 text-center">
-                  <div className="relative aspect-square w-48 mx-auto flex items-center justify-center rounded-xl border-2 border-primary/10 overflow-hidden bg-white shadow-inner">
+                  <div className="relative w-48 h-48 mx-auto flex items-center justify-center rounded-xl border-2 border-primary/10 overflow-hidden bg-white shadow-inner">
                     <Image
                       src={placeholders.japanImmersiveQr.url}
                       alt="Registration QR Code"
-                      fill
+                      width={200}
+                      height={200}
                       className="object-contain p-2"
                       data-ai-hint={placeholders.japanImmersiveQr.hint}
+                      unoptimized
                     />
                   </div>
                   <p className="text-sm text-muted-foreground">
