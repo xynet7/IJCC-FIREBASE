@@ -3,5 +3,9 @@
   "japanImmersivePoster": {
     "url": "https://i.pinimg.com/736x/d3/c6/be/d3c6beaef44875abe86ab436be930ac0.jpg",
     "hint": "japan scenery"
+  },
+  "japanImmersiveQr": {
+    "url": "https://i.ibb.co/99YQZPp/IMG-20250128-WA0001.jpg",
+    "hint": "qr code"
   }
 }

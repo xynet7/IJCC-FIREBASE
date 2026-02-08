@@ -84,9 +84,14 @@ export default function JapanImmersiveProgramPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-8 space-y-6 text-center">
-                  <div className="bg-muted aspect-square w-48 mx-auto flex items-center justify-center rounded-xl border-2 border-dashed border-primary/30">
-                    <QrCode className="h-24 w-24 text-primary opacity-20" />
-                    <span className="absolute text-xs font-semibold text-primary/60">Scan QR Code to Register</span>
+                  <div className="relative aspect-square w-48 mx-auto flex items-center justify-center rounded-xl border-2 border-primary/10 overflow-hidden bg-white shadow-inner">
+                    <Image
+                      src={placeholders.japanImmersiveQr.url}
+                      alt="Registration QR Code"
+                      fill
+                      className="object-contain p-2"
+                      data-ai-hint={placeholders.japanImmersiveQr.hint}
+                    />
                   </div>
                   <p className="text-sm text-muted-foreground">
                     Scan the QR above or click the button below to land on our official registration form.
