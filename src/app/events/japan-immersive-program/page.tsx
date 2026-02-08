@@ -96,13 +96,11 @@ export default function JapanImmersiveProgramPage() {
                     />
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Scan the QR above or click the button below to land on our official registration form.
+                    Please scan the QR code above using your mobile device to access the official registration form.
                   </p>
-                  <Button asChild className="w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold h-14 shadow-xl">
-                    <Link href="https://forms.gle/your-google-form-link" target="_blank">
-                      {t('immersive_program_booking_button')} <ArrowRight className="ml-2 h-5 w-5" />
-                    </Link>
-                  </Button>
+                  <div className="w-full rounded-full bg-primary/5 text-primary border-2 border-dashed border-primary/30 font-bold h-14 flex items-center justify-center cursor-default">
+                    {t('immersive_program_booking_button')}
+                  </div>
                 </CardContent>
               </Card>
 
