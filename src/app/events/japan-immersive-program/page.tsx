@@ -69,7 +69,7 @@ export default function JapanImmersiveProgramPage() {
               <div className="relative aspect-[2/3] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-primary/10 bg-white">
                 <Image
                   src={placeholders.japanImmersivePoster.url}
-                  alt="Japan Immersive Program"
+                  alt="Japan Immersion Program"
                   fill
                   className="object-cover"
                   data-ai-hint={placeholders.japanImmersivePoster.hint}
@@ -128,7 +128,7 @@ export default function JapanImmersiveProgramPage() {
           {/* Right Column: Detailed Content */}
           <div className="lg:col-span-2 space-y-16">
             
-            {/* Who Should Attend */}
+            {/* Program Section Branding */}
             <section className="space-y-8">
               <h2 className="text-4xl font-headline text-primary border-b-4 border-accent/30 pb-2 inline-block">
                 {t('immersive_program_who_title')}
