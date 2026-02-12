@@ -110,7 +110,7 @@ export default function JapanImmersiveProgramPage() {
                 </CardHeader>
                 <CardContent className="space-y-4 pt-6">
                   {[
-                    { icon: <Phone className="h-5 w-5" />, label: "+91 95993 01261" },
+                    { icon: <Phone className="h-5 w-5" />, label: "+91 92679 19281" },
                     { icon: <Phone className="h-5 w-5" />, label: "+91 86383 38422" },
                     { icon: <Mail className="h-5 w-5" />, label: "info@ijcc.in" },
                     { icon: <Globe className="h-5 w-5" />, label: "www.ijcc.in" },

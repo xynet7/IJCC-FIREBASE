@@ -196,7 +196,7 @@ export function MembershipDetails() {
              </div>
              <div className="flex items-center gap-2">
                 <Phone className="h-5 w-5 text-primary" />
-                <span>+91-9599301261</span>
+                <span>+91-92679 19281</span>
              </div>
              <div className="flex items-center gap-2">
                 <Globe className="h-5 w-5 text-primary" />
