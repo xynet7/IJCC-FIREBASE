@@ -28,8 +28,8 @@ const eventsData = [
   {
     id: 7,
     date: "2025-04-15",
-    imageUrl: "https://i.ibb.co/L7dcJzf/Screenshot-2026-01-28-202520.png",
-    hint: "japan immersive program",
+    imageUrl: placeholders.japanImmersivePoster.url,
+    hint: placeholders.japanImmersivePoster.hint,
     isVertical: false,
     href: "/events/japan-immersive-program"
   },
