@@ -77,7 +77,7 @@ export default function JapanImmersiveProgramPage() {
                 />
               </div>
               
-              <Card className="border-2 border-primary shadow-lg overflow-hidden">
+              <Card id="registration-section" className="border-2 border-primary shadow-lg overflow-hidden scroll-mt-28">
                 <CardHeader className="bg-primary text-primary-foreground text-center">
                   <CardTitle className="text-2xl font-headline flex items-center justify-center gap-2">
                     <QrCode className="h-6 w-6" /> {t('immersive_program_registration_title')}
@@ -274,9 +274,9 @@ export default function JapanImmersiveProgramPage() {
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-6">
                   <Button size="lg" asChild className="rounded-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-12 h-16 text-xl shadow-2xl uppercase tracking-widest">
-                    <Link href="https://forms.gle/your-google-form-link" target="_blank">Book Now</Link>
+                    <Link href="#registration-section">Book Now</Link>
                   </Button>
-                  <Button size="lg" variant="outline" asChild className="rounded-full border-2 border-white text-white hover:bg-white hover:text-primary font-bold px-12 h-16 text-xl">
+                  <Button size="lg" asChild className="rounded-full bg-white text-primary hover:bg-white/90 font-bold px-12 h-16 text-xl shadow-xl">
                     <Link href="/contact">Enquire Today</Link>
                   </Button>
                 </div>
