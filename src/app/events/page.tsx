@@ -25,14 +25,6 @@ const eventsData = [
     href: "/events/japan-immersive-program"
   },
   {
-    id: 7,
-    date: "2025-04-15",
-    imageUrl: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80",
-    hint: "japanese temple",
-    isVertical: false,
-    href: "/events/japan-immersive-program"
-  },
-  {
     id: 1,
     date: "2026-03-09",
     imageUrl: "https://i.ibb.co/Ngg6ZF2p/japanese-event-for-doc.jpg",
