@@ -28,8 +28,8 @@ const eventsData = [
   {
     id: 7,
     date: "2025-04-15",
-    imageUrl: placeholders.japanImmersivePoster.url,
-    hint: placeholders.japanImmersivePoster.hint,
+    imageUrl: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80",
+    hint: "japanese temple",
     isVertical: false,
     href: "/events/japan-immersive-program"
   },
