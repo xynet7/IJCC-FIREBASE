@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar as CalendarIcon, Clock, MapPin } from "lucide-react";
+import { Calendar as CalendarIcon, Clock, MapPin, ArrowRight } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState, useEffect } from "react";
@@ -116,7 +116,7 @@ export default function EventsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
           {events.map((event, index) => (
-            <Card key={index} className={cn("flex flex-col overflow-hidden md:flex-row")}>
+            <Card key={index} className={cn("flex flex-col overflow-hidden md:flex-row shadow-md hover:shadow-lg transition-shadow")}>
               {event.imageUrl && (
                 <Dialog>
                   <DialogTrigger asChild>
@@ -146,7 +146,7 @@ export default function EventsPage() {
                     <div>
                     <CardHeader className="p-0">
                         <CardTitle className="font-headline text-xl group-hover:underline">{event.title}</CardTitle>
-                        <CardDescription className="pt-2">{event.description}</CardDescription>
+                        <CardDescription className="pt-2 line-clamp-3">{event.description}</CardDescription>
                     </CardHeader>
                     <CardContent className="grid sm:grid-cols-2 gap-4 text-sm p-0 pt-4">
                         <div className="flex items-center gap-2">
@@ -163,6 +163,14 @@ export default function EventsPage() {
                         </div>
                     </CardContent>
                     </div>
+                    {event.href && (
+                      <div className="mt-6">
+                        <span className="inline-flex items-center justify-center rounded-full bg-primary/10 px-5 py-2 text-sm font-bold text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                          {event.href.includes('/events/') ? 'Explore Program' : 'Learn More'} 
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </span>
+                      </div>
+                    )}
                 </Link>
               </div>
             </Card>
