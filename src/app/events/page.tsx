@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Calendar as CalendarIcon, Clock, MapPin } from "lucide-react";
