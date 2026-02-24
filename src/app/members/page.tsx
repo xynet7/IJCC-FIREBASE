@@ -34,6 +34,7 @@ const members = [
     { name: "BLS International", href: "https://www.blsinternational.com/", logoUrl: "https://www.blsinternational.com/assets/images/bls-logo.png", hint: "company logo" },
     { name: "Harkesh", href: "https://www.harkesh.com/", logoUrl: "https://www.harkesh.com/wp-content/uploads/2020/09/logo.png", hint: "company logo" },
     { name: "Suman Khaitan & Co", href: "https://sumankhaitanco.in/", logoUrl: "https://sumankhaitanco.in/wp-content/uploads/2020/01/toplogo.png", hint: "company logo" },
+    { name: "Bhoruka Extrusions", href: "https://bhorukaextrusions.com/", logoUrl: "https://i0.wp.com/bhorukaextrusions.com/wp-content/uploads/2023/03/215x68_logo.png?fit=215%2C68&ssl=1", hint: "company logo" },
 ];
 
 
@@ -69,7 +70,7 @@ export default function MembersPage() {
           {members.map((member) => (
             <Link href={member.href} key={member.name} target="_blank" rel="noopener noreferrer" className="block">
               <Card className="flex items-center justify-center p-6 h-40 transition-transform transform hover:scale-105 hover:shadow-lg">
-                <CardContent className="p-0 flex items-center justify-center h-full">
+                <CardContent className="p-0 flex items-center justify-center h-full w-full">
                     <Image 
                         src={member.logoUrl} 
                         alt={member.name} 
