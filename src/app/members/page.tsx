@@ -35,6 +35,7 @@ const members = [
     { name: "Harkesh", href: "https://www.harkesh.com/", logoUrl: "https://www.harkesh.com/wp-content/uploads/2020/09/logo.png", hint: "company logo" },
     { name: "Suman Khaitan & Co", href: "https://sumankhaitanco.in/", logoUrl: "https://sumankhaitanco.in/wp-content/uploads/2020/01/toplogo.png", hint: "company logo" },
     { name: "Bhoruka Extrusions", href: "https://bhorukaextrusions.com/", logoUrl: "https://i0.wp.com/bhorukaextrusions.com/wp-content/uploads/2023/03/215x68_logo.png?fit=215%2C68&ssl=1", hint: "company logo" },
+    { name: "Digitup Solutions", href: "https://www.digitup.in", logoUrl: "https://images.ctfassets.net/y2mincmqvg0k/5mgIg4WYjVs3S4EbjYcMqy/e46f1cce42fc0813566f4f7c96a53ce3/header-logo-digitup-solutions-pvt-ltd.svg", hint: "company logo" },
 ];
 
 
