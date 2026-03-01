@@ -132,6 +132,9 @@ export const RazorpayVerificationSchema = z.object({
   razorpay_signature: z.string(),
 });
 
+/**
+ * AI Site Assistant Structured Output Schema
+ */
 export const SiteAssistantOutputSchema = z.object({
   responseText: z.string().describe("The text-based response to the user's query."),
   navigation: z.object({

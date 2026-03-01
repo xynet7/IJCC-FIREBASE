@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview A site assistant AI agent for the IJCC website.
@@ -11,7 +12,7 @@ import { z } from 'genkit';
 import { SiteAssistantOutputSchema, type SiteAssistantOutput } from '@/lib/definitions';
 
 /**
- * Handles user queries about the IJCC website.
+ * Handles user queries about the IJCC website using a Genkit flow.
  * @param prompt The user's input string.
  * @returns A structured response containing text and optional navigation data.
  */
@@ -19,16 +20,16 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
     if (!process.env.GEMINI_API_KEY) {
         console.error("GEMINI_API_KEY is not set in the environment.");
         return {
-            responseText: "The server is not configured for the AI assistant. Please contact support.",
+            responseText: "The AI assistant is currently offline due to a configuration issue. Please check back later or use the contact form.",
         };
     }
 
     try {
         return await siteAssistantFlow(prompt);
     } catch (error: any) {
-        console.error("CRITICAL: Error in siteAssistantFlow:", error);
+        console.error("Error in askSiteAssistant:", error);
         return {
-             responseText: "I seem to be having some technical difficulties. Please try again in a moment.",
+             responseText: "I'm sorry, I'm having trouble thinking right now. Could you please try asking again?",
         };
     }
 }
@@ -42,31 +43,32 @@ const siteAssistantFlow = ai.defineFlow(
     async (input) => {
         const { output } = await ai.generate({
             model: 'googleai/gemini-1.5-flash',
-            system: `You are a friendly and helpful assistant for the Indo-Japan Chamber of Commerce (IJCC) website.
-                Your goal is to answer user questions about the organization, its services, membership, events, and resources.
+            system: `You are the official digital assistant for the Indo-Japan Chamber of Commerce (IJCC).
+                Your primary goal is to help users find information about IJCC's services, membership, and events.
                 
                 Website Navigation Map:
                 - Home: /
                 - About Us (Leadership, Vision): /about
                 - Services Overview: /services
-                - Japan Immersion Program: /events/japan-immersion-program
+                - Japan Immersion Program (Educational trip for students): /events/japan-immersion-program
                 - Membership Directory (List of members): /members
                 - Membership Pricing & Tiers: /pricing
                 - Membership Application Form: /membership-application
-                - Latest News: /news
+                - Latest News & Articles: /news
                 - Event Calendar: /events
-                - Resource Library (All downloads): /resources
+                - Resource Library (Downloads): /resources
                 - Contact Us (Office locations, email): /contact
                 - JLPT Previous Papers: /resources/jlpt
-                - Marugoto Books: /resources/marugoto-books
-                - IJCC Magazines: /resources/magazines
+                - Marugoto Books (Member resource): /resources/marugoto-books
+                - IJCC Magazines (Member resource): /resources/magazines
                 - Self Study Materials: /resources/self-study
 
                 Guidelines:
-                1. Provide a concise and helpful answer. 
-                2. Do not make up information. If you don't know, suggest they contact IJCC via the /contact page.
-                3. If the user's question relates to a specific page listed above, provide the path and a friendly label in the 'navigation' output field.
-                4. Use a professional yet warm tone.`,
+                1. Be professional, warm, and helpful. 
+                2. Provide concise answers. 
+                3. Always suggest a relevant page using the 'navigation' field if the user's query matches a specific section of the site.
+                4. If you don't know the answer, politely suggest they contact the IJCC office directly via the /contact page.
+                5. Do not make up facts about the organization.`,
             prompt: input,
             output: { schema: SiteAssistantOutputSchema },
         });
