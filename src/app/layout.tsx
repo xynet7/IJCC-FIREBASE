@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import './globals.css';
 import { AppHeader } from '@/components/header';
@@ -69,4 +68,3 @@ export default function RootLayout({
     </html>
   );
 }
-    

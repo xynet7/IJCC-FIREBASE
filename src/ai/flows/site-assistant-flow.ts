@@ -1,4 +1,3 @@
-
 'use server';
 /**
  * @fileOverview A site assistant AI agent for the IJCC website.
@@ -20,7 +19,7 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
     if (!process.env.GEMINI_API_KEY) {
         console.error("GEMINI_API_KEY is not set in the environment.");
         return {
-            responseText: "The AI assistant is currently offline due to a configuration issue. Please check back later or use the contact form.",
+            responseText: "The AI assistant is currently offline because the API key is not configured. Please add GEMINI_API_KEY to your .env file.",
         };
     }
 
