@@ -2,13 +2,10 @@
 'use server';
 /**
  * @fileOverview A site assistant AI agent for the IJCC website.
- *
- * This file exports the following:
- * - askSiteAssistant - An async function that handles user queries using a Genkit flow.
  */
 
 import { ai } from '@/ai/genkit';
-import { z } from 'genkit';
+import { z } from 'zod';
 import { SiteAssistantOutputSchema, type SiteAssistantOutput } from '@/lib/definitions';
 
 /**
@@ -21,12 +18,12 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
     if (!process.env.GEMINI_API_KEY) {
         console.error("CRITICAL: GEMINI_API_KEY is not set in the environment.");
         return {
-            responseText: "The AI assistant is currently offline because the API key is not configured. Please ensure GEMINI_API_KEY is added to the environment.",
+            responseText: "The AI assistant is currently offline because the API key is not configured.",
         };
     }
 
     try {
-        // Using ai.generate directly within the server action for maximum reliability
+        // Using ai.generate with strict output schema
         const { output } = await ai.generate({
             model: 'googleai/gemini-1.5-flash',
             system: `You are the official digital assistant for the Indo-Japan Chamber of Commerce (IJCC).
@@ -36,25 +33,21 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
                 - Home: /
                 - About Us (Leadership, Vision): /about
                 - Services Overview: /services
-                - Japan Immersion Program (Educational trip for students): /events/japan-immersive-program
-                - Membership Directory (List of members): /members
+                - Japan Immersion Program: /events/japan-immersive-program
+                - Membership Directory: /members
                 - Membership Pricing & Tiers: /pricing
                 - Membership Application Form: /membership-application
-                - Latest News & Articles: /news
+                - Latest News: /news
                 - Event Calendar: /events
-                - Resource Library (Downloads): /resources
-                - Contact Us (Office locations, email): /contact
-                - JLPT Previous Papers: /resources/jlpt
-                - Marugoto Books (Member resource): /resources/marugoto-books
-                - IJCC Magazines (Member resource): /resources/magazines
-                - Self Study Materials: /resources/self-study
+                - Resource Library: /resources
+                - Contact Us: /contact
 
                 Guidelines:
                 1. Be professional, warm, and helpful. 
                 2. Provide concise answers. 
-                3. Always suggest a relevant page using the 'navigation' field if the user's query matches a specific section of the site.
-                4. If you don't know the answer, politely suggest they contact the IJCC office directly via the /contact page.
-                5. Do not make up facts about the organization.`,
+                3. If the user asks about something specific, suggest the relevant page in the 'navigation' field.
+                4. If you don't know the answer, suggest they contact the IJCC office via the /contact page.
+                5. IMPORTANT: You must return valid JSON that matches the output schema.`,
             prompt: prompt,
             output: { schema: SiteAssistantOutputSchema },
         });
@@ -69,13 +62,14 @@ export async function askSiteAssistant(prompt: string): Promise<SiteAssistantOut
     } catch (error: any) {
         console.error("Chatbot Flow Error:", error);
         
-        // Return a more descriptive error if it's a safety block or common API issue
+        // Handle specific safety or rate limit errors
         if (error.message?.includes('SAFETY')) {
             return { responseText: "I'm sorry, but I can't answer that question due to safety guidelines." };
         }
         
+        // Fallback response
         return {
-             responseText: "I'm having a bit of trouble connecting to my brain right now. Could you please try asking in a slightly different way?",
+             responseText: "I encountered a technical glitch while thinking. Could you please try rephrasing your question?",
         };
     }
 }
