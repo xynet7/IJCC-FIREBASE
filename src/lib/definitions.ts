@@ -130,16 +130,3 @@ export const RazorpayVerificationSchema = z.object({
   razorpay_payment_id: z.string(),
   razorpay_signature: z.string(),
 });
-
-/**
- * Chatbot Schemas
- */
-export const SiteAssistantOutputSchema = z.object({
-  responseText: z.string().describe("The text response to the user."),
-  suggestedAction: z.object({
-    label: z.string().describe("Text for a button or link."),
-    href: z.string().describe("The URL path to navigate to (e.g. /about)."),
-  }).optional().describe("An optional suggested next step for the user."),
-});
-
-export type SiteAssistantOutput = z.infer<typeof SiteAssistantOutputSchema>;
