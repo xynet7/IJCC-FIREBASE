@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -87,21 +88,21 @@ export function Chatbot() {
         <PopoverTrigger asChild>
           <Button
             size="icon"
-            className="h-12 w-12 rounded-full shadow-xl bg-primary hover:bg-primary/90 transition-all duration-300 transform hover:scale-110"
+            className="h-10 w-10 rounded-full shadow-xl bg-primary hover:bg-primary/90 transition-all duration-300 transform hover:scale-110"
           >
-            {open ? <X className="h-5 w-5" /> : <MessageCircle className="h-5 w-5" />}
+            {open ? <X className="h-4 w-4" /> : <MessageCircle className="h-4 w-4" />}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[300px] p-0 mr-4 mb-2 sm:w-[320px]" align="end" side="top">
+        <PopoverContent className="w-[280px] p-0 mr-4 mb-2 sm:w-[300px]" align="end" side="top">
           <Card className="border-none shadow-none">
-            <CardHeader className="bg-primary text-primary-foreground rounded-t-lg py-3 px-4">
-              <CardTitle className="flex items-center gap-2 text-base font-headline">
-                <Bot className="h-4 w-4" />
+            <CardHeader className="bg-primary text-primary-foreground rounded-t-lg py-2 px-3">
+              <CardTitle className="flex items-center gap-2 text-sm font-headline">
+                <Bot className="h-3.5 w-3.5" />
                 IJCC Assistant
               </CardTitle>
             </CardHeader>
             <CardContent className="p-0">
-              <ScrollArea ref={scrollRef} className="h-[320px] p-3">
+              <ScrollArea ref={scrollRef} className="h-[280px] p-3">
                 <div className="space-y-3">
                   {messages.map((m) => (
                     <div
@@ -112,15 +113,15 @@ export function Chatbot() {
                       )}
                     >
                       <div className={cn(
-                        "h-6 w-6 rounded-full flex items-center justify-center shrink-0",
+                        "h-5 w-5 rounded-full flex items-center justify-center shrink-0",
                         m.role === 'user' ? "bg-accent text-accent-foreground" : "bg-primary/10 text-primary"
                       )}>
-                        {m.role === 'user' ? <User className="h-3 w-3" /> : <Bot className="h-3 w-3" />}
+                        {m.role === 'user' ? <User className="h-2.5 w-2.5" /> : <Bot className="h-2.5 w-2.5" />}
                       </div>
                       <div className="flex flex-col gap-1.5 max-w-[85%]">
                         <div
                           className={cn(
-                            "rounded-xl px-3 py-1.5 text-xs shadow-sm leading-relaxed",
+                            "rounded-xl px-2.5 py-1.5 text-[11px] shadow-sm leading-tight",
                             m.role === 'user'
                               ? "bg-accent text-accent-foreground rounded-tr-none"
                               : "bg-muted text-foreground rounded-tl-none"
@@ -129,7 +130,7 @@ export function Chatbot() {
                           {m.content}
                         </div>
                         {m.action && (
-                          <Button asChild size="sm" variant="outline" className="w-fit rounded-full text-[10px] h-7 px-3">
+                          <Button asChild size="sm" variant="outline" className="w-fit rounded-full text-[9px] h-6 px-2">
                             <Link href={m.action.href}>
                               {m.action.label} <ArrowRight className="ml-1 h-2 w-2" />
                             </Link>
@@ -140,18 +141,18 @@ export function Chatbot() {
                   ))}
                   {isLoading && (
                     <div className="flex gap-2">
-                      <div className="h-6 w-6 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                        <Bot className="h-3 w-3" />
+                      <div className="h-5 w-5 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                        <Bot className="h-2.5 w-2.5" />
                       </div>
-                      <div className="bg-muted rounded-xl rounded-tl-none px-3 py-1.5">
-                        <Loader2 className="h-3 w-3 animate-spin text-primary" />
+                      <div className="bg-muted rounded-xl rounded-tl-none px-2.5 py-1.5">
+                        <Loader2 className="h-2.5 w-2.5 animate-spin text-primary" />
                       </div>
                     </div>
                   )}
                 </div>
               </ScrollArea>
             </CardContent>
-            <CardFooter className="p-3 border-t">
+            <CardFooter className="p-2 border-t">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -160,13 +161,13 @@ export function Chatbot() {
                 className="flex w-full items-center gap-2"
               >
                 <Input
-                  placeholder="Ask a question..."
+                  placeholder="Type a message..."
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  className="flex-1 h-8 text-xs"
+                  className="flex-1 h-7 text-[11px]"
                   disabled={isLoading}
                 />
-                <Button size="icon" type="submit" disabled={isLoading || !input.trim()} className="h-8 w-8">
+                <Button size="icon" type="submit" disabled={isLoading || !input.trim()} className="h-7 w-7">
                   <Send className="h-3 w-3" />
                 </Button>
               </form>
