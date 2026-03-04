@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { AppHeader } from '@/components/header';
@@ -7,6 +8,7 @@ import { CookieBanner } from '@/components/cookie-banner';
 import { AuthProvider } from '@/context/auth-context';
 import Script from 'next/script';
 import { LanguageProvider } from '@/components/language-provider';
+import ChatWidget from "@/components/ChatWidget";
 
 export const metadata: Metadata = {
   title: 'Indo-Japan Chamber of Commerce',
@@ -39,6 +41,7 @@ export default function RootLayout({
             </div>
             <Toaster />
             <CookieBanner />
+            <ChatWidget />
           </LanguageProvider>
         </AuthProvider>
         <Script
