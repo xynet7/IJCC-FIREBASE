@@ -4,14 +4,20 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Allow logged-in users to read and write their own data in the 'users' collection.
+    // Allow users to manage their own profile documents
     match /users/{userId} {
       allow read, update, delete: if request.auth != null && request.auth.uid == userId;
       allow create: if request.auth != null;
     }
 
-    // Allow public read access to other collections if needed.
-    // Be restrictive by default.
+    // Allow the Chatbot Extension to function
+    // This allows users to create chat messages in their own anonymous sessions
+    match /ext_chats/{sessionId}/messages/{messageId} {
+      allow create: if true;
+      allow read: if true;
+    }
+
+    // Default: Allow public read access to other collections, but restrict writes
     match /{document=**} {
       allow read: if true;
       allow write: if false;

@@ -34,7 +34,7 @@ export default function ChatWidget() {
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Generate a session ID if not exists
+  // Generate or retrieve a session ID
   useEffect(() => {
     let sid = localStorage.getItem("ijcc_chat_session");
     if (!sid) {
@@ -44,12 +44,11 @@ export default function ChatWidget() {
     setSessionId(sid);
   }, []);
 
-  // Listen to Firestore for updates from the extension
+  // Listen to Firestore for updates from the Gemini Extension
   useEffect(() => {
     if (!sessionId || !isOpen) return;
 
-    // We watch the 'messages' collection under the session
-    // Adjust 'ext_chats' to match your extension's configured collection path
+    // The extension watches this specific collection path
     const messagesRef = collection(db, "ext_chats", sessionId, "messages");
     const q = query(messagesRef, orderBy("createdAt", "asc"), limit(50));
 
@@ -58,7 +57,7 @@ export default function ChatWidget() {
       snapshot.forEach((doc) => {
         const data = doc.data();
         
-        // Add the User message
+        // Push the user's prompt
         firestoreMsgs.push({
           id: doc.id + "_user",
           role: "user",
@@ -66,7 +65,7 @@ export default function ChatWidget() {
           timestamp: data.createdAt?.toDate() || new Date(),
         });
 
-        // Add the Assistant response if it exists
+        // Push the extension's generated response if it exists
         if (data.response) {
           firestoreMsgs.push({
             id: doc.id + "_assistant",
@@ -77,17 +76,17 @@ export default function ChatWidget() {
         }
       });
 
-      // Combine with welcome message
       if (firestoreMsgs.length > 0) {
         setMessages([WELCOME, ...firestoreMsgs]);
         
-        // If the last message is from assistant and it's new
         const lastMsg = firestoreMsgs[firestoreMsgs.length - 1];
         if (lastMsg.role === "assistant") {
           setIsLoading(false);
           if (!isOpen) setHasNew(true);
         }
       }
+    }, (error) => {
+      console.error("Firestore Snapshot Error:", error);
     });
 
     return () => unsubscribe();
@@ -109,18 +108,17 @@ export default function ChatWidget() {
     setInput("");
 
     try {
-      // Add the prompt to Firestore
-      // The Gemini extension watches this collection and will add a 'response' field
+      // Add the prompt to Firestore for the Extension to process
       await addDoc(collection(db, "ext_chats", sessionId, "messages"), {
         prompt: text.trim(),
         createdAt: serverTimestamp(),
       });
-    } catch (error) {
-      console.error("Firestore error:", error);
+    } catch (error: any) {
+      console.error("Firestore Write Error:", error);
       setMessages(p => [...p, { 
         id: Date.now().toString(), 
         role: "assistant", 
-        content: "I'm having trouble connecting to my database. Please check your internet connection.", 
+        content: `I'm having trouble connecting to the database. Error: ${error.message || 'Permission Denied'}`, 
         timestamp: new Date() 
       }]);
       setIsLoading(false);
@@ -136,7 +134,7 @@ export default function ChatWidget() {
     setSessionId(newSid);
   };
 
-  const S = { // styles
+  const S = {
     btn: { position:"fixed" as const, bottom:"24px", right:"24px", zIndex:9999, width:"60px", height:"60px", borderRadius:"50%", background:"linear-gradient(135deg,#C8102E,#8B0A1F)", border:"none", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"0 8px 32px rgba(200,16,46,0.4)" },
     window: { position:"fixed" as const, bottom:"24px", right:"24px", zIndex:9999, width:"370px", height:isMinimized?"60px":"590px", borderRadius:"16px", boxShadow:"0 20px 60px rgba(0,0,0,0.15)", overflow:"hidden", display:"flex", flexDirection:"column" as const, transition:"height 0.3s ease", background:"#fff", border:"1px solid #e5e7eb" },
     header: { background:"linear-gradient(135deg,#C8102E,#8B0A1F)", padding:"12px 14px", display:"flex", alignItems:"center", justifyContent:"space-between", cursor:"pointer", flexShrink:0 },
@@ -168,7 +166,6 @@ export default function ChatWidget() {
 
       {isOpen && (
         <div style={S.window}>
-          {/* Header */}
           <div style={S.header} onClick={() => setIsMinimized(!isMinimized)}>
             <div style={{ display:"flex", alignItems:"center", gap:"10px" }}>
               <div style={{ width:"36px", height:"36px", borderRadius:"50%", background:"#fff", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
@@ -195,10 +192,8 @@ export default function ChatWidget() {
             </div>
           </div>
 
-          {/* India flag bar */}
           {!isMinimized && <div style={{ height:"3px", background:"linear-gradient(90deg,#FF9933 33%,#fff 33%,#fff 66%,#138808 66%)", flexShrink:0 }} />}
 
-          {/* Messages */}
           {!isMinimized && (
             <div className="ijcc-scroll" style={S.messages}>
               {messages.map((m, i) => (
@@ -221,7 +216,6 @@ export default function ChatWidget() {
             </div>
           )}
 
-          {/* Input */}
           {!isMinimized && (
             <div style={S.input}>
               <div style={S.inputRow}>
