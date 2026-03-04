@@ -4,9 +4,28 @@
 import { ContactForm } from "@/components/contact-form";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function ContactPage() {
   const { t } = useTranslation();
+
+  const faqData = [
+    { q: t('contact_faq_q1'), a: t('contact_faq_a1') },
+    { q: t('contact_faq_q2'), a: t('contact_faq_a2') },
+    { q: t('contact_faq_q3'), a: t('contact_faq_a3') },
+    { q: t('contact_faq_q4'), a: t('contact_faq_a4') },
+    { q: t('contact_faq_q5'), a: t('contact_faq_a5') },
+    { q: t('contact_faq_q6'), a: t('contact_faq_a6') },
+    { q: t('contact_faq_q7'), a: t('contact_faq_a7') },
+    { q: t('contact_faq_q8'), a: t('contact_faq_a8') },
+    { q: t('contact_faq_q9'), a: t('contact_faq_a9') },
+    { q: t('contact_faq_q10'), a: t('contact_faq_a10') },
+  ];
 
   return (
     <div className="container py-12">
@@ -64,6 +83,22 @@ export default function ContactPage() {
                 </div>
             </div>
         </div>
+      </div>
+
+      <div className="mt-24 max-w-4xl mx-auto">
+        <h2 className="text-3xl font-headline text-center mb-12">{t('contact_faq_title')}</h2>
+        <Accordion type="single" collapsible className="w-full">
+          {faqData.map((faq, index) => (
+            <AccordionItem key={index} value={`item-${index}`}>
+              <AccordionTrigger className="text-left font-semibold text-lg hover:no-underline hover:text-primary transition-colors">
+                {faq.q}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-base leading-relaxed whitespace-pre-wrap pt-2">
+                {faq.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </div>
   );
