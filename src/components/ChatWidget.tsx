@@ -70,38 +70,47 @@ export default function ChatWidget() {
       timestamp: new Date() 
     }]);
 
-    try {
-      const allMsgs = [...messages, userMsg].map(m => ({ 
-        role: m.role, 
-        content: m.content 
-      }));
+    const allMsgs = [...messages, userMsg].map(m => ({ 
+      role: m.role, 
+      content: m.content 
+    }));
 
-      const res = await fetch("/api/chat", { 
-        method: "POST", 
-        headers: { "Content-Type": "application/json" }, 
-        body: JSON.stringify({ messages: allMsgs }) 
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 30000);
+
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: allMsgs }),
+        signal: controller.signal,
       });
 
-      const data = await res.json();
+      clearTimeout(timeoutId);
 
-      if (!res.ok || data.error) {
-        throw new Error(data.error || "Request failed");
+      let data: { text?: string; error?: string };
+
+      try {
+        data = await res.json();
+      } catch {
+        data = { text: "I am having trouble right now. Please visit ijcc.in for assistance." };
       }
 
+      const responseText = data.text || data.error || "I am having trouble right now. Please visit ijcc.in for assistance.";
+
       setMessages(p =>
-        p.map(m => m.id === aId ? { ...m, content: data.text } : m)
+        p.map(m => m.id === aId ? { ...m, content: responseText } : m)
       );
 
       if (!isOpen) setHasNew(true);
 
-    } catch (error: any) {
-      console.error("Chat Widget Error:", error);
+    } catch (error) {
+      const msg = error instanceof Error && error.name === "AbortError"
+        ? "Request timed out. Please try again."
+        : "I am having trouble right now. Please visit ijcc.in for assistance.";
+
       setMessages(p =>
-        p.map(m =>
-          m.id === aId
-            ? { ...m, content: "Sorry, I encountered an error. Please try again or visit [ijcc.in](https://ijcc.in)." }
-            : m
-        )
+        p.map(m => m.id === aId ? { ...m, content: msg } : m)
       );
     } finally {
       setIsLoading(false);
