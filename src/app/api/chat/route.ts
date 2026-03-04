@@ -12,7 +12,11 @@ export async function POST(req: NextRequest) {
     
     const apiKey = process.env.GOOGLE_GENAI_API_KEY || process.env.GEMINI_API_KEY;
     if (!apiKey) {
-      return new Response(JSON.stringify({ error: "Gemini API key not configured" }), { status: 500 });
+      console.error("Chat API error: API key not set in environment variables (GEMINI_API_KEY or GOOGLE_GENAI_API_KEY).");
+      return new Response(JSON.stringify({ error: "Gemini API key not configured" }), { 
+        status: 500,
+        headers: { "Content-Type": "application/json" }
+      });
     }
 
     const liveContextData = await getLiveContext();
@@ -20,7 +24,7 @@ export async function POST(req: NextRequest) {
       ? `\n\nLIVE WEBSITE CONTENT (fetched ${liveContextData.fetchedAt}):\n${liveContextData.content}`
       : "\n\nNOTE: Live website content unavailable. Use static knowledge only.";
     
-    const systemPrompt = `${IJCC_STATIC_KNOWLEDGE}${liveSection}\n\nToday: ${new Date().toLocaleDateString("en-IN", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}`;
+    const systemPrompt = `You are the official AI assistant for IJCC (Indo-Japan Chamber of Commerce) at ijcc.in. Help users with membership, events, India-Japan trade, business networking, and investment opportunities between India and Japan. Be professional, warm, and concise. Today: ${new Date().toDateString()}${liveSection}`;
 
     const history = messages.slice(0, -1).map((msg: { role: string; content: string }) => ({
       role: msg.role === "user" ? ("user" as const) : ("model" as const),
@@ -70,6 +74,9 @@ export async function POST(req: NextRequest) {
   } catch (error: unknown) {
     console.error("Chat API error:", error);
     const message = error instanceof Error ? error.message : "Internal server error";
-    return new Response(JSON.stringify({ error: message }), { status: 500 });
+    return new Response(JSON.stringify({ error: message }), { 
+      status: 500,
+      headers: { "Content-Type": "application/json" }
+    });
   }
 }
