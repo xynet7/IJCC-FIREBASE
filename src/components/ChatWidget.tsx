@@ -1,3 +1,4 @@
+
 "use client";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { type Message, SUGGESTED_QUESTIONS } from "@/lib/ijccKnowledge";
@@ -65,7 +66,12 @@ export default function ChatWidget() {
         body: JSON.stringify({ messages: allMsgs }) 
       });
 
-      if (!res.ok || !res.body) throw new Error("Failed to connect to AI service");
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || `Server Error (${res.status})`);
+      }
+
+      if (!res.body) throw new Error("No response stream available");
 
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
@@ -82,10 +88,12 @@ export default function ChatWidget() {
           if (line.startsWith("data: ") && line.slice(6).trim() !== "[DONE]") {
             try {
               const data = JSON.parse(line.slice(6));
-              fullResponse += data.text;
-              setMessages(p => p.map(m => m.id === assistantId ? { ...m, content: fullResponse } : m));
+              if (data.text) {
+                fullResponse += data.text;
+                setMessages(p => p.map(m => m.id === assistantId ? { ...m, content: fullResponse } : m));
+              }
             } catch (e) {
-              // Ignore malformed chunks
+              // Ignore partial JSON parsing errors
             }
           }
         }
@@ -93,10 +101,10 @@ export default function ChatWidget() {
 
       if (!isOpen) setHasNew(true);
     } catch (error: any) {
-      console.error("Chat Error:", error);
+      console.error("Chat Widget Error:", error);
       setMessages(p => p.map(m => m.id === assistantId ? { 
         ...m, 
-        content: "I'm having a little trouble connecting to my brain right now. Please try again in a few seconds!" 
+        content: `I'm having a little trouble connecting to my brain right now. Error: ${error.message}. Please try again in a few seconds!` 
       } : m));
     } finally {
       setIsLoading(false);
