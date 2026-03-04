@@ -7,7 +7,6 @@ import { CookieBanner } from '@/components/cookie-banner';
 import { AuthProvider } from '@/context/auth-context';
 import Script from 'next/script';
 import { LanguageProvider } from '@/components/language-provider';
-import { Chatbot } from '@/components/chatbot';
 
 export const metadata: Metadata = {
   title: 'Indo-Japan Chamber of Commerce',
@@ -40,7 +39,6 @@ export default function RootLayout({
             </div>
             <Toaster />
             <CookieBanner />
-            <Chatbot />
           </LanguageProvider>
         </AuthProvider>
         <Script
