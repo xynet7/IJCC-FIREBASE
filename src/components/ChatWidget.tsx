@@ -21,14 +21,31 @@ export default function ChatWidget() {
   
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const widgetRef = useRef<HTMLDivElement>(null);
+
+  // Auto-minimize when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (isOpen && !isMinimized && widgetRef.current && !widgetRef.current.contains(event.target as Node)) {
+        setIsMinimized(true);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, isMinimized]);
 
   useEffect(() => {
     if (isOpen) { 
       bottomRef.current?.scrollIntoView({ behavior:"smooth" }); 
       setHasNew(false); 
-      setTimeout(() => inputRef.current?.focus(), 300); 
+      if (!isMinimized) {
+        setTimeout(() => inputRef.current?.focus(), 300); 
+      }
     }
-  }, [isOpen, messages]);
+  }, [isOpen, messages, isMinimized]);
 
   const send = useCallback(async (text: string) => {
     if (!text.trim() || isLoading) return;
@@ -46,7 +63,6 @@ export default function ChatWidget() {
     setShowSuggestions(false);
 
     const aId = (Date.now() + 1).toString();
-    // Add temporary empty message for assistant
     setMessages(p => [...p, { 
       id: aId, 
       role: "assistant", 
@@ -129,7 +145,7 @@ export default function ChatWidget() {
       )}
 
       {isOpen && (
-        <div style={S.window}>
+        <div style={S.window} ref={widgetRef}>
           <div style={S.header} onClick={() => setIsMinimized(!isMinimized)}>
             <div style={{ display:"flex", alignItems:"center", gap:"10px" }}>
               <div style={{ width:"36px", height:"36px", borderRadius:"50%", background:"#fff", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
