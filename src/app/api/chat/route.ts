@@ -5,6 +5,11 @@ export const maxDuration = 30;
 
 export async function POST(req: NextRequest) {
   try {
+    console.log("=== CHAT API HIT ===");
+    console.log("API KEY EXISTS:", !!process.env.GEMINI_API_KEY);
+    console.log("API KEY LENGTH:", process.env.GEMINI_API_KEY?.length);
+    console.log("API KEY PREFIX:", process.env.GEMINI_API_KEY?.substring(0, 8));
+
     const body = await req.json();
     const messages = body.messages || [];
 
