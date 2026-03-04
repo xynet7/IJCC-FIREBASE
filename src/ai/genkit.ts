@@ -2,7 +2,7 @@ import { genkit } from 'genkit';
 import { googleAI } from '@genkit-ai/google-genai';
 
 /**
- * Genkit initialization placeholder.
+ * Genkit initialization with Gemini API key explicitly loaded.
  */
 export const ai = genkit({
   plugins: [
