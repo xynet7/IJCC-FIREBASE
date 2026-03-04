@@ -27,7 +27,7 @@ export function Chatbot() {
     {
       id: 'welcome',
       role: 'assistant',
-      content: 'Hello! I am your IJCC Assistant. How can I help you today? You can ask me about membership, our services, or upcoming Japan tours.',
+      content: 'Hello! I am your IJCC Assistant. How can I help you today?',
     },
   ]);
   const [input, setInput] = useState('');
@@ -82,45 +82,45 @@ export function Chatbot() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100]">
+    <div className="fixed bottom-4 right-4 z-[100]">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
             size="icon"
-            className="h-14 w-14 rounded-full shadow-2xl bg-primary hover:bg-primary/90 transition-all duration-300 transform hover:scale-110"
+            className="h-12 w-12 rounded-full shadow-xl bg-primary hover:bg-primary/90 transition-all duration-300 transform hover:scale-110"
           >
-            {open ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
+            {open ? <X className="h-5 w-5" /> : <MessageCircle className="h-5 w-5" />}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[350px] p-0 mr-6 mb-4 sm:w-[400px]" align="end" side="top">
+        <PopoverContent className="w-[300px] p-0 mr-4 mb-2 sm:w-[320px]" align="end" side="top">
           <Card className="border-none shadow-none">
-            <CardHeader className="bg-primary text-primary-foreground rounded-t-lg">
-              <CardTitle className="flex items-center gap-2 text-lg font-headline">
-                <Bot className="h-5 w-5" />
-                IJCC Digital Assistant
+            <CardHeader className="bg-primary text-primary-foreground rounded-t-lg py-3 px-4">
+              <CardTitle className="flex items-center gap-2 text-base font-headline">
+                <Bot className="h-4 w-4" />
+                IJCC Assistant
               </CardTitle>
             </CardHeader>
             <CardContent className="p-0">
-              <ScrollArea ref={scrollRef} className="h-[400px] p-4">
-                <div className="space-y-4">
+              <ScrollArea ref={scrollRef} className="h-[320px] p-3">
+                <div className="space-y-3">
                   {messages.map((m) => (
                     <div
                       key={m.id}
                       className={cn(
-                        "flex gap-3",
+                        "flex gap-2",
                         m.role === 'user' ? "flex-row-reverse" : "flex-row"
                       )}
                     >
                       <div className={cn(
-                        "h-8 w-8 rounded-full flex items-center justify-center shrink-0",
+                        "h-6 w-6 rounded-full flex items-center justify-center shrink-0",
                         m.role === 'user' ? "bg-accent text-accent-foreground" : "bg-primary/10 text-primary"
                       )}>
-                        {m.role === 'user' ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
+                        {m.role === 'user' ? <User className="h-3 w-3" /> : <Bot className="h-3 w-3" />}
                       </div>
-                      <div className="flex flex-col gap-2 max-w-[80%]">
+                      <div className="flex flex-col gap-1.5 max-w-[85%]">
                         <div
                           className={cn(
-                            "rounded-2xl px-4 py-2 text-sm shadow-sm",
+                            "rounded-xl px-3 py-1.5 text-xs shadow-sm leading-relaxed",
                             m.role === 'user'
                               ? "bg-accent text-accent-foreground rounded-tr-none"
                               : "bg-muted text-foreground rounded-tl-none"
@@ -129,9 +129,9 @@ export function Chatbot() {
                           {m.content}
                         </div>
                         {m.action && (
-                          <Button asChild size="sm" variant="outline" className="w-fit rounded-full text-xs">
+                          <Button asChild size="sm" variant="outline" className="w-fit rounded-full text-[10px] h-7 px-3">
                             <Link href={m.action.href}>
-                              {m.action.label} <ArrowRight className="ml-1 h-3 w-3" />
+                              {m.action.label} <ArrowRight className="ml-1 h-2 w-2" />
                             </Link>
                           </Button>
                         )}
@@ -139,19 +139,19 @@ export function Chatbot() {
                     </div>
                   ))}
                   {isLoading && (
-                    <div className="flex gap-3">
-                      <div className="h-8 w-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                        <Bot className="h-4 w-4" />
+                    <div className="flex gap-2">
+                      <div className="h-6 w-6 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                        <Bot className="h-3 w-3" />
                       </div>
-                      <div className="bg-muted rounded-2xl rounded-tl-none px-4 py-2">
-                        <Loader2 className="h-4 w-4 animate-spin text-primary" />
+                      <div className="bg-muted rounded-xl rounded-tl-none px-3 py-1.5">
+                        <Loader2 className="h-3 w-3 animate-spin text-primary" />
                       </div>
                     </div>
                   )}
                 </div>
               </ScrollArea>
             </CardContent>
-            <CardFooter className="p-4 border-t">
+            <CardFooter className="p-3 border-t">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -160,14 +160,14 @@ export function Chatbot() {
                 className="flex w-full items-center gap-2"
               >
                 <Input
-                  placeholder="Type your message..."
+                  placeholder="Ask a question..."
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  className="flex-1"
+                  className="flex-1 h-8 text-xs"
                   disabled={isLoading}
                 />
-                <Button size="icon" type="submit" disabled={isLoading || !input.trim()}>
-                  <Send className="h-4 w-4" />
+                <Button size="icon" type="submit" disabled={isLoading || !input.trim()} className="h-8 w-8">
+                  <Send className="h-3 w-3" />
                 </Button>
               </form>
             </CardFooter>
