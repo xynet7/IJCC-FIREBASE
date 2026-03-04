@@ -3,6 +3,16 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { type Message, SUGGESTED_QUESTIONS } from "@/lib/ijccKnowledge";
 import MessageBubble from "./MessageBubble";
+import { db } from "@/lib/firebase";
+import { 
+  collection, 
+  addDoc, 
+  query, 
+  orderBy, 
+  onSnapshot, 
+  serverTimestamp, 
+  limit 
+} from "firebase/firestore";
 
 const WELCOME: Message = {
   id: "welcome",
@@ -19,43 +29,112 @@ export default function ChatWidget() {
   const [isLoading, setIsLoading] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [hasNew, setHasNew] = useState(false);
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Generate a session ID if not exists
   useEffect(() => {
-    if (isOpen) { bottomRef.current?.scrollIntoView({ behavior:"smooth" }); setHasNew(false); setTimeout(() => inputRef.current?.focus(), 300); }
+    let sid = localStorage.getItem("ijcc_chat_session");
+    if (!sid) {
+      sid = "session_" + Math.random().toString(36).substring(7);
+      localStorage.setItem("ijcc_chat_session", sid);
+    }
+    setSessionId(sid);
+  }, []);
+
+  // Listen to Firestore for updates from the extension
+  useEffect(() => {
+    if (!sessionId || !isOpen) return;
+
+    // We watch the 'messages' collection under the session
+    // Adjust 'ext_chats' to match your extension's configured collection path
+    const messagesRef = collection(db, "ext_chats", sessionId, "messages");
+    const q = query(messagesRef, orderBy("createdAt", "asc"), limit(50));
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const firestoreMsgs: Message[] = [];
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        
+        // Add the User message
+        firestoreMsgs.push({
+          id: doc.id + "_user",
+          role: "user",
+          content: data.prompt || "",
+          timestamp: data.createdAt?.toDate() || new Date(),
+        });
+
+        // Add the Assistant response if it exists
+        if (data.response) {
+          firestoreMsgs.push({
+            id: doc.id + "_assistant",
+            role: "assistant",
+            content: data.response,
+            timestamp: data.respondedAt?.toDate() || new Date(),
+          });
+        }
+      });
+
+      // Combine with welcome message
+      if (firestoreMsgs.length > 0) {
+        setMessages([WELCOME, ...firestoreMsgs]);
+        
+        // If the last message is from assistant and it's new
+        const lastMsg = firestoreMsgs[firestoreMsgs.length - 1];
+        if (lastMsg.role === "assistant") {
+          setIsLoading(false);
+          if (!isOpen) setHasNew(true);
+        }
+      }
+    });
+
+    return () => unsubscribe();
+  }, [sessionId, isOpen]);
+
+  useEffect(() => {
+    if (isOpen) { 
+      bottomRef.current?.scrollIntoView({ behavior:"smooth" }); 
+      setHasNew(false); 
+      setTimeout(() => inputRef.current?.focus(), 300); 
+    }
   }, [isOpen, messages]);
 
   const send = useCallback(async (text: string) => {
-    if (!text.trim() || isLoading) return;
-    const userMsg: Message = { id: Date.now().toString(), role:"user", content:text.trim(), timestamp:new Date() };
-    setMessages(p => [...p, userMsg]);
-    setInput(""); setIsLoading(true); setShowSuggestions(false);
-    const allMsgs = [...messages, userMsg].map(m => ({ role:m.role, content:m.content }));
-    const aId = (Date.now()+1).toString();
-    setMessages(p => [...p, { id:aId, role:"assistant", content:"", timestamp:new Date() }]);
-    try {
-      const res = await fetch("/api/chat", { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({ messages:allMsgs }) });
-      if (!res.ok || !res.body) throw new Error("Failed");
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let full = "";
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        for (const line of decoder.decode(value, { stream:true }).split("\n")) {
-          if (line.startsWith("data: ") && line.slice(6) !== "[DONE]") {
-            try { full += JSON.parse(line.slice(6)).text; setMessages(p => p.map(m => m.id===aId ? {...m,content:full} : m)); } catch {}
-          }
-        }
-      }
-      if (!isOpen) setHasNew(true);
-    } catch {
-      setMessages(p => p.map(m => m.id===aId ? {...m,content:"Sorry, I encountered an error. Please try again or visit [ijcc.in](https://ijcc.in)."} : m));
-    } finally { setIsLoading(false); }
-  }, [isLoading, messages, isOpen]);
+    if (!text.trim() || isLoading || !sessionId) return;
 
-  const reset = () => { setMessages([WELCOME]); setShowSuggestions(true); setInput(""); };
+    setIsLoading(true);
+    setShowSuggestions(false);
+    setInput("");
+
+    try {
+      // Add the prompt to Firestore
+      // The Gemini extension watches this collection and will add a 'response' field
+      await addDoc(collection(db, "ext_chats", sessionId, "messages"), {
+        prompt: text.trim(),
+        createdAt: serverTimestamp(),
+      });
+    } catch (error) {
+      console.error("Firestore error:", error);
+      setMessages(p => [...p, { 
+        id: Date.now().toString(), 
+        role: "assistant", 
+        content: "I'm having trouble connecting to my database. Please check your internet connection.", 
+        timestamp: new Date() 
+      }]);
+      setIsLoading(false);
+    }
+  }, [isLoading, sessionId]);
+
+  const reset = () => { 
+    setMessages([WELCOME]); 
+    setShowSuggestions(true); 
+    setInput(""); 
+    const newSid = "session_" + Math.random().toString(36).substring(7);
+    localStorage.setItem("ijcc_chat_session", newSid);
+    setSessionId(newSid);
+  };
 
   const S = { // styles
     btn: { position:"fixed" as const, bottom:"24px", right:"24px", zIndex:9999, width:"60px", height:"60px", borderRadius:"50%", background:"linear-gradient(135deg,#C8102E,#8B0A1F)", border:"none", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"0 8px 32px rgba(200,16,46,0.4)" },
@@ -154,7 +233,7 @@ export default function ChatWidget() {
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                 </button>
               </div>
-              <p style={{ textAlign:"center", fontSize:"10px", color:"#d1d5db", marginTop:"6px" }}>Powered by Gemini AI • IJCC © {new Date().getFullYear()}</p>
+              <p style={{ textAlign:"center", fontSize:"10px", color:"#d1d5db", marginTop:"6px" }}>Powered by Gemini Extension • IJCC © {new Date().getFullYear()}</p>
             </div>
           )}
         </div>
