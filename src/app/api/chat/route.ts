@@ -1,91 +1,80 @@
-
-import { ai } from "@/ai/genkit";
-import { IJCC_STATIC_KNOWLEDGE } from "@/lib/ijccKnowledge";
-import { getLiveContext } from "@/lib/contextRefresher";
+import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "nodejs";
+export const maxDuration = 30;
 
-/**
- * Chat API Route using Genkit
- * Handles streaming responses from Gemini 1.5 Flash.
- */
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
-    const { messages } = await req.json();
+    const body = await req.json();
+    const messages = body.messages || [];
 
-    // Verify key existence on server-side
-    if (!process.env.GEMINI_API_KEY && !process.env.GOOGLE_GENAI_API_KEY) {
-      console.error("CHATBOT ERROR: GEMINI_API_KEY is missing from environment.");
-      return new Response(
-        JSON.stringify({ error: "API key not found on server. Please restart your dev server after adding it to .env" }),
-        { status: 500, headers: { "Content-Type": "application/json" } }
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      console.error("Chat API Error: GEMINI_API_KEY is not configured in .env");
+      return NextResponse.json({ error: "GEMINI_API_KEY not configured" }, { status: 500 });
+    }
+
+    const lastMessage = messages[messages.length - 1];
+    if (!lastMessage) {
+      return NextResponse.json({ error: "No message provided" }, { status: 400 });
+    }
+
+    // Build conversation contents for Gemini
+    const contents = messages.map((m: { role: string; content: string }) => ({
+      role: m.role === "user" ? "user" : "model",
+      parts: [{ text: m.content }],
+    }));
+
+    const systemPrompt = `You are the official AI assistant for IJCC (Indo-Japan Chamber of Commerce) at ijcc.in.
+Help users with:
+- Membership information and benefits
+- Upcoming events and seminars
+- India-Japan trade and investment opportunities
+- Business networking and partnerships
+- Japanese companies in India and Indian companies in Japan
+Be professional, warm, helpful and concise. Today: ${new Date().toDateString()}`;
+
+    const requestBody = {
+      system_instruction: {
+        parts: [{ text: systemPrompt }]
+      },
+      contents: contents,
+      generationConfig: {
+        temperature: 0.7,
+        maxOutputTokens: 800,
+        topP: 0.9,
+      },
+    };
+
+    // Use non-streaming generateContent for maximum compatibility and stability
+    const geminiRes = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(requestBody),
+      }
+    );
+
+    if (!geminiRes.ok) {
+      const errText = await geminiRes.text();
+      console.error("Gemini API Error:", geminiRes.status, errText);
+      return NextResponse.json(
+        { error: `Gemini API returned ${geminiRes.status}` },
+        { status: 502 }
       );
     }
 
-    // 1. Fetch live site context (scraping relevant pages for up-to-date info)
-    const liveContextData = await getLiveContext();
-    
-    // 2. Construct the system instruction
-    const systemPrompt = `
-${IJCC_STATIC_KNOWLEDGE}
+    const data = await geminiRes.json();
+    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || "I could not generate a response. Please try again.";
 
-ADDITIONAL CONTEXT FROM WEBSITE (LIVE):
-${liveContextData.content || "No live content available at this moment."}
+    return NextResponse.json({ text });
 
-TODAY'S DATE: ${new Date().toLocaleDateString("en-IN", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
-`;
-
-    // 3. Prepare message history
-    const lastMessage = messages[messages.length - 1];
-    const history = messages.slice(0, -1).map((m: any) => ({
-      role: m.role === "user" ? "user" : "model",
-      content: [{ text: m.content }],
-    }));
-
-    // 4. Generate stream using project-standard Genkit
-    const { stream } = ai.generateStream({
-      model: 'googleai/gemini-1.5-flash',
-      system: systemPrompt,
-      prompt: lastMessage.content,
-      history: history,
-      config: {
-        temperature: 0.7,
-        maxOutputTokens: 1024,
-      }
-    });
-
-    const encoder = new TextEncoder();
-    const readableStream = new ReadableStream({
-      async start(controller) {
-        try {
-          for await (const chunk of stream) {
-            const text = chunk.text;
-            if (text) {
-              // Send JSON chunk in SSE format
-              controller.enqueue(encoder.encode(`data: ${JSON.stringify({ text })}\n\n`));
-            }
-          }
-          controller.enqueue(encoder.encode(`data: [DONE]\n\n`));
-          controller.close();
-        } catch (err) {
-          console.error("Genkit Stream Error:", err);
-          controller.error(err);
-        }
-      }
-    });
-
-    return new Response(readableStream, {
-      headers: {
-        "Content-Type": "text/event-stream",
-        "Cache-Control": "no-cache",
-        "Connection": "keep-alive",
-      },
-    });
-  } catch (error: any) {
-    console.error("CHAT ROUTE CRITICAL ERROR:", error);
-    return new Response(
-      JSON.stringify({ error: error.message || "Internal Server Error" }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
+  } catch (error) {
+    console.error("Chat API Critical Crash:", error);
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Internal server error" },
+      { status: 500 }
     );
   }
 }

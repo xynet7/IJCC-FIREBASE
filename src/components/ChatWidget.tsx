@@ -1,4 +1,3 @@
-
 "use client";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { type Message, SUGGESTED_QUESTIONS } from "@/lib/ijccKnowledge";
@@ -46,9 +45,10 @@ export default function ChatWidget() {
     setIsLoading(true);
     setShowSuggestions(false);
 
-    const assistantId = (Date.now() + 1).toString();
+    const aId = (Date.now() + 1).toString();
+    // Add temporary empty message for assistant
     setMessages(p => [...p, { 
-      id: assistantId, 
+      id: aId, 
       role: "assistant", 
       content: "", 
       timestamp: new Date() 
@@ -66,46 +66,27 @@ export default function ChatWidget() {
         body: JSON.stringify({ messages: allMsgs }) 
       });
 
-      if (!res.ok) {
-        const errData = await res.json().catch(() => ({}));
-        throw new Error(errData.error || `Server Error (${res.status})`);
+      const data = await res.json();
+
+      if (!res.ok || data.error) {
+        throw new Error(data.error || "Request failed");
       }
 
-      if (!res.body) throw new Error("No response stream available");
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let fullResponse = "";
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        const chunk = decoder.decode(value, { stream: true });
-        const lines = chunk.split("\n");
-
-        for (const line of lines) {
-          if (line.startsWith("data: ") && line.slice(6).trim() !== "[DONE]") {
-            try {
-              const data = JSON.parse(line.slice(6));
-              if (data.text) {
-                fullResponse += data.text;
-                setMessages(p => p.map(m => m.id === assistantId ? { ...m, content: fullResponse } : m));
-              }
-            } catch (e) {
-              // Ignore partial JSON parsing errors
-            }
-          }
-        }
-      }
+      setMessages(p =>
+        p.map(m => m.id === aId ? { ...m, content: data.text } : m)
+      );
 
       if (!isOpen) setHasNew(true);
+
     } catch (error: any) {
       console.error("Chat Widget Error:", error);
-      setMessages(p => p.map(m => m.id === assistantId ? { 
-        ...m, 
-        content: `I'm having a little trouble connecting to my brain right now. Error: ${error.message}. Please try again in a few seconds!` 
-      } : m));
+      setMessages(p =>
+        p.map(m =>
+          m.id === aId
+            ? { ...m, content: "Sorry, I encountered an error. Please try again or visit [ijcc.in](https://ijcc.in)." }
+            : m
+        )
+      );
     } finally {
       setIsLoading(false);
     }
