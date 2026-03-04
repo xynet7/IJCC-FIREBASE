@@ -16,7 +16,7 @@ export async function askSiteAssistant(input: string): Promise<SiteAssistantOutp
         schema: SiteAssistantOutputSchema
       },
       config: {
-        temperature: 0.3, // Lower temperature for more factual consistency with FAQ
+        temperature: 0.3,
       },
       prompt: `You are the official digital assistant for the Indo-Japan Chamber of Commerce (IJCC).
 Your primary goal is to help users find information about IJCC's services, membership, and events using the official knowledge base provided below.
@@ -89,7 +89,7 @@ User Question: ${input}`,
     
     return response.output;
   } catch (error: any) {
-    console.error("Chatbot Error:", error);
+    console.error("Chatbot Error Detail:", error);
     return {
       responseText: "I'm having a bit of trouble connecting to my brain right now. This usually happens if the AI model is busy or the API key is being validated. Please try asking again in a few seconds!",
     };
