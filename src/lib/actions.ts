@@ -87,7 +87,7 @@ export async function submitContactForm(
     };
   }
 
-  const { name, email, phone, inquiryType, message } = validatedFields.data;
+  const { name, email, website, phone, inquiryType, message } = validatedFields.data;
 
   if (!process.env.SMTP_HOST) {
     console.error("SMTP environment variables are not set.");
@@ -116,6 +116,7 @@ export async function submitContactForm(
       <h2>New Contact Form Submission</h2>
       <p><strong>Name:</strong> ${name}</p>
       <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Website:</strong> ${website || "Not provided"}</p>
       <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
       <p><strong>Inquiry Type:</strong> ${inquiryType}</p>
       <p><strong>Message:</strong></p>

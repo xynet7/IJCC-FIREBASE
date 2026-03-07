@@ -66,13 +66,17 @@ export function ContactForm() {
       <CardContent>
         <form onSubmit={onSubmit} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-2">
+            <div className="space-y-2 sm:col-span-2">
               <Label htmlFor="name">{t('contactForm_nameLabel')}</Label>
               <Input id="name" name="name" placeholder={t('contactForm_namePlaceholder')} required />
             </div>
             <div className="space-y-2">
               <Label htmlFor="email">{t('contactForm_emailLabel')}</Label>
               <Input id="email" name="email" type="email" placeholder="name@example.com" required />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="website">{t('contactForm_websiteLabel')}</Label>
+              <Input id="website" name="website" type="url" placeholder={t('contactForm_websitePlaceholder')} />
             </div>
           </div>
           <div className="space-y-2">

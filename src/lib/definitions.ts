@@ -1,8 +1,10 @@
+
 import { z } from 'zod';
 
 export const ContactFormSchema = z.object({
   name: z.string().min(2, { message: "contactForm_validation_name" }),
   email: z.string().email({ message: "contactForm_validation_email" }),
+  website: z.string().optional(),
   phone: z.string().optional(),
   inquiryType: z.enum([
     "general", 
