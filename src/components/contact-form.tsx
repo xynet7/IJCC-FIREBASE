@@ -76,7 +76,7 @@ export function ContactForm() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="website">{t('contactForm_websiteLabel')}</Label>
-              <Input id="website" name="website" type="url" placeholder={t('contactForm_websitePlaceholder')} />
+              <Input id="website" name="website" type="text" placeholder={t('contactForm_websitePlaceholder')} />
             </div>
           </div>
           <div className="space-y-2">
