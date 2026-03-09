@@ -25,6 +25,14 @@ const eventsData = [
     href: "/contact"
   },
   {
+    id: 9,
+    date: "2026-05-17",
+    imageUrl: "https://picsum.photos/seed/tokyo-delegation/800/600",
+    hint: "tokyo business delegation",
+    isVertical: false,
+    href: "/contact"
+  },
+  {
     id: 8,
     date: "2026-04-01",
     imageUrl: placeholders.japanImmersivePoster.url,
