@@ -1,4 +1,3 @@
-
 {
   "greeting": "こんにちは、世界！",
   "welcomeMessage": "私たちのアプリケーションへようこそ。",
@@ -218,6 +217,7 @@
   "servicedetail_indian-smes_cat4_title": "アドバイザリーとコンサルティング",
   "servicedetail_indian-smes_cat4_point1": "日本市場への参入に関するガイダンス（法律、コンプライアンス、認証、パッケージング基準）。",
   "servicedetail_indian-smes_cat4_point2": "輸出入、知的財産権、政府の制度に関する支援。",
+  "servicedetail_indian-smes_cat4_path3": "Self study materials and JLPT guides.",
   "servicedetail_indian-smes_cat5_title": "スタートアップとイノベーション支援",
   "servicedetail_indian-smes_cat5_point1": "日本のスタートアップエコシステム、インキュベーター、VCへのアクセス。",
   "servicedetail_indian-smes_cat5_point2": "日本企業との共同ハッカソン、アクセラレーター提携、パイロットプロジェクト。",
@@ -588,8 +588,8 @@
   "event_1_title": "インド人医師向け日本ビジネスツアー",
   "event_1_displayDate": "2026年3月9日～14日",
   "event_1_time": "終日",
-  "event_1_location": "日本",
-  "event_1_description": "インド人医師が日本のヘルスケア機会と協力を探るための特別なビジネスツアー。",
+  "event_1_location": "日本 (東京、名古屋、大阪など)",
+  "event_1_description": "日本のヘルスケアとイノベーションの未来を探ります。この特別なツアーには、評判の高い病院への訪問、日本の医療専門家とのネットワーキング、最先端の医療技術と管理システムへの触れ合いが含まれます。",
   "event_2_title": "インドビジネス代表団の日本への特別旅行",
   "event_2_displayDate": "2026年1月16日～25日",
   "event_2_time": "終日",

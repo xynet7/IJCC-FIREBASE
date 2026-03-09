@@ -17,20 +17,20 @@ import placeholders from "@/app/lib/placeholder-images.json";
 
 const eventsData = [
   {
+    id: 1,
+    date: "2026-03-09",
+    imageUrl: "https://i.postimg.cc/GhjCyy47/9thmarch-flayer.jpg",
+    hint: "doctors business tour flyer",
+    isVertical: true,
+    href: "/contact"
+  },
+  {
     id: 8,
     date: "2026-04-01",
     imageUrl: placeholders.japanImmersivePoster.url,
     hint: placeholders.japanImmersivePoster.hint,
     isVertical: true,
     href: "/events/japan-immersive-program"
-  },
-  {
-    id: 1,
-    date: "2026-03-09",
-    imageUrl: "https://i.ibb.co/Ngg6ZF2p/japanese-event-for-doc.jpg",
-    hint: "doctors business tour",
-    isVertical: false,
-    href: "/contact"
   },
   {
     id: 2,
