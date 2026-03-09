@@ -18,9 +18,9 @@ import placeholders from "@/app/lib/placeholder-images.json";
 const eventsData = [
   {
     id: 1,
-    date: "2026-03-09",
+    date: "2026-05-17",
     imageUrl: "https://i.postimg.cc/GhjCyy47/9thmarch-flayer.jpg",
-    hint: "doctors business tour flyer",
+    hint: "tokyo business delegation flyer",
     isVertical: true,
     href: "/contact"
   },
