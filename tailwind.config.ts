@@ -52,7 +52,7 @@ export default {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
         },
-        border: 'hsl(var(--border))',
+        border: 'hsl(var(--border))', //FOR THE WHOLE 
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         chart: {

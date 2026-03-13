@@ -19,6 +19,7 @@ const leadershipData = [
   { id: "prakashYadav", imageUrl: "https://i.postimg.cc/9QnxQ442/prakash2.jpg", hint: "man face" },
   { id: "neelamRamaiah", imageUrl: "https://i.postimg.cc/L5nGMJBJ/neelam-removebg-preview.png", hint: "woman face" },
   { id: "surajitKalita", imageUrl: "https://i.ibb.co/xcg7tmW/sujit.jpg", hint: "man face" },
+  { id: "nidhi", imageUrl: "https://i.postimg.cc/d3dvvrdY/Nidhi.jpg", hint: "woman face" },
   { id: "mukeshRanjan", imageUrl: "https://i.postimg.cc/HnrRBVXS/mukesh-removebg.png", hint: "man face" },
   { id: "yokoTorii", imageUrl: "https://i.ibb.co/99zx9ZGn/yoko-torii.jpg", hint: "woman face" },
   { id: "dhruvHans", imageUrl: "https://i.ibb.co/8D7x8kKq/Mr-Dhruv-Hans-Dhruv.jpg", hint: "man face" },

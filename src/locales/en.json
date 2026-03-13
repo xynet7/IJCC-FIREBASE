@@ -1,3 +1,4 @@
+
 {
   "greeting": "Hello, World!",
   "welcomeMessage": "Welcome to our application.",
@@ -40,7 +41,7 @@
   "learnMoreButton": "Learn More",
   "associatePartnersTitle": "Associate Partners",
   "associatePartnersDescription": "We are proud to collaborate with a diverse network of partners and members.",
-  "ctaTitle": "Ready to Foster Stronger Business Ties?",
+  "ctaTitle": "Ready to foster stronger business ties?",
   "ctaDescription": "Become a part of our growing network. Get in touch with us to learn more about membership benefits.",
   "ctaButton": "Join Us",
   "footerCopyright": "Indo-Japan Chamber of Commerce. All rights reserved.",
@@ -80,6 +81,9 @@
   "team_surajitKalita_name": "Mr. Surajit Kalita",
   "team_surajitKalita_title": "Vice-Chairman(Operation & Planning), IJCC",
   "team_surajitKalita_bio": "Mr. Surajit Kalita is a master of logistics and planning. His role as Vice-Chairman of Operations & Planning ensures the smooth execution of all IJCC events, delegations, and initiatives, making every interaction seamless and effective.",
+  "team_nidhi_name": "Ms. Nidhi",
+  "team_nidhi_title": "Director - Corporate Tax & Transfer Pricing",
+  "team_nidhi_bio": "Nidhi leads corporate tax & transfer pricing practice of the Firm. She is a Chartered Accountant and a law graduate. She has previously worked with three of the four large consultancy firms and has about 20 years of post qualification experience in corporate, expat and international tax. Her experience includes advising on international tax and domestic tax matters, transfer pricing and structuring for the businesses, handholding startups through the tricky phases in their businesses, tax due diligences, creating dash boards for monitoring compliance by the companies, ESOP planning and payroll structuring, representing tax and transfer pricing matters before the tax authorities. She has also been a speaker at the ICAI’s International Taxation Certificate Course on several occasions.",
   "team_mukeshRanjan_name": "Mr. Mukesh Ranjan",
   "team_mukeshRanjan_title": "Director- HR & Strategy",
   "team_mukeshRanjan_bio": "Mukesh Ranjan is a seasoned professional in HR, IT, and educational development. He has served as Deputy Director (General Affairs) at the National Industries Development Council Committee and as General Manager for the Digital India initiatives of the Krishna Sudarshan Charitable Trust. Passionate about bridging education and employment, he has led campus recruitment drives with Purnia University and represented Royal Metropolitan University, Kyrgyzstan, to guide Indian students toward medical education. Recognised with honors such as Best HR & IT Professional of the Year 2021 and the International Education Pride Award 2021, he is also an environmental activist and an invited speaker at international education and skills summits.",
@@ -537,7 +541,7 @@
   "membershipForm_companyDescription_label": "17. Company Description (50-150 words)",
   "membershipForm_companyDescription_placeholder": "Provide a brief description of your company's products/services. This helps us understand your unique value proposition.",
   "membershipForm_marketObjectives_label": "18. Specific Objectives for the Japanese Market",
-  "membershipForm_marketObjectives_placeholder": "e.g., \\\"We want to partner with a Japanese auto-component manufacturer for technical collaboration,\\\" or \\\"We are seeking a distributor in Osaka for our specialty teas.\\\"",
+  "membershipForm_marketObjectives_placeholder": "e.g., \"We want to partner with a Japanese auto-component manufacturer for technical collaboration,\" or \"We are seeking a distributor in Osaka for our specialty teas.\"",
   "membershipForm_partC_title": "Part C: Declaration & Commitment",
   "membershipForm_declaration_label": "I/We have read and understood the membership criteria and agree to abide by the rules and regulations of the India Japan Chamber of Commerce (IJCC). The information provided in this application is true and correct to the best of my knowledge.",
   "membershipForm_applicantName_label": "Name",
