@@ -1,4 +1,3 @@
-
 {
   "greeting": "Hello, World!",
   "welcomeMessage": "Welcome to our application.",
@@ -589,6 +588,8 @@
   "news_readMoreButton": "Read More",
   "news_article_spolto-jv_title": "IJCC & Spolto Launch India–Japan Sports Exchange Joint Venture",
   "news_article_spolto-jv_description": "IJCC and Spolto join forces to create the first institutionalised bilateral sports exchange, impacting 100K+ people through professional coaching and cultural synergy.",
+  "news_article_nihon-edutech_title": "IJCC Signs MoU with Nihon Edutech — India's Leading Japan Career Enabler",
+  "news_article_nihon-edutech_description": "Strategic alliance brings CII-certified TITP internships, language training, and IT placement directly to IJCC members.",
   "news_article_1_title": "Mela Mela Anime Japan returns with double the Japanese content in Delhi",
   "news_article_1_description": "The popular Anime and Japanese cultural festival, 'Mela Mela Anime Japan,' is set to return to New Delhi, promising an even bigger and more immersive experience for fans.",
   "news_article_2_title": "Japanese autumn ‘Matsuri’ Utsav brings authentic Japanese experience in Gurugram on Oct 11",
@@ -685,9 +686,9 @@
   "contact_faq_a4": "IJCC supports companies by: identifying reliable Japanese partners, arranging business meetings and site visits, providing market insights, assisting with cultural and business communication, and organizing Japan business delegations.",
   "contact_faq_q5": "5. Does IJCC organize business tours to Japan?",
   "contact_faq_a5": "Yes. IJCC regularly organizes sector-specific Business Tours to Japan, including manufacturing, healthcare, education, and technology sectors. These tours include company visits, B2B meetings, and networking sessions.",
-  "contact_faq_q6": "6. Does IJCC support student exchange and education programs?",
+  "contact_faq_6": "6. Does IJCC support student exchange and education programs?",
   "contact_faq_a6": "Yes. IJCC facilitates: School-to-school partnerships, university collaborations, student exchange programs, Japan Education Tours, and internship opportunities.",
-  "contact_faq_q7": "7. Does IJCC assist with job placement in Japan?",
+  "contact_faq_7": "7. Does IJCC assist with job placement in Japan?",
   "contact_faq_a7": "IJCC supports skill development and collaborates with Japanese partners under programs such as the Specified Skilled Worker (SSW) pathway. Placement assistance depends on eligibility, skill qualifications, and partner requirements.",
   "contact_faq_8": "8. How can I participate in IJCC events?",
   "contact_faq_a8": "You can: become a member, register for upcoming events through IJCC announcements, subscribe to IJCC newsletters, or contact the IJCC team directly.",

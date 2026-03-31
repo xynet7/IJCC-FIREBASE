@@ -1,14 +1,22 @@
-
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Trophy } from "lucide-react";
+import { ArrowRight, Calendar, Trophy, Star } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
+import { cn } from "@/lib/utils";
 
 const newsArticlesData = [
+  {
+    id: "nihon-edutech",
+    date: "2025-03-12",
+    imageUrl: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1000",
+    hint: "classroom learning",
+    href: "/news/nihon-edutech",
+    isSpecial: true,
+  },
   {
     id: "spolto-jv",
     date: "2025-03-10",
@@ -16,13 +24,6 @@ const newsArticlesData = [
     hint: "sports coaching",
     href: "/news/ijcc-x-spolto",
     isSpecial: true,
-  },
-  {
-    id: 1,
-    date: "2025-09-02",
-    imageUrl: "https://www.asiancommunitynews.com/wp-content/uploads/2024/05/1-Copy-1-716x430.jpg",
-    hint: "anime festival",
-    href: "https://www.asiancommunitynews.com/mela-mela-anime-japan-returns-with-double-the-japanese-content-in-delhi/",
   },
   {
     id: 2,
@@ -56,7 +57,8 @@ export default function NewsPage() {
           <Card key={article.id} className={cn("flex flex-col relative overflow-hidden", article.isSpecial && "border-primary ring-1 ring-primary/20")}>
             {article.isSpecial && (
               <div className="absolute top-4 right-4 z-10 bg-primary text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                <Trophy className="h-3 w-3" /> FEATURED
+                {article.id === "nihon-edutech" ? <Star className="h-3 w-3" /> : <Trophy className="h-3 w-3" />}
+                {article.id === "nihon-edutech" ? "NEW MoU" : "FEATURED"}
               </div>
             )}
             <CardHeader>
@@ -93,5 +95,3 @@ export default function NewsPage() {
     </div>
   );
 }
-
-import { cn } from "@/lib/utils";
