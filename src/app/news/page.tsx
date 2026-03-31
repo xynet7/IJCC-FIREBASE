@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Trophy, Star } from "lucide-react";
+import { ArrowRight, Calendar, Trophy, Star, ShieldCheck } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 import { cn } from "@/lib/utils";
 
@@ -16,6 +16,8 @@ const newsArticlesData = [
     hint: "classroom learning",
     href: "/news/nihon-edutech",
     isSpecial: true,
+    tag: "NEW MoU",
+    icon: <Star className="h-3 w-3" />
   },
   {
     id: "spolto-jv",
@@ -24,13 +26,18 @@ const newsArticlesData = [
     hint: "sports coaching",
     href: "/news/ijcc-x-spolto",
     isSpecial: true,
+    tag: "FEATURED",
+    icon: <Trophy className="h-3 w-3" />
   },
   {
-    id: 2,
-    date: "2025-09-16",
-    imageUrl: "https://www.asiancommunitynews.com/wp-content/uploads/2025/09/AJUMATSURI-Copy-750x430.jpg",
-    hint: "japan festival",
-    href: "https://www.asiancommunitynews.com/japanese-autumn-matsuri-utsav-brings-authentic-japanese-experience-in-gurugram-on-oct-11/",
+    id: "sem-events",
+    date: "2025-03-08",
+    imageUrl: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1000",
+    hint: "professional conference",
+    href: "/news/sem-events",
+    isSpecial: true,
+    tag: "PARTNER",
+    icon: <ShieldCheck className="h-3 w-3" />
   },
 ];
 
@@ -57,8 +64,8 @@ export default function NewsPage() {
           <Card key={article.id} className={cn("flex flex-col relative overflow-hidden", article.isSpecial && "border-primary ring-1 ring-primary/20")}>
             {article.isSpecial && (
               <div className="absolute top-4 right-4 z-10 bg-primary text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                {article.id === "nihon-edutech" ? <Star className="h-3 w-3" /> : <Trophy className="h-3 w-3" />}
-                {article.id === "nihon-edutech" ? "NEW MoU" : "FEATURED"}
+                {article.icon}
+                {article.tag}
               </div>
             )}
             <CardHeader>
