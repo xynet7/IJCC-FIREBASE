@@ -53,7 +53,7 @@ const leadershipData = [
 ];
 
 const advisoryBoard = [
-  { name: "Mr. Tomoyuki Iwama", role: "Director, Yakult India" },
+  { name: "Mr. Tomoyuki Iwama", role: "Director, Yakult India", imageUrl: "https://i.postimg.cc/025b7P5b/iwama-removebg-preview.png" },
   { name: "Mr. Naveen Verma", role: "Chairman, RERA Bihar (Retd. IAS)" },
   { name: "Dr. Randeep Rakwal", role: "Professor, Tsukuba University, Japan" },
   { name: "Mr. Kenichiro Iwahori", role: "Advisor, Sasakawa Foundation, Japan" },
@@ -466,8 +466,12 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {advisoryBoard.map((advisor, i) => (
             <Card key={i} className="flex flex-row items-center gap-4 p-4 rounded-2xl bg-muted/30 border-none hover:bg-muted transition-colors shadow-sm">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border-2 border-accent">
-                <UserCircle2 className="h-10 w-10 text-primary" />
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border-2 border-accent overflow-hidden">
+                {advisor.imageUrl ? (
+                  <Image src={advisor.imageUrl} alt={advisor.name} width={64} height={64} className="object-cover w-full h-full" />
+                ) : (
+                  <UserCircle2 className="h-10 w-10 text-primary" />
+                )}
               </div>
               <div>
                 <div className="font-bold text-lg text-primary">{advisor.name}</div>
@@ -546,7 +550,7 @@ export default function AboutPage() {
             <div className="flex flex-wrap justify-center md:justify-end gap-6">
               {[
                 { label: "Website", val: "www.ijcc.in", href: "/" },
-                { label: "LinkedIn", val: "linkedin.com/company/...", href: "https://www.linkedin.com/company/indo-japan-chamber-of-commerce/" },
+                { label: "LinkedIn", val: "company/indo-japan-chamber-of-commerce", href: "https://www.linkedin.com/company/indo-japan-chamber-of-commerce/" },
                 { label: "Instagram", val: "@ijccindia", href: "https://www.instagram.com/ijccindia" },
                 { label: "Facebook", val: "IJCC", href: "https://www.facebook.com/people/Indo-Japan-Chamber-of-Commerce/61573931145126/" },
               ].map((link, i) => (
