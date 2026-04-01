@@ -27,10 +27,16 @@ import {
   Sparkles,
   Sprout,
   Cpu,
-  Trophy
+  Trophy,
+  UserCircle2,
+  Mail,
+  Linkedin,
+  Instagram,
+  Facebook,
+  Youtube
 } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const leadershipData = [
@@ -39,7 +45,7 @@ const leadershipData = [
   { id: "prakashYadav", name: "Mr. Prakash Yadav", title: "Vice-Chairman (Corporate)", subTitle: "MD, AJU Hotels", imageUrl: "https://i.postimg.cc/9QnxQ442/prakash2.jpg" },
   { id: "neelamRamaiah", name: "Dr. Neelam Ramaiah", title: "Vice-Chairman (Education)", subTitle: "Ex. Dir., Univ. of Tokyo", imageUrl: "https://i.postimg.cc/L5nGMJBJ/neelam-removebg-preview.png" },
   { id: "surajitKalita", name: "Mr. Surajit Kalita", title: "Vice-Chairman (Operations)", subTitle: "Operations & Planning", imageUrl: "https://i.ibb.co/xcg7tmW/sujit.jpg" },
-  { id: "nidhi", name: "Ms. Nidhi", title: "Corporate Tax & Transfer Pricing Lead", imageUrl: "https://i.postimg.cc/d3dvvrdY/Nidhi.jpg" },
+  { id: "nidhi", name: "Ms. Nidhi", title: "Corporate Tax & Transfer Pricing Lead", subTitle: "International Tax Expert", imageUrl: "https://i.postimg.cc/d3dvvrdY/Nidhi.jpg" },
   { id: "mukeshRanjan", name: "Mr. Mukesh Ranjan", title: "Director — HR & Strategy", imageUrl: "https://i.postimg.cc/HnrRBVXS/mukesh-removebg.png" },
   { id: "yokoTorii", name: "Ms. Yoko Torii", title: "International Programme Coord.", imageUrl: "https://i.ibb.co/99zx9ZGn/yoko-torii.jpg" },
   { id: "dhruvHans", name: "Mr. Dhruv (Hans Dhruv)", title: "Programme Coordinator", imageUrl: "https://i.ibb.co/8D7x8kKq/Mr-Dhruv-Hans-Dhruv.jpg" },
@@ -460,14 +466,8 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {advisoryBoard.map((advisor, i) => (
             <Card key={i} className="flex flex-row items-center gap-4 p-4 rounded-2xl bg-muted/30 border-none hover:bg-muted transition-colors shadow-sm">
-              <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-accent">
-                <Image 
-                  src={`https://picsum.photos/seed/advisor-${i}/200/200`} 
-                  alt={advisor.name} 
-                  fill 
-                  className="object-cover" 
-                  data-ai-hint="professional portrait"
-                />
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border-2 border-accent">
+                <UserCircle2 className="h-10 w-10 text-primary" />
               </div>
               <div>
                 <div className="font-bold text-lg text-primary">{advisor.name}</div>
