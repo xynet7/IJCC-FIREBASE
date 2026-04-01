@@ -54,18 +54,19 @@ const leadershipData = [
 
 const advisoryBoard = [
   { name: "Mr. Tomoyuki Iwama", role: "Director, Yakult India", imageUrl: "https://i.postimg.cc/025b7P5b/iwama-removebg-preview.png" },
-  { name: "Mr. Naveen Verma", role: "Chairman, RERA Bihar (Retd. IAS)" },
-  { name: "Dr. Randeep Rakwal", role: "Professor, Tsukuba University, Japan" },
-  { name: "Mr. Kenichiro Iwahori", role: "Advisor, Sasakawa Foundation, Japan" },
-  { name: "Dr. Supratic Gupta", role: "Professor, IIT Delhi" },
-  { name: "Mr. Markus", role: "MD, Asahi Travels Japan" },
-  { name: "Mr. Anil K. Khandelwal", role: "Ex. General Manager, East Central Railway" },
-  { name: "Dr. Jatinder Khanna", role: "Policy Maker, Education & Culture" },
-  { name: "Dr. Maushumi Barooah", role: "Ex. Director, Assam Technical Education Board" },
-  { name: "Mr. Rajesh Mehta", role: "Editor, Sunday Guardian" },
-  { name: "Dr. Vinod K. Yadavendu", role: "Ex Member, Bihar Legislative Assembly" },
-  { name: "Mr. P.D. Sharma", role: "Sr. Advocate (AOR), Supreme Court of India" },
-  { name: "Ms. Anjali Sharma", role: "Advocate, Supreme Court of India" },
+  { name: "Mr. Naveen Verma", role: "Chairman, RERA Bihar (Retd. IAS)", imageUrl: "https://i.postimg.cc/CK70VjSM/Naveen-Verma-2.jpg" },
+  { name: "Dr. Randeep Rakwal", role: "Professor, Tsukuba University, Japan", imageUrl: "https://i.postimg.cc/Gh6Kf8sB/randeep-removebg-preview.png" },
+  { name: "Mr. Kenichiro Iwahori", role: "Advisor, Sasakawa Foundation, Japan", imageUrl: "https://i.ibb.co/VcG0s7QJ/iwahori-removebg-preview.png" },
+  { name: "Dr. Supratic Gupta", role: "Professor, IIT Delhi", imageUrl: "https://i.postimg.cc/7LmS9f7R/supratic1.jpg" },
+  { name: "Mr. Markus", role: "MD, Asahi Travels Japan", imageUrl: "https://i.postimg.cc/brHtYXS7/Markus-removebg-preview.png" },
+  { name: "Mr. Anil K. Khandelwal", role: "Ex. General Manager, East Central Railway", imageUrl: "https://i.postimg.cc/Qxz8QsHq/anil1.jpg" },
+  { name: "Dr. Jatinder Khanna", role: "Policy Maker, Education & Culture", imageUrl: "https://i.postimg.cc/CKgMZKnZ/jatinder.jpg" },
+  { name: "Dr. Maushumi Barooah", role: "Ex. Director, Assam Technical Education Board", imageUrl: "https://i.postimg.cc/h4TXtN53/mausimi1.jpg" },
+  { name: "Mr. Rajesh Mehta", role: "Editor, Sunday Guardian", imageUrl: "https://i.postimg.cc/Vsb5G5Qh/rajesh-removebg-preview.png" },
+  { name: "Dr. Vinod K. Yadavendu", role: "Ex Member, Bihar Legislative Assembly", imageUrl: "https://i.postimg.cc/fbKbhgFG/vinod-removebg.png" },
+  { name: "Mr. P.D. Sharma", role: "Sr. Advocate (AOR), Supreme Court of India", imageUrl: "https://i.postimg.cc/RVBWhvf3/pd-sharma.jpg" },
+  { name: "Ms. Anjali Sharma", role: "Advocate, Supreme Court of India", imageUrl: "https://i.postimg.cc/kX4zvbb0/anjali1.jpg" },
+  { name: "Mr. Raj", role: "Advisory Member", imageUrl: "https://i.postimg.cc/RV5W1scJ/raj.jpg" },
 ];
 
 const verticals = [
