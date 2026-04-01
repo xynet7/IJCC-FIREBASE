@@ -13,38 +13,25 @@ import {
   Target, 
   Users, 
   Briefcase, 
-  Library, 
   Lightbulb, 
   Building, 
   Landmark, 
-  Wallet, 
   Users2, 
-  ConciergeBell, 
   University, 
-  HeartHandshake, 
-  ShieldCheck, 
+  CheckCircle2, 
+  Calendar, 
+  Layers, 
+  Database, 
+  SearchCode,
   ArrowRight,
-  Info,
-  CheckCircle2,
-  Calendar,
-  Layers,
-  Search,
-  FileText,
-  BarChart,
   Sparkles,
-  Trophy,
-  Plane,
-  Dna,
-  Cpu,
-  FlaskConical,
   Sprout,
-  Database,
-  SearchCode
+  Cpu,
+  Trophy
 } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const leadershipData = [
   { id: "rahulMishra", name: "Mr. Rahul Mishra", title: "Chairman, IJCC", subTitle: "Overall Leadership", imageUrl: "https://i.postimg.cc/3JdfvHM7/rahulsir1.jpg" },
@@ -81,84 +68,155 @@ const verticals = [
     icon: <Handshake className="h-6 w-6" />, 
     titleKey: "vertical_01_title", 
     descKey: "vertical_01_desc",
-    points: ["Trade facilitation & B2B matchmaking", "Trade delegations (India ↔ Japan)", "Export-import & FDI promotion", "Market intelligence reports", "Liaison with JETRO, CII, FICCI"]
+    points: [
+      "Trade facilitation, market access advisory & B2B matchmaking",
+      "Trade delegation coordination — India ↔ Japan",
+      "Export-import advisory, regulatory guidance & FDI promotion",
+      "Market intelligence reports and industry sector analyses",
+      "SME and startup support for Japan market entry",
+      "Liaison with JETRO, CII, FICCI and other trade bodies"
+    ]
   },
   { 
     id: "02", 
     icon: <University className="h-6 w-6" />, 
     titleKey: "vertical_02_title", 
     descKey: "vertical_02_desc",
-    points: ["University partnerships & MoUs", "Student and faculty exchange", "Japanese language & JLPT support", "Joint research & scholarships", "IIT/IIM collaborations"]
+    points: [
+      "University partnerships, MoU facilitation & exchange programs",
+      "Student and faculty exchange between India and Japan",
+      "Japanese language education and JLPT preparation support",
+      "Joint research, scholarships and fellowship promotion",
+      "Collaboration with IITs, IIMs and Japanese universities"
+    ]
   },
   { 
     id: "03", 
     icon: <Users2 className="h-6 w-6" />, 
     titleKey: "vertical_03_title", 
     descKey: "vertical_03_desc",
-    points: ["Cultural exchange events", "Japanese arts & cuisine promotion", "Tourism facilitation programs", "Diaspora community engagement", "Indian heritage in Japan"]
+    points: [
+      "Cultural exchange events and Japan Habba exhibitions",
+      "Japanese arts, crafts and cuisine promotion in India",
+      "Indian cultural heritage promotion in Japan",
+      "Tourism facilitation and travel promotion programs",
+      "Diaspora community engagement and networking"
+    ]
   },
   { 
     id: "04", 
     icon: <Lightbulb className="h-6 w-6" />, 
     titleKey: "vertical_04_title", 
     descKey: "vertical_04_desc",
-    points: ["Technology transfer facilitation", "Startup ecosystem collaboration", "Joint R&D (IIT Delhi / Tsukuba)", "IP Rights Cell support", "AI, Robotics & Smart City"]
+    points: [
+      "Technology transfer facilitation between India and Japan",
+      "Startup ecosystem collaboration and incubation support",
+      "Joint R&D — IIT Delhi and Tsukuba University partnerships",
+      "IP Rights Cell — education, filing and protection support",
+      "AI, robotics, automation and smart city exchange"
+    ]
   },
   { 
     id: "05", 
     icon: <Zap className="h-6 w-6" />, 
     titleKey: "vertical_05_title", 
     descKey: "vertical_05_desc",
-    points: ["Clean energy (Solar, Wind, Hydrogen)", "Policy advocacy for renewables", "ESG advisory support", "Green infrastructure development"]
+    points: [
+      "Clean energy collaboration — solar, wind and hydrogen",
+      "Renewable energy project facilitation and policy advocacy",
+      "ESG advisory support and sustainability reporting",
+      "Green infrastructure and sustainable urban development"
+    ]
   },
   { 
     id: "06", 
     icon: <Scale className="h-6 w-6" />, 
     titleKey: "vertical_06_title", 
     descKey: "vertical_06_desc",
-    points: ["Bilateral trade law advisory", "FEMA & RBI regulatory guidance", "Policy representation", "Dispute resolution facilitation"]
+    points: [
+      "Legal advisory on India-Japan business and trade law",
+      "FEMA and RBI regulatory guidance for members",
+      "Policy representation with Indian government bodies",
+      "Dispute resolution and mediation facilitation"
+    ]
   },
   { 
     id: "07", 
     icon: <Building2 className="h-6 w-6" />, 
     titleKey: "vertical_07_title", 
     descKey: "vertical_07_desc",
-    points: ["Smart city & urban mobility", "Industrial corridor development", "Japanese infra-financing", "Government liaison for infra MoUs"]
+    points: [
+      "Smart city, urban infrastructure and mobility projects",
+      "Roads, ports, logistics and industrial corridor development",
+      "Japanese infrastructure financing & technology tie-ups",
+      "Government liaison for bilateral infrastructure MoUs",
+      "Housing, townships and affordable urban development"
+    ]
   },
   { 
     id: "08", 
     icon: <Sprout className="h-6 w-6" />, 
     titleKey: "vertical_08_title", 
     descKey: "vertical_08_desc",
-    points: ["Agri-tech & precision farming", "Cold chain modernisation", "Organic farming practices", "Market linkage facilitation"]
+    points: [
+      "Agri-technology exchange and precision farming collaboration",
+      "Food processing, cold chain and supply chain modernisation",
+      "Organic farming, sustainable agriculture best practices",
+      "Japan-India agri-trade and market linkage facilitation",
+      "Rural development partnerships and farmer outreach programs"
+    ]
   },
   { 
     id: "09", 
     icon: <Target className="h-6 w-6" />, 
     titleKey: "vertical_09_title", 
     descKey: "vertical_09_desc",
-    points: ["Japan market readiness profiling", "B2B matchmaking for MSMEs", "Access to Japanese investment", "Mentorship & export programs"]
+    points: [
+      "SME/MSME onboarding, profiling and Japan market readiness",
+      "Bilateral B2B matchmaking for small business owners",
+      "Access to Japanese technology and investment for Indian MSMEs",
+      "Mentorship, capacity building and export orientation programs",
+      "Government scheme linkage — MUDRA, SIDBI, NSIC and more"
+    ]
   },
   { 
     id: "10", 
     icon: <Database className="h-6 w-6" />, 
     titleKey: "vertical_10_title", 
     descKey: "vertical_10_desc",
-    points: ["Software & SaaS collaboration", "Cross-border data governance", "Cybersecurity exchange", "Fintech & digital payments"]
+    points: [
+      "IT sector collaboration — software, SaaS and digital services",
+      "Data governance, privacy law and cross-border data flow advisory",
+      "Cloud computing, cybersecurity and digital infrastructure exchange",
+      "Bilateral e-commerce, fintech and digital payments facilitation",
+      "AI & machine learning joint projects and research"
+    ]
   },
   { 
     id: "11", 
     icon: <Cpu className="h-6 w-6" />, 
     titleKey: "vertical_11_title", 
     descKey: "vertical_11_desc",
-    points: ["Quantum computing & lab partnerships", "Space & Satellite collaboration", "Semiconductor & materials exchange", "Biotech & Genomics tie-ups"]
+    points: [
+      "Quantum computing research and bilateral lab partnerships",
+      "Space technology, satellite and aerospace collaboration",
+      "Semiconductor, chip design and advanced materials exchange",
+      "Biotechnology, genomics and life sciences tie-ups",
+      "Robotics, automation and Industry 4.0 implementation"
+    ]
   },
   { 
     id: "12", 
     icon: <SearchCode className="h-6 w-6" />, 
     titleKey: "vertical_12_title", 
     descKey: "vertical_12_desc",
-    points: ["Structured R&D collaboration", "IP creation & patent filing", "Innovation grants liaison", "Deep-tech startup support"]
+    points: [
+      "Joint research programs — IIT Delhi, Tsukuba University and more",
+      "IP creation, patent filing and commercialisation support",
+      "Industry-academia collaboration and innovation grants",
+      "Bilateral R&D funding facilitation and government scheme linkage",
+      "Technology incubation and deep-tech startup support"
+    ]
   }
 ];
 
@@ -182,7 +240,7 @@ export default function AboutPage() {
               "Connecting India & Japan for Mutual Prosperity"
             </p>
             <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-primary-foreground/80 font-medium">
-              <span>Trade</span> • <span>Education</span> • <span>Culture</span> • <span>Technology</span> • <span>Energy</span> • <span>Legal</span> • <span>Infrastructure</span> • <span>Agriculture</span> • <span>SME/MSME</span> • <span>Data & IT</span>
+              <span>Trade</span> • <span>Education</span> • <span>Culture</span> • <span>Technology</span> • <span>Energy</span> • <span>Legal</span> • <span>Infrastructure</span> • <span>Agriculture</span> • <span>SME/MSME</span> • <span>Data & IT</span> • <span>NextGen Tech</span> • <span>R&D</span>
             </div>
           </div>
         </div>
@@ -200,7 +258,7 @@ export default function AboutPage() {
                 Founded in 2025, the Indo-Japan Chamber of Commerce (IJCC) is a registered trust building a powerful bilateral bridge between India and Japan — Asia's two most dynamic and complementary economies.
               </p>
               <p>
-                IJCC has rapidly established institutional credibility — signing formal MoUs with <strong>Spolto</strong> (Sports Technology), <strong>Nihon Edutech</strong> (Japan-India Skills & Placements), <strong>IIA</strong> — Indian Industries Association (Apex MSME Body), <strong>Wadhwani Foundation</strong> (AI-powered Skilling) and <strong>SEM</strong> (Full-service Event Partner). These partnerships validate IJCC's cross-sectoral reach across sports, education, industry, technology and skilling.
+                The IJCC has rapidly established institutional credibility — signing formal MoUs with <strong>Spolto</strong> (Sports Technology), <strong>Nihon Edutech</strong> (Japan-India Skills & Placements), <strong>IIA</strong> — Indian Industries Association (Apex MSME Body), <strong>Wadhwani Foundation</strong> (AI-powered Skilling) and <strong>SEM</strong> (Full-service Event Partner). These partnerships validate IJCC's cross-sectoral reach across sports, education, industry, technology and skilling.
               </p>
             </div>
             
@@ -399,14 +457,23 @@ export default function AboutPage() {
           <h2 className="text-4xl font-headline text-primary uppercase tracking-tight">Advisory Board</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">Providing strategic guidance and industry expertise across bilateral corridors.</p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {advisoryBoard.map((advisor, i) => (
-            <div key={i} className="flex gap-4 items-center p-4 rounded-xl bg-muted/30 border-l-4 border-accent hover:bg-muted transition-colors">
+            <Card key={i} className="flex flex-row items-center gap-4 p-4 rounded-2xl bg-muted/30 border-none hover:bg-muted transition-colors shadow-sm">
+              <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-accent">
+                <Image 
+                  src={`https://picsum.photos/seed/advisor-${i}/200/200`} 
+                  alt={advisor.name} 
+                  fill 
+                  className="object-cover" 
+                  data-ai-hint="professional portrait"
+                />
+              </div>
               <div>
                 <div className="font-bold text-lg text-primary">{advisor.name}</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-widest">{advisor.role}</div>
+                <div className="text-xs text-muted-foreground uppercase tracking-widest leading-tight">{advisor.role}</div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </section>
