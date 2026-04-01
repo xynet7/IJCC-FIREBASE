@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { useTranslation } from "@/hooks/use-translation";
+import { useState, useEffect } from "react";
 
 const members = [
     { name: "All India Management Association", href: "https://www.aima.in", logoUrl: "https://www.aima.in/img/logo.png", hint: "company logo" },
@@ -41,13 +42,20 @@ const members = [
 
 export default function MembersPage() {
   const { t } = useTranslation();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <div className="container py-12">
       <div className="space-y-4 mb-12 text-center">
-        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">{t('members_title')}</h1>
+        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">
+          {mounted ? t('members_title') : 'Membership'}
+        </h1>
         <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
-          {t('members_description')}
+          {mounted ? t('members_description') : 'Join us to foster Indo-Japan collaboration.'}
         </p>
       </div>
 
@@ -56,15 +64,17 @@ export default function MembersPage() {
        <div className="text-center mt-16">
           <Button asChild size="lg">
             <Link href="/membership-application">
-              <Mail className="mr-2 h-5 w-5" /> {t('members_applyButton')}
+              <Mail className="mr-2 h-5 w-5" /> {mounted ? t('members_applyButton') : 'Apply for Membership'}
             </Link>
           </Button>
       </div>
 
       <div className="space-y-4 my-20 text-center pt-12 border-t">
-        <h2 className="text-3xl font-headline tracking-tighter sm:text-4xl">{t('members_associatesTitle')}</h2>
+        <h2 className="text-3xl font-headline tracking-tighter sm:text-4xl">
+          {mounted ? t('members_associatesTitle') : 'Partners & Members'}
+        </h2>
         <p className="max-w-[900px] mx-auto text-muted-foreground md:text-xl">
-          {t('members_associatesDescription')}
+          {mounted ? t('members_associatesDescription') : 'A strong network of businesses and professionals.'}
         </p>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
