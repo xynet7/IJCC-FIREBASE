@@ -38,7 +38,7 @@ const pricingTiers = [
     },
     {
         id: "startup",
-        title: "Startups / SMEs / Partnerships",
+        title: "Startups / SMEs / Partnerships (below 50 lakhs)",
         price: 10000,
         displayPrice: "₹10,000",
         period: "/ year",
@@ -67,7 +67,7 @@ const pricingTiers = [
     },
     {
         id: "corporate",
-        title: "Corporates / MSMEs",
+        title: "Corporates / MSMEs / LLP",
         price: 25000,
         displayPrice: "₹25,000",
         period: "/ year",
@@ -81,7 +81,7 @@ const pricingTiers = [
     },
     {
         id: "large-corporate",
-        title: "Large Corporates / Institutions",
+        title: "Large Corporates / Institutions / Others (above 10 cr.)",
         price: 50000,
         displayPrice: "₹50,000",
         period: "/ year",
