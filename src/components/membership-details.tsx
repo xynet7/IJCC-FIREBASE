@@ -112,7 +112,6 @@ const TierCard = ({ tier }: { tier: (typeof membershipTiers)[0] }) => {
                     <CardTitle className="font-headline text-2xl">{t(tier.titleKey)}</CardTitle>
                     <div className="flex items-baseline gap-2 pt-2">
                         <span className="text-3xl font-bold">{tier.price}</span>
-                        <span className="text-muted-foreground">{t('membershipDetails_perYear')}</span>
                     </div>
                 </div>
               </div>
@@ -131,7 +130,7 @@ const TierCard = ({ tier }: { tier: (typeof membershipTiers)[0] }) => {
             </CardContent>
             <CardFooter>
                 <Button onClick={handleGetStarted} className="w-full" disabled={loading}>
-                    {t('membershipDetails_getStartedButton')} <ArrowRight className="ml-2 h-4 w-4" />
+                    Get started <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
             </CardFooter>
         </Card>
