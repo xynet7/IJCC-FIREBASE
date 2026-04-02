@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -118,8 +117,7 @@ const TierCard = ({ tier }: { tier: (typeof membershipTiers)[0] }) => {
               <CardDescription>{t(tier.eligibilityKey)}</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
-              <h4 className="font-semibold mb-3">{t('membershipDetails_benefitsTitle')}:</h4>
-              <ul className="space-y-2">
+              <ul className="space-y-2 pt-2 border-t">
                 {tier.benefitsKeys.map((benefitKey) => (
                   <li key={benefitKey} className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
@@ -149,8 +147,8 @@ export function MembershipDetails() {
             <CardHeader>
                 <CardTitle className="font-headline">{t('membershipDetails_paymentTitle')}</CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-col sm:flex-row gap-6">
-                <div className="space-y-2 text-muted-foreground flex-1">
+            <CardContent className="flex flex-col sm:flex-row items-center gap-8">
+                <div className="space-y-3 text-muted-foreground flex-1 text-center sm:text-left">
                     <p><strong>{t('membershipDetails_accountNameLabel')}:</strong> INDO JAPAN CHAMBER OF COMMERCE</p>
                     <p><strong>{t('membershipDetails_bankNameLabel')}:</strong> IDFC Bank</p>
                     <p><strong>{t('membershipDetails_accountNoLabel')}:</strong> 10226043148</p>
@@ -159,15 +157,18 @@ export function MembershipDetails() {
                     <p><strong>{t('membershipDetails_micrCodeLabel')}:</strong> 110751034</p>
                     <p><strong>{t('membershipDetails_branchCodeLabel')}:</strong> 21413</p>
                 </div>
-                <div className="flex-shrink-0">
-                    <Image 
-                        src="https://i.postimg.cc/hGRkss7h/qr-ijcc.jpg"
-                        alt="Payment QR Code"
-                        width={150}
-                        height={150}
-                        className="rounded-lg shadow-md"
-                        data-ai-hint="qr code"
-                    />
+                <div className="flex-shrink-0 flex flex-col items-center gap-2">
+                    <div className="bg-white p-3 rounded-2xl border-2 border-primary/10 shadow-lg">
+                        <Image 
+                            src="https://i.postimg.cc/hGRkss7h/qr-ijcc.jpg"
+                            alt="Payment QR Code"
+                            width={180}
+                            height={180}
+                            className="rounded-lg"
+                            data-ai-hint="qr code"
+                        />
+                    </div>
+                    <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-widest">Scan to Pay</span>
                 </div>
             </CardContent>
         </Card>
