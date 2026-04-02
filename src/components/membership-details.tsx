@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -92,8 +93,8 @@ const TierCard = ({ tier }: { tier: (typeof membershipTiers)[0] }) => {
     const handleGetStarted = () => {
         if (!user) {
             toast({
-                title: t('membershipDetails_authRequiredTitle'),
-                description: t('membershipDetails_authRequiredDescription'),
+                title: "Login Required",
+                description: "Please login to apply for membership.",
                 variant: "destructive",
             });
             router.push('/login');
