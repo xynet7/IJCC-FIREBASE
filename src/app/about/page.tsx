@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -44,7 +45,7 @@ const leadershipData = [
   { id: "gajendraBadgujar", name: "Mr. Gajendra Badgujar", title: "Vice-Chairman (Strategy)", subTitle: "Ex. Director, FICCI", imageUrl: "https://i.postimg.cc/25KMJ8NH/gajendra1.jpg" },
   { id: "prakashYadav", name: "Mr. Prakash Yadav", title: "Vice-Chairman (Corporate)", subTitle: "MD, AJU Hotels", imageUrl: "https://i.postimg.cc/9QnxQ442/prakash2.jpg" },
   { id: "neelamRamaiah", name: "Dr. Neelam Ramaiah", title: "Vice-Chairman (Education)", subTitle: "Ex. Dir., Univ. of Tokyo", imageUrl: "https://i.postimg.cc/L5nGMJBJ/neelam-removebg-preview.png" },
-  { id: "surajitKalita", name: "Mr. Surajit Kalita", title: "Vice-Chairman (Operations)", subTitle: "Operations & Planning", imageUrl: "https://i.ibb.co/xcg7tmW/sujit.jpg" },
+  { id: "surajitKalita", name: "Mr. Surajeet Kalita", title: "Co-Founder & Vice Chairman", subTitle: "Operations & Planning", imageUrl: "https://i.ibb.co/xcg7tmW/sujit.jpg" },
   { id: "nidhi", name: "Ms. Nidhi", title: "Corporate Tax & Transfer Pricing Lead", subTitle: "International Tax Expert", imageUrl: "https://i.postimg.cc/d3dvvrdY/Nidhi.jpg" },
   { id: "mukeshRanjan", name: "Mr. Mukesh Ranjan", title: "Director — HR & Strategy", imageUrl: "https://i.postimg.cc/HnrRBVXS/mukesh-removebg.png" },
   { id: "yokoTorii", name: "Ms. Yoko Torii", title: "International Programme Coord.", imageUrl: "https://i.ibb.co/99zx9ZGn/yoko-torii.jpg" },
@@ -389,7 +390,7 @@ export default function AboutPage() {
                 <AccordionContent className="pb-8 pt-2 pl-12">
                   <div className="space-y-4">
                     <p className="text-primary font-semibold">{t(v.descKey)}</p>
-                    <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
+                    <ul className="flex flex-col gap-y-3">
                       {v.points.map((point, idx) => (
                         <li key={idx} className="flex items-start gap-2 text-muted-foreground text-sm">
                           <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
