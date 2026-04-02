@@ -29,7 +29,9 @@ import {
   Sprout,
   Cpu,
   Trophy,
-  UserCircle2
+  Instagram,
+  Linkedin,
+  Facebook
 } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
@@ -391,17 +393,22 @@ export default function AboutPage() {
               <h3 className="text-3xl font-headline text-primary">{t('about_footer_title')}</h3>
               <p className="text-muted-foreground">{t('about_footer_subtitle')}</p>
             </div>
-            <div className="flex flex-wrap justify-center md:justify-end gap-6">
+            <div className="flex flex-wrap justify-center md:justify-end gap-8">
               {[
-                { label: "Website", val: "www.ijcc.in", href: "/" },
-                { label: "LinkedIn", val: "company/indo-japan-chamber-of-commerce", href: "https://www.linkedin.com/company/indo-japan-chamber-of-commerce/" },
-                { label: "Instagram", val: "@ijccindia", href: "https://www.instagram.com/ijccindia" },
-                { label: "Facebook", val: "IJCC", href: "https://www.facebook.com/people/Indo-Japan-Chamber-of-Commerce/61573931145126/" },
+                { label: "Website", icon: <Globe className="h-6 w-6" />, href: "/" },
+                { label: "LinkedIn", icon: <Linkedin className="h-6 w-6" />, href: "https://www.linkedin.com/company/indo-japan-chamber-of-commerce/" },
+                { label: "Instagram", icon: <Instagram className="h-6 w-6" />, href: "https://www.instagram.com/ijccindia?igsh=YW41MzJzNDY2M25y" },
+                { label: "Facebook", icon: <Facebook className="h-6 w-6" />, href: "https://www.facebook.com/people/Indo-Japan-Chamber-of-Commerce/61573931145126/" },
               ].map((link, i) => (
-                <div key={i} className="text-center">
-                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">{link.label}</div>
-                  <a href={link.href} target="_blank" rel="noopener noreferrer" className="font-bold text-primary hover:underline">
-                    {link.val}
+                <div key={i} className="flex flex-col items-center gap-2 group">
+                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">{link.label}</div>
+                  <a 
+                    href={link.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="p-4 rounded-full bg-white shadow-sm text-primary hover:bg-primary hover:text-white transition-all duration-300 border-2 border-primary/5 hover:scale-110"
+                  >
+                    {link.icon}
                   </a>
                 </div>
               ))}
