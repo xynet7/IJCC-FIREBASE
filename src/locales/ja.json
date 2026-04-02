@@ -1,4 +1,3 @@
-
 {
   "greeting": "こんにちは、世界！",
   "welcomeMessage": "私たちのアプリケーションへこそ。",
@@ -69,6 +68,12 @@
   "news_title": "最新ニュース",
   "news_description": "日印関係に関する最新情報を入手してください。",
   "news_readMoreButton": "詳しく読む",
+  "news_article_nihon-edutech_title": "IJCC、インドを代表する日本キャリア支援企業Nihon EdutechとMOUを締結",
+  "news_article_nihon-edutech_description": "日本での言語トレーニング、TITPインターンシップ、およびITキャリアパスを会員に提供します。",
+  "news_article_spolto-jv_title": "IJCCとSpolto、日印スポーツ交流ジョイントベンチャーを開始",
+  "news_article_spolto-jv_description": "「スポーツは私たちが共有する言語です — IJCC × Spoltoを通じてインドが日本に出会います」。",
+  "news_article_sem-events_title": "IJCCのイベントはSEM Events & Meetingsによって専門的に管理されています",
+  "news_article_sem-events_description": "すべてのIJCC代表団、サミット、および二国間イベントは、最高の専門基準で実行されます。",
   "events_page_title": "イベントと代表団",
   "events_page_subtitle": "インドと日本を結ぶ今後のビジネス代表団、セミナー、文化イベントにご参加ください。",
   "events_calendar_title": "イベントカレンダー",
