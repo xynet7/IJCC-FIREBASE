@@ -30,7 +30,8 @@ import {
   HeartHandshake,
   Monitor,
   Search,
-  Languages
+  Languages,
+  Rocket
 } from "lucide-react";
 import { notFound, useParams } from "next/navigation";
 import { useTranslation } from "@/hooks/use-translation";
