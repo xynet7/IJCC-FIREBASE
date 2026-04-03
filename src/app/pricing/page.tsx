@@ -67,7 +67,7 @@ const pricingTiers = [
     },
     {
         id: "corporate",
-        title: "Corporates / MSMEs / LLP",
+        title: "Corporates / MSMEs / LLP (above 50 lakhs below 10cr.)",
         price: 25000,
         displayPrice: "₹25,000",
         period: "/ year",

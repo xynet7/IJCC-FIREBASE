@@ -1,3 +1,4 @@
+
 {
   "greeting": "Hello, World!",
   "welcomeMessage": "Welcome to our application.",
@@ -741,7 +742,7 @@
   "membershipTier_association_benefit3": "Access to policy-making forums",
   "membershipTier_association_benefit4": "Joint advocacy & research initiatives",
   "membershipTier_association_benefit5": "Collaborative trade mission support",
-  "membershipTier_corporate_title": "Corporates / MSMEs / LLP",
+  "membershipTier_corporate_title": "Corporates / MSMEs / LLP (above 50 lakhs below 10cr.)",
   "membershipTier_corporate_eligibility": "For established private companies.",
   "membershipTier_corporate_benefit1": "All Startup/SME benefits, plus:",
   "membershipTier_corporate_benefit2": "Priority in trade missions",

@@ -1,3 +1,4 @@
+
 {
   "greeting": "こんにちは、世界！",
   "welcomeMessage": "私たちのアプリケーションへこそ。",
@@ -292,7 +293,7 @@
   "servicedetail_indian-universities_description": "印日商工会議所（IJCC）は、インドと日本の間に強力な学術的、文化的、専門的な架け橋を築くことに尽力しています。インドの大学やカレッジ向けに、学生の露出、グローバルな能力、キャリアパスを強化するために設計された一連のサービスを提供しています。",
   "servicedetail_indian-universities_cat1_title": "1. 学術パートナーシップと交換プログラム",
   "servicedetail_indian-universities_cat1_point1": "インドと日本の大学/カレッジ間のMOU締結の促進。",
-  "servicedetail_indian-universities_cat1_point2": "短期および長期の学生交換プログラム。",
+  "servicedetail_indian-universities_cat1_point2": "短期および長期の student交換プログラム。",
   "servicedetail_indian-universities_cat1_point3": "共同研究プロジェクト、合同セミナー、学術会議。",
   "servicedetail_indian-universities_cat2_title": "2. 日本留学と産業ツアー",
   "servicedetail_indian-universities_cat2_point1": "大学、研究開発センター、産業への訪問を含む、日本へのカスタマイズされた教育ツアー。",
@@ -741,7 +742,7 @@
   "membershipTier_association_benefit3": "政策立案フォーラムへのアクセス",
   "membershipTier_association_benefit4": "共同提言および研究イニシアチブ",
   "membershipTier_association_benefit5": "共同貿易ミッションのサポート",
-  "membershipTier_corporate_title": "法人 / MSME / LLP",
+  "membershipTier_corporate_title": "法人 / MSME / LLP (500万ルピー超 1億ルピー未満)",
   "membershipTier_corporate_eligibility": "確立された民間企業向け。",
   "membershipTier_corporate_benefit1": "スタートアップ/SMEの全特典に加えて：",
   "membershipTier_corporate_benefit2": "貿易ミッションへの優先参加",
