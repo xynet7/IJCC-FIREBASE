@@ -1,4 +1,3 @@
-
 {
   "greeting": "Hello, World!",
   "welcomeMessage": "Welcome to our application.",
@@ -518,11 +517,14 @@
   "contact_subtitle": "We are here to help. Reach out to us for any inquiries or support.",
   "contact_officesTitle": "Our Offices",
   "contact_corporateOfficeTitle": "Corporate Office",
-  "contact_corporateOfficeAddress": "Indo-Japan Chamber of Commerce, 1st Floor, Flat No. 104, Plot No. GH-07, Crossing Republic, Ghaziabad, Uttar Pradesh - 201016",
+  "contact_corporateOfficeAddress": "Indo-Japan Chamber of Commerce, 1st Floor, Flat No. 104, Plot No. GH-07, Crossings Republik, Ghaziabad, Uttar Pradesh - 201016",
   "contact_branchOfficeTitle": "Branch Office",
   "contact_branchOfficeAddress": "Indo-Japan Chamber of Commerce, 2nd Floor, Building No. 45, Sector 44, Gurugram, Haryana - 122003",
   "contact_japanOfficeTitle": "Japan Representative Office",
   "contact_japanOfficeAddress": "Indo-Japan Chamber of Commerce, 3-chōme-16-1, Shibaura, Minato City, Tokyo 108-0023, Japan",
+  "contact_phone_india": "+91-92679 19281 (India)",
+  "contact_phone_branch": "+91-98717 45840 (Branch)",
+  "contact_phone_japan": "+81-80-9055-1930 (Japan)",
   "contact_faq_title": "Frequently Asked Questions",
   "contact_faq_q1": "What is the IJCC?",
   "contact_faq_a1": "The Indo-Japan Chamber of Commerce (IJCC) is a non-profit organization dedicated to strengthening economic and cultural ties between India and Japan.",

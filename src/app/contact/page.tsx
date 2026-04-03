@@ -71,15 +71,15 @@ export default function ContactPage() {
                 </div>
                 <div className="flex items-center gap-4">
                     <Phone className="h-6 w-6 text-primary flex-shrink-0" />
-                    <p className="text-muted-foreground">+91-92679 19281 (India)</p>
+                    <p className="text-muted-foreground">{t('contact_phone_india')}</p>
                 </div>
                  <div className="flex items-center gap-4">
                     <Phone className="h-6 w-6 text-primary flex-shrink-0" />
-                    <p className="text-muted-foreground">+91-98717458400 (Branch)</p>
+                    <p className="text-muted-foreground">{t('contact_phone_branch')}</p>
                 </div>
                 <div className="flex items-center gap-4">
                     <Phone className="h-6 w-6 text-primary flex-shrink-0" />
-                    <p className="text-muted-foreground">+81-80-9055-1930 (Japan)</p>
+                    <p className="text-muted-foreground">{t('contact_phone_japan')}</p>
                 </div>
             </div>
         </div>
