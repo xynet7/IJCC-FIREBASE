@@ -25,6 +25,7 @@
     --input: 240 5.9% 90%;
     --ring: 0 100% 37.5%;
     --sakura-pink: 339 85% 92%;
+    --logo-blue: 221 83% 45%;
   }
 
   .dark {
@@ -48,6 +49,7 @@
     --input: 240 3.7% 15.9%;
     --ring: 0 100% 37.5%;
     --sakura-pink: 339 85% 92%;
+    --logo-blue: 217 91% 60%;
   }
 }
 
@@ -78,4 +80,3 @@
 body {
   top: 0px !important;
 }
-    

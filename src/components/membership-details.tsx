@@ -110,7 +110,7 @@ const TierCard = ({ tier }: { tier: (typeof membershipTiers)[0] }) => {
                 <div className="flex-1">
                     <CardTitle className="font-headline text-2xl text-primary">{t(tier.titleKey)}</CardTitle>
                     <div className="flex items-baseline gap-2 pt-2">
-                        <span className="text-3xl font-bold text-foreground">{tier.price}</span>
+                        <span className="text-3xl font-bold text-logo-blue">{tier.price}</span>
                     </div>
                 </div>
               </div>
@@ -148,7 +148,7 @@ export function MembershipDetails() {
                 <CardTitle className="font-headline text-3xl text-primary">{t('membershipDetails_paymentTitle')}</CardTitle>
                 <CardDescription className="text-base font-medium">Please use the details below for direct bank settlement.</CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-col sm:flex-row items-center gap-12 pb-10">
+            <CardContent className="flex flex-col sm:flex-row items-center justify-between gap-12 pb-10">
                 <div className="space-y-4 text-muted-foreground flex-1 text-center sm:text-left">
                     <div className="grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-x-4 gap-y-2 text-sm">
                         <span className="font-bold text-foreground">{t('membershipDetails_accountNameLabel')}:</span>
@@ -158,13 +158,13 @@ export function MembershipDetails() {
                         <span className="font-medium">IDFC First Bank</span>
                         
                         <span className="font-bold text-foreground">{t('membershipDetails_accountNoLabel')}:</span>
-                        <span className="font-bold text-primary text-lg">10226043148</span>
+                        <span className="font-bold text-logo-blue text-lg">10226043148</span>
                         
                         <span className="font-bold text-foreground">{t('membershipDetails_branchLabel')}:</span>
                         <span className="font-medium">Crossing Republic-Ghaziabad</span>
                         
                         <span className="font-bold text-foreground">{t('membershipDetails_ifscCodeLabel')}:</span>
-                        <span className="font-bold tracking-wider">IDFB0021413</span>
+                        <span className="font-bold tracking-wider text-logo-blue">IDFB0021413</span>
                         
                         <span className="font-bold text-foreground">{t('membershipDetails_micrCodeLabel')}:</span>
                         <span className="font-medium">110751034</span>
