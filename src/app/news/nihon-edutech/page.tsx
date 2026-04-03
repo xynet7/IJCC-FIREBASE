@@ -272,7 +272,7 @@ export default function NihonEdutechMoUPage() {
                 <p className="text-sm text-muted-foreground">GM & Head, Skill Development, CII</p>
               </div>
             </CardContent>
-          </div>
+          </Card>
         </div>
       </section>
 
