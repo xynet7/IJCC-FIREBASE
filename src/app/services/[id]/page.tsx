@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -66,7 +67,7 @@ const allServicesData = [
     id: "indian-universities",
     categories: [
         { icon: <University className="h-8 w-8 text-primary" />, points: ["servicedetail_indian-universities_cat1_point1", "servicedetail_indian-universities_cat1_point2", "servicedetail_indian-universities_cat1_point3"] },
-        { icon: <Plane className="h-8 w-8 text-primary" />, points: ["servicedetail_indian-universities_cat2_point1", "servicedetail_indian-universities_cat2_point2", "servicedetail_indian-universities_cat2_point3", "servicedetail_indian-universities_cat2_point4"] },
+        { icon: <Plane className="h-8 w-8 text-primary" />, points: ["servicedetail_indian-universities_cat2_point1", "servicedetail_indian-universities_cat2_point2", "servicedetail_indian-universities_cat2_point3"] },
         { icon: <Languages className="h-8 w-8 text-primary" />, points: ["servicedetail_indian-universities_cat3_point1", "servicedetail_indian-universities_cat3_point2", "servicedetail_indian-universities_cat3_point3"] },
         { icon: <Briefcase className="h-8 w-8 text-primary" />, points: ["servicedetail_indian-universities_cat4_point1", "servicedetail_indian-universities_cat4_point2", "servicedetail_indian-universities_cat4_point3"] },
         { icon: <Zap className="h-8 w-8 text-primary" />, points: ["servicedetail_indian-universities_cat5_point1", "servicedetail_indian-universities_cat5_point2", "servicedetail_indian-universities_cat5_point3"] },
@@ -97,7 +98,7 @@ const allServicesData = [
   {
     id: "company-registration-jp-in",
     categories: [
-      { icon: <Rocket className="h-8 w-8 text-primary" />, points: ["servicedetail_company-registration-jp-in_cat1_point1", "servicedetail_company-registration-jp-in_cat1_point2", "servicedetail_company-registration-jp-in_cat1_point3"] },
+      { icon: <Rocket className="h-8 w-8 text-primary" />, points: ["servicedetail_company-registration-jp-in_cat1_point1"] },
       { icon: <Target className="h-8 w-8 text-primary" />, points: [{ mainKey: "servicedetail_company-registration-jp-in_cat2_point1_main", subKeys: ["servicedetail_company-registration-jp-in_cat2_point1_sub1", "servicedetail_company-registration-jp-in_cat2_point1_sub2", "servicedetail_company-registration-jp-in_cat2_point1_sub3"]}, "servicedetail_company-registration-jp-in_cat2_point2"] },
       { icon: <FileSignature className="h-8 w-8 text-primary" />, points: ["servicedetail_company-registration-jp-in_cat3_point1", "servicedetail_company-registration-jp-in_cat3_point2", "servicedetail_company-registration-jp-in_cat3_point3", "servicedetail_company-registration-jp-in_cat3_point4"] },
       { icon: <Scale className="h-8 w-8 text-primary" />, points: ["servicedetail_company-registration-jp-in_cat4_point1", "servicedetail_company-registration-jp-in_cat4_point2", "servicedetail_company-registration-jp-in_cat4_point3", "servicedetail_company-registration-jp-in_cat4_point4"] },
@@ -167,7 +168,7 @@ const ServiceSection = ({ service }: { service: Service }) => {
         <Card className="p-6">
             <CardHeader className="text-center">
                 <CardTitle className="text-3xl font-headline">{t(service.titleKey)}</CardTitle>
-                <CardDescription className="max-w-3xl mx-auto pt-4 text-base leading-relaxed text-muted-foreground">
+                <CardDescription className="max-w-3xl mx-auto pt-4 text-base leading-relaxed text-muted-foreground whitespace-pre-wrap">
                     {t(service.descriptionKey)}
                 </CardDescription>
             </CardHeader>
