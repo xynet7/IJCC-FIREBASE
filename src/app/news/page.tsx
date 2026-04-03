@@ -12,8 +12,8 @@ const newsArticlesData = [
   {
     id: "nihon-edutech",
     date: "2025-03-12",
-    imageUrl: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1000",
-    hint: "classroom learning",
+    imageUrl: "https://i.ibb.co/JW9Htz3R/edutech.jpg",
+    hint: "nihon edutech mou",
     href: "/news/nihon-edutech",
     isSpecial: true,
     tag: "NEW MoU",

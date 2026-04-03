@@ -152,11 +152,11 @@ export default function NihonEdutechMoUPage() {
           </div>
           <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
             <Image 
-              src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1000" 
+              src="https://i.ibb.co/JW9Htz3R/edutech.jpg" 
               alt="Nihon Edutech Training" 
               fill 
               className="object-cover"
-              data-ai-hint="classroom learning"
+              data-ai-hint="nihon edutech mou"
             />
           </div>
         </div>
@@ -272,7 +272,7 @@ export default function NihonEdutechMoUPage() {
                 <p className="text-sm text-muted-foreground">GM & Head, Skill Development, CII</p>
               </div>
             </CardContent>
-          </Card>
+          </div>
         </div>
       </section>
 
