@@ -1,14 +1,25 @@
+
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Trophy, Star, ShieldCheck } from "lucide-react";
+import { ArrowRight, Calendar, Trophy, Star, ShieldCheck, Building2 } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 import { cn } from "@/lib/utils";
 
 const newsArticlesData = [
+  {
+    id: "aima-mou",
+    date: "2025-03-15",
+    imageUrl: "https://www.aima.in/img/logo.png",
+    hint: "aima logo",
+    href: "/news/aima-mou",
+    isSpecial: true,
+    tag: "STRATEGIC",
+    icon: <Building2 className="h-3 w-3" />
+  },
   {
     id: "nihon-edutech",
     date: "2025-03-12",
@@ -69,13 +80,13 @@ export default function NewsPage() {
               </div>
             )}
             <CardHeader>
-              <div className="relative h-48 w-full mb-4 overflow-hidden rounded-lg">
+              <div className="relative h-48 w-full mb-4 overflow-hidden rounded-lg bg-white p-4">
                 <Image
                   src={article.imageUrl}
                   alt={article.title}
                   width={750}
                   height={430}
-                  className="rounded-t-lg object-cover transition-transform duration-500 hover:scale-110"
+                  className="rounded-t-lg object-contain w-full h-full transition-transform duration-500 hover:scale-110"
                   data-ai-hint={article.hint}
                 />
               </div>
