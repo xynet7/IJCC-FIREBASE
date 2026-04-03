@@ -1,3 +1,4 @@
+
 "use client";
 
 import { MembershipDetails } from "@/components/membership-details";
@@ -43,28 +44,30 @@ export default function MembersPage() {
 
   return (
     <div className="container py-12">
-      <MembershipDetails />
+      <div className="mb-16">
+        <MembershipDetails />
+      </div>
 
-       <div className="text-center mt-16">
-          <Button asChild size="lg">
+       <div className="text-center mt-16 pb-16 border-b">
+          <Button asChild size="lg" className="rounded-full px-12 h-16 text-xl shadow-xl hover:shadow-2xl transition-all">
             <Link href="/membership-application">
-              <Mail className="mr-2 h-5 w-5" /> {t('members_applyButton')}
+              <Mail className="mr-3 h-6 w-6" /> {t('members_applyButton')}
             </Link>
           </Button>
       </div>
 
-      <div className="space-y-4 my-20 text-center pt-12 border-t">
-        <h2 className="text-3xl font-headline tracking-tighter sm:text-4xl">
+      <div className="space-y-4 my-20 text-center">
+        <h2 className="text-4xl font-headline tracking-tighter sm:text-5xl text-primary">
           {t('members_associatesTitle')}
         </h2>
-        <p className="max-w-[900px] mx-auto text-muted-foreground md:text-xl">
+        <p className="max-w-[900px] mx-auto text-muted-foreground md:text-xl font-medium">
           {t('members_associatesDescription')}
         </p>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
           {members.map((member) => (
             <Link href={member.href} key={member.name} target="_blank" rel="noopener noreferrer" className="block">
-              <Card className="flex items-center justify-center p-6 h-40 transition-transform transform hover:scale-105 hover:shadow-lg">
+              <Card className="flex items-center justify-center p-6 h-40 transition-all transform hover:scale-105 hover:shadow-xl border-2 border-primary/5">
                 <CardContent className="p-0 flex items-center justify-center h-full w-full">
                     <Image 
                         src={member.logoUrl} 

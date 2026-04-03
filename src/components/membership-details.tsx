@@ -4,7 +4,6 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, User, Rocket, Building, Landmark, Mail, Phone, Globe, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
-import Link from "next/link";
 import { useAuth } from "@/context/auth-context";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
@@ -104,31 +103,31 @@ const TierCard = ({ tier }: { tier: (typeof membershipTiers)[0] }) => {
     };
 
     return (
-        <Card className="flex flex-col">
+        <Card className="flex flex-col h-full hover:shadow-lg transition-shadow border-2 border-primary/5">
             <CardHeader>
               <div className="flex items-start gap-4 mb-2">
-                {tier.icon}
+                <div className="bg-primary/5 p-3 rounded-2xl">{tier.icon}</div>
                 <div className="flex-1">
-                    <CardTitle className="font-headline text-2xl">{t(tier.titleKey)}</CardTitle>
+                    <CardTitle className="font-headline text-2xl text-primary">{t(tier.titleKey)}</CardTitle>
                     <div className="flex items-baseline gap-2 pt-2">
-                        <span className="text-3xl font-bold">{tier.price}</span>
+                        <span className="text-3xl font-bold text-foreground">{tier.price}</span>
                     </div>
                 </div>
               </div>
-              <CardDescription>{t(tier.eligibilityKey)}</CardDescription>
+              <CardDescription className="font-medium text-muted-foreground">{t(tier.eligibilityKey)}</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
-              <ul className="space-y-2 pt-2 border-t">
+              <ul className="space-y-3 pt-4 border-t border-primary/10">
                 {tier.benefitsKeys.map((benefitKey) => (
-                  <li key={benefitKey} className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
-                    <span className="text-muted-foreground">{t(benefitKey)}</span>
+                  <li key={benefitKey} className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground leading-snug">{t(benefitKey)}</span>
                   </li>
                 ))}
               </ul>
             </CardContent>
-            <CardFooter>
-                <Button onClick={handleGetStarted} className="w-full" disabled={loading}>
+            <CardFooter className="pt-6">
+                <Button onClick={handleGetStarted} className="w-full h-12 rounded-xl text-base font-bold shadow-md hover:shadow-xl transition-all" disabled={loading}>
                     Get started <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
             </CardFooter>
@@ -140,72 +139,96 @@ export function MembershipDetails() {
   const { t } = useTranslation();
   return (
     <div className="space-y-16">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {membershipTiers.map((tier) => (
           <TierCard key={tier.titleKey} tier={tier} />
         ))}
-         <Card>
-            <CardHeader>
-                <CardTitle className="font-headline">{t('membershipDetails_paymentTitle')}</CardTitle>
+         <Card className="lg:col-span-2 border-2 border-primary/20 bg-primary/5 shadow-xl">
+            <CardHeader className="text-center sm:text-left">
+                <CardTitle className="font-headline text-3xl text-primary">{t('membershipDetails_paymentTitle')}</CardTitle>
+                <CardDescription className="text-base font-medium">Please use the details below for direct bank settlement.</CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-col sm:flex-row items-center gap-8">
-                <div className="space-y-3 text-muted-foreground flex-1 text-center sm:text-left">
-                    <p><strong>{t('membershipDetails_accountNameLabel')}:</strong> INDO JAPAN CHAMBER OF COMMERCE</p>
-                    <p><strong>{t('membershipDetails_bankNameLabel')}:</strong> IDFC Bank</p>
-                    <p><strong>{t('membershipDetails_accountNoLabel')}:</strong> 10226043148</p>
-                    <p><strong>{t('membershipDetails_branchLabel')}:</strong> Crossing Republic-Ghaziabad</p>
-                    <p><strong>{t('membershipDetails_ifscCodeLabel')}:</strong> IDFB0021413</p>
-                    <p><strong>{t('membershipDetails_micrCodeLabel')}:</strong> 110751034</p>
-                    <p><strong>{t('membershipDetails_branchCodeLabel')}:</strong> 21413</p>
+            <CardContent className="flex flex-col sm:flex-row items-center gap-12 pb-10">
+                <div className="space-y-4 text-muted-foreground flex-1 text-center sm:text-left">
+                    <div className="grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-x-4 gap-y-2 text-sm">
+                        <span className="font-bold text-foreground">{t('membershipDetails_accountNameLabel')}:</span>
+                        <span className="font-medium">INDO JAPAN CHAMBER OF COMMERCE</span>
+                        
+                        <span className="font-bold text-foreground">{t('membershipDetails_bankNameLabel')}:</span>
+                        <span className="font-medium">IDFC First Bank</span>
+                        
+                        <span className="font-bold text-foreground">{t('membershipDetails_accountNoLabel')}:</span>
+                        <span className="font-bold text-primary text-lg">10226043148</span>
+                        
+                        <span className="font-bold text-foreground">{t('membershipDetails_branchLabel')}:</span>
+                        <span className="font-medium">Crossing Republic-Ghaziabad</span>
+                        
+                        <span className="font-bold text-foreground">{t('membershipDetails_ifscCodeLabel')}:</span>
+                        <span className="font-bold tracking-wider">IDFB0021413</span>
+                        
+                        <span className="font-bold text-foreground">{t('membershipDetails_micrCodeLabel')}:</span>
+                        <span className="font-medium">110751034</span>
+                        
+                        <span className="font-bold text-foreground">{t('membershipDetails_branchCodeLabel')}:</span>
+                        <span className="font-medium">21413</span>
+                    </div>
                 </div>
-                <div className="flex-shrink-0 flex flex-col items-center gap-2">
-                    <div className="bg-white p-3 rounded-2xl border-2 border-primary/10 shadow-lg">
+                <div className="flex-shrink-0 flex flex-col items-center gap-4 group">
+                    <div className="bg-white p-4 rounded-3xl border-4 border-white shadow-2xl transition-transform duration-500 group-hover:scale-105">
                         <Image 
                             src="https://i.postimg.cc/hGRkss7h/qr-ijcc.jpg"
                             alt="Payment QR Code"
-                            width={180}
-                            height={180}
-                            className="rounded-lg"
+                            width={200}
+                            height={200}
+                            className="rounded-xl"
                             data-ai-hint="qr code"
                         />
                     </div>
-                    <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-widest">Scan to Pay</span>
+                    <div className="flex flex-col items-center gap-1">
+                        <span className="text-[10px] uppercase font-black text-primary tracking-[0.2em]">Scan to Pay</span>
+                        <span className="text-[9px] text-muted-foreground font-bold italic">Support: +91-92679 19281</span>
+                    </div>
                 </div>
             </CardContent>
         </Card>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 items-start">
-        <Card>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        <Card className="border-none bg-muted/30 shadow-inner">
             <CardHeader>
-                <CardTitle className="font-headline">{t('membershipDetails_enrollmentTitle')}</CardTitle>
+                <CardTitle className="font-headline text-2xl text-primary">{t('membershipDetails_enrollmentTitle')}</CardTitle>
             </CardHeader>
             <CardContent>
-                <p className="text-muted-foreground">{t('membershipDetails_enrollmentDescription')}</p>
+                <p className="text-muted-foreground leading-relaxed font-medium">{t('membershipDetails_enrollmentDescription')}</p>
+            </CardContent>
+        </Card>
+        
+        <Card className="text-center border-none bg-primary text-primary-foreground shadow-xl flex flex-col justify-center">
+            <CardHeader>
+                <CardTitle className="font-headline text-2xl">{t('membershipDetails_contactTitle')}</CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-wrap justify-center gap-8">
+                 <div className="flex flex-col items-center gap-2 group">
+                    <div className="bg-white/10 p-3 rounded-full group-hover:bg-white/20 transition-colors">
+                        <Mail className="h-6 w-6 text-accent" />
+                    </div>
+                    <span className="text-sm font-bold">info@ijcc.in</span>
+                 </div>
+                 <div className="flex flex-col items-center gap-2 group">
+                    <div className="bg-white/10 p-3 rounded-full group-hover:bg-white/20 transition-colors">
+                        <Phone className="h-6 w-6 text-accent" />
+                    </div>
+                    <span className="text-sm font-bold">+91-92679 19281</span>
+                 </div>
+                 <div className="flex flex-col items-center gap-2 group">
+                    <div className="bg-white/10 p-3 rounded-full group-hover:bg-white/20 transition-colors">
+                        <Globe className="h-6 w-6 text-accent" />
+                    </div>
+                    <span className="text-sm font-bold">www.ijcc.in</span>
+                 </div>
             </CardContent>
         </Card>
       </div>
-
-       <Card className="text-center">
-        <CardHeader>
-            <CardTitle className="font-headline">{t('membershipDetails_contactTitle')}</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-wrap justify-center gap-6 text-muted-foreground">
-             <div className="flex items-center gap-2">
-                <Mail className="h-5 w-5 text-primary" />
-                <span>info@ijcc.in</span>
-             </div>
-             <div className="flex items-center gap-2">
-                <Phone className="h-5 w-5 text-primary" />
-                <span>+91-92679 19281</span>
-             </div>
-             <div className="flex items-center gap-2">
-                <Globe className="h-5 w-5 text-primary" />
-                <span>www.ijcc.in</span>
-             </div>
-        </CardContent>
-       </Card>
-
     </div>
   );
 }
