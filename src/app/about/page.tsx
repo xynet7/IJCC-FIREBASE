@@ -50,7 +50,7 @@ const leadershipData = [
   { id: "muazAhmed", imageUrl: "https://i.ibb.co/fYjdtSwp/Mr-Muaz-Ahmed.jpg" },
   { id: "sushilKumarChauhan", imageUrl: "https://i.ibb.co/tMVw5jbc/mr-sushil-kumar.png" },
   { id: "parijatTiwari", imageUrl: "https://i.ibb.co/Rp71ncwh/mr-parijat-tiwari.png" },
-  { id: "krishnanNarayanan", imageUrl: "" },
+  { id: "krishnanNarayanan", imageUrl: "https://i.ibb.co/WNJvF1YB/mr-krishnan-narayanan.jpg" },
 ];
 
 const advisoryBoard = [
