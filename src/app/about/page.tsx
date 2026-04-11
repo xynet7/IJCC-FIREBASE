@@ -48,7 +48,7 @@ const leadershipData = [
   { id: "yokoTorii", imageUrl: "https://i.ibb.co/99zx9ZGn/yoko-torii.jpg" },
   { id: "dhruvHans", imageUrl: "https://i.ibb.co/8D7x8kKq/Mr-Dhruv-Hans-Dhruv.jpg" },
   { id: "muazAhmed", imageUrl: "https://i.ibb.co/fYjdtSwp/Mr-Muaz-Ahmed.jpg" },
-  { id: "sushilKumarChauhan", imageUrl: "" },
+  { id: "sushilKumarChauhan", imageUrl: "https://i.ibb.co/tMVw5jbc/mr-sushil-kumar.png" },
   { id: "parijatTiwari", imageUrl: "" },
   { id: "krishnanNarayanan", imageUrl: "" },
 ];
