@@ -33,7 +33,7 @@ const newsArticlesData = [
   {
     id: "spolto-jv",
     date: "2025-03-10",
-    imageUrl: "https://images.unsplash.com/photo-1526676037777-05a232554f77?q=80&w=1000",
+    imageUrl: "https://i.ibb.co/Fk9GvcTn/ijcc-spolto.jpg",
     hint: "sports coaching",
     href: "/news/ijcc-x-spolto",
     isSpecial: true,
@@ -43,7 +43,7 @@ const newsArticlesData = [
   {
     id: "sem-events",
     date: "2025-03-08",
-    imageUrl: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1000",
+    imageUrl: "https://i.ibb.co/LDHJH91K/ijcc-sem.jpg",
     hint: "professional conference",
     href: "/news/sem-events",
     isSpecial: true,
