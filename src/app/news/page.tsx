@@ -11,6 +11,16 @@ import { cn } from "@/lib/utils";
 
 const newsArticlesData = [
   {
+    id: "iia-partnership",
+    date: "2025-04-11",
+    imageUrl: "https://placehold.co/800x600/f3f4f6/4b5563?text=IIA+Partnership",
+    hint: "iia partnership",
+    href: "/news/iia-partnership",
+    isSpecial: true,
+    tag: "STRATEGIC",
+    icon: <Building2 className="h-3 w-3" />
+  },
+  {
     id: "aima-mou",
     date: "2025-03-15",
     imageUrl: "https://www.aima.in/img/logo.png",
