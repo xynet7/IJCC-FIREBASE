@@ -167,7 +167,7 @@ export default function SEMEventsMoUPage() {
           </div>
           <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
             <Image 
-              src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1000" 
+              src="https://i.ibb.co/LDHJH91K/ijcc-sem.jpg" 
               alt="SEM Events Management" 
               fill 
               className="object-cover"

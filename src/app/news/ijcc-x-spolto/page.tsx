@@ -138,7 +138,7 @@ export default function SpoltoJVPage() {
           </div>
           <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
             <Image 
-              src="https://images.unsplash.com/photo-1526676037777-05a232554f77?q=80&w=1000" 
+              src="https://i.ibb.co/Fk9GvcTn/ijcc-spolto.jpg" 
               alt="Spolto Coaching" 
               fill 
               className="object-cover"
