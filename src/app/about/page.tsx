@@ -67,7 +67,6 @@ const advisoryBoard = [
   { id: "vinod", name: "Dr. Vinod K. Yadavendu", imageUrl: "https://i.postimg.cc/fbKbhgFG/vinod-removebg.png" },
   { id: "pdsharma", name: "Mr. P.D. Sharma", imageUrl: "https://i.postimg.cc/RVBWhvf3/pd-sharma.jpg" },
   { id: "anjali", name: "Ms. Anjali Sharma", imageUrl: "https://i.postimg.cc/kX4zvbb0/anjali1.jpg" },
-  { id: "raj", name: "Mr. Raj", imageUrl: "https://i.postimg.cc/RV5W1scJ/raj.jpg" },
 ];
 
 const verticals = [
