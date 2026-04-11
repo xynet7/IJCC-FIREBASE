@@ -48,6 +48,9 @@ const leadershipData = [
   { id: "yokoTorii", imageUrl: "https://i.ibb.co/99zx9ZGn/yoko-torii.jpg" },
   { id: "dhruvHans", imageUrl: "https://i.ibb.co/8D7x8kKq/Mr-Dhruv-Hans-Dhruv.jpg" },
   { id: "muazAhmed", imageUrl: "https://i.ibb.co/fYjdtSwp/Mr-Muaz-Ahmed.jpg" },
+  { id: "sushilKumarChauhan", imageUrl: "" },
+  { id: "parijatTiwari", imageUrl: "" },
+  { id: "krishnanNarayanan", imageUrl: "" },
 ];
 
 const advisoryBoard = [
@@ -271,8 +274,12 @@ export default function AboutPage() {
                 <DialogTrigger asChild>
                   <Card className="bg-white/5 border-white/10 text-center space-y-4 group hover:bg-white/10 transition-all cursor-pointer transform hover:-translate-y-1">
                     <CardHeader>
-                      <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-white/20">
-                        <Image src={member.imageUrl} alt={t(`team_${member.id}_name`)} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                      <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-white/20 bg-white/10 flex items-center justify-center">
+                        {member.imageUrl ? (
+                          <Image src={member.imageUrl} alt={t(`team_${member.id}_name`)} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                        ) : (
+                          <Users2 className="h-12 w-12 text-white/50" />
+                        )}
                       </div>
                     </CardHeader>
                     <CardContent className="space-y-2">
@@ -287,8 +294,12 @@ export default function AboutPage() {
                 </DialogTrigger>
                 <DialogContent className="max-w-2xl">
                   <DialogHeader className="flex flex-col items-center text-center space-y-4">
-                    <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-primary/10">
-                      <Image src={member.imageUrl} alt={t(`team_${member.id}_name`)} fill className="object-cover" />
+                    <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-primary/10 bg-primary/5 flex items-center justify-center">
+                      {member.imageUrl ? (
+                        <Image src={member.imageUrl} alt={t(`team_${member.id}_name`)} fill className="object-cover" />
+                      ) : (
+                        <Users2 className="h-12 w-12 text-primary/30" />
+                      )}
                     </div>
                     <div className="space-y-1">
                       <DialogTitle className="text-3xl font-headline text-primary">{t(`team_${member.id}_name`)}</DialogTitle>
