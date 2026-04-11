@@ -306,8 +306,8 @@ export default function AboutPage() {
                       <div className="text-accent font-bold uppercase tracking-tighter">{t(`team_${member.id}_title`)}</div>
                     </div>
                   </DialogHeader>
-                  <div className="mt-6 border-t pt-6">
-                    <p className="text-muted-foreground leading-relaxed text-justify whitespace-pre-wrap">
+                  <div className="mt-6 border-t pt-6 max-h-[50vh] overflow-y-auto pr-4 text-justify whitespace-pre-wrap">
+                    <p className="text-muted-foreground leading-relaxed">
                       {t(`team_${member.id}_bio`)}
                     </p>
                   </div>
