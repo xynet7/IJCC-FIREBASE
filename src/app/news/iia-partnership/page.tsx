@@ -173,7 +173,7 @@ export default function IIAPartnershipPage() {
           </div>
           <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl bg-muted/40 flex items-center justify-center">
              <Image 
-              src="https://placehold.co/800x600/f3f4f6/4b5563?text=IIA+Partnership" 
+              src="https://i.ibb.co/F4xR8RZx/ijcc-iia-mou.jpg" 
               alt="IIA Partnership" 
               fill 
               className="object-cover"

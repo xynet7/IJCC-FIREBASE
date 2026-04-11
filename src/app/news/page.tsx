@@ -13,7 +13,7 @@ const newsArticlesData = [
   {
     id: "iia-partnership",
     date: "2025-04-11",
-    imageUrl: "https://placehold.co/800x600/f3f4f6/4b5563?text=IIA+Partnership",
+    imageUrl: "https://i.ibb.co/F4xR8RZx/ijcc-iia-mou.jpg",
     hint: "iia partnership",
     href: "/news/iia-partnership",
     isSpecial: true,
