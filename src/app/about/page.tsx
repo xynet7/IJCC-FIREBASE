@@ -153,7 +153,7 @@ export default function AboutPage() {
                 { label: t('about_facts_est'), value: "2025", icon: <Calendar className="text-primary h-5 w-5" /> },
                 { label: t('about_facts_verts'), value: "12", icon: <Layers className="text-primary h-5 w-5" /> },
                 { label: t('about_facts_mous'), value: "5", icon: <Handshake className="text-primary h-5 w-5" /> },
-                { label: t('about_facts_msme_members'), value: "1,600+", icon: <Users className="text-primary h-5 w-5" /> },
+                { label: t('about_facts_msme_members'), value: "16,000+", icon: <Users className="text-primary h-5 w-5" /> },
                 { label: t('about_facts_corp_members'), value: "36,000+", icon: <Building2 className="text-primary h-5 w-5" /> },
               ].map((stat, i) => (
                 <div key={i} className="space-y-1">
