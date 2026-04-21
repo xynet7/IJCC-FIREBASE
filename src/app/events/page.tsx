@@ -17,6 +17,14 @@ import placeholders from "@/app/lib/placeholder-images.json";
 
 const eventsData = [
   {
+    id: 11,
+    date: "2026-09-05",
+    imageUrl: "https://i.ibb.co/v40Ns8q4/Whats-App-Image-2026-04-16-at-16-31-577.jpg",
+    hint: "japan business tour 2026 advanced manufacturing energy electronics",
+    isVertical: true,
+    href: "/contact"
+  },
+  {
     id: 10,
     date: "2026-06-29",
     imageUrl: "https://i.ibb.co/VWzYLGnC/Whats-App-Image-2026-04-16-at-16-31-58.jpg",
