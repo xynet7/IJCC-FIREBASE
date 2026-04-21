@@ -189,6 +189,11 @@ export function MembershipDetails() {
                         <span className="text-[9px] text-muted-foreground font-bold italic">Support: +91-92679 19281</span>
                     </div>
                 </div>
+                <div className="w-full mt-6 px-1">
+                    <p className="text-xs sm:text-sm text-muted-foreground font-medium leading-relaxed border-l-4 border-primary/40 pl-3 py-1 bg-primary/5 rounded-r-lg">
+                        <span className="font-bold text-foreground">Note —</span> All IJCC membership fees paid for a financial year are non-transferable and non-refundable. Applicants are requested to carefully review their application form prior to making the final payment.
+                    </p>
+                </div>
             </CardContent>
         </Card>
       </div>
