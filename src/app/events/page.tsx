@@ -171,7 +171,13 @@ export default function EventsPage() {
     description: event.description || "",
   }));
 
-  const events = [...mappedSanityEvents, ...hardcodedEvents];
+  const sanityEventTitles = mappedSanityEvents.map(e => e.title?.toLowerCase().trim());
+
+  const filteredHardcodedEvents = hardcodedEvents.filter(
+    e => !sanityEventTitles.includes(e.title?.toLowerCase().trim())
+  );
+
+  const events = [...mappedSanityEvents, ...filteredHardcodedEvents];
   
   return (
     <div className="container py-12">

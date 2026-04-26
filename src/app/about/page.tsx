@@ -121,7 +121,13 @@ export default function AboutPage() {
       bio: member.bio || "",
     }));
 
-  const leadership = [...mappedSanityLeadership, ...hardcodedLeadership];
+  const sanityLeadershipNames = mappedSanityLeadership.map(m => m.name?.toLowerCase().trim());
+  
+  const filteredHardcodedLeadership = hardcodedLeadership.filter(
+    m => !sanityLeadershipNames.includes(m.name?.toLowerCase().trim())
+  );
+
+  const leadership = [...mappedSanityLeadership, ...filteredHardcodedLeadership];
 
   const hardcodedAdvisors = advisoryBoard.map(advisor => ({
     id: advisor.id,
@@ -139,7 +145,13 @@ export default function AboutPage() {
       role: member.role,
     }));
 
-  const advisors = [...mappedSanityAdvisors, ...hardcodedAdvisors];
+  const sanityAdvisorNames = mappedSanityAdvisors.map(m => m.name?.toLowerCase().trim());
+
+  const filteredHardcodedAdvisors = hardcodedAdvisors.filter(
+    m => !sanityAdvisorNames.includes(m.name?.toLowerCase().trim())
+  );
+
+  const advisors = [...mappedSanityAdvisors, ...filteredHardcodedAdvisors];
 
   return (
     <div className="min-h-screen bg-background">
