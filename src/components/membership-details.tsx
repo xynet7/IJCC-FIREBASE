@@ -9,6 +9,9 @@ import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useTranslation } from "@/hooks/use-translation";
+import { useState, useEffect } from "react";
+import { client } from "@/sanity/lib/client";
+import { MEMBERSHIP_PRICING_QUERY, SITE_SETTINGS_QUERY } from "@/sanity/lib/queries";
 
 const membershipTiers = [
   {
@@ -83,7 +86,7 @@ const membershipTiers = [
   },
 ];
 
-const TierCard = ({ tier }: { tier: (typeof membershipTiers)[0] }) => {
+const TierCard = ({ tier }: { tier: any }) => {
     const { user, loading } = useAuth();
     const { toast } = useToast();
     const router = useRouter();
@@ -118,12 +121,21 @@ const TierCard = ({ tier }: { tier: (typeof membershipTiers)[0] }) => {
             </CardHeader>
             <CardContent className="flex-grow">
               <ul className="space-y-3 pt-4 border-t border-primary/10">
-                {tier.benefitsKeys.map((benefitKey) => (
-                  <li key={benefitKey} className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground leading-snug">{t(benefitKey)}</span>
-                  </li>
-                ))}
+                {tier.customBenefits ? (
+                  tier.customBenefits.map((benefit: string, idx: number) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground leading-snug">{benefit}</span>
+                    </li>
+                  ))
+                ) : (
+                  tier.benefitsKeys.map((benefitKey: string) => (
+                    <li key={benefitKey} className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground leading-snug">{t(benefitKey)}</span>
+                    </li>
+                  ))
+                )}
               </ul>
             </CardContent>
             <CardFooter className="pt-6">
@@ -137,10 +149,59 @@ const TierCard = ({ tier }: { tier: (typeof membershipTiers)[0] }) => {
 
 export function MembershipDetails() {
   const { t } = useTranslation();
+  const [pricingData, setPricingData] = useState<any[]>([]);
+  const [settings, setSettings] = useState<any>(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const [pData, sData] = await Promise.all([
+          client.fetch(MEMBERSHIP_PRICING_QUERY),
+          client.fetch(SITE_SETTINGS_QUERY)
+        ]);
+        if (pData && pData.length > 0) setPricingData(pData);
+        if (sData) setSettings(sData);
+      } catch (error) {
+        console.error('Failed to fetch from Sanity', error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  const mergedTiers = membershipTiers.map(tier => {
+    const sanityTier = pricingData.find(p => {
+      if (!p.tierName) return false;
+      const sanityName = p.tierName.toLowerCase();
+      const localId = tier.priceId.toLowerCase();
+
+      // Exact or partial matches
+      if (sanityName === localId) return true;
+      if (localId === 'large-corporate' && sanityName.includes('large')) return true;
+      if (localId === 'individual' && sanityName.includes('individual')) return true;
+      if (localId === 'startup' && sanityName.includes('startup')) return true;
+      if (localId === 'association' && sanityName.includes('association')) return true;
+      if (localId === 'corporate' && sanityName.includes('corporate') && !sanityName.includes('large')) return true;
+
+      return false;
+    });
+
+    if (sanityTier) {
+      const symbol = sanityTier.currency === 'INR' ? '₹' : sanityTier.currency === 'USD' ? '$' : '¥';
+      const formattedPrice = sanityTier.price.toLocaleString('en-IN');
+      
+      return {
+        ...tier,
+        price: `${symbol}${formattedPrice}`,
+        customBenefits: sanityTier.benefits && sanityTier.benefits.length > 0 ? sanityTier.benefits : undefined
+      };
+    }
+    return tier;
+  });
+
   return (
     <div className="space-y-16">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {membershipTiers.map((tier) => (
+        {mergedTiers.map((tier) => (
           <TierCard key={tier.titleKey} tier={tier} />
         ))}
          <Card className="lg:col-span-2 border-2 border-primary/20 bg-primary/5 shadow-xl">
@@ -217,13 +278,13 @@ export function MembershipDetails() {
                     <div className="bg-white/10 p-3 rounded-full group-hover:bg-white/20 transition-colors">
                         <Mail className="h-6 w-6 text-accent" />
                     </div>
-                    <span className="text-sm font-bold">info@ijcc.in</span>
+                    <span className="text-sm font-bold">{settings?.contactEmail || "info@ijcc.in"}</span>
                  </div>
                  <div className="flex flex-col items-center gap-2 group">
                     <div className="bg-white/10 p-3 rounded-full group-hover:bg-white/20 transition-colors">
                         <Phone className="h-6 w-6 text-accent" />
                     </div>
-                    <span className="text-sm font-bold">+91-92679 19281</span>
+                    <span className="text-sm font-bold">{settings?.phoneNumber || "+91-92679 19281"}</span>
                  </div>
                  <div className="flex flex-col items-center gap-2 group">
                     <div className="bg-white/10 p-3 rounded-full group-hover:bg-white/20 transition-colors">

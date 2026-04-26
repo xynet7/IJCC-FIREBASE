@@ -36,6 +36,9 @@ import {
 import { useTranslation } from "@/hooks/use-translation";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { useState, useEffect } from "react";
+import { client } from "@/sanity/lib/client";
+import { MEMBERS_QUERY } from "@/sanity/lib/queries";
 
 const leadershipData = [
   { id: "rahulMishra", imageUrl: "https://i.postimg.cc/3JdfvHM7/rahulsir1.jpg" },
@@ -86,6 +89,57 @@ const verticals = [
 
 export default function AboutPage() {
   const { t } = useTranslation();
+  const [sanityMembers, setSanityMembers] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function fetchMembers() {
+      try {
+        const data = await client.fetch(MEMBERS_QUERY);
+        if (data) setSanityMembers(data);
+      } catch (err) {
+        console.error("Failed to fetch sanity members", err);
+      }
+    }
+    fetchMembers();
+  }, []);
+
+  const hardcodedLeadership = leadershipData.map(member => ({
+    id: member.id,
+    imageUrl: member.imageUrl,
+    name: t(`team_${member.id}_name`),
+    title: t(`team_${member.id}_title`),
+    bio: t(`team_${member.id}_bio`),
+  }));
+
+  const mappedSanityLeadership = sanityMembers
+    .filter(m => m.category === 'leadership')
+    .map(member => ({
+      id: member._id,
+      imageUrl: member.imageUrl,
+      name: member.name,
+      title: member.role,
+      bio: member.bio || "",
+    }));
+
+  const leadership = [...mappedSanityLeadership, ...hardcodedLeadership];
+
+  const hardcodedAdvisors = advisoryBoard.map(advisor => ({
+    id: advisor.id,
+    imageUrl: advisor.imageUrl,
+    name: advisor.name,
+    role: t(`advisor_${advisor.id}_role`),
+  }));
+
+  const mappedSanityAdvisors = sanityMembers
+    .filter(m => m.category === 'advisory')
+    .map(member => ({
+      id: member._id,
+      imageUrl: member.imageUrl,
+      name: member.name,
+      role: member.role,
+    }));
+
+  const advisors = [...mappedSanityAdvisors, ...hardcodedAdvisors];
 
   return (
     <div className="min-h-screen bg-background">
@@ -269,23 +323,23 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {leadershipData.map((member) => (
+            {leadership.map((member) => (
               <Dialog key={member.id}>
                 <DialogTrigger asChild>
                   <Card className="bg-white/5 border-white/10 text-center space-y-4 group hover:bg-white/10 transition-all cursor-pointer transform hover:-translate-y-1">
                     <CardHeader>
                       <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-white/20 bg-white/10 flex items-center justify-center">
                         {member.imageUrl ? (
-                          <Image src={member.imageUrl} alt={t(`team_${member.id}_name`)} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                          <Image src={member.imageUrl} alt={member.name} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
                         ) : (
                           <Users2 className="h-12 w-12 text-white/50" />
                         )}
                       </div>
                     </CardHeader>
                     <CardContent className="space-y-2">
-                      <h4 className="text-xl font-bold text-white">{t(`team_${member.id}_name`)}</h4>
-                      <div className="text-accent font-medium text-sm">{t(`team_${member.id}_title`)}</div>
-                      <p className="text-xs text-primary-foreground/60 line-clamp-2 pt-2">{t(`team_${member.id}_bio`).substring(0, 100)}...</p>
+                      <h4 className="text-xl font-bold text-white">{member.name}</h4>
+                      <div className="text-accent font-medium text-sm">{member.title}</div>
+                      <p className="text-xs text-primary-foreground/60 line-clamp-2 pt-2">{member.bio?.substring(0, 100)}...</p>
                       <div className="pt-4 text-accent text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-1">
                         {t('view_bio')} <ArrowRight className="h-3 w-3" />
                       </div>
@@ -296,19 +350,19 @@ export default function AboutPage() {
                   <DialogHeader className="flex flex-col items-center text-center space-y-4">
                     <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-primary/10 bg-primary/5 flex items-center justify-center">
                       {member.imageUrl ? (
-                        <Image src={member.imageUrl} alt={t(`team_${member.id}_name`)} fill className="object-cover" />
+                        <Image src={member.imageUrl} alt={member.name} fill className="object-cover" />
                       ) : (
                         <Users2 className="h-12 w-12 text-primary/30" />
                       )}
                     </div>
                     <div className="space-y-1">
-                      <DialogTitle className="text-3xl font-headline text-primary">{t(`team_${member.id}_name`)}</DialogTitle>
-                      <div className="text-accent font-bold uppercase tracking-tighter">{t(`team_${member.id}_title`)}</div>
+                      <DialogTitle className="text-3xl font-headline text-primary">{member.name}</DialogTitle>
+                      <div className="text-accent font-bold uppercase tracking-tighter">{member.title}</div>
                     </div>
                   </DialogHeader>
                   <div className="mt-6 border-t pt-6 max-h-[50vh] overflow-y-auto pr-4 text-justify whitespace-pre-wrap">
                     <p className="text-muted-foreground leading-relaxed">
-                      {t(`team_${member.id}_bio`)}
+                      {member.bio}
                     </p>
                   </div>
                 </DialogContent>
@@ -325,14 +379,18 @@ export default function AboutPage() {
           <p className="text-muted-foreground max-w-2xl mx-auto">{t('about_advisory_subtitle')}</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {advisoryBoard.map((advisor) => (
+          {advisors.map((advisor) => (
             <Card key={advisor.id} className="flex flex-row items-center gap-4 p-4 rounded-2xl bg-muted/30 border-none hover:bg-muted transition-colors shadow-sm">
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border-2 border-accent overflow-hidden">
-                <Image src={advisor.imageUrl} alt={advisor.name} width={64} height={64} className="object-cover w-full h-full" />
+                {advisor.imageUrl ? (
+                    <Image src={advisor.imageUrl} alt={advisor.name} width={64} height={64} className="object-cover w-full h-full" />
+                ) : (
+                    <Users2 className="h-8 w-8 text-primary/30" />
+                )}
               </div>
               <div>
                 <div className="font-bold text-lg text-primary">{advisor.name}</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-widest leading-tight">{t(`advisor_${advisor.id}_role`)}</div>
+                <div className="text-xs text-muted-foreground uppercase tracking-widest leading-tight">{advisor.role}</div>
               </div>
             </Card>
           ))}

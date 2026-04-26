@@ -10,6 +10,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useState, useEffect } from "react";
+import { client } from "@/sanity/lib/client";
+import { SITE_SETTINGS_QUERY } from "@/sanity/lib/queries";
 
 export default function ContactPage() {
   const { t } = useTranslation();
@@ -27,12 +30,26 @@ export default function ContactPage() {
     { q: t('contact_faq_q10'), a: t('contact_faq_a10') },
   ];
 
+  const [settings, setSettings] = useState<any>(null);
+
+  useEffect(() => {
+    async function fetchSettings() {
+      try {
+        const sData = await client.fetch(SITE_SETTINGS_QUERY);
+        if (sData) setSettings(sData);
+      } catch (error) {
+        console.error('Failed to fetch from Sanity', error);
+      }
+    }
+    fetchSettings();
+  }, []);
+
   return (
     <div className="container py-12">
       <div className="space-y-4 mb-12 text-center">
-        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">{t('contact_title')}</h1>
+        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">{settings?.title || t('contact_title')}</h1>
         <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
-          {t('contact_subtitle')}
+          {settings?.description || t('contact_subtitle')}
         </p>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -46,7 +63,7 @@ export default function ContactPage() {
                     <MapPin className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
                     <div>
                         <h3 className="font-semibold">{t('contact_corporateOfficeTitle')}</h3>
-                        <p className="text-muted-foreground">{t('contact_corporateOfficeAddress')}</p>
+                        <p className="text-muted-foreground whitespace-pre-wrap">{settings?.address || t('contact_corporateOfficeAddress')}</p>
                     </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -67,11 +84,11 @@ export default function ContactPage() {
              <div className="space-y-4">
                 <div className="flex items-center gap-4">
                     <Mail className="h-6 w-6 text-primary flex-shrink-0" />
-                    <p className="text-muted-foreground">info@ijcc.in</p>
+                    <p className="text-muted-foreground">{settings?.contactEmail || "info@ijcc.in"}</p>
                 </div>
                 <div className="flex items-center gap-4">
                     <Phone className="h-6 w-6 text-primary flex-shrink-0" />
-                    <p className="text-muted-foreground">{t('contact_phone_india')}</p>
+                    <p className="text-muted-foreground">{settings?.phoneNumber || t('contact_phone_india')}</p>
                 </div>
                  <div className="flex items-center gap-4">
                     <Phone className="h-6 w-6 text-primary flex-shrink-0" />

@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/dialog";
 import { useTranslation } from "@/hooks/use-translation";
 import placeholders from "@/app/lib/placeholder-images.json";
+import { client } from "@/sanity/lib/client";
+import { EVENTS_QUERY } from "@/sanity/lib/queries";
 
 const eventsData = [
   {
@@ -129,9 +131,25 @@ const modifiersStyles = {
 
 export default function EventsPage() {
   const [isClient, setIsClient] = useState(false);
+  const [sanityEvents, setSanityEvents] = useState<any[]>([]);
   const { t } = useTranslation();
 
-  const events = eventsData.map(event => ({
+  useEffect(() => {
+    setIsClient(true);
+    async function fetchEvents() {
+      try {
+        const data = await client.fetch(EVENTS_QUERY);
+        if (data && data.length > 0) {
+          setSanityEvents(data);
+        }
+      } catch (err) {
+        console.error("Failed to fetch sanity events", err);
+      }
+    }
+    fetchEvents();
+  }, []);
+
+  const hardcodedEvents = eventsData.map(event => ({
     ...event,
     title: t(`event_${event.id}_title`),
     displayDate: t(`event_${event.id}_displayDate`),
@@ -140,9 +158,20 @@ export default function EventsPage() {
     description: t(`event_${event.id}_description`),
   }));
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const mappedSanityEvents = sanityEvents.map(event => ({
+    id: event._id,
+    date: event.date || "2026-01-01",
+    imageUrl: event.imageUrl || "https://picsum.photos/seed/event/800/400",
+    isVertical: false,
+    href: event.registrationLink || "/contact",
+    title: event.title || "TBA",
+    displayDate: event.date ? new Date(event.date).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }) : "TBA",
+    time: event.time || "TBA",
+    location: event.location || "TBA",
+    description: event.description || "",
+  }));
+
+  const events = [...mappedSanityEvents, ...hardcodedEvents];
   
   return (
     <div className="container py-12">
