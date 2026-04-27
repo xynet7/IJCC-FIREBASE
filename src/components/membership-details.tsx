@@ -24,7 +24,7 @@ const membershipTiers = [
       "membershipTier_student_benefit3",
     ],
     priceId: "student",
-    price: "₹5,000",
+    price: "₹3,000",
   },
   {
     icon: <User className="h-10 w-10 text-primary" />,
