@@ -64,6 +64,7 @@ const advisoryBoard = [
   { id: "supratic", name: "Dr. Supratic Gupta", imageUrl: "https://i.postimg.cc/7LmS9f7R/supratic1.jpg" },
   { id: "markus", name: "Mr. Markus", imageUrl: "https://i.postimg.cc/brHtYXS7/Markus-removebg-preview.png" },
   { id: "anil", name: "Mr. Anil K. Khandelwal", imageUrl: "https://i.postimg.cc/Qxz8QsHq/anil1.jpg" },
+  { id: "lctrivedi", name: "Mr. L C Trivedi", imageUrl: "" },
   { id: "jatinder", name: "Dr. Jatinder Khanna", imageUrl: "https://i.postimg.cc/CKgMZKnZ/jatinder.jpg" },
   { id: "maushumi", name: "Dr. Maushumi Barooah", imageUrl: "https://i.postimg.cc/h4TXtN53/mausimi1.jpg" },
   { id: "rajesh", name: "Mr. Rajesh Mehta", imageUrl: "https://i.postimg.cc/Vsb5G5Qh/rajesh-removebg-preview.png" },
@@ -134,6 +135,7 @@ export default function AboutPage() {
     imageUrl: advisor.imageUrl,
     name: advisor.name,
     role: t(`advisor_${advisor.id}_role`),
+    bio: t(`advisor_${advisor.id}_bio`),
   }));
 
   const mappedSanityAdvisors = sanityMembers
@@ -143,6 +145,7 @@ export default function AboutPage() {
       imageUrl: member.imageUrl,
       name: member.name,
       role: member.role,
+      bio: member.bio || "",
     }));
 
   const sanityAdvisorNames = mappedSanityAdvisors.map(m => m.name?.toLowerCase().trim());
@@ -391,21 +394,59 @@ export default function AboutPage() {
           <p className="text-muted-foreground max-w-2xl mx-auto">{t('about_advisory_subtitle')}</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {advisors.map((advisor) => (
-            <Card key={advisor.id} className="flex flex-row items-center gap-4 p-4 rounded-2xl bg-muted/30 border-none hover:bg-muted transition-colors shadow-sm">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border-2 border-accent overflow-hidden">
-                {advisor.imageUrl ? (
-                    <Image src={advisor.imageUrl} alt={advisor.name} width={64} height={64} className="object-cover w-full h-full" />
-                ) : (
-                    <Users2 className="h-8 w-8 text-primary/30" />
-                )}
-              </div>
-              <div>
-                <div className="font-bold text-lg text-primary">{advisor.name}</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-widest leading-tight">{advisor.role}</div>
-              </div>
-            </Card>
-          ))}
+          {advisors.map((advisor) => {
+            const hasBio = advisor.bio && advisor.bio !== `advisor_${advisor.id}_bio`;
+            const cardContent = (
+              <Card className={`flex flex-row items-center gap-4 p-4 rounded-2xl bg-muted/30 border-none shadow-sm ${hasBio ? 'hover:bg-muted transition-colors cursor-pointer' : ''}`}>
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border-2 border-accent overflow-hidden">
+                  {advisor.imageUrl ? (
+                      <Image src={advisor.imageUrl} alt={advisor.name} width={64} height={64} className="object-cover w-full h-full" />
+                  ) : (
+                      <Users2 className="h-8 w-8 text-primary/30" />
+                  )}
+                </div>
+                <div className="flex-1">
+                  <div className="font-bold text-lg text-primary">{advisor.name}</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-widest leading-tight">{advisor.role}</div>
+                  {hasBio && (
+                    <div className="mt-2 text-accent text-[10px] font-bold uppercase tracking-widest flex items-center gap-1">
+                      {t('view_bio')} <ArrowRight className="h-3 w-3" />
+                    </div>
+                  )}
+                </div>
+              </Card>
+            );
+
+            if (!hasBio) return <div key={advisor.id}>{cardContent}</div>;
+
+            return (
+              <Dialog key={advisor.id}>
+                <DialogTrigger asChild>
+                  {cardContent}
+                </DialogTrigger>
+                <DialogContent className="max-w-2xl">
+                  <DialogHeader className="flex flex-col items-center text-center space-y-4">
+                    <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-primary/10 bg-primary/5 flex items-center justify-center">
+                      {advisor.imageUrl ? (
+                        <Image src={advisor.imageUrl} alt={advisor.name} fill className="object-cover" />
+                      ) : (
+                        <Users2 className="h-12 w-12 text-primary/30" />
+                      )}
+                    </div>
+                    <div className="space-y-1">
+                      <DialogTitle className="text-3xl font-headline text-primary">{advisor.name}</DialogTitle>
+                      <div className="text-accent font-bold uppercase tracking-tighter">{advisor.role}</div>
+                    </div>
+                  </DialogHeader>
+                  <div className="mt-6 border-t pt-6 max-h-[50vh] overflow-y-auto pr-4 text-justify whitespace-pre-wrap">
+                    <p className="text-muted-foreground leading-relaxed">
+                      {advisor.bio}
+                    </p>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            );
+          })}
         </div>
       </section>
 

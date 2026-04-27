@@ -50,7 +50,7 @@ const newsArticlesData = [
     tag: "FEATURED",
     icon: <Trophy className="h-3 w-3" />
   },
-  {
+  /* {
     id: "sem-events",
     date: "2025-03-08",
     imageUrl: "https://i.ibb.co/LDHJH91K/ijcc-sem.jpg",
@@ -59,7 +59,7 @@ const newsArticlesData = [
     isSpecial: true,
     tag: "PARTNER",
     icon: <ShieldCheck className="h-3 w-3" />
-  },
+  }, */
 ];
 
 export default function NewsPage() {
