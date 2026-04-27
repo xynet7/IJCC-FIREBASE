@@ -2,7 +2,7 @@
 "use client";
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, User, Rocket, Building, Landmark, Mail, Phone, Globe, ArrowRight } from "lucide-react";
+import { Check, User, Rocket, Building, Landmark, Mail, Phone, Globe, ArrowRight, GraduationCap, Briefcase, Building2, Crown, Star } from "lucide-react";
 import { Button } from "./ui/button";
 import { useAuth } from "@/context/auth-context";
 import { useToast } from "@/hooks/use-toast";
@@ -15,6 +15,18 @@ import { MEMBERSHIP_PRICING_QUERY, SITE_SETTINGS_QUERY } from "@/sanity/lib/quer
 
 const membershipTiers = [
   {
+    icon: <GraduationCap className="h-10 w-10 text-primary" />,
+    titleKey: "membershipTier_student_title",
+    eligibilityKey: "membershipTier_student_eligibility",
+    benefitsKeys: [
+      "membershipTier_student_benefit1",
+      "membershipTier_student_benefit2",
+      "membershipTier_student_benefit3",
+    ],
+    priceId: "student",
+    price: "₹5,000",
+  },
+  {
     icon: <User className="h-10 w-10 text-primary" />,
     titleKey: "membershipTier_individual_title",
     eligibilityKey: "membershipTier_individual_eligibility",
@@ -24,9 +36,11 @@ const membershipTiers = [
       "membershipTier_individual_benefit3",
       "membershipTier_individual_benefit4",
       "membershipTier_individual_benefit5",
+      "membershipTier_individual_benefit6",
+      "membershipTier_individual_benefit7",
     ],
     priceId: "individual",
-    price: "₹5,000",
+    price: "₹11,000",
   },
   {
     icon: <Rocket className="h-10 w-10 text-primary" />,
@@ -38,51 +52,116 @@ const membershipTiers = [
       "membershipTier_startup_benefit3",
       "membershipTier_startup_benefit4",
       "membershipTier_startup_benefit5",
+      "membershipTier_startup_benefit6",
+      "membershipTier_startup_benefit7",
     ],
     priceId: "startup",
-    price: "₹10,000",
-  },
-   {
-    icon: <Landmark className="h-10 w-10 text-primary" />,
-    titleKey: "membershipTier_association_title",
-    eligibilityKey: "membershipTier_association_eligibility",
-    benefitsKeys: [
-      "membershipTier_association_benefit1",
-      "membershipTier_association_benefit2",
-      "membershipTier_association_benefit3",
-      "membershipTier_association_benefit4",
-      "membershipTier_association_benefit5",
-    ],
-    priceId: "association",
     price: "₹15,000",
   },
   {
-    icon: <Building className="h-10 w-10 text-primary" />,
-    titleKey: "membershipTier_corporate_title",
-    eligibilityKey: "membershipTier_corporate_eligibility",
+    icon: <Briefcase className="h-10 w-10 text-primary" />,
+    titleKey: "membershipTier_smeStandard_title",
+    eligibilityKey: "membershipTier_smeStandard_eligibility",
     benefitsKeys: [
-      "membershipTier_corporate_benefit1",
-      "membershipTier_corporate_benefit2",
-      "membershipTier_corporate_benefit3",
-      "membershipTier_corporate_benefit4",
-      "membershipTier_corporate_benefit5",
+      "membershipTier_smeStandard_benefit1",
+      "membershipTier_smeStandard_benefit2",
+      "membershipTier_smeStandard_benefit3",
+      "membershipTier_smeStandard_benefit4",
+      "membershipTier_smeStandard_benefit5",
+      "membershipTier_smeStandard_benefit6",
+      "membershipTier_smeStandard_benefit7",
+      "membershipTier_smeStandard_benefit8",
     ],
-    priceId: "corporate",
-    price: "₹25,000",
+    priceId: "sme-standard",
+    price: "₹35,000",
   },
   {
-    icon: <Landmark className="h-10 w-10 text-primary" />,
-    titleKey: "membershipTier_largeCorporate_title",
-    eligibilityKey: "membershipTier_largeCorporate_eligibility",
+    icon: <Briefcase className="h-10 w-10 text-primary" />,
+    titleKey: "membershipTier_smePlus_title",
+    eligibilityKey: "membershipTier_smePlus_eligibility",
     benefitsKeys: [
-      "membershipTier_largeCorporate_benefit1",
-      "membershipTier_largeCorporate_benefit2",
-      "membershipTier_largeCorporate_benefit3",
-      "membershipTier_largeCorporate_benefit4",
-      "membershipTier_largeCorporate_benefit5",
+      "membershipTier_smePlus_benefit1",
+      "membershipTier_smePlus_benefit2",
+      "membershipTier_smePlus_benefit3",
+      "membershipTier_smePlus_benefit4",
+      "membershipTier_smePlus_benefit5",
+      "membershipTier_smePlus_benefit6",
+      "membershipTier_smePlus_benefit7",
     ],
-    priceId: "large-corporate",
-    price: "₹50,000",
+    priceId: "sme-plus",
+    price: "₹75,000",
+  },
+  {
+    icon: <Building2 className="h-10 w-10 text-primary" />,
+    titleKey: "membershipTier_corporateStandard_title",
+    eligibilityKey: "membershipTier_corporateStandard_eligibility",
+    benefitsKeys: [
+      "membershipTier_corporateStandard_benefit1",
+      "membershipTier_corporateStandard_benefit2",
+      "membershipTier_corporateStandard_benefit3",
+      "membershipTier_corporateStandard_benefit4",
+      "membershipTier_corporateStandard_benefit5",
+      "membershipTier_corporateStandard_benefit6",
+      "membershipTier_corporateStandard_benefit7",
+      "membershipTier_corporateStandard_benefit8",
+    ],
+    priceId: "corporate-standard",
+    price: "₹1,00,000",
+  },
+  {
+    icon: <Crown className="h-10 w-10 text-primary" />,
+    titleKey: "membershipTier_corporatePremium_title",
+    eligibilityKey: "membershipTier_corporatePremium_eligibility",
+    benefitsKeys: [
+      "membershipTier_corporatePremium_benefit1",
+      "membershipTier_corporatePremium_benefit2",
+      "membershipTier_corporatePremium_benefit3",
+      "membershipTier_corporatePremium_benefit4",
+      "membershipTier_corporatePremium_benefit5",
+      "membershipTier_corporatePremium_benefit6",
+      "membershipTier_corporatePremium_benefit7",
+      "membershipTier_corporatePremium_benefit8",
+    ],
+    priceId: "corporate-premium",
+    price: "₹2,50,000",
+  },
+  {
+    icon: <Crown className="h-10 w-10 text-primary" />,
+    titleKey: "membershipTier_patron_title",
+    eligibilityKey: "membershipTier_patron_eligibility",
+    benefitsKeys: [
+      "membershipTier_patron_benefit1",
+      "membershipTier_patron_benefit2",
+      "membershipTier_patron_benefit3",
+      "membershipTier_patron_benefit4",
+      "membershipTier_patron_benefit5",
+      "membershipTier_patron_benefit6",
+      "membershipTier_patron_benefit7",
+      "membershipTier_patron_benefit8",
+      "membershipTier_patron_benefit9",
+      "membershipTier_patron_benefit10",
+      "membershipTier_patron_benefit11",
+    ],
+    priceId: "patron",
+    price: "₹5,00,000",
+  },
+  {
+    icon: <Star className="h-10 w-10 text-primary" />,
+    titleKey: "membershipTier_strategicPlatinum_title",
+    eligibilityKey: "membershipTier_strategicPlatinum_eligibility",
+    benefitsKeys: [
+      "membershipTier_strategicPlatinum_benefit1",
+      "membershipTier_strategicPlatinum_benefit2",
+      "membershipTier_strategicPlatinum_benefit3",
+      "membershipTier_strategicPlatinum_benefit4",
+      "membershipTier_strategicPlatinum_benefit5",
+      "membershipTier_strategicPlatinum_benefit6",
+      "membershipTier_strategicPlatinum_benefit7",
+      "membershipTier_strategicPlatinum_benefit8",
+      "membershipTier_strategicPlatinum_benefit9",
+    ],
+    priceId: "strategic-platinum",
+    price: "₹10,00,000+",
   },
 ];
 
@@ -176,11 +255,15 @@ export function MembershipDetails() {
 
       // Exact or partial matches
       if (sanityName === localId) return true;
-      if (localId === 'large-corporate' && sanityName.includes('large')) return true;
-      if (localId === 'individual' && sanityName.includes('individual')) return true;
+      if (localId === 'strategic-platinum' && sanityName.includes('strategic')) return true;
+      if (localId === 'patron' && sanityName.includes('patron')) return true;
+      if (localId === 'corporate-premium' && sanityName.includes('premium')) return true;
+      if (localId === 'corporate-standard' && sanityName.includes('corporate') && !sanityName.includes('premium') && !sanityName.includes('large')) return true;
+      if (localId === 'sme-plus' && sanityName.includes('sme') && sanityName.includes('plus')) return true;
+      if (localId === 'sme-standard' && sanityName.includes('sme') && !sanityName.includes('plus')) return true;
       if (localId === 'startup' && sanityName.includes('startup')) return true;
-      if (localId === 'association' && sanityName.includes('association')) return true;
-      if (localId === 'corporate' && sanityName.includes('corporate') && !sanityName.includes('large')) return true;
+      if (localId === 'individual' && sanityName.includes('individual')) return true;
+      if (localId === 'student' && sanityName.includes('student')) return true;
 
       return false;
     });
@@ -188,10 +271,11 @@ export function MembershipDetails() {
     if (sanityTier) {
       const symbol = sanityTier.currency === 'INR' ? '₹' : sanityTier.currency === 'USD' ? '$' : '¥';
       const formattedPrice = sanityTier.price.toLocaleString('en-IN');
+      const suffix = localId === 'strategic-platinum' ? '+' : '';
       
       return {
         ...tier,
-        price: `${symbol}${formattedPrice}`,
+        price: `${symbol}${formattedPrice}${suffix}`,
         customBenefits: sanityTier.benefits && sanityTier.benefits.length > 0 ? sanityTier.benefits : undefined
       };
     }
@@ -258,6 +342,37 @@ export function MembershipDetails() {
             </CardContent>
         </Card>
       </div>
+
+      {/* Membership Rules */}
+      <Card className="border-2 border-primary/10 shadow-lg mt-8 mb-16">
+        <CardHeader>
+          <CardTitle className="font-headline text-3xl text-primary">{t('membershipRules_title')}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-4">
+            <li className="flex items-start gap-3">
+              <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+              <span className="text-muted-foreground">{t('membershipRules_rule1')}</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+              <span className="text-muted-foreground">{t('membershipRules_rule2')}</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+              <span className="text-muted-foreground">{t('membershipRules_rule3')}</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+              <span className="text-muted-foreground">{t('membershipRules_rule4')}</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+              <span className="text-muted-foreground">{t('membershipRules_rule5')}</span>
+            </li>
+          </ul>
+        </CardContent>
+      </Card>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
         <Card className="border-none bg-muted/30 shadow-inner">
