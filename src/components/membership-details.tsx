@@ -248,10 +248,11 @@ export function MembershipDetails() {
   }, []);
 
   const mergedTiers = membershipTiers.map(tier => {
+    const localId = tier.priceId.toLowerCase();
+
     const sanityTier = pricingData.find(p => {
       if (!p.tierName) return false;
       const sanityName = p.tierName.toLowerCase();
-      const localId = tier.priceId.toLowerCase();
 
       // Exact or partial matches
       if (sanityName === localId) return true;
