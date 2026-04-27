@@ -44,11 +44,15 @@ export const MembershipFormSchema = z.object({
   mobileNumber: z.string().min(10, "membershipForm_validation_mobileNumber"),
   emailAddress: z.string().email("membershipForm_validation_emailAddress"),
   membershipTier: z.enum([
-    "individual", 
+    "student",
+    "individual",
     "startup",
-    "association", 
-    "corporate",
-    "large-corporate"
+    "sme-standard",
+    "sme-plus",
+    "corporate-standard",
+    "corporate-premium",
+    "patron",
+    "strategic-platinum"
   ]),
 
   // Part B

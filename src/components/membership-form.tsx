@@ -31,7 +31,7 @@ function MembershipFormComponent() {
   const form = useForm<z.infer<typeof MembershipFormSchema>>({
     resolver: zodResolver(MembershipFormSchema),
     defaultValues: {
-      membershipTier: (searchParams.get('tier') as "individual" | "startup" | "association" | "corporate" | "large-corporate") || 'individual',
+      membershipTier: (searchParams.get('tier') as "student" | "individual" | "startup" | "sme-standard" | "sme-plus" | "corporate-standard" | "corporate-premium" | "patron" | "strategic-platinum") || 'student',
       legalCompanyName: "",
       entityType: undefined,
       dateOfIncorporation: "",
@@ -114,11 +114,15 @@ function MembershipFormComponent() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                            <SelectItem value="individual">{t('membershipForm_tier_individual')}</SelectItem>
-                            <SelectItem value="startup">{t('membershipForm_tier_startup')}</SelectItem>
-                            <SelectItem value="association">{t('membershipForm_tier_association')}</SelectItem>
-                            <SelectItem value="corporate">{t('membershipForm_tier_corporate')}</SelectItem>
-                            <SelectItem value="large-corporate">{t('membershipForm_tier_largeCorporate')}</SelectItem>
+                            <SelectItem value="student">Student / Young Professional</SelectItem>
+                            <SelectItem value="individual">Individual / Professional / Consultant</SelectItem>
+                            <SelectItem value="startup">Startup / Emerging SME</SelectItem>
+                            <SelectItem value="sme-standard">SME Standard</SelectItem>
+                            <SelectItem value="sme-plus">SME Plus</SelectItem>
+                            <SelectItem value="corporate-standard">Corporate Standard</SelectItem>
+                            <SelectItem value="corporate-premium">Corporate Premium</SelectItem>
+                            <SelectItem value="patron">Patron</SelectItem>
+                            <SelectItem value="strategic-platinum">Strategic Platinum</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
