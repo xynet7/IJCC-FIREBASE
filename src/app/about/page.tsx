@@ -64,7 +64,7 @@ const advisoryBoard = [
   { id: "supratic", name: "Dr. Supratic Gupta", imageUrl: "https://i.postimg.cc/7LmS9f7R/supratic1.jpg" },
   { id: "markus", name: "Mr. Markus", imageUrl: "https://i.postimg.cc/brHtYXS7/Markus-removebg-preview.png" },
   { id: "anil", name: "Mr. Anil K. Khandelwal", imageUrl: "https://i.postimg.cc/Qxz8QsHq/anil1.jpg" },
-  { id: "lctrivedi", name: "Mr. L C Trivedi", imageUrl: "" },
+  { id: "lctrivedi", name: "Mr. L C Trivedi", imageUrl: "https://i.ibb.co/GQdncnrY/L-C-TRIVEDI.png" },
   { id: "jatinder", name: "Dr. Jatinder Khanna", imageUrl: "https://i.postimg.cc/CKgMZKnZ/jatinder.jpg" },
   { id: "maushumi", name: "Dr. Maushumi Barooah", imageUrl: "https://i.postimg.cc/h4TXtN53/mausimi1.jpg" },
   { id: "rajesh", name: "Mr. Rajesh Mehta", imageUrl: "https://i.postimg.cc/Vsb5G5Qh/rajesh-removebg-preview.png" },
