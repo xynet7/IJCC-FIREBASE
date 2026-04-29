@@ -210,7 +210,7 @@ const TierCard = ({ tier }: { tier: any }) => {
             </CardContent>
             <CardFooter className="pt-6">
                 <Button onClick={handleGetStarted} className="w-full h-12 rounded-xl text-base font-bold shadow-md hover:shadow-xl transition-all" disabled={loading}>
-                    Get started <ArrowRight className="ml-2 h-4 w-4" />
+                    {t('membershipDetails_getStarted')} <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
             </CardFooter>
         </Card>
@@ -321,8 +321,8 @@ export function MembershipDetails() {
                         />
                     </div>
                     <div className="flex flex-col items-center gap-1">
-                        <span className="text-[10px] uppercase font-black text-primary tracking-[0.2em]">Scan to Pay</span>
-                        <span className="text-[9px] text-muted-foreground font-bold italic">Support: +91-92679 19281</span>
+                        <span className="text-[10px] uppercase font-black text-primary tracking-[0.2em]">{t('membershipDetails_scanToPay')}</span>
+                        <span className="text-[9px] text-muted-foreground font-bold italic">{t('membershipDetails_support')} +91-92679 19281</span>
                     </div>
                 </div>
                 <div className="w-full mt-6 px-1">
