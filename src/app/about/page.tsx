@@ -4,25 +4,25 @@
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Handshake, 
-  GraduationCap, 
-  Globe, 
-  Zap, 
-  Scale, 
-  Building2, 
-  Target, 
-  Users, 
-  Briefcase, 
-  Lightbulb, 
-  Building, 
-  Landmark, 
-  Users2, 
-  University, 
-  CheckCircle2, 
-  Calendar, 
-  Layers, 
-  Database, 
+import {
+  Handshake,
+  GraduationCap,
+  Globe,
+  Zap,
+  Scale,
+  Building2,
+  Target,
+  Users,
+  Briefcase,
+  Lightbulb,
+  Building,
+  Landmark,
+  Users2,
+  University,
+  CheckCircle2,
+  Calendar,
+  Layers,
+  Database,
   SearchCode,
   ArrowRight,
   Sparkles,
@@ -90,21 +90,7 @@ const verticals = [
 
 export default function AboutPage() {
   const { t } = useTranslation();
-  const [sanityMembers, setSanityMembers] = useState<any[]>([]);
-
-  useEffect(() => {
-    async function fetchMembers() {
-      try {
-        const data = await client.fetch(MEMBERS_QUERY);
-        if (data) setSanityMembers(data);
-      } catch (err) {
-        console.error("Failed to fetch sanity members", err);
-      }
-    }
-    fetchMembers();
-  }, []);
-
-  const hardcodedLeadership = leadershipData.map(member => ({
+  const leadership = leadershipData.map(member => ({
     id: member.id,
     imageUrl: member.imageUrl,
     name: t(`team_${member.id}_name`),
@@ -112,49 +98,13 @@ export default function AboutPage() {
     bio: t(`team_${member.id}_bio`),
   }));
 
-  const mappedSanityLeadership = sanityMembers
-    .filter(m => m.category === 'leadership')
-    .map(member => ({
-      id: member._id,
-      imageUrl: member.imageUrl,
-      name: member.name,
-      title: member.role,
-      bio: member.bio || "",
-    }));
-
-  const sanityLeadershipNames = mappedSanityLeadership.map(m => m.name?.toLowerCase().trim());
-  
-  const filteredHardcodedLeadership = hardcodedLeadership.filter(
-    m => !sanityLeadershipNames.includes(m.name?.toLowerCase().trim())
-  );
-
-  const leadership = [...mappedSanityLeadership, ...filteredHardcodedLeadership];
-
-  const hardcodedAdvisors = advisoryBoard.map(advisor => ({
+  const advisors = advisoryBoard.map(advisor => ({
     id: advisor.id,
     imageUrl: advisor.imageUrl,
     name: advisor.name,
     role: t(`advisor_${advisor.id}_role`),
     bio: t(`advisor_${advisor.id}_bio`),
   }));
-
-  const mappedSanityAdvisors = sanityMembers
-    .filter(m => m.category === 'advisory')
-    .map(member => ({
-      id: member._id,
-      imageUrl: member.imageUrl,
-      name: member.name,
-      role: member.role,
-      bio: member.bio || "",
-    }));
-
-  const sanityAdvisorNames = mappedSanityAdvisors.map(m => m.name?.toLowerCase().trim());
-
-  const filteredHardcodedAdvisors = hardcodedAdvisors.filter(
-    m => !sanityAdvisorNames.includes(m.name?.toLowerCase().trim())
-  );
-
-  const advisors = [...mappedSanityAdvisors, ...filteredHardcodedAdvisors];
 
   return (
     <div className="min-h-screen bg-background">
@@ -190,7 +140,7 @@ export default function AboutPage() {
               <p>{t('about_intro_p1')}</p>
               <p dangerouslySetInnerHTML={{ __html: t('about_intro_p2') }} />
             </div>
-            
+
             <div className="grid sm:grid-cols-2 gap-6 mt-12">
               <Card className="bg-primary/5 border-none shadow-none text-left">
                 <CardHeader>
@@ -400,9 +350,9 @@ export default function AboutPage() {
               <Card className={`flex flex-row items-center gap-4 p-4 rounded-2xl bg-muted/30 border-none shadow-sm ${hasBio ? 'hover:bg-muted transition-colors cursor-pointer' : ''}`}>
                 <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border-2 border-accent overflow-hidden">
                   {advisor.imageUrl ? (
-                      <Image src={advisor.imageUrl} alt={advisor.name} width={64} height={64} className="object-cover w-full h-full" />
+                    <Image src={advisor.imageUrl} alt={advisor.name} width={64} height={64} className="object-cover w-full h-full" />
                   ) : (
-                      <Users2 className="h-8 w-8 text-primary/30" />
+                    <Users2 className="h-8 w-8 text-primary/30" />
                   )}
                 </div>
                 <div className="flex-1">
@@ -524,10 +474,10 @@ export default function AboutPage() {
               ].map((link, i) => (
                 <div key={i} className="flex flex-col items-center gap-2 group">
                   <div className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">{link.label}</div>
-                  <a 
-                    href={link.href} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-4 rounded-full bg-white shadow-sm text-primary hover:bg-primary hover:text-white transition-all duration-300 border-2 border-primary/5 hover:scale-110"
                   >
                     {link.icon}

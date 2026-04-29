@@ -200,21 +200,12 @@ const TierCard = ({ tier }: { tier: any }) => {
             </CardHeader>
             <CardContent className="flex-grow">
               <ul className="space-y-3 pt-4 border-t border-primary/10">
-                {tier.customBenefits ? (
-                  tier.customBenefits.map((benefit: string, idx: number) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground leading-snug">{benefit}</span>
-                    </li>
-                  ))
-                ) : (
-                  tier.benefitsKeys.map((benefitKey: string) => (
-                    <li key={benefitKey} className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground leading-snug">{t(benefitKey)}</span>
-                    </li>
-                  ))
-                )}
+                {tier.benefitsKeys.map((benefitKey: string) => (
+                  <li key={benefitKey} className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground leading-snug">{t(benefitKey)}</span>
+                  </li>
+                ))}
               </ul>
             </CardContent>
             <CardFooter className="pt-6">
@@ -276,8 +267,7 @@ export function MembershipDetails() {
       
       return {
         ...tier,
-        price: `${symbol}${formattedPrice}${suffix}`,
-        customBenefits: sanityTier.benefits && sanityTier.benefits.length > 0 ? sanityTier.benefits : undefined
+        price: `${symbol}${formattedPrice}${suffix}`
       };
     }
     return tier;
@@ -292,7 +282,7 @@ export function MembershipDetails() {
          <Card className="lg:col-span-2 border-2 border-primary/20 bg-primary/5 shadow-xl">
             <CardHeader className="text-center sm:text-left">
                 <CardTitle className="font-headline text-3xl text-primary">{t('membershipDetails_paymentTitle')}</CardTitle>
-                <CardDescription className="text-base font-medium">Please use the details below for direct bank settlement.</CardDescription>
+                <CardDescription className="text-base font-medium">{t('membershipDetails_paymentSubtitle')}</CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col sm:flex-row items-center justify-between gap-12 pb-10">
                 <div className="space-y-4 text-muted-foreground flex-1 text-center sm:text-left">
@@ -336,9 +326,7 @@ export function MembershipDetails() {
                     </div>
                 </div>
                 <div className="w-full mt-6 px-1">
-                    <p className="text-xs sm:text-sm text-muted-foreground font-medium leading-relaxed border-l-4 border-primary/40 pl-3 py-1 bg-primary/5 rounded-r-lg">
-                        <span className="font-bold text-foreground">Note —</span> All IJCC membership fees paid for a financial year are non-transferable and non-refundable. Applicants are requested to carefully review their application form prior to making the final payment.
-                    </p>
+                    <p className="text-xs sm:text-sm text-muted-foreground font-medium leading-relaxed border-l-4 border-primary/40 pl-3 py-1 bg-primary/5 rounded-r-lg" dangerouslySetInnerHTML={{ __html: t('membershipDetails_paymentNote') }} />
                 </div>
             </CardContent>
         </Card>
