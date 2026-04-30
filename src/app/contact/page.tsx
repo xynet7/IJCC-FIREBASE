@@ -47,9 +47,9 @@ export default function ContactPage() {
   return (
     <div className="container py-12">
       <div className="space-y-4 mb-12 text-center">
-        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">{settings?.title || t('contact_title')}</h1>
+        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">{t('contact_title')}</h1>
         <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
-          {settings?.description || t('contact_subtitle')}
+          {t('contact_subtitle')}
         </p>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">

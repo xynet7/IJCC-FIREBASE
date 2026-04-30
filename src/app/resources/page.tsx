@@ -11,11 +11,11 @@ import { useEffect, useState } from "react";
 import { doc, getDoc, DocumentData } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useTranslation } from "@/hooks/use-translation";
 
 const allResources = [
   {
-    title: "Guide to Doing Business in Japan",
-    description: "A comprehensive guide covering legal, cultural, and business etiquette for entering the Japanese market.",
+    id: "business-in-japan",
     type: "Document",
     icon: <FileText className="h-8 w-8 text-primary" />,
     isLink: true,
@@ -23,8 +23,7 @@ const allResources = [
     isProtected: true,
   },
   {
-    title: "Previous year JLPT Question Papers",
-    description: "All level JLPT Question Papers of last 10 years.",
+    id: "jlpt-papers",
     type: "Document",
     icon: <BarChart className="h-8 w-8 text-primary" />,
     isLink: true,
@@ -32,8 +31,7 @@ const allResources = [
     isProtected: false,
   },
   {
-    title: "Monthly Magazines",
-    description: "Read our monthly magazines for the latest insights.",
+    id: "magazines",
     type: "Magazine",
     icon: <BookOpen className="h-8 w-8 text-primary" />,
     isLink: true,
@@ -41,8 +39,7 @@ const allResources = [
     isProtected: true,
   },
   {
-    title: "Self Study Materials",
-    description: "Curated materials for self-paced learning about Japanese language and culture.",
+    id: "self-study",
     type: "Self Study",
     icon: <Sparkles className="h-8 w-8 text-primary" />,
     isLink: true,
@@ -50,8 +47,7 @@ const allResources = [
     isProtected: false,
   },
   {
-    title: "Lets Learn Japanese",
-    description: "Interactive learning platform and downloadable books from The Japan Foundation.",
+    id: "learn-japanese",
     type: "Books",
     icon: <BookOpen className="h-8 w-8 text-primary" />,
     isLink: true,
@@ -59,8 +55,7 @@ const allResources = [
     isProtected: false,
   },
   {
-    title: "Marugoto Books",
-    description: "Download Marugoto series books for different levels of Japanese language learning.",
+    id: "marugoto",
     type: "Books",
     icon: <BookOpen className="h-8 w-8 text-primary" />,
     isLink: true,
@@ -68,8 +63,7 @@ const allResources = [
     isProtected: true,
   },
   {
-    title: "Cross-Cultural Communication Workshop",
-    description: "Presentation slides from our recent workshop on effective cross-cultural communication.",
+    id: "cross-cultural",
     type: "Presentation",
     icon: <Presentation className="h-8 w-8 text-primary" />,
     isLink: false,
@@ -77,8 +71,7 @@ const allResources = [
     isProtected: true,
   },
   {
-    title: "Import/Export Checklist",
-    description: "A practical checklist for members involved in trade between India and Japan.",
+    id: "import-export",
     type: "Document",
     icon: <FileText className="h-8 w-8 text-primary" />,
     isLink: false,
@@ -88,6 +81,7 @@ const allResources = [
 ];
 
 export default function ResourcesPage() {
+  const { t } = useTranslation();
   const { toast } = useToast();
   const { user, loading: authLoading } = useAuth();
   const [profile, setProfile] = useState<DocumentData | null>(null);
@@ -143,9 +137,9 @@ export default function ResourcesPage() {
   return (
     <div className="container py-12">
       <div className="space-y-4 mb-12 text-center">
-        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">Resource Library</h1>
+        <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">{t('resources_title')}</h1>
         <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
-          Access our curated collection of valuable documents, reports, and presentations.
+          {t('resources_description')}
         </p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -167,11 +161,11 @@ export default function ResourcesPage() {
           : allResources.map((resource) => {
               const isAccessible = !resource.isProtected || hasMembership;
               return (
-                <Card key={resource.title} className="flex flex-col transform transition-transform duration-300 hover:-translate-y-2">
+                <Card key={resource.id} className="flex flex-col transform transition-transform duration-300 hover:-translate-y-2">
                   <CardHeader>
                     {resource.icon}
-                    <CardTitle className="font-headline mt-4">{resource.title}</CardTitle>
-                    <CardDescription>{resource.description}</CardDescription>
+                    <CardTitle className="font-headline mt-4">{t(`resource_${resource.id}_title`)}</CardTitle>
+                    <CardDescription>{t(`resource_${resource.id}_description`)}</CardDescription>
                   </CardHeader>
                   <CardContent className="flex-grow" />
                   <CardFooter>
@@ -184,15 +178,15 @@ export default function ResourcesPage() {
                           </Link>
                         </Button>
                       ) : (
-                        <Button variant="outline" className="w-full rounded-full" onClick={() => handleDownload(resource.title)}>
+                        <Button variant="outline" className="w-full rounded-full" onClick={() => handleDownload(t(`resource_${resource.id}_title`))}>
                           <Download className="mr-2 h-4 w-4" />
-                          Download {resource.type}
+                          {t('resource_download')} {t(`resource_type_${resource.type.toLowerCase().replace(' ', '')}`) || resource.type}
                         </Button>
                       )
                     ) : (
                         <Button variant="outline" className="w-full rounded-full" onClick={handleProtectedClick}>
                             <Lock className="mr-2 h-4 w-4" />
-                            Members Only
+                            {t('resource_membersOnly')}
                         </Button>
                     )}
                   </CardFooter>

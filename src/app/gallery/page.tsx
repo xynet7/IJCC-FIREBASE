@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { client } from '@/sanity/lib/client';
 import { GALLERY_QUERY } from '@/sanity/lib/queries';
+import { useTranslation } from "@/hooks/use-translation";
 
 // We fallback to original images if nothing is returned from Sanity yet
 const fallbackImages = [
@@ -37,6 +38,7 @@ const fallbackImages = [
 ];
 
 export default function GalleryPage() {
+    const { t } = useTranslation();
     const [images, setImages] = useState<any[]>(fallbackImages);
     const [loading, setLoading] = useState(true);
 
@@ -61,9 +63,9 @@ export default function GalleryPage() {
     return (
         <div className="container py-12">
             <div className="space-y-4 mb-12 text-center">
-                <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">Gallery</h1>
+                <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">{t('gallery_title')}</h1>
                 <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
-                    A glimpse into our vibrant community, events, and collaborations.
+                    {t('gallery_description')}
                 </p>
             </div>
 
