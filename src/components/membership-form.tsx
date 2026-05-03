@@ -114,15 +114,15 @@ function MembershipFormComponent() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                            <SelectItem value="student">Student / Young Professional</SelectItem>
-                            <SelectItem value="individual">Individual / Professional / Consultant</SelectItem>
-                            <SelectItem value="startup">Startup / Emerging SME</SelectItem>
-                            <SelectItem value="sme-standard">SME Standard</SelectItem>
-                            <SelectItem value="sme-plus">SME Plus</SelectItem>
-                            <SelectItem value="corporate-standard">Corporate Standard</SelectItem>
-                            <SelectItem value="corporate-premium">Corporate Premium</SelectItem>
-                            <SelectItem value="patron">Patron</SelectItem>
-                            <SelectItem value="strategic-platinum">Strategic Platinum</SelectItem>
+                            <SelectItem value="student">{t('membershipTier_student_title') || 'Student / Young Professional'}</SelectItem>
+                            <SelectItem value="individual">{t('membershipTier_individual_title') || 'Individual / Professional / Consultant'}</SelectItem>
+                            <SelectItem value="startup">{t('membershipTier_startup_title') || 'Startup / Emerging SME'}</SelectItem>
+                            <SelectItem value="sme-standard">{t('membershipTier_smeStandard_title') || 'SME Standard'}</SelectItem>
+                            <SelectItem value="sme-plus">{t('membershipTier_smePlus_title') || 'SME Plus'}</SelectItem>
+                            <SelectItem value="corporate-standard">{t('membershipTier_corporateStandard_title') || 'Corporate Standard'}</SelectItem>
+                            <SelectItem value="corporate-premium">{t('membershipTier_corporatePremium_title') || 'Corporate Premium'}</SelectItem>
+                            <SelectItem value="patron">{t('membershipTier_patron_title') || 'Patron'}</SelectItem>
+                            <SelectItem value="strategic-platinum">{t('membershipTier_strategicPlatinum_title') || 'Strategic Platinum'}</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -599,7 +599,7 @@ function MembershipFormComponent() {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="mr-3 h-6 w-6 animate-spin" />
-                        Processing...
+                        {t('membershipForm_processing') || 'Processing...'}
                       </>
                     ) : (
                       t('membershipForm_submitButton')
