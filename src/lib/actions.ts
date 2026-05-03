@@ -43,7 +43,8 @@ export async function submitMembershipForm(
             'Content-Type': 'text/plain;charset=utf-8', // Use text/plain for this redirect-based approach
         },
         body: JSON.stringify(dataForGoogleSheet),
-        redirect: 'follow' // Explicitly tell fetch to follow the redirect
+        redirect: 'follow', // Explicitly tell fetch to follow the redirect
+        signal: AbortSignal.timeout(8000) // 8 second timeout to prevent infinite hanging
     });
     
     // Check if the final response (after following redirects) is successful
@@ -53,6 +54,9 @@ export async function submitMembershipForm(
         console.error("Google Sheet submission failed. Status:", response.status, "Response:", errorText);
         throw new Error(`The form could not be submitted at this time (Status: ${response.status}). Please try again shortly.`);
     }
+
+    // Always consume the body so the socket is freed and the Server Action can resolve
+    await response.text();
 
     return {
         message: "membershipForm_toastSuccessDescription",

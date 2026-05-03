@@ -162,6 +162,24 @@ const pricingTiers = [
       "membershipTier_patron_benefit11",
     ],
   },
+  {
+    id: "strategic-platinum",
+    titleKey: "membershipTier_strategicPlatinum_title",
+    eligibilityKey: "membershipTier_strategicPlatinum_eligibility",
+    price: 0,
+    displayPrice: "T&C Applicable",
+    period: "",
+    benefitsKeys: [
+      "membershipTier_strategicPlatinum_benefit1",
+      "membershipTier_strategicPlatinum_benefit2",
+      "membershipTier_strategicPlatinum_benefit3",
+      "membershipTier_strategicPlatinum_benefit4",
+      "membershipTier_strategicPlatinum_benefit5",
+      "membershipTier_strategicPlatinum_benefit6",
+      "membershipTier_strategicPlatinum_benefit7",
+      "membershipTier_strategicPlatinum_benefit8",
+    ],
+  },
 ];
 
 
@@ -340,6 +358,8 @@ export default function PricingPage() {
                                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                                         <span>{t('membership_payment_processing') || "Processing..."}</span>
                                     </>
+                                 ) : tier.id === "strategic-platinum" ? (
+                                    "Contact Us"
                                  ) : (
                                     user ? (t('membership_payment_payNow') || "Pay Now") : (t('membershipForm_submitButton') || "Apply Now")
                                  )}
