@@ -963,5 +963,9 @@
   "resource_type_magazine": "雑誌",
   "resource_type_selfstudy": "独学用",
   "resource_type_books": "書籍",
-  "resource_type_presentation": "プレゼンテーション"
+  "resource_type_presentation": "プレゼンテーション",
+  "membership_payment_title": "メンバーシップ料金",
+  "membership_payment_description": "あなたに合ったプランを選び、日印協力の促進という私たちの使命に参加してください。",
+  "membership_payment_processing": "処理中...",
+  "membership_payment_payNow": "今すぐ支払う"
 }

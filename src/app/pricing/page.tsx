@@ -8,12 +8,13 @@ import { useToast } from "@/hooks/use-toast";
 import Link from "next/link";
 import { useAuth } from "@/context/auth-context";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import Script from "next/script";
 import { verifyRazorpayPayment } from "@/lib/actions";
 import { db } from "@/lib/firebase";
 import { doc, updateDoc } from "firebase/firestore";
+import { useTranslation } from "@/hooks/use-translation";
 
 declare global {
   interface Window {
@@ -22,86 +23,171 @@ declare global {
 }
 
 const pricingTiers = [
-    {
-        id: "individual",
-        title: "Individual Professionals / Freelancers",
-        price: 5000,
-        displayPrice: "₹5,000",
-        period: "/ year",
-        description: "For freelancers and consultants.",
-        features: [
-            "Invites to networking events & webinars",
-            "Access to cultural programs",
-            "Digital membership certificate",
-            "Discounts on training & workshops",
-        ],
-    },
-    {
-        id: "startup",
-        title: "Startups / SMEs / Partnerships (below 50 lakhs)",
-        price: 10000,
-        displayPrice: "₹10,000",
-        period: "/ year",
-        description: "For growing SMEs and startups.",
-        features: [
-            "All Individual benefits, plus:",
-            "Business exposure on IJCC platforms",
-            "B2B matchmaking support",
-            "Invitations to pitch events",
-            "Networking with Japanese VCs",
-        ],
-    },
-    {
-        id: "association",
-        title: "Associations",
-        price: 15000,
-        displayPrice: "₹15,000",
-        period: "/ year",
-        description: "For non-profits and industry bodies.",
-        features: [
-            "Listing on IJCC website & directories",
-            "Co-hosting opportunities for events",
-            "Access to policy-making forums",
-            "Joint advocacy & research initiatives",
-        ],
-    },
-    {
-        id: "corporate",
-        title: "Corporates / MSMEs / LLP (above 50 lakhs below 10cr.)",
-        price: 25000,
-        displayPrice: "₹25,000",
-        period: "/ year",
-        description: "For established private companies.",
-        features: [
-            "All Startup/SME benefits, plus:",
-            "Priority in trade missions",
-            "Access to advisory panels",
-            "Leads for Indo-Japan collaboration",
-        ],
-    },
-    {
-        id: "large-corporate",
-        title: "Large Corporates / Institutions / Others (above 10 cr.)",
-        price: 50000,
-        displayPrice: "₹50,000",
-        period: "/ year",
-        description: "For MNCs and large institutions.",
-        features: [
-            "All Corporate benefits, plus:",
-            "Co-hosting opportunities for summits",
-            "Direct access to senior officials",
-            "Representation in working groups",
-            "Joint knowledge partnerships",
-        ],
-    },
+  {
+    id: "student",
+    titleKey: "membershipTier_student_title",
+    eligibilityKey: "membershipTier_student_eligibility",
+    price: 3000,
+    displayPrice: "₹3,000",
+    period: "/ year",
+    benefitsKeys: [
+      "membershipTier_student_benefit1",
+      "membershipTier_student_benefit2",
+      "membershipTier_student_benefit3",
+    ],
+  },
+  {
+    id: "individual",
+    titleKey: "membershipTier_individual_title",
+    eligibilityKey: "membershipTier_individual_eligibility",
+    price: 11000,
+    displayPrice: "₹11,000",
+    period: "/ year",
+    benefitsKeys: [
+      "membershipTier_individual_benefit1",
+      "membershipTier_individual_benefit2",
+      "membershipTier_individual_benefit3",
+      "membershipTier_individual_benefit4",
+      "membershipTier_individual_benefit5",
+      "membershipTier_individual_benefit6",
+      "membershipTier_individual_benefit7",
+    ],
+  },
+  {
+    id: "startup",
+    titleKey: "membershipTier_startup_title",
+    eligibilityKey: "membershipTier_startup_eligibility",
+    price: 15000,
+    displayPrice: "₹15,000",
+    period: "/ year",
+    benefitsKeys: [
+      "membershipTier_startup_benefit1",
+      "membershipTier_startup_benefit2",
+      "membershipTier_startup_benefit3",
+      "membershipTier_startup_benefit4",
+      "membershipTier_startup_benefit5",
+      "membershipTier_startup_benefit6",
+      "membershipTier_startup_benefit7",
+    ],
+  },
+  {
+    id: "sme-standard",
+    titleKey: "membershipTier_smeStandard_title",
+    eligibilityKey: "membershipTier_smeStandard_eligibility",
+    price: 35000,
+    displayPrice: "₹35,000",
+    period: "/ year",
+    benefitsKeys: [
+      "membershipTier_smeStandard_benefit1",
+      "membershipTier_smeStandard_benefit2",
+      "membershipTier_smeStandard_benefit3",
+      "membershipTier_smeStandard_benefit4",
+      "membershipTier_smeStandard_benefit5",
+      "membershipTier_smeStandard_benefit6",
+      "membershipTier_smeStandard_benefit7",
+      "membershipTier_smeStandard_benefit8",
+    ],
+  },
+  {
+    id: "sme-plus",
+    titleKey: "membershipTier_smePlus_title",
+    eligibilityKey: "membershipTier_smePlus_eligibility",
+    price: 75000,
+    displayPrice: "₹75,000",
+    period: "/ year",
+    benefitsKeys: [
+      "membershipTier_smePlus_benefit1",
+      "membershipTier_smePlus_benefit2",
+      "membershipTier_smePlus_benefit3",
+      "membershipTier_smePlus_benefit4",
+      "membershipTier_smePlus_benefit5",
+      "membershipTier_smePlus_benefit6",
+      "membershipTier_smePlus_benefit7",
+    ],
+  },
+  {
+    id: "corporate-standard",
+    titleKey: "membershipTier_corporateStandard_title",
+    eligibilityKey: "membershipTier_corporateStandard_eligibility",
+    price: 100000,
+    displayPrice: "₹1,00,000",
+    period: "/ year",
+    benefitsKeys: [
+      "membershipTier_corporateStandard_benefit1",
+      "membershipTier_corporateStandard_benefit2",
+      "membershipTier_corporateStandard_benefit3",
+      "membershipTier_corporateStandard_benefit4",
+      "membershipTier_corporateStandard_benefit5",
+      "membershipTier_corporateStandard_benefit6",
+      "membershipTier_corporateStandard_benefit7",
+      "membershipTier_corporateStandard_benefit8",
+    ],
+  },
+  {
+    id: "corporate-premium",
+    titleKey: "membershipTier_corporatePremium_title",
+    eligibilityKey: "membershipTier_corporatePremium_eligibility",
+    price: 250000,
+    displayPrice: "₹2,50,000",
+    period: "/ year",
+    benefitsKeys: [
+      "membershipTier_corporatePremium_benefit1",
+      "membershipTier_corporatePremium_benefit2",
+      "membershipTier_corporatePremium_benefit3",
+      "membershipTier_corporatePremium_benefit4",
+      "membershipTier_corporatePremium_benefit5",
+      "membershipTier_corporatePremium_benefit6",
+      "membershipTier_corporatePremium_benefit7",
+      "membershipTier_corporatePremium_benefit8",
+    ],
+  },
+  {
+    id: "patron",
+    titleKey: "membershipTier_patron_title",
+    eligibilityKey: "membershipTier_patron_eligibility",
+    price: 500000,
+    displayPrice: "₹5,00,000",
+    period: "/ year",
+    benefitsKeys: [
+      "membershipTier_patron_benefit1",
+      "membershipTier_patron_benefit2",
+      "membershipTier_patron_benefit3",
+      "membershipTier_patron_benefit4",
+      "membershipTier_patron_benefit5",
+      "membershipTier_patron_benefit6",
+      "membershipTier_patron_benefit7",
+      "membershipTier_patron_benefit8",
+      "membershipTier_patron_benefit9",
+      "membershipTier_patron_benefit10",
+      "membershipTier_patron_benefit11",
+    ],
+  },
 ];
 
 
 export default function PricingPage() {
+    const { t } = useTranslation();
     const { toast } = useToast();
     const { user } = useAuth();
     const router = useRouter();
     const [loadingTier, setLoadingTier] = useState<string | null>(null);
+    const [initialTier, setInitialTier] = useState<string | null>(null);
+
+    useEffect(() => {
+        // Wait for hydration to access window.location
+        if (typeof window !== 'undefined') {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tierParam = urlParams.get('tier');
+            if (tierParam) {
+                setInitialTier(tierParam);
+                // Optional: Scroll to the selected tier
+                setTimeout(() => {
+                    const el = document.getElementById(tierParam);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 500);
+            }
+        }
+    }, []);
 
     const handlePayment = async (tier: typeof pricingTiers[0]) => {
         if (!user) {
@@ -139,7 +225,7 @@ export default function PricingPage() {
                 amount: order.amount,
                 currency: order.currency,
                 name: "Indo-Japan Chamber of Commerce",
-                description: `Membership - ${tier.title}`,
+                description: `Membership - ${t(tier.titleKey)}`,
                 order_id: order.id,
                 handler: async function (response: any) {
                     setLoadingTier(tier.id);
@@ -159,8 +245,8 @@ export default function PricingPage() {
                         });
                         
                         toast({
-                            title: "Payment Successful!",
-                            description: `Your membership has been upgraded to ${tier.title}.`,
+                            title: t('membershipForm_toastSuccessTitle') || "Payment Successful!",
+                            description: `Your membership has been upgraded to ${t(tier.titleKey)}.`,
                         });
                         router.push('/profile');
                     } else {
@@ -208,9 +294,9 @@ export default function PricingPage() {
             />
             <div className="container py-12">
                 <div className="space-y-4 mb-12 text-center">
-                    <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">Membership Pricing</h1>
+                    <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl">{t('membership_payment_title') || "Membership Pricing"}</h1>
                     <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
-                        Choose the plan that's right for you and join our mission to foster Indo-Japan collaboration.
+                        {t('membership_payment_description') || "Choose the plan that's right for you and join our mission to foster Indo-Japan collaboration."}
                     </p>
                 </div>
 
@@ -225,8 +311,8 @@ export default function PricingPage() {
                             )}
                         >
                             <CardHeader>
-                                <CardTitle className="font-headline text-2xl min-h-[64px]">{tier.title}</CardTitle>
-                                <CardDescription className="min-h-[40px]">{tier.description}</CardDescription>
+                                <CardTitle className="font-headline text-2xl min-h-[64px]">{t(tier.titleKey)}</CardTitle>
+                                <CardDescription className="min-h-[40px]">{t(tier.eligibilityKey)}</CardDescription>
                                  <div className="flex items-baseline gap-2 pt-4">
                                     <span className="text-4xl font-bold">{tier.displayPrice}</span>
                                     {tier.period && <span className="text-muted-foreground">{tier.period}</span>}
@@ -234,10 +320,10 @@ export default function PricingPage() {
                             </CardHeader>
                             <CardContent className="flex-grow">
                                  <ul className="space-y-3">
-                                    {tier.features.map((feature, index) => (
+                                    {tier.benefitsKeys.map((featureKey, index) => (
                                     <li key={index} className="flex items-center gap-2">
-                                        <Check className="h-5 w-5 text-green-500" />
-                                        <span className="text-muted-foreground text-sm">{feature}</span>
+                                        <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
+                                        <span className="text-muted-foreground text-sm">{t(featureKey)}</span>
                                     </li>
                                     ))}
                                 </ul>
@@ -252,10 +338,10 @@ export default function PricingPage() {
                                  {loadingTier === tier.id ? (
                                     <>
                                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                        <span>Processing...</span>
+                                        <span>{t('membership_payment_processing') || "Processing..."}</span>
                                     </>
                                  ) : (
-                                    user ? "Pay Now" : "Apply Now"
+                                    user ? (t('membership_payment_payNow') || "Pay Now") : (t('membershipForm_submitButton') || "Apply Now")
                                  )}
                                </Button>
                             </CardFooter>

@@ -963,5 +963,9 @@
   "resource_type_magazine": "Magazine",
   "resource_type_selfstudy": "Self Study",
   "resource_type_books": "Books",
-  "resource_type_presentation": "Presentation"
+  "resource_type_presentation": "Presentation",
+  "membership_payment_title": "Membership Pricing",
+  "membership_payment_description": "Choose the plan that is right for you and join our mission to foster Indo-Japan collaboration.",
+  "membership_payment_processing": "Processing...",
+  "membership_payment_payNow": "Pay Now"
 }
