@@ -36,7 +36,7 @@ const members = [
     { name: "Suman Khaitan & Co", href: "https://sumankhaitanco.in/", logoUrl: "https://sumankhaitanco.in/wp-content/uploads/2020/01/toplogo.png", hint: "company logo" },
     { name: "Bhoruka Extrusions", href: "https://bhorukaextrusions.com/", logoUrl: "https://i0.wp.com/bhorukaextrusions.com/wp-content/uploads/2023/03/215x68_logo.png?fit=215%2C68&ssl=1", hint: "company logo" },
     { name: "Digitup Solutions", href: "https://www.digitup.in", logoUrl: "https://images.ctfassets.net/y2mincmqvg0k/5mgIg4WYjVs3S4EbjYcMqy/e46f1cce42fc0813566f4f7c96a53ce3/header-logo-digitup-solutions-pvt-ltd.svg", hint: "company logo" },
-    { name: "Kamal Coach Works Pvt. Ltd.", href: "https://www.kamalcoach.com", logoUrl: "https://ui-avatars.com/api/?name=Kamal+Coach&background=ffffff&color=000000&size=256&font-size=0.33&bold=true", hint: "company logo" },
+    { name: "Kamal Coach Works Pvt. Ltd.", href: "https://www.kamalcoach.com", logoUrl: "https://i.ibb.co/HLQxTMWQ/kamal-coach.png", hint: "company logo" },
     { name: "Storytelling", href: "https://storytelling-jp.com", logoUrl: "https://storytelling-jp.com/wp-content/uploads/2025/07/logo_2-1536x396.png", hint: "company logo" },
     { name: "EXI", href: "https://exi.co.in", logoUrl: "https://exi.co.in/wp-content/uploads/2024/12/EI-Logo.png", hint: "company logo" },
     { name: "Unitherm Engineers", href: "https://unithermengineers.com", logoUrl: "https://unithermengineers.com/frontend/assets/images/logouni.png", hint: "company logo" },
