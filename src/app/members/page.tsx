@@ -39,7 +39,7 @@ const members = [
     { name: "Kamal Coach Works Pvt. Ltd.", href: "https://www.kamalcoach.com", logoUrl: "https://i.ibb.co/HLQxTMWQ/kamal-coach.png", hint: "company logo" },
     { name: "Storytelling", href: "https://storytelling-jp.com", logoUrl: "https://i.ibb.co/pBQNz0JN/storytelling.png", hint: "company logo" },
     { name: "EXI", href: "https://exi.co.in", logoUrl: "https://exi.co.in/wp-content/uploads/2024/12/EI-Logo.png", hint: "company logo" },
-    { name: "Unitherm Engineers", href: "https://unithermengineers.com", logoUrl: "https://unithermengineers.com/frontend/assets/images/logouni.png", hint: "company logo" },
+    { name: "Unitherm Engineers", href: "https://unithermengineers.com", logoUrl: "https://i.ibb.co/mF8xLc2s/unitherm-logo.png", hint: "company logo" },
 ];
 
 
