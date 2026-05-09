@@ -38,7 +38,7 @@ const members = [
     { name: "Digitup Solutions", href: "https://www.digitup.in", logoUrl: "https://images.ctfassets.net/y2mincmqvg0k/5mgIg4WYjVs3S4EbjYcMqy/e46f1cce42fc0813566f4f7c96a53ce3/header-logo-digitup-solutions-pvt-ltd.svg", hint: "company logo" },
     { name: "Kamal Coach Works Pvt. Ltd.", href: "https://www.kamalcoach.com", logoUrl: "https://i.ibb.co/HLQxTMWQ/kamal-coach.png", hint: "company logo" },
     { name: "Storytelling", href: "https://storytelling-jp.com", logoUrl: "https://i.ibb.co/pBQNz0JN/storytelling.png", hint: "company logo" },
-    { name: "EXI", href: "https://exi.co.in", logoUrl: "https://exi.co.in/wp-content/uploads/2024/12/EI-Logo.png", hint: "company logo" },
+    { name: "EXI", href: "https://exi.co.in", logoUrl: "https://i.ibb.co/rG4XYfBV/excactitude.png", hint: "company logo" },
     { name: "Unitherm Engineers", href: "https://unithermengineers.com", logoUrl: "https://i.ibb.co/mF8xLc2s/unitherm-logo.png", hint: "company logo" },
 ];
 
