@@ -38,4 +38,11 @@ export const member = defineType({
       type: 'text',
     }),
   ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'role',
+      media: 'image',
+    },
+  },
 });

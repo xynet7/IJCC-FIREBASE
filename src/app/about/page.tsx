@@ -90,21 +90,53 @@ const verticals = [
 
 export default function AboutPage() {
   const { t } = useTranslation();
-  const leadership = leadershipData.map(member => ({
-    id: member.id,
-    imageUrl: member.imageUrl,
-    name: t(`team_${member.id}_name`),
-    title: t(`team_${member.id}_title`),
-    bio: t(`team_${member.id}_bio`),
-  }));
+  const [cmsMembers, setCmsMembers] = useState<any[]>([]);
 
-  const advisors = advisoryBoard.map(advisor => ({
-    id: advisor.id,
-    imageUrl: advisor.imageUrl,
-    name: advisor.name,
-    role: t(`advisor_${advisor.id}_role`),
-    bio: t(`advisor_${advisor.id}_bio`),
-  }));
+  useEffect(() => {
+    const fetchMembers = async () => {
+      try {
+        const data = await client.fetch(MEMBERS_QUERY);
+        setCmsMembers(data);
+      } catch (error) {
+        console.error("Failed to fetch members from Sanity", error);
+      }
+    };
+    fetchMembers();
+  }, []);
+
+  const leadership = [
+    ...leadershipData.map(member => ({
+      id: member.id,
+      imageUrl: member.imageUrl,
+      name: t(`team_${member.id}_name`),
+      title: t(`team_${member.id}_title`),
+      bio: t(`team_${member.id}_bio`),
+    })),
+    ...cmsMembers.filter(m => m.category === 'Board').map(m => ({
+      id: m._id,
+      imageUrl: m.imageUrl,
+      name: m.name,
+      title: m.role,
+      bio: m.bio,
+    }))
+  ];
+
+  const advisors = [
+    ...advisoryBoard.map(advisor => ({
+      id: advisor.id,
+      imageUrl: advisor.imageUrl,
+      name: advisor.name,
+      role: t(`advisor_${advisor.id}_role`),
+      bio: t(`advisor_${advisor.id}_bio`),
+    })),
+    ...cmsMembers.filter(m => m.category === 'Advisory').map(m => ({
+      id: m._id,
+      imageUrl: m.imageUrl,
+      name: m.name,
+      role: m.role,
+      bio: m.bio,
+    }))
+  ];
 
   return (
     <div className="min-h-screen bg-background">

@@ -39,4 +39,17 @@ export const membershipPricing = defineType({
       of: [{ type: 'string' }],
     }),
   ],
+  preview: {
+    select: {
+      title: 'tierName',
+      subtitle: 'price',
+    },
+    prepare(selection) {
+      const { title, subtitle } = selection;
+      return {
+        title: title,
+        subtitle: subtitle ? `Price: ${subtitle}` : '',
+      };
+    },
+  },
 });
