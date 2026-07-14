@@ -4,6 +4,16 @@ export const member = defineType({
   name: 'member',
   title: 'Members / Team',
   type: 'document',
+  orderings: [
+    {
+      title: 'Display Order, Ascending',
+      name: 'orderAsc',
+      by: [
+        {field: 'order', direction: 'asc'},
+        {field: 'name', direction: 'asc'}
+      ]
+    }
+  ],
   fields: [
     defineField({
       name: 'name',

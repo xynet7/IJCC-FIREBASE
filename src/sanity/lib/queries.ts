@@ -35,7 +35,7 @@ export const EVENTS_QUERY = groq`
 `;
 
 export const MEMBERS_QUERY = groq`
-  *[_type == "member"] | order(order asc, name asc) {
+  *[_type == "member"] | order(coalesce(order, 99) asc, name asc) {
     _id,
     name,
     role,
