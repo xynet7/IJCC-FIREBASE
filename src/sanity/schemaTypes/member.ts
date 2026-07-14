@@ -17,6 +17,13 @@ export const member = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'order',
+      title: 'Display Order',
+      type: 'number',
+      description: 'Use this to control the order in which members appear (e.g., 1 for President, 2 for Vice President). Lower numbers appear first.',
+      initialValue: 99,
+    }),
+    defineField({
       name: 'category',
       title: 'Category',
       type: 'string',
