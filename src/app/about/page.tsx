@@ -105,12 +105,13 @@ export default function AboutPage() {
   }, []);
 
   const leadership = [
-    ...leadershipData.map(member => ({
+    ...leadershipData.map((member, index) => ({
       id: member.id,
       imageUrl: member.imageUrl,
       name: t(`team_${member.id}_name`),
       title: t(`team_${member.id}_title`),
       bio: t(`team_${member.id}_bio`),
+      order: (index + 1) * 10,
     })),
     ...cmsMembers.filter(m => m.category === 'Board').map(m => ({
       id: m._id,
@@ -118,16 +119,18 @@ export default function AboutPage() {
       name: m.name,
       title: m.role,
       bio: m.bio,
+      order: m.order ?? 999,
     }))
-  ];
+  ].sort((a, b) => a.order - b.order);
 
   const advisors = [
-    ...advisoryBoard.map(advisor => ({
+    ...advisoryBoard.map((advisor, index) => ({
       id: advisor.id,
       imageUrl: advisor.imageUrl,
       name: advisor.name,
       role: t(`advisor_${advisor.id}_role`),
       bio: t(`advisor_${advisor.id}_bio`),
+      order: (index + 1) * 10,
     })),
     ...cmsMembers.filter(m => m.category === 'Advisory').map(m => ({
       id: m._id,
@@ -135,8 +138,9 @@ export default function AboutPage() {
       name: m.name,
       role: m.role,
       bio: m.bio,
+      order: m.order ?? 999,
     }))
-  ];
+  ].sort((a, b) => a.order - b.order);
 
   return (
     <div className="min-h-screen bg-background">

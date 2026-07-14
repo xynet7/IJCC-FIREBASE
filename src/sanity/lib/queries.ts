@@ -41,6 +41,7 @@ export const MEMBERS_QUERY = groq`
     role,
     category,
     bio,
+    order,
     "imageUrl": image.asset->url
   }
 `;
