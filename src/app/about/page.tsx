@@ -88,21 +88,6 @@ const verticals = [
   { id: "12", icon: <SearchCode className="h-6 w-6" />, titleKey: "vertical_12_title", descKey: "vertical_12_desc", points: ["vertical_12_p1", "vertical_12_p2", "vertical_12_p3", "vertical_12_p4", "vertical_12_p5"] }
 ];
 
-const getRoleWeight = (role: string | undefined): number => {
-  if (!role) return 999;
-  const r = role.toLowerCase();
-  if (r.includes('chairman') && !r.includes('vice') && !r.includes('vc')) return 5;
-  if (r.includes('president') && !r.includes('vice')) return 5;
-  if (r.includes('vice chairman') || r.includes('vice-chairman') || r.includes('vc') || r.includes('vice president')) return 15;
-  if (r.includes('founder')) return 18;
-  if (r.includes('director')) return 25;
-  if (r.includes('lead')) return 35;
-  if (r.includes('consultant')) return 45;
-  if (r.includes('coordinator')) return 55;
-  if (r.includes('advisor')) return 65;
-  return 85;
-};
-
 export default function AboutPage() {
   const { t } = useTranslation();
   const [cmsMembers, setCmsMembers] = useState<any[]>([]);
@@ -126,7 +111,7 @@ export default function AboutPage() {
       name: t(`team_${member.id}_name`),
       title: t(`team_${member.id}_title`),
       bio: t(`team_${member.id}_bio`),
-      order: (index + 1) * 10,
+      order: (index + 1) + 0.1,
     })),
     ...cmsMembers.filter(m => m.category === 'Board').map(m => ({
       id: m._id,
@@ -134,7 +119,7 @@ export default function AboutPage() {
       name: m.name,
       title: m.role,
       bio: m.bio,
-      order: (m.order && m.order !== 99) ? m.order : getRoleWeight(m.role),
+      order: (m.order && m.order !== 99) ? m.order : 999,
     }))
   ].sort((a, b) => a.order - b.order);
 
@@ -145,7 +130,7 @@ export default function AboutPage() {
       name: advisor.name,
       role: t(`advisor_${advisor.id}_role`),
       bio: t(`advisor_${advisor.id}_bio`),
-      order: (index + 1) * 10,
+      order: (index + 1) + 0.1,
     })),
     ...cmsMembers.filter(m => m.category === 'Advisory').map(m => ({
       id: m._id,
@@ -153,7 +138,7 @@ export default function AboutPage() {
       name: m.name,
       role: m.role,
       bio: m.bio,
-      order: (m.order && m.order !== 99) ? m.order : getRoleWeight(m.role),
+      order: (m.order && m.order !== 99) ? m.order : 999,
     }))
   ].sort((a, b) => a.order - b.order);
 
